@@ -1,0 +1,301 @@
+@import "tailwindcss";
+@import "highlight.js/styles/github-dark.css";
+
+/* Conteúdo renderizado a partir de markdown (roteamento /<area>/*).
+   Usa as variáveis de tema do WIKI-NEXT (--ifm-*) para respeitar o modo
+   claro/escuro automaticamente — igual aos textos e links nativos do site. */
+.markdown {
+  color: var(--ifm-color-content);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.markdown > * + * {
+  margin-top: 1rem;
+}
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  color: var(--ifm-color-content);
+  font-weight: 800;
+  line-height: 1.25;
+  scroll-margin-top: 80px;
+}
+.markdown h1 {
+  font-size: 30px;
+  margin-top: 0;
+}
+.markdown h2 {
+  font-size: 24px;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+}
+.markdown h3 {
+  font-size: 20px;
+}
+.markdown h4 {
+  font-size: 18px;
+}
+.markdown a {
+  color: var(--ifm-link-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.markdown strong {
+  font-weight: 800;
+}
+.markdown ul,
+.markdown ol {
+  padding-left: 1.5rem;
+}
+.markdown ul {
+  list-style: disc;
+}
+.markdown ol {
+  list-style: decimal;
+}
+.markdown li + li {
+  margin-top: 0.35rem;
+}
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-link-color);
+  padding: 0.4rem 1rem;
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+}
+.markdown code {
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.875em;
+  background: var(--ifm-code-background, rgba(135, 131, 120, 0.15));
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+}
+.markdown pre {
+  background: #0d1117;
+  color: var(--ifm-color-content, #e3e3e3);
+  padding: 18px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.markdown pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.markdown th,
+.markdown td {
+  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.markdown th {
+  background: var(--ifm-color-emphasis-200, #f0f0f0);
+  font-weight: 700;
+}
+.markdown img {
+  border-radius: 0.5rem;
+  max-width: 100%;
+}
+.markdown hr {
+  border: 0;
+  border-top: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+}
+
+/* Página inicial (/) — apresentação do projeto, antes do conteúdo do
+   Padrão Frontend. Usa as mesmas variáveis de tema (prefixo ifm e
+   nexttech) do resto do site pra respeitar claro/escuro automaticamente. */
+.home-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+}
+
+.home-hero {
+  text-align: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+}
+
+.home-hero-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nexttech-blue);
+  margin: 0 0 12px;
+}
+
+.home-hero-title {
+  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 8vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ifm-color-content);
+  margin: 0 0 20px;
+}
+
+.home-hero-tagline {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.home-section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+}
+
+.home-section h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ifm-color-content);
+  margin: 0 0 14px;
+}
+
+.home-section p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+}
+
+.home-section p a {
+  color: var(--ifm-link-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  background: var(--nexttech-panel);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.home-card:hover {
+  border-color: var(--nexttech-blue);
+  transform: translateY(-2px);
+}
+
+.home-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-card-icon {
+  width: 26px;
+  height: 26px;
+  color: var(--nexttech-blue);
+}
+
+.home-card-status {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.home-card-status--ready {
+  color: #0f7b3d;
+  background: rgba(15, 123, 61, 0.12);
+}
+
+.home-card-status--wip {
+  color: var(--nexttech-muted);
+  background: var(--nexttech-hover);
+}
+
+.home-card-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ifm-color-content);
+  margin: 0;
+}
+
+.home-card-description {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  margin: 0;
+}
+
+.home-roadmap {
+  border-bottom: 0;
+}
+
+.home-roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.home-roadmap-heading {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.home-roadmap-heading--done {
+  color: #0f7b3d;
+}
+
+.home-roadmap-heading--wip {
+  color: var(--nexttech-muted);
+}
+
+.home-roadmap-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-roadmap-column li {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  padding-left: 18px;
+  position: relative;
+}
+
+.home-roadmap-column li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nexttech-blue);
+}
