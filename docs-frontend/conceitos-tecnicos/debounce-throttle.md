@@ -1,5 +1,6 @@
 ---
-video: cjIswDCKgu0
+video: 9VQv-H1jvbg
+videoEn: cjIswDCKgu0
 sidebar_label: Debounce & Throttle
 ---
 

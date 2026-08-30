@@ -1,5 +1,6 @@
 ---
 video: GYG_4YMs8RA
+videoEn: aQxk5NCE15w
 ---
 
 # Segurança de exportação (PDF e Excel)

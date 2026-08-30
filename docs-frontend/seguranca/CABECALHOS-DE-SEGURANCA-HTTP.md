@@ -1,6 +1,7 @@
 ---
-sidebar_label: Cabeçalhos de Segurança HTTP
 video: 1APq9La22cs
+videoEn: 7MWXTXjtl8s
+sidebar_label: Cabeçalhos de Segurança HTTP
 ---
 
 # Cabeçalhos de Segurança HTTP

@@ -1,6 +1,7 @@
 ---
-sidebar_label: XSS
 video: 2LYPyUk-L0k
+videoEn: EoaDgUgS6QA
+sidebar_label: XSS
 ---
 
 # XSS (Cross-Site Scripting)

@@ -912,6 +912,26 @@ body {
   font-weight: 700;
 }
 
+.nexttech-video__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.nexttech-video__lang {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--nexttech-hover);
+  color: var(--nexttech-muted);
+  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 .table-of-contents__link--active {
   color: var(--nexttech-blue);
   font-weight: 700;

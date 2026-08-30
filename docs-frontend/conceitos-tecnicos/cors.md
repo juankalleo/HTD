@@ -1,5 +1,6 @@
 ---
 video: GZV-FUdeVwE
+videoEn: PNtFSVU-YTI
 sidebar_label: CORS
 ---
 

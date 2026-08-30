@@ -1,5 +1,6 @@
 ---
-video: txAE6yT0Eu8
+video: bZpNSxOlCjs
+videoEn: txAE6yT0Eu8
 sidebar_label: Critical CSS
 ---
 

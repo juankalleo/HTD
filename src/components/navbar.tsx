@@ -1,8 +1,16 @@
-import { ThemeToggle } from "./theme-toggle";
+"use client";
 
-const NAV_ITEMS = [
+import { ThemeToggle } from "./theme-toggle";
+import { useLocale } from "./locale-provider";
+import type { AreaKey } from "@/lib/i18n";
+
+type NavItem =
+  | { area: AreaKey; href: string; icon: React.ReactNode }
+  | { labelKey: "credits"; href: string; icon: React.ReactNode };
+
+const NAV_ITEMS: NavItem[] = [
   {
-    label: "Padrão Frontend",
+    area: "padrao-frontend",
     href: "/padrao-frontend",
     icon: (
       <>
@@ -12,12 +20,12 @@ const NAV_ITEMS = [
     ),
   },
   {
-    label: "Padrão API",
+    area: "padrao-api",
     href: "/padrao-api",
     icon: <path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" />,
   },
   {
-    label: "Padrão Infraestrutura",
+    area: "padrao-infraestrutura",
     href: "/padrao-infraestrutura",
     icon: (
       <>
@@ -28,7 +36,7 @@ const NAV_ITEMS = [
     ),
   },
   {
-    label: "Exemplos",
+    area: "examples",
     href: "/examples",
     icon: (
       <>
@@ -37,9 +45,21 @@ const NAV_ITEMS = [
       </>
     ),
   },
+  {
+    labelKey: "credits",
+    href: "/creditos",
+    icon: (
+      <>
+        <path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" />
+        <path d="M8 4v13a3 3 0 0 0 3 3M9 8h6M9 12h5" />
+      </>
+    ),
+  },
 ];
 
 export function Navbar({ activeHref }: { activeHref: string }) {
+  const { locale, setLocale, t } = useLocale();
+
   return (
     <nav aria-label="Main" className="theme-layout-navbar navbar navbar--fixed-top">
       <div className="navbar__inner">
@@ -73,7 +93,7 @@ export function Navbar({ activeHref }: { activeHref: string }) {
                 >
                   {item.icon}
                 </svg>
-                <span>{item.label}</span>
+                <span>{"area" in item ? t.nav.areas[item.area] : t.nav[item.labelKey]}</span>
               </a>
             );
           })}
@@ -99,13 +119,29 @@ export function Navbar({ activeHref }: { activeHref: string }) {
                   d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"
                 />
               </svg>
-              PT-BR
+              {t.nav.languageName}
             </a>
             <ul className="dropdown__menu">
               <li>
-                <a href="#" className="dropdown__link dropdown__link--active" lang="pt-BR">
+                <button
+                  type="button"
+                  className={`dropdown__link${locale === "en" ? " dropdown__link--active" : ""}`}
+                  style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
+                  onClick={() => setLocale("en")}
+                >
+                  EN
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  lang="pt-BR"
+                  className={`dropdown__link${locale === "pt" ? " dropdown__link--active" : ""}`}
+                  style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
+                  onClick={() => setLocale("pt")}
+                >
                   PT-BR
-                </a>
+                </button>
               </li>
             </ul>
           </div>

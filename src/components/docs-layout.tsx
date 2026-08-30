@@ -2,16 +2,17 @@ import type { ReactNode } from "react";
 import { Navbar } from "./navbar";
 import { Sidebar, type SidebarItem } from "./sidebar";
 import { Footer } from "./footer";
+import type { AreaKey } from "@/lib/i18n";
 
 export function DocsLayout({
   activeHref,
   children,
-  sidebarTitle,
+  area,
   sidebarTree,
 }: {
   activeHref: string;
   children: ReactNode;
-  sidebarTitle: string;
+  area: AreaKey;
   sidebarTree: SidebarItem[];
 }) {
   return (
@@ -21,7 +22,7 @@ export function DocsLayout({
         <div className="container margin-vert--lg">
           <div className="row">
             <aside className="col col--3 nexttech-space-sidebar">
-              <Sidebar title={sidebarTitle} tree={sidebarTree} />
+              <Sidebar area={area} tree={sidebarTree} />
             </aside>
             {children}
           </div>

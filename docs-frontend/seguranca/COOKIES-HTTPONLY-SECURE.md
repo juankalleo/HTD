@@ -1,6 +1,7 @@
 ---
-sidebar_label: Cookies HttpOnly & Secure
 video: rCVivc9-rWs
+videoEn: GhrvZ5nUWNg
+sidebar_label: Cookies HttpOnly & Secure
 ---
 
 # Cookies HttpOnly & Secure

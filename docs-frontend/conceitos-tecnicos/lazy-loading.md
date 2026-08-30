@@ -1,5 +1,6 @@
 ---
-video: Oinc7vc96rM
+video: DQoH30T7vu4
+videoEn: IpuOnfjY82E
 sidebar_label: Lazy Loading
 ---
 

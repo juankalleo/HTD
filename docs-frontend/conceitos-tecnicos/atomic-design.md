@@ -1,5 +1,6 @@
 ---
 video: x-4li6foEN8
+videoEn: Yi-A20x2dcA
 sidebar_label: Atomic Design
 ---
 

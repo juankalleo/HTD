@@ -17,7 +17,7 @@ export function AreaDoc({ area, slug }: { area: string; slug: string[] | undefin
   // resolver link relativo entre `.md`s (ver `resolveDocHref` em MarkdownView).
   const basePath = `/${area}/${doc.baseSlug.join("/")}`;
   return (
-    <ArticleLayout title={doc.title} data={doc.date} cargo={cfg.cargo} area={cfg.area} toc={toc} video={doc.video}>
+    <ArticleLayout title={doc.title} data={doc.date} cargo={cfg.cargo} area={cfg.area} toc={toc} video={doc.video} videoEn={doc.videoEn}>
       <MarkdownView content={doc.content} basePath={basePath} />
     </ArticleLayout>
   );

@@ -1,5 +1,6 @@
 ---
-video: zu-EgnbmcLY
+video: s9qgTlpYDuA
+videoEn: p6dO9u0M7MQ
 sidebar_label: Tipos (TypeScript)
 ---
 

@@ -1,6 +1,7 @@
 ---
+video: SbXldeAb2D4
+videoEn: -LjPRzFR5f0
 sidebar_label: CSP
-video: -LjPRzFR5f0
 ---
 
 # CSP (Content Security Policy)

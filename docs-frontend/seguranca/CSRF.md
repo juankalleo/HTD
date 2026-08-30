@@ -1,6 +1,7 @@
 ---
-sidebar_label: CSRF
 video: ikjo5JUcTf4
+videoEn: eWEgUcHPle0
+sidebar_label: CSRF
 ---
 
 # CSRF (Cross-Site Request Forgery)

@@ -1,5 +1,6 @@
 ---
-video: JU6sl_yyZqs
+video: fB4vG3MmuDo
+videoEn: JU6sl_yyZqs
 sidebar_label: Code Splitting
 ---
 

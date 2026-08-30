@@ -1,6 +1,7 @@
 ---
+video: hcUBjPo5-jk
+videoEn: x5wX88YUf68
 sidebar_label: SRI
-video: x5wX88YUf68
 ---
 
 # Subresource Integrity (SRI)

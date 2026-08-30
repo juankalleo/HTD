@@ -1,6 +1,9 @@
 "use client";
 
+import { useLocale } from "./locale-provider";
+
 export function ThemeToggle() {
+  const { t } = useLocale();
   function toggle() {
     const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
     const next = current === "dark" ? "light" : "dark";
@@ -19,8 +22,8 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       className="clean-btn nexttech-theme-toggle"
-      title="Alternar tema"
-      aria-label="Alternar entre modo claro e escuro"
+      title={t.theme.toggleTitle}
+      aria-label={t.theme.toggleAria}
       style={{ color: "#fff", display: "flex", alignItems: "center", padding: "0 8px" }}
     >
       <svg viewBox="0 0 24 24" width={24} height={24} aria-hidden="true" className="toggleIcon_ShiV lightToggleIcon_kUVe">

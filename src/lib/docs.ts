@@ -22,7 +22,6 @@ type AreaConfig = {
   title: string;
   cargo: string;
   area: string;
-  sidebarTitle: string;
 };
 
 const AREAS: Record<string, AreaConfig> = {
@@ -31,28 +30,24 @@ const AREAS: Record<string, AreaConfig> = {
     title: "Padrão Frontend",
     cargo: "Senior Fullstack",
     area: "Padrão Frontend",
-    sidebarTitle: "Conteúdo do desenvolvedor",
   },
   "padrao-api": {
     folder: "docs-api",
     title: "Padrão API",
     cargo: "Backend/API",
     area: "Padrão API",
-    sidebarTitle: "Conteúdo da API",
   },
   "padrao-infraestrutura": {
     folder: "docs-infraestrutura",
     title: "Padrão Infraestrutura",
     cargo: "Infraestrutura",
     area: "Padrão Infraestrutura",
-    sidebarTitle: "Conteúdo da Infraestrutura",
   },
   examples: {
     folder: "docs-examples",
     title: "Exemplos",
     cargo: "Senior Fullstack",
     area: "Exemplos",
-    sidebarTitle: "Catálogo de exemplos",
   },
 };
 
@@ -72,7 +67,6 @@ export function getAreaConfig(area: string): AreaConfig {
       title: area,
       cargo: "Frontend",
       area,
-      sidebarTitle: "Conteúdo",
     }
   );
 }
@@ -84,6 +78,7 @@ export type DocContent = {
   slug: string[];
   baseSlug: string[];
   video?: string;
+  videoEn?: string;
   date: string;
 };
 
@@ -170,8 +165,9 @@ function readDoc(file: string, slug: string[], baseSlug: string[]): DocContent {
   const body = h1 ? content.replace(/^#\s+.*$(\n)?/m, "") : content;
   const description = typeof data.description === "string" ? data.description : undefined;
   const video = parseYouTubeId(data.video);
+  const videoEn = parseYouTubeId(data.videoEn);
   const date = dataDoArquivo(file, data.date ?? data.data);
-  return { title, description, content: body, slug, baseSlug, video, date };
+  return { title, description, content: body, slug, baseSlug, video, videoEn, date };
 }
 
 export function getDoc(area: string, slug: string[]): DocContent | null {

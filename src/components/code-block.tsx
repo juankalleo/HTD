@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useState } from "react";
+import { useLocale } from "./locale-provider";
 
 const KEYWORDS = new Set([
   "as",
@@ -180,6 +181,7 @@ function renderHighlightedCode(code: string) {
 }
 
 export function CodeBlock({ children, code, label }: { children?: ReactNode; code: string; label?: string }) {
+  const { t } = useLocale();
   const [copiado, setCopiado] = useState(false);
 
   async function copiar() {
@@ -205,7 +207,7 @@ export function CodeBlock({ children, code, label }: { children?: ReactNode; cod
           onClick={copiar}
           className="nexttech-code-block__copy absolute top-2 right-2 rounded-md border border-slate-700 bg-slate-800 px-2 py-1 text-xs text-slate-200 transition-colors hover:bg-slate-700"
         >
-          {copiado ? "Copiado!" : "Copiar"}
+          {copiado ? t.code.copied : t.code.copy}
         </button>
         <pre className="nexttech-code-block__pre overflow-x-auto bg-slate-900 p-4 text-xs leading-relaxed text-slate-100">
           <code>{children ?? renderHighlightedCode(code)}</code>

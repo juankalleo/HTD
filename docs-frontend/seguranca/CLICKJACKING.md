@@ -1,6 +1,7 @@
 ---
-sidebar_label: Clickjacking
 video: xUgCMMVZ2_A
+videoEn: Pdc5KJfOQpI
+sidebar_label: Clickjacking
 ---
 
 # Clickjacking (UI Redressing)

@@ -1,5 +1,6 @@
 ---
 video: xkkSiYitZbM
+videoEn: IU_qq_c_lKA
 ---
 
 # Otimização de imagem

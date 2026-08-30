@@ -1,6 +1,7 @@
 ---
+video: bFycRzkXp1U
+videoEn: W9_x8pc_bh8
 sidebar_label: Poluição de Protótipo
-video: W9_x8pc_bh8
 ---
 
 # Poluição de Protótipo (Prototype Pollution)

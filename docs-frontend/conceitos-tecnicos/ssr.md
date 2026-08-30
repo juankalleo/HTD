@@ -1,5 +1,6 @@
 ---
-video: ObrSuDYMl1s
+video: njTL7-eZ1AI
+videoEn: ObrSuDYMl1s
 sidebar_label: SSR
 ---
 

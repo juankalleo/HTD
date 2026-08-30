@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLocale } from "./locale-provider";
+import type { AreaKey } from "@/lib/i18n";
 
 export type SidebarItem = {
   label: string;
@@ -40,6 +42,7 @@ function SidebarNode({
   depth?: number;
   forceOpen?: boolean;
 }) {
+  const { t } = useLocale();
   const pathname = usePathname();
   const hasChildren = !!item.children?.length;
   const isPage = item.href ? !item.href.includes("#") : false;
@@ -55,7 +58,7 @@ function SidebarNode({
           <button
             type="button"
             className={`nexttech-tree-chevron${open ? " nexttech-tree-chevron--open" : " nexttech-tree-chevron--closed"}`}
-            aria-label={open ? "Recolher" : "Expandir"}
+            aria-label={open ? t.sidebar.collapse : t.sidebar.expand}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
@@ -84,28 +87,29 @@ function SidebarNode({
   );
 }
 
-export function Sidebar({ title, tree }: { title: string; tree: SidebarItem[] }) {
+export function Sidebar({ area, tree }: { area: AreaKey; tree: SidebarItem[] }) {
+  const { t } = useLocale();
   const [query, setQuery] = useState("");
   const searching = query.trim() !== "";
   const filtered = filterTree(tree, query);
 
   return (
-    <nav className="nexttech-confluence-sidebar thin-scrollbar" aria-label="Navegação de conteúdo">
+    <nav className="nexttech-confluence-sidebar thin-scrollbar" aria-label={t.sidebar.ariaNav}>
       <div className="nexttech-sidebar-section">
         <div className="nexttech-space-heading">
           <svg className="nexttech-developer-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
             <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z" />
             <path d="M8.5 9.5 6.5 12l2 2.5M15.5 9.5l2 2.5-2 2.5M13.5 8.5l-3 7" />
           </svg>
-          <span>{title}</span>
-          <button type="button" aria-label="Mais opções">
+          <span>{t.sidebar.areaTitle[area]}</span>
+          <button type="button" aria-label={t.sidebar.moreOptions}>
             ...
           </button>
         </div>
 
         <div className="nexttech-content-label">
           <span className="nexttech-content-icon" aria-hidden="true" />
-          <span>Conteúdo</span>
+          <span>{t.sidebar.contentLabel}</span>
         </div>
 
         <label className="nexttech-search">
@@ -116,11 +120,11 @@ export function Sidebar({ title, tree }: { title: string; tree: SidebarItem[] })
             onKeyDown={(e) => {
               if (e.key === "Escape") setQuery("");
             }}
-            placeholder="Pesquisar por título"
-            aria-label="Pesquisar por título"
+            placeholder={t.sidebar.searchPlaceholder}
+            aria-label={t.sidebar.searchPlaceholder}
           />
           {searching && (
-            <button type="button" className="nexttech-search-clear" aria-label="Limpar busca" onClick={() => setQuery("")}>
+            <button type="button" className="nexttech-search-clear" aria-label={t.sidebar.clearSearch} onClick={() => setQuery("")}>
               ×
             </button>
           )}
@@ -130,7 +134,7 @@ export function Sidebar({ title, tree }: { title: string; tree: SidebarItem[] })
           {filtered.length > 0 ? (
             filtered.map((item, i) => <SidebarNode key={item.href ?? `${item.label}-${i}`} item={item} forceOpen={searching} />)
           ) : (
-            <p className="nexttech-search-empty">Nenhum resultado para “{query}”.</p>
+            <p className="nexttech-search-empty">{t.sidebar.noResults(query)}</p>
           )}
         </div>
       </div>

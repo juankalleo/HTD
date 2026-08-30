@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = slug ?? [];
   const cfg = getAreaConfig("padrao-infraestrutura");
   const doc = getDoc("padrao-infraestrutura", s);
-  if (!doc) return { title: `${cfg.area} | WIKI-NEXT` };
-  return { title: `${doc.title} | ${cfg.area} | WIKI-NEXT`, description: doc.description };
+  if (!doc) return { title: `${cfg.area} | How to Dev` };
+  return { title: `${doc.title} | ${cfg.area} | How to Dev`, description: doc.description };
 }
 
 export default async function Page({ params }: Props) {

@@ -1,6 +1,7 @@
 ---
+video: kHTPsCMf9CA
+videoEn: stMj5jlu1-4
 sidebar_label: Man-in-the-Middle
-video: stMj5jlu1-4
 ---
 
 # Man-in-the-Middle (MitM) no Frontend

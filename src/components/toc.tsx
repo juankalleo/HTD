@@ -1,20 +1,42 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLocale } from "./locale-provider";
 
 export type TocItem = { id: string; label: string };
 
+function VideoCard({ videoId, lang, watchLabel, thumbAlt }: { videoId: string; lang: string; watchLabel: string; thumbAlt: string }) {
+  return (
+    <a
+      className="nexttech-video__link"
+      href={`https://www.youtube.com/watch?v=${videoId}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span className="nexttech-video__lang">{lang}</span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="nexttech-video__thumb"
+        src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+        alt={thumbAlt}
+        loading="lazy"
+      />
+      <span className="nexttech-video__cta">{watchLabel}</span>
+    </a>
+  );
+}
+
 export function Toc({
-  label,
   items,
   video,
+  videoEn,
 }: {
-  label: string;
   items: TocItem[];
   video?: string;
+  videoEn?: string;
 }) {
+  const { t } = useLocale();
   const [activeId, setActiveId] = useState<string>(items[0]?.id ?? "");
-  const videoUrl = video ? `https://www.youtube.com/watch?v=${video}` : undefined;
 
   useEffect(() => {
     const headings = items
@@ -41,7 +63,7 @@ export function Toc({
 
   return (
     <div className="tableOfContents_FQwY thin-scrollbar">
-      <div className="nexttech-glossary-label">{label}</div>
+      <div className="nexttech-glossary-label">{t.toc.glossary}</div>
       <ul className="table-of-contents table-of-contents__left-border">
         {items.map((item) => (
           <li key={item.id}>
@@ -56,24 +78,17 @@ export function Toc({
           </li>
         ))}
       </ul>
-      {videoUrl && (
+      {(videoEn || video) && (
         <div className="nexttech-video">
-          <div className="nexttech-glossary-label">Vídeo explicativo</div>
-          <a
-            className="nexttech-video__link"
-            href={videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="nexttech-video__thumb"
-              src={`https://img.youtube.com/vi/${video}/hqdefault.jpg`}
-              alt="Miniatura do vídeo explicativo"
-              loading="lazy"
-            />
-            <span className="nexttech-video__cta">Assista no YouTube ↗</span>
-          </a>
+          <div className="nexttech-glossary-label">{t.toc.videoLabel}</div>
+          <div className="nexttech-video__stack">
+            {videoEn && (
+              <VideoCard videoId={videoEn} lang="(English)" watchLabel={t.toc.watchOnYoutube} thumbAlt={t.toc.videoThumbAlt} />
+            )}
+            {video && (
+              <VideoCard videoId={video} lang="PT-BR" watchLabel={t.toc.watchOnYoutube} thumbAlt={t.toc.videoThumbAlt} />
+            )}
+          </div>
         </div>
       )}
     </div>

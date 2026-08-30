@@ -1,5 +1,6 @@
 ---
-video: kHQNK2jU_TQ
+video: IOErtWIJCgo
+videoEn: kHQNK2jU_TQ
 sidebar_label: Class Variance Authority
 ---
 
