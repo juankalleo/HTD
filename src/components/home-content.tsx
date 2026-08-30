@@ -3,11 +3,18 @@
 import { useLocale } from "./locale-provider";
 import type { AreaKey } from "@/lib/i18n";
 
-const AREA_ORDER: AreaKey[] = ["padrao-frontend", "padrao-api", "padrao-infraestrutura", "examples"];
+const AREA_ORDER: AreaKey[] = [
+  "padrao-frontend",
+  "padrao-api",
+  "padrao-banco-de-dados",
+  "padrao-infraestrutura",
+  "examples",
+];
 
 const AREA_HREF: Record<AreaKey, string> = {
   "padrao-frontend": "/padrao-frontend",
   "padrao-api": "/padrao-api",
+  "padrao-banco-de-dados": "/padrao-banco-de-dados",
   "padrao-infraestrutura": "/padrao-infraestrutura",
   examples: "/examples",
 };
@@ -62,6 +69,7 @@ export function HomeContent() {
             <div className="home-index-links">
               <a href="/padrao-frontend">{home.cards["padrao-frontend"].title}</a>
               <a href="/padrao-api">{home.cards["padrao-api"].title}</a>
+              <a href="/padrao-banco-de-dados">{home.cards["padrao-banco-de-dados"].title}</a>
               <a href="/padrao-infraestrutura">{home.cards["padrao-infraestrutura"].title}</a>
               <a href="/examples">{home.cards.examples.title}</a>
               <a href="/creditos">{home.secondaryCta}</a>

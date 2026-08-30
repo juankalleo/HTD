@@ -356,13 +356,28 @@
 }
 
 .home-roadmap-list {
+  position: relative;
   margin: 18px 0 0;
   padding: 0;
   border-top: 1px solid var(--htd-doc-rule);
   list-style: none;
 }
 
+/* Linha vertical ligando cada etapa — a progressão básico-a-avançado vira
+   um caminho visível, sem precisar rotular "iniciante/avançado" em lugar
+   nenhum (ver docs-frontend/index.md). */
+.home-roadmap-list::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 23px;
+  width: 1px;
+  background: var(--htd-doc-rule);
+}
+
 .home-roadmap-list > li {
+  position: relative;
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
   gap: 18px;
@@ -371,8 +386,18 @@
 }
 
 .home-roadmap-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--htd-doc-rule);
+  background: var(--htd-doc-bg);
   color: var(--htd-doc-link);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
 }
 

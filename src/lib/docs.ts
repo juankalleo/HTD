@@ -51,6 +51,12 @@ const AREAS: Record<string, AreaConfig> = {
     cargo: "Infraestrutura",
     area: "Padrão Infraestrutura",
   },
+  "padrao-banco-de-dados": {
+    folder: "docs-banco-de-dados",
+    title: "Padrão Banco de Dados",
+    cargo: "Backend/API",
+    area: "Padrão Banco de Dados",
+  },
   examples: {
     folder: "docs-examples",
     title: "Exemplos",
@@ -65,12 +71,14 @@ const AREA_ROOTS: Record<string, string> = {
   "padrao-frontend": path.join(WORKSPACE_ROOT, "docs-frontend"),
   "padrao-api": path.join(WORKSPACE_ROOT, "docs-api"),
   "padrao-infraestrutura": path.join(WORKSPACE_ROOT, "docs-infraestrutura"),
+  "padrao-banco-de-dados": path.join(WORKSPACE_ROOT, "docs-banco-de-dados"),
   examples: path.join(WORKSPACE_ROOT, "docs-examples"),
 };
 const AREA_ROOTS_EN: Record<string, string> = {
   "padrao-frontend": path.join(WORKSPACE_ROOT, "docs-frontend-en"),
   "padrao-api": path.join(WORKSPACE_ROOT, "docs-api-en"),
   "padrao-infraestrutura": path.join(WORKSPACE_ROOT, "docs-infraestrutura-en"),
+  "padrao-banco-de-dados": path.join(WORKSPACE_ROOT, "docs-banco-de-dados-en"),
   examples: path.join(WORKSPACE_ROOT, "docs-examples-en"),
 };
 
@@ -250,6 +258,63 @@ export function getHeadings(md: string): { id: string; label: string }[] {
 }
 
 /**
+ * Ordem editorial do topo de cada área — do básico pro avançado, sem
+ * rótulo "iniciante/avançado" nenhum na UI, só a ordem em si (ver
+ * decisão em docs-frontend/index.md). Chave = nome do arquivo/pasta em
+ * minúsculo, sem extensão. Quem não está na lista cai no fim, em ordem
+ * alfabética — nada quebra se um `.md` novo aparecer sem entrar aqui.
+ */
+const AREA_ORDER: Record<string, string[]> = {
+  // Topo de padrao-frontend
+  "padrao-frontend::.": [
+    "roteamento",
+    "conceitos-tecnicos",
+    "componentes",
+    "estilos",
+    "formularios",
+    "tratamento-de-dados",
+    "cache",
+    "tabelas",
+    "arquivos",
+    "layout",
+    "relatorios",
+    "seguranca",
+    "tecnologias",
+    "leitura-recomendada",
+  ],
+  // Topo de padrao-api
+  "padrao-api::.": ["roteamento-e-versionamento", "conceitos-tecnicos", "seguranca", "tecnologias"],
+  // Dentro de padrao-api/conceitos-tecnicos — do fundamento (como toda
+  // resposta é formada) até o mais avançado (padrão arquitetural)
+  "padrao-api::conceitos-tecnicos": [
+    "envelope-de-resposta",
+    "tratamento-de-erros",
+    "arquitetura-de-controllers",
+    "concerns-e-composicao",
+    "arquitetura-de-serializers",
+    "service-result",
+    "paginacao",
+    "filtros-e-busca",
+    "documentacao-gerada",
+  ],
+  // Topo de padrao-banco-de-dados
+  "padrao-banco-de-dados::.": ["conceitos-tecnicos", "tecnologias"],
+  "padrao-banco-de-dados::conceitos-tecnicos": [
+    "modelagem-base",
+    "nomenclatura-e-modulos",
+    "tabela-de-referencia-vs-enum",
+    "multi-tenancy",
+    "migrations",
+  ],
+};
+
+function orderRank(order: string[] | undefined, name: string): number {
+  if (!order) return -1;
+  const i = order.indexOf(name.toLowerCase());
+  return i === -1 ? order.length : i;
+}
+
+/**
  * Monta a árvore da sidebar escaneando a pasta de markdown da área (sempre a
  * em português, que é a fonte completa) — cada rótulo tenta a tradução do
  * arquivo `-en` correspondente primeiro (mesmo caminho relativo), caindo pro
@@ -257,15 +322,37 @@ export function getHeadings(md: string): { id: string; label: string }[] {
  * sidebar vai virando inglês progressivamente, sem nunca esconder uma rota
  * que só existe em português ainda.
  */
-function buildTree(dir: string, prefix: string, enDir: string | undefined, relDir: string, locale: Locale): SidebarItem[] {
+function buildTree(
+  dir: string,
+  prefix: string,
+  enDir: string | undefined,
+  relDir: string,
+  locale: Locale,
+  area?: string,
+): SidebarItem[] {
   if (!fs.existsSync(dir)) return [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
+  // Chave = área + caminho relativo (relDir usa "/" mesmo em Windows,
+  // igual ao resto deste arquivo) — cobre tanto o topo (relDir ".")
+  // quanto uma sub-pasta específica (ex.: "padrao-api::conceitos-tecnicos"),
+  // sem sub-pasta nenhuma exigir uma entrada — o que não está mapeado cai
+  // em ordem alfabética normal.
+  const useOrder = area ? AREA_ORDER[`${area}::${relDir.split(path.sep).join("/")}`] : undefined;
+
   const dirs = entries
     .filter((e) => e.isDirectory())
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort((a, b) => {
+      const ra = orderRank(useOrder, a.name);
+      const rb = orderRank(useOrder, b.name);
+      return ra !== rb ? ra - rb : a.name.localeCompare(b.name);
+    });
   const files = entries
     .filter((e) => e.isFile() && e.name.endsWith(".md") && !INDEXES.includes(e.name))
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort((a, b) => {
+      const ra = orderRank(useOrder, a.name.replace(/\.md$/, ""));
+      const rb = orderRank(useOrder, b.name.replace(/\.md$/, ""));
+      return ra !== rb ? ra - rb : a.name.localeCompare(b.name);
+    });
 
   function labelFor(ptFile: string, relPath: string, fallback: string): string {
     if (locale === "en" && enDir) {
@@ -275,7 +362,9 @@ function buildTree(dir: string, prefix: string, enDir: string | undefined, relDi
     return titleOfFile(ptFile, fallback);
   }
 
-  const items: SidebarItem[] = [];
+  type Entry = { name: string; rank: number; render: () => SidebarItem };
+  const built: Entry[] = [];
+
   for (const d of dirs) {
     const childDir = path.join(dir, d.name);
     const childHref = `${prefix}/${d.name.toLowerCase()}`;
@@ -283,28 +372,42 @@ function buildTree(dir: string, prefix: string, enDir: string | undefined, relDi
     const indexFile = INDEXES.map((indexName) => findEntry(childDir, indexName)).find(
       (indexPath): indexPath is FoundEntry => !!indexPath,
     );
-    const children = buildTree(childDir, childHref, enDir, childRel, locale);
-    items.push({
-      label: indexFile
-        ? labelFor(indexFile.path, path.join(childRel, path.basename(indexFile.path)), humanize(d.name))
-        : humanize(d.name),
-      href: childHref,
-      children: children.length ? children : undefined,
+    built.push({
+      name: d.name,
+      rank: orderRank(useOrder, d.name),
+      render: () => {
+        const children = buildTree(childDir, childHref, enDir, childRel, locale, area);
+        return {
+          label: indexFile
+            ? labelFor(indexFile.path, path.join(childRel, path.basename(indexFile.path)), humanize(d.name))
+            : humanize(d.name),
+          href: childHref,
+          children: children.length ? children : undefined,
+        };
+      },
     });
   }
   for (const f of files) {
     const base = f.name.replace(/\.md$/, "");
     const file = path.join(dir, f.name);
     const rel = path.join(relDir, f.name);
-    items.push({ label: labelFor(file, rel, humanize(base)), href: `${prefix}/${base.toLowerCase()}` });
+    built.push({
+      name: base,
+      rank: orderRank(useOrder, base),
+      render: () => ({ label: labelFor(file, rel, humanize(base)), href: `${prefix}/${base.toLowerCase()}` }),
+    });
   }
-  return items;
+
+  if (useOrder) {
+    built.sort((a, b) => (a.rank !== b.rank ? a.rank - b.rank : a.name.localeCompare(b.name)));
+  }
+  return built.map((e) => e.render());
 }
 
 export function getSidebarTree(area: string, locale: Locale = "pt"): SidebarItem[] {
   const root = ptAreaRoot(area);
   const enRoot = locale === "en" ? AREA_ROOTS_EN[area] : undefined;
-  const tree = buildTree(root, `/${area}`, enRoot && fs.existsSync(/*turbopackIgnore: true*/ enRoot) ? enRoot : undefined, ".", locale);
+  const tree = buildTree(root, `/${area}`, enRoot && fs.existsSync(/*turbopackIgnore: true*/ enRoot) ? enRoot : undefined, ".", locale, area);
   const overviewLabel = locale === "en" ? "Overview" : "Visão geral";
   return [{ label: overviewLabel, href: `/${area}` }, ...tree];
 }

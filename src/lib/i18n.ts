@@ -3,7 +3,12 @@ export type Locale = "en" | "pt";
 export const DEFAULT_LOCALE: Locale = "en";
 export const LOCALE_STORAGE_KEY = "htd-locale";
 
-export type AreaKey = "padrao-frontend" | "padrao-api" | "padrao-infraestrutura" | "examples";
+export type AreaKey =
+  | "padrao-frontend"
+  | "padrao-api"
+  | "padrao-banco-de-dados"
+  | "padrao-infraestrutura"
+  | "examples";
 
 type HomeSourceLink = {
   label: string;
@@ -114,6 +119,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       areas: {
         "padrao-frontend": "Frontend Standard",
         "padrao-api": "API Standard",
+        "padrao-banco-de-dados": "Database Standard",
         "padrao-infraestrutura": "Infrastructure Standard",
         examples: "Examples",
       },
@@ -132,6 +138,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       areaTitle: {
         "padrao-frontend": "Developer content",
         "padrao-api": "API content",
+        "padrao-banco-de-dados": "Database content",
         "padrao-infraestrutura": "Infrastructure content",
         examples: "Examples catalog",
       },
@@ -255,7 +262,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "padrao-api": {
           title: "API Standard",
           status: "In progress",
-          description: "HTTP contract, authentication, pagination, error envelope, and versioning.",
+          description: "HTTP contract, authentication, pagination, error envelope, and versioning — based on a real Rails API.",
+        },
+        "padrao-banco-de-dados": {
+          title: "Database Standard",
+          status: "In progress",
+          description: "Schema conventions, migrations, multi-tenancy, soft delete, and audit trail.",
         },
         "padrao-infraestrutura": {
           title: "Infrastructure Standard",
@@ -335,12 +347,35 @@ export const dictionaries: Record<Locale, Dictionary> = {
         },
         {
           step: "06",
-          title: "API, infrastructure, examples",
+          title: "API layer",
+          status: "Available",
+          href: "/padrao-api",
+          description: "The same standard applied to a real Rails API — request, handling, routing, response, all the way through.",
+          items: [
+            "Routing, versioning, response envelope, error handling",
+            "Controllers, serializers, concerns, service objects",
+            "Auth (JWT), authorization (data-driven), brute-force throttling",
+          ],
+        },
+        {
+          step: "07",
+          title: "Database layer",
+          status: "Available",
+          href: "/padrao-banco-de-dados",
+          description: "One layer deeper: how the schema itself is modeled, kept separate from the API contract on purpose.",
+          items: [
+            "Base model behavior, naming convention, migrations",
+            "Multi-tenancy at the schema level",
+            "Reference tables instead of enums, PaperTrail, soft delete",
+          ],
+        },
+        {
+          step: "08",
+          title: "Infrastructure, examples",
           status: "In progress",
           href: "/examples",
-          description: "The parts that expand the same standard beyond the frontend — not written yet.",
+          description: "The parts that expand the same standard beyond app code — not written yet.",
           items: [
-            "API Standard — HTTP contract, pagination, versioning",
             "Infrastructure Standard — environments, deploy, observability",
             "Examples — complete reference flows",
           ],
@@ -369,6 +404,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       areas: {
         "padrao-frontend": "Padrão Frontend",
         "padrao-api": "Padrão API",
+        "padrao-banco-de-dados": "Padrão Banco de Dados",
         "padrao-infraestrutura": "Padrão Infraestrutura",
         examples: "Exemplos",
       },
@@ -387,6 +423,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       areaTitle: {
         "padrao-frontend": "Conteúdo do desenvolvedor",
         "padrao-api": "Conteúdo da API",
+        "padrao-banco-de-dados": "Conteúdo de banco de dados",
         "padrao-infraestrutura": "Conteúdo da Infraestrutura",
         examples: "Catálogo de exemplos",
       },
@@ -509,7 +546,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "padrao-api": {
           title: "Padrão API",
           status: "Em construção",
-          description: "Contrato HTTP, autenticação, paginação, envelope de erro e versionamento.",
+          description: "Contrato HTTP, autenticação, paginação, envelope de erro e versionamento — baseado numa API Rails real.",
+        },
+        "padrao-banco-de-dados": {
+          title: "Padrão Banco de Dados",
+          status: "Em construção",
+          description: "Convenção de schema, migrations, multi-tenancy, soft delete e trilha de auditoria.",
         },
         "padrao-infraestrutura": {
           title: "Padrão Infraestrutura",
@@ -589,12 +631,35 @@ export const dictionaries: Record<Locale, Dictionary> = {
         },
         {
           step: "06",
-          title: "API, infraestrutura, exemplos",
+          title: "Camada de API",
+          status: "Disponível",
+          href: "/padrao-api",
+          description: "O mesmo padrão aplicado numa API Rails real — requisição, tratamento, roteamento, resposta, do início ao fim.",
+          items: [
+            "Roteamento, versionamento, envelope de resposta, tratamento de erro",
+            "Controllers, serializers, concerns, service objects",
+            "Autenticação (JWT), autorização (orientada a dado), bloqueio de força bruta",
+          ],
+        },
+        {
+          step: "07",
+          title: "Camada de banco de dados",
+          status: "Disponível",
+          href: "/padrao-banco-de-dados",
+          description: "Uma camada mais fundo: como o schema em si é modelado, deliberadamente separado do contrato de API.",
+          items: [
+            "Comportamento base de model, convenção de nome, migrations",
+            "Multi-tenancy no nível de schema",
+            "Tabela de referência em vez de enum, PaperTrail, soft delete",
+          ],
+        },
+        {
+          step: "08",
+          title: "Infraestrutura, exemplos",
           status: "Em construção",
           href: "/examples",
-          description: "As partes que expandem o mesmo padrão pra além do frontend — ainda não escritas.",
+          description: "As partes que expandem o mesmo padrão pra além do código da aplicação — ainda não escritas.",
           items: [
-            "Padrão API — contrato HTTP, paginação, versionamento",
             "Padrão Infraestrutura — ambientes, deploy, observabilidade",
             "Exemplos — fluxos completos de referência",
           ],

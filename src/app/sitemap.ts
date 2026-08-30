@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { listAreaHrefs } from "@/lib/docs";
 
 const SITE_URL = "https://howtodev.site";
-const AREAS = ["padrao-frontend", "padrao-api", "padrao-infraestrutura", "examples"];
+const AREAS = ["padrao-frontend", "padrao-api", "padrao-banco-de-dados", "padrao-infraestrutura", "examples"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

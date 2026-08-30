@@ -5,7 +5,7 @@ videoEn: WaFBiDgqctY
 
 # Padrão Frontend
 
-> Conteúdo em evolução: esta documentação reflete os conceitos e formas aplicadas nos padrões de frontend do How to Dev.
+> **Tecnologia principal: Next.js 16** (App Router, TypeScript). Conteúdo em evolução: esta documentação reflete os conceitos e formas aplicadas nos padrões de frontend do How to Dev.
 
 ## Visão geral
 
