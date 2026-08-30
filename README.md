@@ -3,7 +3,7 @@
 [![Personal Project](https://img.shields.io/badge/project-personal-48A646.svg)](https://github.com/juankalleo)
 [![Next.js 16](https://img.shields.io/badge/next.js-16-black.svg)](https://nextjs.org)
 
-Welcome to the repository for **How to Dev**, a personal documentation project maintained by **Juan Kalleo**. It focuses on writing down, in real detail, the structuring standards used as a reference when building a frontend/API/infrastructure project from scratch — not a company project, not a team effort, just one engineer's working reference kept honest enough to publish.
+Welcome to the repository for **How to Dev** https://howtodev.site, a personal documentation project maintained by **Juan Kalleo**. It focuses on writing down, in real detail, the structuring standards used as a reference when building a frontend/API/infrastructure project from scratch — not a company project, not a team effort, just one engineer's working reference kept honest enough to publish.
 
 To read the content, use the site itself once deployed. This repository is the source: markdown files under `docs-<area>/` are the working source and are rendered live by the Next.js app in `src/`.
 
