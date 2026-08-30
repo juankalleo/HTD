@@ -5,12 +5,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // A barreira real é o Basic Auth em proxy.ts — estes são
-        // reforços de baixo custo (ver docs-frontend/seguranca/
-        // PROTECAO-DA-WIKI.md#outras-camadas-defesa-em-profundidade-não-a-proteção-principal).
+        // Site público de propósito (ver docs-frontend/seguranca/
+        // PROTECAO-DA-WIKI.md) — sem Basic Auth e sem noindex. Estes
+        // headers continuam por padrão de higiene, não como barreira.
         source: "/:path*",
         headers: [
-          { key: "X-Robots-Tag", value: "noindex, nofollow" },
           { key: "X-Frame-Options", value: "DENY" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

@@ -308,3 +308,17 @@ export function getSidebarTree(area: string, locale: Locale = "pt"): SidebarItem
   const overviewLabel = locale === "en" ? "Overview" : "Visão geral";
   return [{ label: overviewLabel, href: `/${area}` }, ...tree];
 }
+
+function flattenHrefs(items: SidebarItem[]): string[] {
+  const hrefs: string[] = [];
+  for (const item of items) {
+    if (item.href) hrefs.push(item.href);
+    if (item.children) hrefs.push(...flattenHrefs(item.children));
+  }
+  return hrefs;
+}
+
+/** Toda URL real de uma área (a própria + cada doc), pro `sitemap.ts`. */
+export function listAreaHrefs(area: string): string[] {
+  return flattenHrefs(getSidebarTree(area, "pt"));
+}

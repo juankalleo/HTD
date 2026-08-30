@@ -37,16 +37,18 @@ corepack pnpm install
 corepack pnpm run dev
 ```
 
-In development the site is open, no credential required. In production (deployed on Vercel), the whole site sits behind HTTP Basic Auth — see [Security](#security) below.
-
 ```sh
 corepack pnpm run build
 corepack pnpm run start
 ```
 
+## SEO
+
+The site is public and indexable on purpose — it doubles as a portfolio piece, so being findable on Google matters. `sitemap.xml` is generated from the real content tree (`src/app/sitemap.ts`), `robots.txt` allows crawling, and every page ships Open Graph/Twitter metadata plus a generated social preview image (`src/app/opengraph-image.tsx`).
+
 ## Security
 
-This site has no user database — it's static content rendered from markdown. Access is gated by HTTP Basic Auth in `proxy.ts`, applied to every route, with credentials from environment variables (`WIKI_BASIC_AUTH_USER`/`WIKI_BASIC_AUTH_PASS`, never committed — see `.env.example`) and fail-closed behavior in production: without both variables configured, the site returns 401 to everyone, including its owner, instead of opening by default.
+This site used to sit behind HTTP Basic Auth; that was removed on purpose once the goal became a public, indexable portfolio — see [`docs-frontend/seguranca/PROTECAO-DA-WIKI.md`](docs-frontend/seguranca/PROTECAO-DA-WIKI.md) for the reasoning. Baseline HTTP headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) still apply to every route regardless.
 
 ## Contributions
 

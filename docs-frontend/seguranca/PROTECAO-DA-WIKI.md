@@ -10,98 +10,53 @@ exato, nome de arquivo), o que protege — e o que ainda não protege — o
 (o time), e ajuda quem não devia: os thresholds exatos do rack-attack, a
 confirmação de que autorização negada não gera log, o comportamento
 403-vs-404 no acesso cross-tenant — nada disso é perigoso escondido numa
-wiki interna, mas vira reconhecimento pronto se a wiki em si estiver
-acessível sem controle nenhum. A postura certa não é documentar menos —
-é garantir que só quem devia ler, leia.
+wiki interna. A postura certa não é documentar menos — é ser claro sobre
+o que está exposto e por quê.
 
-## No padrão frontend: HTTP Basic Auth em toda a wiki
+## Este site é público, de propósito
 
-`How to Dev` (este site) é um app Next.js próprio, separado do
-[HTD-Front](https://github.com/juankalleo/HTD-Front), sem base de usuário própria — conteúdo estático, sem
-conceito de "conta". `proxy.ts` (raiz do projeto) roda antes de
-qualquer rota, exige `Authorization: Basic` válido contra
-`WIKI_BASIC_AUTH_USER`/`WIKI_BASIC_AUTH_PASS` (variável de ambiente, nunca
-hardcoded — em produção na Vercel, configurada em Project Settings →
-Environment Variables, nunca commitada), com comparação resistente a
-timing attack e sem cache disponível:
+O `How to Dev` chegou a rodar atrás de HTTP Basic Auth (todo o site,
+`proxy.ts` na raiz, credencial por variável de ambiente) — feito quando
+a ideia era "wiki fechada, só o time acessa". Essa proteção foi
+**removida deliberadamente**: o objetivo mudou pra portfólio pessoal,
+pensado pra aparecer em busca (ver SEO em [`README.md`](../../README.md))
+— um site que ninguém encontra no Google não cumpre esse objetivo.
+`robots.txt` e os headers HTTP hoje permitem indexação (`Allow: /`, sem
+`X-Robots-Tag: noindex`), ao contrário de antes.
 
-```ts
-export function proxy(request: NextRequest): NextResponse {
-  const usuarioEsperado = process.env.WIKI_BASIC_AUTH_USER;
-  const senhaEsperada = process.env.WIKI_BASIC_AUTH_PASS;
+Isso é uma troca consciente, não um descuido: nada neste site depende de
+sigilo pra ser seguro. O conteúdo é documentação técnica escrita pra ser
+lida — inclusive por quem está avaliando o autor pra uma vaga, o que só
+funciona se o site for achável.
 
-  if (!usuarioEsperado || !senhaEsperada) {
-    return process.env.NODE_ENV === "production" ? naoAutorizado() : NextResponse.next();
-  }
+## Por que um `AuthGuard` client-side não serviria aqui (se algum dia precisasse)
 
-  const header = request.headers.get("authorization");
-  if (header?.startsWith("Basic ")) {
-    const [usuario, senha] = Buffer.from(header.slice(6), "base64").toString("utf-8").split(":");
-    if (comparacaoSeguraContraTempo(usuario, usuarioEsperado) && comparacaoSeguraContraTempo(senha, senhaEsperada)) {
-      return NextResponse.next();
-    }
-  }
-
-  return naoAutorizado();
-}
-```
-
-**Falha fechada em produção**: sem as duas variáveis de ambiente
-configuradas, `NODE_ENV=production` bloqueia tudo (401) — nunca fica
-aberto por omissão de configuração. Em desenvolvimento local (sem as
-env vars), libera, pra não travar quem só quer rodar `next dev` sem
-configurar credencial ainda.
-
-Verificado ao vivo, não só lido no código — três cenários reais contra um
-build de produção (`next start`, `NODE_ENV=production`):
-
-```text
-sem credencial:        401 (com WWW-Authenticate: Basic realm="How to Dev")
-credencial errada:     401
-credencial certa:      200
-```
-
-Como a proteção fecha por padrão quando as env vars não existem, o
-deploy na Vercel **precisa** das duas variáveis configuradas antes do
-primeiro acesso — sem elas, o próprio dono fica fora (401), o que é o
-comportamento correto: nunca abrir por esquecimento de configuração.
-
-## Por que o padrão do [HTD-Front](https://github.com/juankalleo/HTD-Front) não se aplica direto aqui
-
-O [HTD-Front](https://github.com/juankalleo/HTD-Front) protege rota admin com `AuthGuard`
-(`features/autenticacao/login/components/auth-guard.tsx`) — mas
-`AuthGuard` é **client-side** de propósito (`"use client"`, roda num
-`useEffect`, decide renderizar `children` ou redirecionar só depois de
-checar `localStorage` no navegador). Isso funciona lá porque o dado
+Fica registrado o motivo técnico, útil caso alguma seção volte a
+precisar de controle de acesso no futuro: o [HTD-Front](https://github.com/juankalleo/HTD-Front) protege rota
+admin com `AuthGuard` (`features/autenticacao/login/components/auth-guard.tsx`)
+— mas `AuthGuard` é **client-side** de propósito (`"use client"`, roda
+num `useEffect`, decide renderizar `children` ou redirecionar só depois
+de checar `localStorage` no navegador). Isso funciona lá porque o dado
 protegido de verdade (a resposta da API admin) só chega via
 `useQuery`/`fetch` disparado do client — a página em si não carrega dado
-sensível no HTML inicial; ela carrega depois, sob condição de token, e a
-API real (Rails) rejeita token ausente/inválido de qualquer forma. Ver
+sensível no HTML inicial. Ver
 [Fetch x TanStack Query](/padrao-frontend/conceitos-tecnicos/fetch-tanstack-query).
 
-O `How to Dev` é o oposto: o conteúdo (o markdown inteiro da página) **já
-está no HTML** que o servidor manda na primeira resposta — não tem
+O `How to Dev` é o oposto: o conteúdo (o markdown inteiro da página)
+**já está no HTML** que o servidor manda na primeira resposta — não tem
 `fetch` condicional nenhum acontecendo depois. Um `AuthGuard`
 client-side aqui não protegeria nada: o navegador (ou um crawler, ou
 `curl`) já recebeu o conteúdo completo antes de qualquer JavaScript
 rodar pra "esconder" ele. Proteção real, pra esse tipo de conteúdo,
-**precisa ser server-side**, antes da página renderizar — exatamente o
-que o `proxy.ts` do [HTD-Front](https://github.com/juankalleo/HTD-Front) já demonstra: roda no servidor,
-intercepta toda requisição antes da rota, só que lá com outro conteúdo
-(CSP, ver [CSP](CSP.md)), não checagem de autenticação. Aqui, mesmo
-mecanismo (`proxy.ts`), conteúdo diferente (Basic Auth).
+precisaria ser server-side, antes da página renderizar — era exatamente
+o papel que o `proxy.ts` (removido) cumpria aqui.
 
-## Outras camadas (defesa em profundidade, não a proteção principal)
+## Headers de segurança que continuam ativos
 
-A Basic Auth acima é a barreira real. As duas abaixo não substituem
-ela — só reduzem ruído e evitam vazamento acidental por fora dela:
-
-- **`public/robots.txt`** — `Disallow: /` pra todo agente. Não impede
-  acesso (a Basic Auth já faz isso); só evita que um buscador tente
-  indexar a URL e o 401 apareça em resultado de busca.
-- **`X-Robots-Tag: noindex`** (header HTTP, `next.config.ts`) —
-  reforço do `robots.txt` no nível de header, pro caso de algum crawler
-  ignorar o arquivo. Junto com `X-Frame-Options: DENY` e
-  `X-Content-Type-Options: nosniff`, os mesmos headers estáticos de
-  baixo custo que o [HTD-Front](https://github.com/juankalleo/HTD-Front) já aplica (ver
-  [Cabeçalhos de segurança HTTP](CABECALHOS-DE-SEGURANCA-HTTP.md)).
+Remover a Basic Auth não significa abrir mão de higiene básica.
+`next.config.ts` ainda aplica, em toda rota: `X-Frame-Options: DENY`
+(anti-clickjacking), `X-Content-Type-Options: nosniff` (anti MIME
+sniffing) e `Referrer-Policy: strict-origin-when-cross-origin` — os
+mesmos headers estáticos de baixo custo que o
+[HTD-Front](https://github.com/juankalleo/HTD-Front) já aplica (ver
+[Cabeçalhos de segurança HTTP](CABECALHOS-DE-SEGURANCA-HTTP.md)).

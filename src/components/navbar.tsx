@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 import { useLocale } from "./locale-provider";
 import type { AreaKey } from "@/lib/i18n";
@@ -59,12 +60,32 @@ const NAV_ITEMS: NavItem[] = [
 
 export function Navbar({ activeHref }: { activeHref: string }) {
   const { locale, setLocale, t } = useLocale();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    document.documentElement.classList.add("nexttech-no-scroll");
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setMobileOpen(false);
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.documentElement.classList.remove("nexttech-no-scroll");
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileOpen]);
 
   return (
-    <nav aria-label="Main" className="theme-layout-navbar navbar navbar--fixed-top">
+    <nav aria-label="Main" className={`theme-layout-navbar navbar navbar--fixed-top${mobileOpen ? " navbar-sidebar--show" : ""}`}>
       <div className="navbar__inner">
         <div className="theme-layout-navbar-left navbar__items">
-          <button aria-label="Toggle navigation bar" aria-expanded="false" className="navbar__toggle clean-btn" type="button">
+          <button
+            aria-label="Toggle navigation bar"
+            aria-expanded={mobileOpen}
+            className="navbar__toggle clean-btn"
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+          >
             <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
               <path stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2" d="M4 7h22M4 15h22M4 23h22" />
             </svg>
@@ -148,7 +169,85 @@ export function Navbar({ activeHref }: { activeHref: string }) {
           <ThemeToggle />
         </div>
       </div>
-      <div role="presentation" className="navbar-sidebar__backdrop" />
+
+      <div role="presentation" className="navbar-sidebar__backdrop" onClick={() => setMobileOpen(false)} />
+
+      <div className="navbar-sidebar">
+        <div className="navbar-sidebar__brand">
+          <a className="navbar__brand nexttech-brand" href="/" onClick={() => setMobileOpen(false)}>
+            <b className="navbar__title text--truncate">How to Dev</b>
+          </a>
+          <button
+            type="button"
+            aria-label="Close navigation bar"
+            className="clean-btn navbar-sidebar__close"
+            onClick={() => setMobileOpen(false)}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round">
+              <path d="M5 5l14 14M19 5L5 19" />
+            </svg>
+          </button>
+        </div>
+        <div className="navbar-sidebar__items">
+          <div className="navbar-sidebar__item nexttech-mobile-menu">
+            {NAV_ITEMS.map((item) => {
+              const active = activeHref === item.href;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`nexttech-mobile-link${active ? " nexttech-mobile-link--active" : ""}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.15}
+                    width={20}
+                    height={20}
+                  >
+                    {item.icon}
+                  </svg>
+                  <span>{"area" in item ? t.nav.areas[item.area] : t.nav[item.labelKey]}</span>
+                </a>
+              );
+            })}
+
+            <div className="nexttech-mobile-divider" />
+
+            <div className="nexttech-mobile-row">
+              <span className="nexttech-mobile-row-label">Theme</span>
+              <ThemeToggle />
+            </div>
+
+            <div className="nexttech-mobile-row">
+              <span className="nexttech-mobile-row-label">Language</span>
+              <div className="nexttech-mobile-lang">
+                <button
+                  type="button"
+                  className={`nexttech-mobile-lang-btn${locale === "en" ? " nexttech-mobile-lang-btn--active" : ""}`}
+                  onClick={() => setLocale("en")}
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  lang="pt-BR"
+                  className={`nexttech-mobile-lang-btn${locale === "pt" ? " nexttech-mobile-lang-btn--active" : ""}`}
+                  onClick={() => setLocale("pt")}
+                >
+                  PT-BR
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }

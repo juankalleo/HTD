@@ -282,6 +282,11 @@ body {
   z-index: 1;
 }
 
+/* Só existe no mobile — a regra ≤996px vira display:inline-flex. */
+.nexttech-sidebar-toggle {
+  display: none;
+}
+
 .nexttech-confluence-sidebar {
   color: var(--nexttech-sidebar-muted);
   display: flex;
@@ -964,21 +969,70 @@ body {
     display: block;
   }
 
+  /* Escondida por padrão no mobile (não mais uma caixa de 460px sempre
+     visível cortando item de árvore no meio) — só aparece como painel
+     cheio quando .nexttech-sidebar-toggle é clicado (ver
+     docs-sidebar-panel.tsx), com a mesma mecânica de slide do menu do
+     navbar. */
   .nexttech-space-sidebar {
-    border-bottom: 1px solid var(--nexttech-border);
+    display: none;
+  }
+
+  .nexttech-space-sidebar--open {
+    display: flex !important;
+    flex-direction: column;
+    background: linear-gradient(180deg, var(--nexttech-sidebar-bg) 0%, var(--nexttech-sidebar-bg-deep) 100%);
     border-right: 0;
-    height: auto !important;
-    left: auto !important;
-    max-width: none !important;
+    height: 100vh !important;
+    left: 0 !important;
+    max-width: 86vw !important;
     min-height: 0;
-    position: relative !important;
-    top: auto !important;
-    width: auto !important;
+    opacity: 1;
+    position: fixed !important;
+    top: 0 !important;
+    visibility: visible;
+    width: 86vw !important;
+    z-index: 210;
   }
 
   .nexttech-confluence-sidebar {
-    height: auto;
-    max-height: 460px;
+    height: 100%;
+    max-height: none;
+  }
+
+  .nexttech-sidebar-toggle {
+    align-items: center;
+    background: var(--nexttech-panel-toggle, transparent);
+    border: 1px solid var(--nexttech-border);
+    border-radius: 8px;
+    color: var(--ifm-font-color-base);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 700;
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 9px 14px;
+  }
+
+  .nexttech-sidebar-backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 205;
+  }
+
+  .nexttech-sidebar-panel-close {
+    align-self: flex-end;
+    background: transparent;
+    border: 0;
+    color: var(--nexttech-sidebar-text, #f8fafc);
+    cursor: pointer;
+    margin: 10px 10px 0 0;
+    padding: 6px;
   }
 
   .nexttech-content-main {
@@ -1025,4 +1079,95 @@ body {
     font-size: 14px;
     max-width: 168px;
   }
+}
+
+/* Menu mobile do navbar (drawer). Reaproveita o mecanismo pronto do
+   Docusaurus (.navbar-sidebar / .navbar-sidebar--show / __backdrop, já
+   definidos no bundle vendorizado em public/assets/css) — só o conteúdo
+   de dentro (lista de links, tema, idioma) é nosso. Só é alcançável no
+   mobile porque o botão .navbar__toggle que abre isso só aparece
+   em @media (width<=996px) (regra do próprio bundle vendorizado). */
+html.nexttech-no-scroll {
+  overflow: hidden;
+}
+
+.navbar-sidebar__brand {
+  justify-content: space-between;
+}
+
+.navbar-sidebar__close {
+  color: var(--nexttech-sidebar-text, #f8fafc);
+  padding: 6px;
+}
+
+.nexttech-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nexttech-mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 10px;
+  border-radius: 8px;
+  color: var(--ifm-font-color-base);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nexttech-mobile-link:hover {
+  background: var(--nexttech-hover);
+  text-decoration: none;
+}
+
+.nexttech-mobile-link--active {
+  color: var(--nexttech-blue);
+  background: var(--nexttech-active);
+}
+
+.nexttech-mobile-link svg {
+  flex: 0 0 auto;
+  color: var(--nexttech-blue);
+}
+
+.nexttech-mobile-divider {
+  margin: 10px 2px;
+  border-top: 1px solid var(--nexttech-border);
+}
+
+.nexttech-mobile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+
+.nexttech-mobile-row-label {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ifm-color-content-secondary, var(--ifm-font-color-base));
+}
+
+.nexttech-mobile-lang {
+  display: flex;
+  gap: 6px;
+}
+
+.nexttech-mobile-lang-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--nexttech-border);
+  background: transparent;
+  color: var(--ifm-font-color-base);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nexttech-mobile-lang-btn--active {
+  border-color: var(--nexttech-blue);
+  color: var(--nexttech-blue);
+  background: var(--nexttech-active);
 }

@@ -5,9 +5,34 @@ import { AntiFlickerScript } from "@/components/anti-flicker-script";
 import { LocaleProvider } from "@/components/locale-provider";
 import { getServerLocale } from "@/lib/locale-server";
 
+const SITE_URL = "https://htd.vercel.app";
+const SITE_DESCRIPTION =
+  "How to Dev (HTD) — Juan Kalleo's personal, security-first reference for structuring Next.js and Rails applications, with real code and nothing hidden.";
+
 export const metadata: Metadata = {
-  title: "How to Dev",
-  description: "Personal documentation of the structuring standards I use as a reference.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "How to Dev",
+    template: "%s | How to Dev",
+  },
+  description: SITE_DESCRIPTION,
+  keywords: ["How to Dev", "HTD", "Juan Kalleo", "Next.js", "Rails", "frontend standard", "web security"],
+  authors: [{ name: "Juan Kalleo", url: "https://github.com/juankalleo" }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "How to Dev",
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: "How to Dev",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How to Dev",
+    description: SITE_DESCRIPTION,
+    images: ["/opengraph-image"],
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

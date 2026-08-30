@@ -502,11 +502,20 @@
     padding: 28px 16px 56px;
   }
 
+  /* No mobile o conteúdo real (hero, propósito, roadmap...) tem que vir
+     antes da navegação — sem isso a home mostrava um bloco gigante de
+     links de nav e só depois o conteúdo, obrigando scroll longo antes
+     de ver qualquer coisa da página em si. */
+  .home-doc-page {
+    order: -1;
+  }
+
   .home-doc-nav {
     position: static;
     max-height: none;
     padding-bottom: 24px;
-    border-bottom: 1px solid var(--htd-doc-border);
+    padding-top: 8px;
+    border-top: 1px solid var(--htd-doc-border);
   }
 
   .home-cheatsheet-list {
