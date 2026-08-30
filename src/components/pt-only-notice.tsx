@@ -3,13 +3,14 @@
 import { useLocale } from "./locale-provider";
 
 /**
- * Conteúdo real das ~90 páginas ainda é só em português (ver decisão de
- * escopo: interface em inglês agora, tradução de conteúdo é etapa
- * separada). Sem isso, quem troca pra EN cai numa parede de texto em PT
- * sem explicação.
+ * `translated` vem do server (`getDoc`, ver `docs.ts`): `true` quando a
+ * página realmente tem uma versão `-en` e ela foi servida, `false` quando
+ * caiu pro `.md` em português por falta de tradução ainda. Só mostra o
+ * aviso nesse segundo caso — sem isso o aviso aparecia em toda página com
+ * locale=en, mesmo nas que já foram traduzidas de verdade.
  */
-export function PtOnlyNotice() {
+export function PtOnlyNotice({ translated }: { translated: boolean }) {
   const { locale, t } = useLocale();
-  if (locale !== "en") return null;
+  if (locale !== "en" || translated) return null;
   return <div className="pt-only-notice">{t.ptOnlyNotice}</div>;
 }

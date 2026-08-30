@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AreaDoc } from "@/components/area-doc";
 import { getDoc, getAreaConfig } from "@/lib/docs";
+import { getServerLocale } from "@/lib/locale-server";
 
 export const dynamic = "force-dynamic";
 
@@ -9,8 +10,9 @@ type Props = { params: Promise<{ slug?: string[] }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = slug ?? [];
+  const locale = await getServerLocale();
   const cfg = getAreaConfig("padrao-frontend");
-  const doc = getDoc("padrao-frontend", s);
+  const doc = getDoc("padrao-frontend", s, locale);
   if (!doc) return { title: `${cfg.area} | How to Dev` };
   return { title: `${doc.title} | ${cfg.area} | How to Dev`, description: doc.description };
 }

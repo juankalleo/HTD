@@ -23,7 +23,6 @@ type HomeControlRow = {
   risk: string;
   htd: string;
   href: string;
-  source: string;
 };
 
 type Dictionary = {
@@ -90,7 +89,6 @@ type Dictionary = {
     controlsBody: string;
     controlTableRisk: string;
     controlTableHtd: string;
-    controlTableSource: string;
     controlRows: HomeControlRow[];
     cards: Record<AreaKey, { title: string; status: string; description: string }>;
     statusReady: string;
@@ -206,49 +204,42 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       indexHeading: "HTD indexes",
       indexBody:
-        "Use these entry points like the OWASP indexes: choose a subject, open the reference page, then jump into the implementation notes and checklist.",
-      controlsHeading: "Security control mapping",
+        "Use these entry points to jump straight to a subject: pick a topic, open the reference page, then read the implementation notes and checklist.",
+      controlsHeading: "Security coverage map",
       controlsBody:
-        "The security section is mapped to practical implementation areas so the reader can move from risk category to the HTD page that explains the control.",
+        "A quick way to go from a risk category to the HTD page that actually implements the control — this table reflects HTD's own content, not an external checklist.",
       controlTableRisk: "Risk or control",
       controlTableHtd: "HTD reference",
-      controlTableSource: "Reference model",
       controlRows: [
         {
           risk: "Access control and IDOR",
           htd: "IDOR and authorization",
           href: "/padrao-frontend/seguranca/idor-e-autorizacao",
-          source: "OWASP Top 10 A01",
         },
         {
           risk: "XSS and unsafe input",
           htd: "XSS and input sanitization",
           href: "/padrao-frontend/seguranca/xss",
-          source: "OWASP injection guidance",
         },
         {
           risk: "Authentication and token lifecycle",
           htd: "Authentication and JWT",
           href: "/padrao-frontend/seguranca/jwt",
-          source: "OWASP authentication/JWT cheat sheets",
         },
         {
           risk: "Browser hardening",
           htd: "HTTP headers and CSP",
           href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http",
-          source: "OWASP proactive controls",
         },
         {
           risk: "Export and generated file abuse",
           htd: "PDF and export security",
           href: "/padrao-frontend/seguranca/seguranca-exportacao",
-          source: "HTD implementation checklist",
         },
         {
           risk: "Monitoring and audit trail",
           htd: "Audit logs",
           href: "/padrao-frontend/seguranca/logs-de-auditoria",
-          source: "OWASP logging guidance",
         },
       ],
       cards: {
@@ -279,75 +270,85 @@ export const dictionaries: Record<Locale, Dictionary> = {
       roadmapEyebrow: "Learning map",
       roadmapHeading: "Study roadmap",
       roadmapIntro:
-        "The roadmap follows the same useful pattern as the OWASP Cheat Sheet Series: searchable subjects, direct links, and practical checks grouped by risk and implementation area.",
-      roadmapSourceHeading: "OWASP reference model",
+        "Goes from the basics to the more advanced parts of the standard, in the order I'd actually recommend reading them — each step links straight into the real Frontend Standard content that exists today.",
+      roadmapSourceHeading: "About the format",
       roadmapSourceBody:
-        "Inspired by the Cheat Sheet index, Top 10 mapping, and Proactive Controls model: learn the topic, see the risk, apply the checklist.",
+        "The searchable index and cheat-sheet-style layout are a UX pattern borrowed from the OWASP Cheat Sheet Series — not a content source. Every page on HTD is original, written from my own experience; OWASP is linked below only for readers who want the real thing.",
       roadmapSourceLinks: [
         {
-          label: "Cheat Sheet Series ↗",
+          label: "OWASP Cheat Sheet Series ↗",
           href: "https://cheatsheetseries.owasp.org/",
-        },
-        {
-          label: "Top 10 index ↗",
-          href: "https://cheatsheetseries.owasp.org/IndexTopTen.html",
-        },
-        {
-          label: "Proactive Controls ↗",
-          href: "https://cheatsheetseries.owasp.org/IndexProactiveControls.html",
         },
       ],
       roadmapTracks: [
         {
           step: "01",
-          title: "Project foundation",
+          title: "Foundation",
           status: "Available",
           href: "/padrao-frontend",
-          description:
-            "Start with the application shape before adding features: routes, folders, boundaries, and conventions.",
+          description: "Start here: what the standard is for, and how the App Router shapes routes and folders.",
           items: [
-            "App Router and route ownership",
-            "Folder structure and shared UI",
-            "Layout, components, files, and reports",
+            "Overview and project structure",
+            "Routing — App Router, folders, private/public routes",
           ],
         },
         {
           step: "02",
-          title: "Application workflow",
+          title: "Core web concepts",
           status: "Available",
-          href: "/padrao-frontend/formularios",
-          description:
-            "Move through the daily building blocks that turn the standard into an actual system screen.",
+          href: "/padrao-frontend/conceitos-tecnicos",
+          description: "The fundamentals every other page assumes: how rendering, caching, and the browser actually behave.",
           items: [
-            "Forms with validation",
-            "Tables, filters, and data loading",
-            "Exports and user-facing flows",
+            "SSR, hydration, and code-splitting",
+            "CORS, BFF, and state management",
+            "Accessibility and progressive enhancement",
           ],
         },
         {
           step: "03",
-          title: "Security checklist",
+          title: "Building the UI",
           status: "Available",
-          href: "/padrao-frontend/seguranca",
-          description:
-            "Treat security as implementation work, not a final review: authorization, headers, session behavior, and abuse cases.",
+          href: "/padrao-frontend/componentes",
+          description: "Turn concepts into screen: reusable components and the styling decisions behind them.",
           items: [
-            "XSS, CSRF, JWT, and IDOR controls",
-            "RBAC, password policy, and session rules",
-            "HTTP headers and frontend exposure limits",
+            "Buttons, search, filters, and typed props",
+            "Modals, select, pagination, and typography",
           ],
         },
         {
           step: "04",
-          title: "API, infra, examples",
+          title: "Data and forms",
+          status: "Available",
+          href: "/padrao-frontend/formularios",
+          description: "How data actually moves: forms, validation, caching, and the request/response lifecycle.",
+          items: [
+            "Forms with React Hook Form + Zod",
+            "Cache, mutations, and query responses (TanStack Query)",
+            "File uploads/downloads and PDF/Excel reports",
+          ],
+        },
+        {
+          step: "05",
+          title: "Security checklist",
+          status: "Available",
+          href: "/padrao-frontend/seguranca",
+          description: "Security as implementation work, not a final review — the most detailed section on HTD.",
+          items: [
+            "XSS, CSRF, JWT, IDOR, and RBAC",
+            "HTTP headers, CSP, and cookie handling",
+            "Password policy, brute force, and audit logs",
+          ],
+        },
+        {
+          step: "06",
+          title: "API, infrastructure, examples",
           status: "In progress",
           href: "/examples",
-          description:
-            "Expand the same standard into the backend contract, runtime environment, and complete reference flows.",
+          description: "The parts that expand the same standard beyond the frontend — not written yet.",
           items: [
-            "HTTP contract and pagination",
-            "Deploy, variables, logs, and monitoring",
-            "Complete CRUD and report examples",
+            "API Standard — HTTP contract, pagination, versioning",
+            "Infrastructure Standard — environments, deploy, observability",
+            "Examples — complete reference flows",
           ],
         },
       ],
@@ -458,49 +459,42 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       indexHeading: "Índices HTD",
       indexBody:
-        "Use estes pontos de entrada como os índices da OWASP: escolha o assunto, abra a página de referência e avance para as notas de implementação e checklist.",
-      controlsHeading: "Mapeamento de controles de segurança",
+        "Use estes pontos de entrada pra ir direto ao assunto: escolha o tema, abra a página de referência e leia as notas de implementação e o checklist.",
+      controlsHeading: "Mapa de cobertura de segurança",
       controlsBody:
-        "A seção de segurança fica ligada a áreas práticas de implementação para o leitor sair da categoria de risco e cair direto na página HTD que explica o controle.",
+        "Um jeito rápido de sair da categoria de risco e cair direto na página HTD que implementa o controle — esta tabela reflete o conteúdo do próprio HTD, não um checklist externo.",
       controlTableRisk: "Risco ou controle",
       controlTableHtd: "Referência HTD",
-      controlTableSource: "Modelo de referência",
       controlRows: [
         {
           risk: "Controle de acesso e IDOR",
           htd: "IDOR e autorização",
           href: "/padrao-frontend/seguranca/idor-e-autorizacao",
-          source: "OWASP Top 10 A01",
         },
         {
           risk: "XSS e input inseguro",
           htd: "XSS e sanitização de inputs",
           href: "/padrao-frontend/seguranca/xss",
-          source: "Guia OWASP de injection",
         },
         {
           risk: "Autenticação e ciclo de vida do token",
           htd: "Autenticação e JWT",
           href: "/padrao-frontend/seguranca/jwt",
-          source: "Cheat sheets OWASP de autenticação/JWT",
         },
         {
           risk: "Hardening do navegador",
           htd: "Headers HTTP e CSP",
           href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http",
-          source: "OWASP Proactive Controls",
         },
         {
           risk: "Abuso em exportação e arquivo gerado",
           htd: "Segurança em PDF e exportação",
           href: "/padrao-frontend/seguranca/seguranca-exportacao",
-          source: "Checklist de implementação HTD",
         },
         {
           risk: "Monitoramento e trilha de auditoria",
           htd: "Logs de auditoria",
           href: "/padrao-frontend/seguranca/logs-de-auditoria",
-          source: "Guia OWASP de logging",
         },
       ],
       cards: {
@@ -531,75 +525,85 @@ export const dictionaries: Record<Locale, Dictionary> = {
       roadmapEyebrow: "Mapa de aprendizado",
       roadmapHeading: "Roadmap de estudo",
       roadmapIntro:
-        "O roadmap segue a lógica útil da OWASP Cheat Sheet Series: assuntos pesquisáveis, links diretos e checks práticos organizados por risco e área de implementação.",
-      roadmapSourceHeading: "Modelo de referência OWASP",
+        "Vai do básico até as partes mais avançadas do padrão, na ordem que eu de fato recomendaria ler — cada etapa linka direto pro conteúdo real do Padrão Frontend que já existe hoje.",
+      roadmapSourceHeading: "Sobre o formato",
       roadmapSourceBody:
-        "Inspirado no índice das Cheat Sheets, no mapeamento do Top 10 e no modelo de Proactive Controls: entender o tema, enxergar o risco e aplicar o checklist.",
+        "O índice pesquisável e o layout estilo cheat sheet são um padrão de UX emprestado da OWASP Cheat Sheet Series — não uma fonte de conteúdo. Toda página do HTD é original, escrita a partir da minha própria experiência; a OWASP fica linkada abaixo só pra quem quiser ler a fonte de verdade.",
       roadmapSourceLinks: [
         {
-          label: "Cheat Sheet Series ↗",
+          label: "OWASP Cheat Sheet Series ↗",
           href: "https://cheatsheetseries.owasp.org/",
-        },
-        {
-          label: "Índice Top 10 ↗",
-          href: "https://cheatsheetseries.owasp.org/IndexTopTen.html",
-        },
-        {
-          label: "Proactive Controls ↗",
-          href: "https://cheatsheetseries.owasp.org/IndexProactiveControls.html",
         },
       ],
       roadmapTracks: [
         {
           step: "01",
-          title: "Base do projeto",
+          title: "Fundação",
           status: "Disponível",
           href: "/padrao-frontend",
-          description:
-            "Começa pela forma da aplicação antes das features: rotas, pastas, limites e convenções.",
+          description: "Comece por aqui: pra que serve o padrão e como o App Router organiza rotas e pastas.",
           items: [
-            "App Router e dono das rotas",
-            "Estrutura de pastas e UI compartilhada",
-            "Layout, componentes, arquivos e relatórios",
+            "Visão geral e estrutura do projeto",
+            "Roteamento — App Router, pastas, rotas privadas/públicas",
           ],
         },
         {
           step: "02",
-          title: "Fluxo da aplicação",
+          title: "Conceitos técnicos essenciais",
           status: "Disponível",
-          href: "/padrao-frontend/formularios",
-          description:
-            "Passa pelos blocos diários que transformam o padrão em tela real de sistema.",
+          href: "/padrao-frontend/conceitos-tecnicos",
+          description: "Os fundamentos que toda outra página assume: como renderização, cache e o navegador se comportam de verdade.",
           items: [
-            "Formulários com validação",
-            "Tabelas, filtros e carregamento de dados",
-            "Exportações e fluxos para o usuário",
+            "SSR, hidratação e code-splitting",
+            "CORS, BFF e gerenciamento de estado",
+            "Acessibilidade e progressive enhancement",
           ],
         },
         {
           step: "03",
-          title: "Checklist de segurança",
+          title: "Construindo a UI",
           status: "Disponível",
-          href: "/padrao-frontend/seguranca",
-          description:
-            "Trata segurança como implementação, não como revisão final: autorização, headers, sessão e casos de abuso.",
+          href: "/padrao-frontend/componentes",
+          description: "Transforma conceito em tela: componentes reutilizáveis e as decisões de estilo por trás deles.",
           items: [
-            "Controles de XSS, CSRF, JWT e IDOR",
-            "RBAC, política de senha e regras de sessão",
-            "Headers HTTP e limites de exposição no frontend",
+            "Botões, busca, filtros e props tipadas",
+            "Modal, select, paginação e tipografia",
           ],
         },
         {
           step: "04",
-          title: "API, infra e exemplos",
+          title: "Dados e formulários",
+          status: "Disponível",
+          href: "/padrao-frontend/formularios",
+          description: "Como o dado se move de verdade: formulário, validação, cache e o ciclo de requisição/resposta.",
+          items: [
+            "Formulários com React Hook Form + Zod",
+            "Cache, mutações e resposta de consulta (TanStack Query)",
+            "Upload/download de arquivo e relatórios em PDF/Excel",
+          ],
+        },
+        {
+          step: "05",
+          title: "Checklist de segurança",
+          status: "Disponível",
+          href: "/padrao-frontend/seguranca",
+          description: "Segurança como trabalho de implementação, não como revisão final — a seção mais detalhada do HTD.",
+          items: [
+            "XSS, CSRF, JWT, IDOR e RBAC",
+            "Headers HTTP, CSP e tratamento de cookie",
+            "Política de senha, força bruta e logs de auditoria",
+          ],
+        },
+        {
+          step: "06",
+          title: "API, infraestrutura, exemplos",
           status: "Em construção",
           href: "/examples",
-          description:
-            "Expande o mesmo padrão para contrato de backend, ambiente de execução e fluxos completos de referência.",
+          description: "As partes que expandem o mesmo padrão pra além do frontend — ainda não escritas.",
           items: [
-            "Contrato HTTP e paginação",
-            "Deploy, variáveis, logs e monitoramento",
-            "CRUD completo e exemplos de relatório",
+            "Padrão API — contrato HTTP, paginação, versionamento",
+            "Padrão Infraestrutura — ambientes, deploy, observabilidade",
+            "Exemplos — fluxos completos de referência",
           ],
         },
       ],

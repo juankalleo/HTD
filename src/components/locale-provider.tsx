@@ -1,7 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, dictionaries, type Locale } from "@/lib/i18n";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
+import { LOCALE_STORAGE_KEY, dictionaries, type Locale } from "@/lib/i18n";
 
 type LocaleContextValue = {
   locale: Locale;
@@ -12,35 +13,28 @@ type LocaleContextValue = {
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 /**
- * Sempre nasce em `DEFAULT_LOCALE` (inglês) — igual no server e no client,
- * pra não dar hydration mismatch. Só depois de montado é que lê o
- * `localStorage` e troca pra "pt" se for a preferência salva; quem volta
- * já em PT vê um flash rápido de inglês na primeira carga, aceitável dado
- * que o padrão do site é inglês mesmo.
+ * `initialLocale` vem do server (root `layout.tsx`, que já leu o cookie
+ * `htd-locale` via `next/headers` pra renderizar a página inteira — chrome
+ * E conteúdo markdown — no idioma certo). Nascer com esse valor em vez de
+ * um padrão fixo é o que evita tanto hydration mismatch (client e server
+ * concordam de cara) quanto o flash de idioma errado que existia antes.
  */
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
-
-  useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
-      if (stored === "pt" || stored === "en") {
-        setLocaleState(stored);
-        document.documentElement.setAttribute("lang", stored === "pt" ? "pt-BR" : "en");
-      }
-    } catch {
-      // localStorage indisponível — fica no padrão (inglês).
-    }
-  }, []);
+export function LocaleProvider({ children, initialLocale }: { children: ReactNode; initialLocale: Locale }) {
+  const router = useRouter();
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   function setLocale(next: Locale) {
     setLocaleState(next);
     document.documentElement.setAttribute("lang", next === "pt" ? "pt-BR" : "en");
     try {
-      window.localStorage.setItem(LOCALE_STORAGE_KEY, next);
+      document.cookie = `${LOCALE_STORAGE_KEY}=${next}; path=/; max-age=31536000; samesite=lax`;
     } catch {
-      // troca só não persiste entre visitas.
+      // cookie indisponível — troca só não persiste entre visitas.
     }
+    // Conteúdo de página (markdown, sidebar) é lido no server a partir do
+    // cookie — sem isso a troca só mudaria o chrome client-side e o corpo
+    // do artigo continuaria no idioma antigo até a próxima navegação.
+    router.refresh();
   }
 
   return (

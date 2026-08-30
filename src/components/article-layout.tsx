@@ -11,6 +11,7 @@ export function ArticleLayout({
   toc,
   video,
   videoEn,
+  translated = true,
   children,
 }: {
   title: string;
@@ -20,6 +21,7 @@ export function ArticleLayout({
   toc?: TocItem[];
   video?: string;
   videoEn?: string;
+  translated?: boolean;
   children: ReactNode;
 }) {
   const visibleToc = toc && toc.length > 0 ? toc : [{ id: "visao-geral", label: "Visão geral" }];
@@ -29,7 +31,7 @@ export function ArticleLayout({
       <main className="col col--7 nexttech-content-main">
         <article>
           <ArticleHeader title={title} data={data} cargo={cargo} area={area} />
-          <PtOnlyNotice />
+          <PtOnlyNotice translated={translated} />
           <div id="__blog-post-container" className="markdown">
             {children}
           </div>

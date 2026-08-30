@@ -76,7 +76,6 @@ export function HomeContent() {
                   <tr>
                     <th>{home.controlTableRisk}</th>
                     <th>{home.controlTableHtd}</th>
-                    <th>{home.controlTableSource}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -86,7 +85,6 @@ export function HomeContent() {
                       <td>
                         <a href={row.href}>{row.htd}</a>
                       </td>
-                      <td>{row.source}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -116,6 +114,17 @@ export function HomeContent() {
                 </li>
               ))}
             </ol>
+            <div className="home-format-note">
+              <h3>{home.roadmapSourceHeading}</h3>
+              <p>{home.roadmapSourceBody}</p>
+              <div className="home-format-links">
+                {home.roadmapSourceLinks.map((source) => (
+                  <a href={source.href} key={source.href} rel="noreferrer" target="_blank">
+                    {source.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </section>
 
           <section className="home-doc-section" id="project-links">
@@ -155,12 +164,6 @@ export function HomeContent() {
               );
             })}
           </ul>
-          <h3>{home.roadmapSourceHeading}</h3>
-          {home.roadmapSourceLinks.map((source) => (
-            <a href={source.href} key={source.href} rel="noreferrer" target="_blank">
-              {source.label}
-            </a>
-          ))}
         </aside>
       </div>
     </main>

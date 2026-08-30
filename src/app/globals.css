@@ -410,6 +410,35 @@
   line-height: 1.5;
 }
 
+.home-format-note {
+  margin-top: 28px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--htd-doc-rule);
+  background: var(--nexttech-panel);
+}
+
+.home-format-note h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--htd-doc-muted);
+}
+
+.home-format-note p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.home-format-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .home-project-links {
   margin: 0;
   padding: 0;
