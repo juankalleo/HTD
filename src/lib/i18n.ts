@@ -68,6 +68,7 @@ type Dictionary = {
     navSecurityControls: string;
     navRoadmap: string;
     navProjectLinks: string;
+    navAbout: string;
     bannerLabel: string;
     bannerStatus: string;
     bannerText: string;
@@ -96,12 +97,13 @@ type Dictionary = {
     roadmapEyebrow: string;
     roadmapHeading: string;
     roadmapIntro: string;
-    roadmapSourceHeading: string;
-    roadmapSourceBody: string;
-    roadmapSourceLinks: HomeSourceLink[];
     roadmapTracks: HomeRoadmapTrack[];
     projectLinksHeading: string;
     projectLinks: HomeSourceLink[];
+    aboutHeading: string;
+    aboutBody: string;
+    aboutImageAlt: string;
+    aboutGithubLabel: string;
     onThisPageHeading: string;
   };
 };
@@ -162,6 +164,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       navSecurityControls: "Security controls",
       navRoadmap: "Study roadmap",
       navProjectLinks: "Project links",
+      navAbout: "About me",
       bannerLabel: "HTD",
       bannerStatus: "v1.0 reference",
       bannerText: "frontend standard available",
@@ -271,15 +274,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       roadmapHeading: "Study roadmap",
       roadmapIntro:
         "Goes from the basics to the more advanced parts of the standard, in the order I'd actually recommend reading them — each step links straight into the real Frontend Standard content that exists today.",
-      roadmapSourceHeading: "About the format",
-      roadmapSourceBody:
-        "The searchable index and cheat-sheet-style layout are a UX pattern borrowed from the OWASP Cheat Sheet Series — not a content source. Every page on HTD is original, written from my own experience; OWASP is linked below only for readers who want the real thing.",
-      roadmapSourceLinks: [
-        {
-          label: "OWASP Cheat Sheet Series ↗",
-          href: "https://cheatsheetseries.owasp.org/",
-        },
-      ],
       roadmapTracks: [
         {
           step: "01",
@@ -357,9 +351,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { label: "Credits", href: "/creditos" },
         { label: "Frontend Standard", href: "/padrao-frontend" },
         { label: "Security checklist", href: "/padrao-frontend/seguranca" },
-        { label: "OWASP Cheat Sheet Series", href: "https://cheatsheetseries.owasp.org/" },
-        { label: "OWASP Top 10 index", href: "https://cheatsheetseries.owasp.org/IndexTopTen.html" },
+        { label: "OWASP Cheat Sheet Series ↗", href: "https://cheatsheetseries.owasp.org/" },
+        { label: "MDN Web Docs ↗", href: "https://developer.mozilla.org/" },
+        { label: "Red Hat Developer ↗", href: "https://developers.redhat.com/" },
+        { label: "Stripe — Idempotent Requests ↗", href: "https://stripe.com/docs/api/idempotent_requests" },
       ],
+      aboutHeading: "About me",
+      aboutBody:
+        "I'm Juan Kalleo, a Staff Fullstack Software Engineer on NextTech's frontend team, based in Porto Velho, Brazil. Secure software development is the focus that runs through most of what I build — HTD is where that focus turns into documentation, written the way I wish more of it was.",
+      aboutImageAlt: "Photo of Juan Kalleo",
+      aboutGithubLabel: "GitHub ↗",
       onThisPageHeading: "On this page",
     },
   },
@@ -417,6 +418,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       navSecurityControls: "Controles de segurança",
       navRoadmap: "Roadmap de estudo",
       navProjectLinks: "Links do projeto",
+      navAbout: "Sobre mim",
       bannerLabel: "HTD",
       bannerStatus: "referência v1.0",
       bannerText: "padrão frontend disponível",
@@ -526,15 +528,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       roadmapHeading: "Roadmap de estudo",
       roadmapIntro:
         "Vai do básico até as partes mais avançadas do padrão, na ordem que eu de fato recomendaria ler — cada etapa linka direto pro conteúdo real do Padrão Frontend que já existe hoje.",
-      roadmapSourceHeading: "Sobre o formato",
-      roadmapSourceBody:
-        "O índice pesquisável e o layout estilo cheat sheet são um padrão de UX emprestado da OWASP Cheat Sheet Series — não uma fonte de conteúdo. Toda página do HTD é original, escrita a partir da minha própria experiência; a OWASP fica linkada abaixo só pra quem quiser ler a fonte de verdade.",
-      roadmapSourceLinks: [
-        {
-          label: "OWASP Cheat Sheet Series ↗",
-          href: "https://cheatsheetseries.owasp.org/",
-        },
-      ],
       roadmapTracks: [
         {
           step: "01",
@@ -612,9 +605,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
         { label: "Créditos", href: "/creditos" },
         { label: "Padrão Frontend", href: "/padrao-frontend" },
         { label: "Checklist de segurança", href: "/padrao-frontend/seguranca" },
-        { label: "OWASP Cheat Sheet Series", href: "https://cheatsheetseries.owasp.org/" },
-        { label: "Índice OWASP Top 10", href: "https://cheatsheetseries.owasp.org/IndexTopTen.html" },
+        { label: "OWASP Cheat Sheet Series ↗", href: "https://cheatsheetseries.owasp.org/" },
+        { label: "MDN Web Docs ↗", href: "https://developer.mozilla.org/" },
+        { label: "Red Hat Developer ↗", href: "https://developers.redhat.com/" },
+        { label: "Stripe — Idempotent Requests ↗", href: "https://stripe.com/docs/api/idempotent_requests" },
       ],
+      aboutHeading: "Sobre mim",
+      aboutBody:
+        "Sou o Juan Kalleo, Staff Fullstack Software Engineer no time de frontend da NextTech, baseado em Porto Velho, Brasil. Desenvolvimento seguro de software é o foco que atravessa a maior parte do que eu construo — o HTD é onde esse foco vira documentação, escrita do jeito que eu gostaria que mais gente escrevesse.",
+      aboutImageAlt: "Foto de Juan Kalleo",
+      aboutGithubLabel: "GitHub ↗",
       onThisPageHeading: "Nesta página",
     },
   },

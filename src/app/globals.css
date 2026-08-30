@@ -113,8 +113,11 @@
   margin: 0 0 1rem;
   padding: 0.6rem 0.9rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
-  background: var(--nexttech-panel);
+  /* Overlay translúcido (não cor sólida) — se adapta a claro/escuro
+     sozinho, sem depender de --nexttech-panel (fixo claro, ficava
+     ilegível no tema escuro: fundo quase branco com texto claro). */
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  background: rgba(127, 127, 127, 0.12);
   color: var(--ifm-color-content-secondary, var(--ifm-color-content));
   font-size: 14px;
   line-height: 1.5;
@@ -410,35 +413,6 @@
   line-height: 1.5;
 }
 
-.home-format-note {
-  margin-top: 28px;
-  padding: 16px 18px;
-  border-radius: 10px;
-  border: 1px solid var(--htd-doc-rule);
-  background: var(--nexttech-panel);
-}
-
-.home-format-note h3 {
-  margin: 0 0 6px;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--htd-doc-muted);
-}
-
-.home-format-note p {
-  margin: 0 0 10px;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.home-format-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
 .home-project-links {
   margin: 0;
   padding: 0;
@@ -448,6 +422,39 @@
 .home-project-links li {
   padding: 8px 0;
   border-bottom: 1px solid var(--htd-doc-rule);
+}
+
+.home-about-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.home-about-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--htd-doc-border);
+}
+
+.home-about-text p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.home-about-github {
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .home-about-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .home-page-toc {

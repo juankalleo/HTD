@@ -27,6 +27,7 @@ export function HomeContent() {
             <a href="#controls">{home.navSecurityControls}</a>
             <a href="#roadmap">{home.navRoadmap}</a>
             <a href="#project-links">{home.navProjectLinks}</a>
+            <a href="#about">{home.navAbout}</a>
           </nav>
           <h3>{home.cheatsheetsHeading}</h3>
           <nav className="home-cheatsheet-list" aria-label={home.cheatsheetsHeading}>
@@ -114,17 +115,6 @@ export function HomeContent() {
                 </li>
               ))}
             </ol>
-            <div className="home-format-note">
-              <h3>{home.roadmapSourceHeading}</h3>
-              <p>{home.roadmapSourceBody}</p>
-              <div className="home-format-links">
-                {home.roadmapSourceLinks.map((source) => (
-                  <a href={source.href} key={source.href} rel="noreferrer" target="_blank">
-                    {source.label}
-                  </a>
-                ))}
-              </div>
-            </div>
           </section>
 
           <section className="home-doc-section" id="project-links">
@@ -143,6 +133,20 @@ export function HomeContent() {
               ))}
             </ul>
           </section>
+
+          <section className="home-doc-section home-about" id="about">
+            <h2>{home.aboutHeading}</h2>
+            <div className="home-about-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="home-about-photo" src="/img/icon/avatar_kalleo.png" alt={home.aboutImageAlt} />
+              <div className="home-about-text">
+                <p>{home.aboutBody}</p>
+                <a className="home-about-github" href="https://github.com/juankalleo" rel="noreferrer" target="_blank">
+                  {home.aboutGithubLabel}
+                </a>
+              </div>
+            </div>
+          </section>
         </article>
 
         <aside className="home-page-toc" aria-label={home.onThisPageHeading}>
@@ -152,6 +156,7 @@ export function HomeContent() {
           <a href="#controls">{home.navSecurityControls}</a>
           <a href="#roadmap">{home.navRoadmap}</a>
           <a href="#project-links">{home.navProjectLinks}</a>
+          <a href="#about">{home.navAbout}</a>
           <h3>{home.areasHeading}</h3>
           <ul>
             {AREA_ORDER.map((area) => {
