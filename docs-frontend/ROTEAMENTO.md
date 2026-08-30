@@ -40,7 +40,7 @@ mesmo template de backend Rails:
   `relatorios_bdts_gestor_prestacao_print`...) em vez de um bloco
   `member`/`collection` aninhado. É o resultado de não aplicar a mesma
   disciplina de nomeação num canto do projeto.
-- **`base-front`** (aqui): toda página em `app/` tem um helper
+- **[HTD-Front](https://github.com/juankalleo/HTD-Front)** (aqui): toda página em `app/` tem um helper
   correspondente em `ROUTES`, e nenhum outro arquivo do projeto usa string
   literal de rota — confirmado por grep, zero ocorrência de
   `router.push("/...")`/`href="/..."` fora de `lib/routes.ts` e do teste
@@ -128,7 +128,7 @@ Convenção do nome — verbo **antes** do módulo/recurso, no mesmo lugar que
 | Ação de membro (com `id`) | `<verbo>_<modulo>_<recurso>_path(id)` | `aprovar_o_proposta_path(id)` |
 | Ação de coleção (sem `id`) | `<verbo>_<modulo>_<recursos>_path` | `minhas_c_requisicoes_path` |
 
-Nenhuma rota assim existe no `base-front` hoje (todo fluxo atual é
+Nenhuma rota assim existe no [HTD-Front](https://github.com/juankalleo/HTD-Front) hoje (todo fluxo atual é
 CRUD puro), então **nenhum helper novo entrou em `lib/routes.ts`** — não
 tem sentido escrever código pra um caso que ainda não aconteceu. O que já
 existe é reaproveitável no dia que precisar, sem função nova: `memberPath`

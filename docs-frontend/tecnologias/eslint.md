@@ -26,7 +26,7 @@ pnpm lint
 
 ## Configuração real
 
-`eslint.config.mjs` do `base-front` herda a config do
+`eslint.config.mjs` do [HTD-Front](https://github.com/juankalleo/HTD-Front) herda a config do
 Next e adiciona as regras recomendadas do React Query:
 
 ```js

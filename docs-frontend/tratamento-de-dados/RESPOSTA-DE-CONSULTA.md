@@ -7,7 +7,7 @@ videoEn: IiAy1IQoYRI
 
 A pergunta "o que a API me devolve quando faço uma **consulta**?" é recorrente — e a
 resposta mora no front mesmo que o *formato* venha do backend. Aqui está o contrato
-real de como o `base-front` recebe, desenvelopa e consome uma resposta de consulta
+real de como o [HTD-Front](https://github.com/juankalleo/HTD-Front) recebe, desenvelopa e consome uma resposta de consulta
 (lista paginada), e onde cada pedaço desse fluxo vive no código.
 
 > Complementa [Dados e API](/padrao-frontend/tratamento-de-dados/dados-e-api) (onde o

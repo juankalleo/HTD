@@ -5,7 +5,7 @@ videoEn: Y5TYDo9Qcv4
 
 # Tipografia
 
-> Como o `base-front` trata texto: fonte institucional (troca em runtime),
+> Como o [HTD-Front](https://github.com/juankalleo/HTD-Front) trata texto: fonte institucional (troca em runtime),
 > escala tipográfica padrão e as regras pra nunca fixar fonte/tamanho no
 > componente. Complementa [Otimização de fontes](OTIMIZACAO-FONTES.md), que
 > cobre o carregamento em si.

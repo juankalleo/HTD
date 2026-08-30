@@ -31,5 +31,5 @@ Bloqueado nas duas camadas possíveis, redundantes de propósito (a segunda
 
 `DENY`/`'none'` (nunca embutível, nem pela própria origem) é a escolha
 certa aqui porque não existe nenhum caso legítimo de embutir o
-`base-front` num iframe — é um painel admin autenticado, não um widget
+[HTD-Front](https://github.com/juankalleo/HTD-Front) num iframe — é um painel admin autenticado, não um widget
 feito pra ser incorporado em outra página.

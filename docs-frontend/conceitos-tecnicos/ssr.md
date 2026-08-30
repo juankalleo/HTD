@@ -17,7 +17,7 @@ mais rápido, e motores de busca conseguem indexar sem executar JS.
 É o padrão default do Next.js App Router, e o padrão deste projeto não foge
 disso: todo componente é Server Component a menos que declare `"use
 client"` explicitamente no topo do arquivo. A maior parte das telas do
-`base-front` são Server Components — só as folhas que precisam de
+[HTD-Front](https://github.com/juankalleo/HTD-Front) são Server Components — só as folhas que precisam de
 interatividade real (formulário, estado local, hook de dado no client)
 ganham `"use client"`.
 

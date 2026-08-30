@@ -4,7 +4,7 @@ sidebar_label: Arquivos
 
 # Arquivos
 
-Tudo que envolve entrada e saída de arquivo no `base-front`: o upload de
+Tudo que envolve entrada e saída de arquivo no [HTD-Front](https://github.com/juankalleo/HTD-Front): o upload de
 imagem (com recorte/posicionamento antes de enviar), e a geração de relatórios
 em PDF e Excel no servidor. Cada formato de export tem seu módulo completo —
 motor, tipos e templates — pra "onde é PDF" e "onde é Excel" nunca dependerem

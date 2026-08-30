@@ -19,9 +19,9 @@ import Image from "next/image";
 
 `priority` só em imagem above-the-fold (logo, hero); o resto fica com lazy-load implícito.
 
-## Realidade do base-front: imagens vêm da API (host dinâmico)
+## Realidade do HTD-Front: imagens vêm da API (host dinâmico)
 
-No `base-front` avatar/logo vêm do backend via `NEXT_PUBLIC_API_URL` — host que muda por ambiente, então `next/image` (que exige domínio fixo em `next.config.ts` `images.remotePatterns`) não é usado. O código usa `<img>` consciente, com `eslint-disable` justificado (`features/admin/config-institucional/components/identidade-form.tsx`):
+No [HTD-Front](https://github.com/juankalleo/HTD-Front) avatar/logo vêm do backend via `NEXT_PUBLIC_API_URL` — host que muda por ambiente, então `next/image` (que exige domínio fixo em `next.config.ts` `images.remotePatterns`) não é usado. O código usa `<img>` consciente, com `eslint-disable` justificado (`features/admin/config-institucional/components/identidade-form.tsx`):
 
 ```tsx
 // eslint-disable-next-line @next/next/no-img-element -- vem da API (host dinâmico via NEXT_PUBLIC_API_URL), next/image exige domínio fixo em next.config

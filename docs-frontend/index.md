@@ -19,7 +19,7 @@ O projeto usa `next@latest` no `package.json`, e o lockfile atual resolve para `
 
 ## Estrutura de pastas
 
-A estrutura real do `base-front` (sem `src/` — as pastas ficam na raiz do
+A estrutura real do [HTD-Front](https://github.com/juankalleo/HTD-Front) (sem `src/` — as pastas ficam na raiz do
 projeto) mantém a rota pequena e move a implementação para módulos com dono
 claro:
 
@@ -121,7 +121,7 @@ Aqui a regra é mais objetiva: componente que pertence a uma regra de produto fi
 
 ## Arquivos
 
-[Arquivos](/padrao-frontend/arquivos) documenta a entrada e saída de arquivo no `base-front`: o upload de imagem com recorte (react-easy-crop) antes de enviar, e a geração de relatórios em PDF (Puppeteer) e Excel (ExcelJS) no servidor — com preview obrigatório antes do download.
+[Arquivos](/padrao-frontend/arquivos) documenta a entrada e saída de arquivo no [HTD-Front](https://github.com/juankalleo/HTD-Front): o upload de imagem com recorte (react-easy-crop) antes de enviar, e a geração de relatórios em PDF (Puppeteer) e Excel (ExcelJS) no servidor — com preview obrigatório antes do download.
 
 ## Administração e RBAC
 
@@ -145,7 +145,7 @@ Aqui a regra é mais objetiva: componente que pertence a uma regra de produto fi
 
 ## Otimização de imagem
 
-[Otimização de imagem](/padrao-frontend/estilos/otimizacao-imagem) cobre o padrão `next/image` e a exceção real do `base-front`: imagens vêm da API em host dinâmico, então usam `<img>` consciente com `eslint-disable` justificado.
+[Otimização de imagem](/padrao-frontend/estilos/otimizacao-imagem) cobre o padrão `next/image` e a exceção real do [HTD-Front](https://github.com/juankalleo/HTD-Front): imagens vêm da API em host dinâmico, então usam `<img>` consciente com `eslint-disable` justificado.
 
 ## Otimização de fontes
 
@@ -171,7 +171,7 @@ citado nas páginas de conceito onde ele se aplica de verdade.
 
 ## Como preencher
 
-O conteúdo acima descreve o padrão atual do `base-front`.
+O conteúdo acima descreve o padrão atual do [HTD-Front](https://github.com/juankalleo/HTD-Front).
 
 ## Leitura de apoio
 

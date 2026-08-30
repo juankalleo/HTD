@@ -49,14 +49,14 @@ body {
   z-index: 200;
 }
 
-body:has(.home-main) .theme-layout-navbar.navbar,
-body:has(.credits-markdown) .theme-layout-navbar.navbar {
+[data-theme="light"] body:has(.home-main) .theme-layout-navbar.navbar,
+[data-theme="light"] body:has(.credits-markdown) .theme-layout-navbar.navbar {
   background: #4051b5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .18);
 }
 
-body:has(.home-main) .theme-layout-navbar .nexttech-nav-icon,
-body:has(.credits-markdown) .theme-layout-navbar .nexttech-nav-icon {
+[data-theme="light"] body:has(.home-main) .theme-layout-navbar .nexttech-nav-icon,
+[data-theme="light"] body:has(.credits-markdown) .theme-layout-navbar .nexttech-nav-icon {
   color: rgba(255, 255, 255, .92);
 }
 

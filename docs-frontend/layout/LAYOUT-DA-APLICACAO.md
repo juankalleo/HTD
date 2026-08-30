@@ -97,9 +97,9 @@ institucional (arrastável pelo admin em Aparência). Ver
 
 ## Marca e avatar: institucional e por-usuário
 
-O nome exibido no topo da sidebar (`config?.nome_sistema ?? "base-front"`)
+O nome exibido no topo da sidebar (`config?.nome_sistema ?? "HTD-Front"`)
 vem de `useConfiguracaoInstitucional()` (`shared/hooks/`, ver
-[`DADOS-E-API.md`](/padrao-frontend/tratamento-de-dados/dados-e-api)) — não é mais um texto fixo `"base-front"`
+[`DADOS-E-API.md`](/padrao-frontend/tratamento-de-dados/dados-e-api)) — não é mais um texto fixo `"HTD-Front"`
 no componente. O avatar do usuário no topbar (`AppHeader`) usa
 `getInitials`/`getAvatarColors` (`lib/avatar.ts`) em vez de um ícone
 genérico — iniciais do nome, cor estável derivada de um hash do próprio

@@ -5,7 +5,7 @@ videoEn: LyLa7dU5tp8
 
 # Modal
 
-> O `base-front` **não tem um componente de modal genérico**. Há dois padrões
+> O [HTD-Front](https://github.com/juankalleo/HTD-Front) **não tem um componente de modal genérico**. Há dois padrões
 > consagrados no projeto — confirmação (SweetAlert2) e modal customizado
 > (DaisyUI `<dialog>` + portal) — e qualquer modal novo segue um deles.
 

@@ -123,19 +123,36 @@
 /* Página inicial (/) — apresentação do projeto, antes do conteúdo do
    Padrão Frontend. Usa as mesmas variáveis de tema (prefixo ifm e
    nexttech) do resto do site pra respeitar claro/escuro automaticamente. */
-.home-main {
-  min-height: calc(100vh - var(--ifm-navbar-height, 64px));
-  background: #ffffff;
-  color: rgba(0, 0, 0, 0.87);
+.home-main,
+.credits-main {
+  --htd-doc-bg: #ffffff;
+  --htd-doc-text: rgba(0, 0, 0, 0.87);
+  --htd-doc-muted: #616161;
+  --htd-doc-border: #e0e0e0;
+  --htd-doc-rule: #eeeeee;
+  --htd-doc-link: #4051b5;
+  --htd-doc-banner: #5bb52d;
 }
 
-[data-theme="dark"] .home-main {
-  background: #ffffff;
-  color: rgba(0, 0, 0, 0.87);
+[data-theme="dark"] .home-main,
+[data-theme="dark"] .credits-main {
+  --htd-doc-bg: #18191a;
+  --htd-doc-text: #e3e3e3;
+  --htd-doc-muted: #aeb7c2;
+  --htd-doc-border: rgba(255, 255, 255, 0.16);
+  --htd-doc-rule: rgba(255, 255, 255, 0.09);
+  --htd-doc-link: #8ab4ff;
+  --htd-doc-banner: #2f711d;
+}
+
+.home-main {
+  min-height: calc(100vh - var(--ifm-navbar-height, 64px));
+  background: var(--htd-doc-bg);
+  color: var(--htd-doc-text);
 }
 
 .home-main a {
-  color: #4051b5;
+  color: var(--htd-doc-link);
   text-decoration: none;
 }
 
@@ -167,7 +184,7 @@
 .home-page-toc h2,
 .home-page-toc h3 {
   margin: 0 0 10px;
-  color: #757575;
+  color: var(--htd-doc-muted);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0;
@@ -189,14 +206,14 @@
 .home-page-toc a {
   display: block;
   padding: 4px 0;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--htd-doc-text);
   font-size: 14px;
   line-height: 1.35;
 }
 
 .home-doc-nav-group a:first-child,
 .home-page-toc > a:first-of-type {
-  color: #4051b5;
+  color: var(--htd-doc-link);
 }
 
 .home-cheatsheet-list a {
@@ -221,7 +238,7 @@
   margin-bottom: 34px;
   padding: 24px 28px;
   overflow: hidden;
-  background: #5bb52d;
+  background: var(--htd-doc-banner);
   color: #ffffff;
 }
 
@@ -254,12 +271,12 @@
   width: min(680px, 100%);
   height: auto;
   margin: 0 auto 30px;
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--htd-doc-border);
 }
 
 .home-doc-intro h1 {
   margin: 0 0 18px;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--htd-doc-text);
   font-family: var(--ifm-font-family-base);
   font-size: 34px;
   font-weight: 400;
@@ -270,7 +287,7 @@
 .home-doc-intro p,
 .home-doc-section p {
   margin: 0 0 16px;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--htd-doc-text);
   font-size: 16px;
   line-height: 1.75;
 }
@@ -278,12 +295,12 @@
 .home-doc-section {
   margin-top: 34px;
   padding-top: 30px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--htd-doc-border);
 }
 
 .home-doc-section h2 {
   margin: 0 0 16px;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--htd-doc-text);
   font-family: var(--ifm-font-family-base);
   font-size: 28px;
   font-weight: 400;
@@ -296,12 +313,12 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 28px;
   margin-top: 18px;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid var(--htd-doc-rule);
 }
 
 .home-index-links a {
   padding: 11px 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid var(--htd-doc-rule);
   font-size: 15px;
   line-height: 1.4;
 }
@@ -321,16 +338,16 @@
 
 .home-reference-table th {
   padding: 10px 12px 10px 0;
-  border-bottom: 2px solid #d7d7d7;
-  color: #616161;
+  border-bottom: 2px solid var(--htd-doc-border);
+  color: var(--htd-doc-muted);
   font-weight: 700;
   text-align: left;
 }
 
 .home-reference-table td {
   padding: 12px 12px 12px 0;
-  border-bottom: 1px solid #eeeeee;
-  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 1px solid var(--htd-doc-rule);
+  color: var(--htd-doc-text);
   line-height: 1.5;
   vertical-align: top;
 }
@@ -338,7 +355,7 @@
 .home-roadmap-list {
   margin: 18px 0 0;
   padding: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid var(--htd-doc-rule);
   list-style: none;
 }
 
@@ -347,11 +364,11 @@
   grid-template-columns: 48px minmax(0, 1fr);
   gap: 18px;
   padding: 18px 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid var(--htd-doc-rule);
 }
 
 .home-roadmap-step {
-  color: #4051b5;
+  color: var(--htd-doc-link);
   font-size: 14px;
   font-weight: 800;
 }
@@ -368,7 +385,7 @@
 }
 
 .home-roadmap-list h3 span {
-  color: #757575;
+  color: var(--htd-doc-muted);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.03em;
@@ -388,7 +405,7 @@
 
 .home-roadmap-list li li {
   margin: 4px 0;
-  color: rgba(0, 0, 0, 0.74);
+  color: var(--htd-doc-muted);
   font-size: 14px;
   line-height: 1.5;
 }
@@ -401,12 +418,12 @@
 
 .home-project-links li {
   padding: 8px 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid var(--htd-doc-rule);
 }
 
 .home-page-toc {
   padding-left: 18px;
-  border-left: 1px solid #e0e0e0;
+  border-left: 1px solid var(--htd-doc-border);
 }
 
 .home-page-toc ul {
@@ -425,7 +442,7 @@
 
 .home-page-toc li span {
   display: block;
-  color: #757575;
+  color: var(--htd-doc-muted);
   font-size: 11px;
   font-weight: 700;
   line-height: 1.25;
@@ -453,7 +470,7 @@
     position: static;
     max-height: none;
     padding-bottom: 24px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--htd-doc-border);
   }
 
   .home-cheatsheet-list {
@@ -511,13 +528,8 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: calc(var(--ifm-navbar-height, 64px) + 42px) 24px 80px;
-  background: #ffffff;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-[data-theme="dark"] .credits-main {
-  background: #ffffff;
-  color: rgba(0, 0, 0, 0.87);
+  background: var(--htd-doc-bg);
+  color: var(--htd-doc-text);
 }
 
 .credits-markdown h1,
@@ -527,16 +539,16 @@
 .credits-markdown li,
 .credits-markdown td,
 .credits-markdown th {
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--htd-doc-text);
 }
 
 .credits-markdown a {
-  color: #4051b5;
+  color: var(--htd-doc-link);
 }
 
 .credits-hero {
   padding-bottom: 26px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--htd-doc-border);
 }
 
 .credits-hero h1 {
@@ -558,7 +570,7 @@
 
 .credits-section {
   padding: 30px 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--htd-doc-border);
 }
 
 .credits-section--last {
@@ -588,9 +600,9 @@
 .credits-table th {
   padding: 9px 12px 9px 0;
   border: 0;
-  border-bottom: 2px solid #d7d7d7;
+  border-bottom: 2px solid var(--htd-doc-border);
   background: transparent;
-  color: #616161;
+  color: var(--htd-doc-muted);
   font-weight: 700;
   text-align: left;
 }
@@ -598,7 +610,7 @@
 .credits-table td {
   padding: 10px 12px 10px 0;
   border: 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid var(--htd-doc-rule);
   line-height: 1.5;
   vertical-align: top;
 }

@@ -17,7 +17,7 @@ usuário no navegador dele.
 
 ## No padrão frontend
 
-Usamos, porque o `base-front` chama a API Rails **direto do navegador**
+Usamos, porque o [HTD-Front](https://github.com/juankalleo/HTD-Front) chama a API Rails **direto do navegador**
 (sem proxy Next.js no meio — ver [BFF](/padrao-frontend/conceitos-tecnicos/bff)).
 Sem CORS liberado no backend, o navegador bloqueia a resposta antes do
 JavaScript conseguir lê-la — não tem como esse padrão funcionar sem isso.

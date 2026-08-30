@@ -6,7 +6,7 @@ sidebar_label: Segurança
 
 # Segurança no frontend
 
-Pasta viva que concentra tudo que é de segurança no `base-front`: autenticação,
+Pasta viva que concentra tudo que é de segurança no [HTD-Front](https://github.com/juankalleo/HTD-Front): autenticação,
 autorização (RBAC), exportação segura (PDF/Excel) e o mapa geral de medidas.
 Cada arquivo aqui é uma página própria — a árvore da sidebar acompanha a pasta,
 não há nada hardcoded.
@@ -37,7 +37,7 @@ não há nada hardcoded.
 | [Autorização automatizada](autorizacao-automatizada.md) | Por que uma matriz de teste formal fecharia o gap de cobertura da API |
 | [JWT](jwt.md) | Algoritmo, claims mínimas, revogação real por `jti` — checklist do OWASP JWT |
 | [Logs de auditoria](logs-de-auditoria.md) | `/logs` no front + `GET /api/v1/admin/versions` na API — payload, filtro, decisões reais de implementação |
-| [Proteção da wiki](protecao-da-wiki.md) | HTTP Basic Auth via `middleware.ts` — por que o `AuthGuard` do `base-front` não serviria aqui |
+| [Proteção da wiki](protecao-da-wiki.md) | HTTP Basic Auth via `middleware.ts` — por que o `AuthGuard` do [HTD-Front](https://github.com/juankalleo/HTD-Front) não serviria aqui |
 
 ## Leitura de apoio
 

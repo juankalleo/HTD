@@ -146,7 +146,7 @@ proporção certa.
   tela com `<form>` usa `createPortal` pro `document.body` — não só este.
 
 **Exemplo real completo:**
-[`features/admin/config-institucional/components/identidade-form.tsx`](https://github.com/anomalyco/base-front/blob/main/src/features/admin/config-institucional/components/identidade-form.tsx).
+[`features/admin/config-institucional/components/identidade-form.tsx`](https://github.com/juankalleo/HTD-Front/blob/main/src/features/admin/config-institucional/components/identidade-form.tsx).
 
 ## Leitura de apoio
 

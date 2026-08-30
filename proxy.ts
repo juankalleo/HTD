@@ -5,10 +5,10 @@ import { NextResponse, type NextRequest } from "next/server";
  * docs-frontend/seguranca/PROTECAO-DA-WIKI.md): este site não tinha
  * nenhum controle de acesso, e documenta em detalhe real (thresholds de
  * rate-limit, gaps de log, comportamento de autorização) o que protege o
- * `base-front`/API por trás dele. Sem senha, a wiki vira reconhecimento
+ * [HTD-Front](https://github.com/juankalleo/HTD-Front)/API por trás dele. Sem senha, a wiki vira reconhecimento
  * pronto pra quem tiver o link.
  *
- * Basic Auth (não JWT/sessão como o `base-front`) porque este site não
+ * Basic Auth (não JWT/sessão como o [HTD-Front](https://github.com/juankalleo/HTD-Front)) porque este site não
  * tem base de usuário própria — é conteúdo estático lido de markdown, sem
  * conceito de "conta". Credenciais vêm de variável de ambiente
  * (`WIKI_BASIC_AUTH_USER`/`WIKI_BASIC_AUTH_PASS`), nunca hardcoded aqui.

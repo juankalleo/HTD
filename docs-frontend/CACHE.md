@@ -5,7 +5,7 @@ videoEn: 6FyXURRVmR0
 
 # Cache
 
-**O que é:** camada que evita buscar de novo dados que já foram trazidos do servidor. No `base-front` o cache de dados remotos é do **React Query**; o cache de HTML/rotas é do próprio **Next.js (App Router)**.
+**O que é:** camada que evita buscar de novo dados que já foram trazidos do servidor. No [HTD-Front](https://github.com/juankalleo/HTD-Front) o cache de dados remotos é do **React Query**; o cache de HTML/rotas é do próprio **Next.js (App Router)**.
 
 ## Cache de dados (React Query)
 
@@ -48,7 +48,7 @@ Já o login faz `queryClient.clear()` pra **zerar tudo** antes de entrar como o 
 App Router cacheia Server Component e `fetch` por padrão. Padrão adotado:
 
 - Rotas que dependem de sessão/usuário logado **não** devem ser estáticas — mantém `dynamic` (o `layout.tsx` raiz é Server Component assíncrono que aplica branding institucional no servidor, então essas páginas são renderizadas por request).
-- `fetch` de `services/` que precisar de cache explícito usa a opção `next: { revalidate: N }` ou `cache: "no-store"` quando o dado é porusuário (ver [Dados e API](/padrao-frontend/tratamento-de-dados/dados-e-api)). Hoje o `base-front` não usa `revalidate` em rotas públicas porque o conteúdo é autenticado; esse é o **padrão a seguir** caso surja página pública/cacheável.
+- `fetch` de `services/` que precisar de cache explícito usa a opção `next: { revalidate: N }` ou `cache: "no-store"` quando o dado é porusuário (ver [Dados e API](/padrao-frontend/tratamento-de-dados/dados-e-api)). Hoje o [HTD-Front](https://github.com/juankalleo/HTD-Front) não usa `revalidate` em rotas públicas porque o conteúdo é autenticado; esse é o **padrão a seguir** caso surja página pública/cacheável.
 
 **Convenção:** nunca desligar o cache do Next com `export const dynamic = "force-dynamic"` por reflexo — só quando a rota realmente precisa de request por usuário.
 

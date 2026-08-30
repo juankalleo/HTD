@@ -5,7 +5,7 @@ videoEn: wUaeKEl1RCw
 
 # Medidas de segurança do sistema
 
-> Visão geral de tudo que o `base-front` faz (e deixou de fazer, de propósito)
+> Visão geral de tudo que o [HTD-Front](https://github.com/juankalleo/HTD-Front) faz (e deixou de fazer, de propósito)
 > por segurança. Cada tópico tem um doc irmão mais detalhado — este é o mapa.
 
 ## Autenticação
@@ -31,7 +31,7 @@ de verdade continua sendo a api/ Rails. Detalhe do checklist JWT completo em
 `MAX_PASSWORD_LENGTH`). Detalhe em
 [Política de senha](POLITICA-DE-SENHA.md).
 
-**Limite real na API, fora do escopo do `base-front`** (checklist OWASP
+**Limite real na API, fora do escopo do [HTD-Front](https://github.com/juankalleo/HTD-Front)** (checklist OWASP
 completo em [Redefinição de senha](REDEFINICAO-DE-SENHA.md)): o módulo
 `:passwords` do Devise está desativado de propósito — não existe hoje
 endpoint de "esqueci minha senha" nem de "trocar senha logado", só a
@@ -103,10 +103,10 @@ Detalhe completo, incluindo as decisões reais de implementação, em
 
 ## Proteção da própria wiki
 
-Este site (`WIKI-NEXT`), separado do `base-front`, usa HTTP Basic Auth
+Este site (`WIKI-NEXT`), separado do [HTD-Front](https://github.com/juankalleo/HTD-Front), usa HTTP Basic Auth
 via `middleware.ts` próprio — falha fechada em produção sem credencial
 configurada, comparação resistente a timing attack. Diferente do
-`AuthGuard` do `base-front` (client-side, funciona porque o dado
+`AuthGuard` do [HTD-Front](https://github.com/juankalleo/HTD-Front) (client-side, funciona porque o dado
 protegido chega depois via `fetch` condicional), o conteúdo desta wiki já
 está completo no HTML da primeira resposta — por isso a checagem aqui é
 **server-side**, não client-side. Detalhe completo em

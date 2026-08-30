@@ -4,7 +4,7 @@ sidebar_label: Estilos e Aparência
 
 # Estilos e Aparência
 
-Como o `base-front` define tema, fonte, escala e identidade visual — aplicados no
+Como o [HTD-Front](https://github.com/juankalleo/HTD-Front) define tema, fonte, escala e identidade visual — aplicados no
 servidor, sem flash. Relatórios em PDF/Excel têm estilo próprio documentado em
 [Arquivos](../arquivos).
 

@@ -4,7 +4,7 @@ sidebar_label: Tratamento de dados
 
 # Tratamento de dados
 
-Pasta viva que documenta como o `base-front` organiza **todo** acesso a dado
+Pasta viva que documenta como o [HTD-Front](https://github.com/juankalleo/HTD-Front) organiza **todo** acesso a dado
 remoto — a regra de ouro de que `fetch` só existe em `services/`, e o componente
 nunca fala com a API direto. A leitura vive em [Dados e API](dados-e-api.md) e a
 escrita em [Dados em mutação](dados-em-mutacao.md).

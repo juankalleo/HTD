@@ -6,7 +6,7 @@ sidebar_label: Proteção da wiki
 
 Toda página desta seção documenta, em detalhe real (código, threshold
 exato, nome de arquivo), o que protege — e o que ainda não protege — o
-`base-front` e a API por trás dele. Isso é bom pra quem devia ler
+[HTD-Front](https://github.com/juankalleo/HTD-Front) e a API por trás dele. Isso é bom pra quem devia ler
 (o time), e ajuda quem não devia: os thresholds exatos do rack-attack, a
 confirmação de que autorização negada não gera log, o comportamento
 403-vs-404 no acesso cross-tenant — nada disso é perigoso escondido numa
@@ -17,7 +17,7 @@ acessível sem controle nenhum. A postura certa não é documentar menos —
 ## No padrão frontend: HTTP Basic Auth em toda a wiki
 
 `How to Dev` (este site) é um app Next.js próprio, separado do
-`base-front`, sem base de usuário própria — conteúdo estático, sem
+[HTD-Front](https://github.com/juankalleo/HTD-Front), sem base de usuário própria — conteúdo estático, sem
 conceito de "conta". `proxy.ts` (raiz do projeto) roda antes de
 qualquer rota, exige `Authorization: Basic` válido contra
 `WIKI_BASIC_AUTH_USER`/`WIKI_BASIC_AUTH_PASS` (variável de ambiente, nunca
@@ -66,9 +66,9 @@ deploy na Vercel **precisa** das duas variáveis configuradas antes do
 primeiro acesso — sem elas, o próprio dono fica fora (401), o que é o
 comportamento correto: nunca abrir por esquecimento de configuração.
 
-## Por que o padrão do `base-front` não se aplica direto aqui
+## Por que o padrão do [HTD-Front](https://github.com/juankalleo/HTD-Front) não se aplica direto aqui
 
-O `base-front` protege rota admin com `AuthGuard`
+O [HTD-Front](https://github.com/juankalleo/HTD-Front) protege rota admin com `AuthGuard`
 (`features/autenticacao/login/components/auth-guard.tsx`) — mas
 `AuthGuard` é **client-side** de propósito (`"use client"`, roda num
 `useEffect`, decide renderizar `children` ou redirecionar só depois de
@@ -86,7 +86,7 @@ client-side aqui não protegeria nada: o navegador (ou um crawler, ou
 `curl`) já recebeu o conteúdo completo antes de qualquer JavaScript
 rodar pra "esconder" ele. Proteção real, pra esse tipo de conteúdo,
 **precisa ser server-side**, antes da página renderizar — exatamente o
-que o `proxy.ts` do `base-front` já demonstra: roda no servidor,
+que o `proxy.ts` do [HTD-Front](https://github.com/juankalleo/HTD-Front) já demonstra: roda no servidor,
 intercepta toda requisição antes da rota, só que lá com outro conteúdo
 (CSP, ver [CSP](CSP.md)), não checagem de autenticação. Aqui, mesmo
 mecanismo (`proxy.ts`), conteúdo diferente (Basic Auth).
@@ -103,5 +103,5 @@ ela — só reduzem ruído e evitam vazamento acidental por fora dela:
   reforço do `robots.txt` no nível de header, pro caso de algum crawler
   ignorar o arquivo. Junto com `X-Frame-Options: DENY` e
   `X-Content-Type-Options: nosniff`, os mesmos headers estáticos de
-  baixo custo que o `base-front` já aplica (ver
+  baixo custo que o [HTD-Front](https://github.com/juankalleo/HTD-Front) já aplica (ver
   [Cabeçalhos de segurança HTTP](CABECALHOS-DE-SEGURANCA-HTTP.md)).

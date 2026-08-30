@@ -16,7 +16,7 @@ em vez das duas ficarem no DOM brigando por especificidade).
 ## Por que essa
 
 É o utilitário mais comum de qualquer projeto Tailwind e o
-`base-front` tinha passado sem ele até agora, concatenando className
+[HTD-Front](https://github.com/juankalleo/HTD-Front) tinha passado sem ele até agora, concatenando className
 condicional na mão com template string. Centralizar em `cn()` elimina essa
 repetição e mantém um só ponto pra compor classes. Leitura de apoio:
 [clsx](https://github.com/lukeed/clsx) e

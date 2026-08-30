@@ -7,7 +7,7 @@ videoEn: L8_98i_bMMA
 
 **O que é:** carregar a fonte sem travar a pintura da tela (sem FOIT/FOUT visível) e sem request extra de CSS. No Next.js o caminho nativo é `next/font`, que baixa a fonte em build time, hospeda localmente e exponha como CSS variable — sem `link` pro Google Fonts em runtime.
 
-## Padrão adotado (base-front)
+## Padrão adotado (HTD-Front)
 
 Todas as fontes institucionais são carregadas via `next/font/google` em `app/layout.tsx`, cada uma numa CSS variable:
 

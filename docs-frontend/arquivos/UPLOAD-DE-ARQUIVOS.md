@@ -66,7 +66,7 @@ await updateConfiguracaoInstitucionalAdmin(id, formData);
 
 ## Validação antes de enviar
 
-O `base-front` valida tamanho de arquivo **no client antes** do envio (ex.:
+O [HTD-Front](https://github.com/juankalleo/HTD-Front) valida tamanho de arquivo **no client antes** do envio (ex.:
 `TAMANHO_MAXIMO_ARQUIVO_MB` no upload de imagem). Para arquivos não-imagem, a
 mesma ideia se aplica: checar `arquivo.size` e o tipo (`arquivo.type`) antes de
 montar o `FormData`, pra não desperdiçar uma requisição que a api/ rejeitaria

@@ -7,7 +7,7 @@ sidebar_label: Tecnologias
 # Tecnologias do sistema
 
 Pasta de tecnologias — um arquivo por lib, atualizada conforme cada
-tecnologia entra em uso no `base-front`. Cada arquivo segue o mesmo molde
+tecnologia entra em uso no [HTD-Front](https://github.com/juankalleo/HTD-Front). Cada arquivo segue o mesmo molde
 (ver abaixo) e vira uma página de tecnologia do wiki.
 
 Molde de cada arquivo:

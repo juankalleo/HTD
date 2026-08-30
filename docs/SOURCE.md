@@ -14,7 +14,7 @@ https://openfinancebrasil.atlassian.net/wiki/spaces/OF/pages/17367092/Comunicado
 - Título, `<h1>`, autor ("Evan Carter" → "Autor Exemplo (mock)") e metatags (`og:title`, `og:description`, `og:url`, `og:image`, `twitter:image`, `canonical`, hreflangs) — não apontam mais para o domínio feature-sliced.design.
 - Todos os links reais para os canais do Feature-Sliced Design (Discord, Telegram, Twitter, GitHub, Open Collective, YouTube, "Edit this page", "Discussions") foram trocados por `href=#`.
 - Banner de aviso "Conteúdo mock" inserido no topo do artigo; badges "MOCK" na seção "Conteúdo do desenvolvedor" e no rótulo "Glossário" da barra lateral.
-- O corpo do artigo (parágrafos, tabela comparativa, code block) **não foi reescrito frase a frase** — ficou como esqueleto de layout (títulos, imagens, listas) para não perder a estrutura visual que serviu de referência. Todo esse conteúdo deve ser tratado como placeholder e substituído pelo padrão real conforme a wiki for alimentada a partir do `base-front`.
+- O corpo do artigo (parágrafos, tabela comparativa, code block) **não foi reescrito frase a frase** — ficou como esqueleto de layout (títulos, imagens, listas) para não perder a estrutura visual que serviu de referência. Todo esse conteúdo deve ser tratado como placeholder e substituído pelo padrão real conforme a wiki for alimentada a partir do [HTD-Front](https://github.com/juankalleo/HTD-Front).
 
 ## Não rodar mais
 

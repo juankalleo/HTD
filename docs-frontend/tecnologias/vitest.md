@@ -13,7 +13,7 @@ unitários de helpers, schemas e conversores.
 
 ## Por que essa
 
-É leve e roda bem com Vite/Next. No `base-front`, entra
+É leve e roda bem com Vite/Next. No [HTD-Front](https://github.com/juankalleo/HTD-Front), entra
 para testar contratos compartilhados (helpers de autenticação, parsing de
 API e schemas) antes que virem bug em várias telas. Leitura de apoio:
 [documentação oficial do Vitest](https://vitest.dev/) — por que um runner
