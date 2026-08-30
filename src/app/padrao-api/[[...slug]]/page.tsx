@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getServerLocale();
   const cfg = getAreaConfig("padrao-api");
   const doc = getDoc("padrao-api", s, locale);
-  if (!doc) return { title: `${cfg.area} | How to Dev` };
-  return { title: `${doc.title} | ${cfg.area} | How to Dev`, description: doc.description };
+  if (!doc) return { title: cfg.area };
+  return { title: `${doc.title} | ${cfg.area}`, description: doc.description };
 }
 
 export default async function Page({ params }: Props) {
