@@ -16,9 +16,9 @@ autenticada, autorizada e respondida — o ciclo completo, do jeito que uma
 API Rails madura faz isso. O escopo é deliberadamente a **camada
 de API**: contrato HTTP, controllers, serialização, autenticação,
 autorização, erros. Modelagem de dado (schema, migration, associação
-ActiveRecord) fica **fora** daqui de propósito — é assunto de um Padrão
-Banco de Dados próprio, ainda não escrito, pra não misturar duas camadas
-que merecem cada uma sua própria régua.
+ActiveRecord) fica **fora** daqui de propósito — é assunto do
+[Padrão Banco de Dados](/padrao-banco-de-dados) próprio, pra não misturar
+duas camadas que merecem cada uma sua própria régua.
 
 ## Stack
 
@@ -26,7 +26,20 @@ Rails (`ActionController::API`, sem view), Devise + devise-jwt
 (autenticação), CanCanCan (autorização, orientada a dado — não
 `can :manage, X` hardcoded por model), ActiveModelSerializers
 (serialização), Pagy (paginação), Ransack (filtro/busca), Rack::Attack
-(rate limiting), Rack::Cors (CORS). Testes em Minitest, não RSpec.
+(rate limiting), Rack::Cors (CORS), Solid Queue (job assíncrono),
+RuboCop + Brakeman (qualidade e segurança estática). Testes em Minitest,
+não RSpec.
+
+PaperTrail (auditoria) e paranoia (soft delete) também fazem parte da
+stack, mas são gems que atuam na camada de model — documentadas em
+detalhe no [Padrão Banco de Dados](/padrao-banco-de-dados/tecnologias),
+não aqui. O que aparece do lado da API por causa delas: um `destroy`
+continua devolvendo o mesmo envelope `200` de sempre (ver
+[Envelope de resposta](/padrao-api/conceitos-tecnicos/envelope-de-resposta)),
+mas por baixo o registro é marcado como removido, não apagado da tabela
+(paranoia); e existe uma rota só-leitura pro histórico de mudança de
+qualquer registro (`GET /api/v1/admin/versions`, alimentada pelo
+PaperTrail).
 
 ## Envelope de resposta
 
