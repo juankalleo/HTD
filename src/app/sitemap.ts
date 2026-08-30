@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listAreaHrefs } from "@/lib/docs";
 
-const SITE_URL = "https://htd.vercel.app";
+const SITE_URL = "https://howtodev.site";
 const AREAS = ["padrao-frontend", "padrao-api", "padrao-infraestrutura", "examples"];
 
 export default function sitemap(): MetadataRoute.Sitemap {

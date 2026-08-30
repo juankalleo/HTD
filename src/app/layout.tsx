@@ -5,7 +5,7 @@ import { AntiFlickerScript } from "@/components/anti-flicker-script";
 import { LocaleProvider } from "@/components/locale-provider";
 import { getServerLocale } from "@/lib/locale-server";
 
-const SITE_URL = "https://htd.vercel.app";
+const SITE_URL = "https://howtodev.site";
 const SITE_DESCRIPTION =
   "How to Dev (HTD) — Juan Kalleo's personal, security-first reference for structuring Next.js and Rails applications, with real code and nothing hidden.";
 
