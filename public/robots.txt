@@ -1,4 +1,25 @@
 User-agent: *
 Allow: /
 
+# Explícito de propósito pros crawlers de IA/answer engines, mesmo já
+# cobertos pelo wildcard acima — alguns respeitam melhor uma entrada
+# nomeada do que confiar no "*". Ver também /llms.txt.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://howtodev.site/sitemap.xml

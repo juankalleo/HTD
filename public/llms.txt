@@ -1,0 +1,18 @@
+# How to Dev (HTD)
+
+> Personal, security-first reference by Juan Kalleo for structuring Next.js and Rails applications — real code, real trade-offs, nothing hidden. Not a company or a team, one engineer's working reference kept honest enough to publish.
+
+Juan Kalleo is a Staff Fullstack Software Engineer (frontend) at NextTech, based in Porto Velho, Brazil. GitHub: https://github.com/juankalleo
+
+## Docs
+
+- [Frontend Standard](https://howtodev.site/padrao-frontend): folder structure, authentication, forms, tables, files, reports, and a full security section (XSS, CSRF, CSP, JWT, RBAC, headers, and more) — the only area with real content today.
+- [API Standard](https://howtodev.site/padrao-api): planned, not written yet.
+- [Infrastructure Standard](https://howtodev.site/padrao-infraestrutura): planned, not written yet.
+- [Examples](https://howtodev.site/examples): planned, not written yet.
+- [Credits](https://howtodev.site/creditos): every video channel, book, and article cited across the site.
+
+## Notes
+
+- Site interface defaults to English with a working PT-BR switcher; most content pages are currently Portuguese-only, with English translations added incrementally.
+- No login, no paywall, no tracking — content is fully public and indexable.

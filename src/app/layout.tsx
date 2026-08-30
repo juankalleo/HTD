@@ -35,12 +35,42 @@ export const metadata: Metadata = {
   },
 };
 
+// Dados estruturados (schema.org) — não é pra Google "mostrar bonito" só,
+// é o que motor de busca com IA (AI Overviews, Perplexity, etc.) usa pra
+// entender com confiança quem/o que é "How to Dev"/"HTD" antes de citar
+// a página numa resposta. Sem isso, o site é só texto solto pra eles.
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://howtodev.site/#website",
+      name: "How to Dev",
+      alternateName: "HTD",
+      url: "https://howtodev.site",
+      description:
+        "Personal, security-first reference for structuring Next.js and Rails applications, maintained by Juan Kalleo.",
+      inLanguage: ["en", "pt-BR"],
+      author: { "@id": "https://howtodev.site/#person" },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://howtodev.site/#person",
+      name: "Juan Kalleo",
+      jobTitle: "Staff Fullstack Software Engineer",
+      url: "https://howtodev.site",
+      sameAs: ["https://github.com/juankalleo"],
+    },
+  ],
+};
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getServerLocale();
   return (
     <html lang={locale === "pt" ? "pt-BR" : "en"} data-theme="dark" data-theme-choice="dark" suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="/assets/css/styles.cfff3e98.css" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }} />
       </head>
       <body className="navigation-with-keyboard">
         <AntiFlickerScript />
