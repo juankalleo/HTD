@@ -12,23 +12,20 @@ visíveis no momento para economizar memória do navegador. Uma lista de
 virtualização, só os ~20 que cabem na tela existem no DOM a cada momento —
 o resto é calculado sob demanda conforme o usuário rola.
 
-## No padrão frontend
+## Quando decide se você precisa disso
 
-Não é usado — porque o problema que essa técnica resolve não existe no
-nosso padrão de listagem. Toda tela de listagem admin usa **paginação real
-no servidor** (Pagy, na API Rails): o client nunca recebe mais que uma
-página de linhas por vez, então não existe lista longa carregada de uma
-vez pra virtualizar. Nenhuma lib de virtualização (`react-window`,
-`@tanstack/react-virtual`) faz parte do padrão hoje.
+Virtual scrolling resolve um problema específico: uma lista *já
+carregada no client* que é longa o bastante pra pesar no DOM (milhares de
+linhas). Se a tela já usa paginação real no servidor — o client nunca
+recebe mais que uma página de linhas por vez — esse problema nunca chega
+a existir, porque a lista renderizada de cada vez já é curta por
+natureza. Nesse caso, virtualizar não tem o que resolver: a técnica
+importa quando NÃO há paginação, não quando há.
 
-A exportação de relatório (PDF/Excel, ver
-[Segurança de exportação](/padrao-frontend/seguranca/seguranca-exportacao))
-é a única tela que busca o conjunto filtrado inteiro, sem paginar — mas
-esse dado nunca vira lista renderizada na tela, só é serializado direto
-pro arquivo de saída (PDF ou planilha). Não sendo uma lista visível, essa
-técnica não se aplica nem aí.
-
-**Quando usaríamos:** se aparecer uma lista genuinamente longa fora do
-padrão de paginação (por exemplo, um seletor com milhares de opções
-carregadas de uma vez), `@tanstack/react-virtual` é a escolha natural —
-mas só nesse cenário específico, não como padrão geral de listagem.
+Onde ela realmente se aplica: um `<select>`/autocomplete com milhares de
+opções carregadas de uma vez, um feed infinito sem paginação por página,
+ou qualquer lista que precisa mostrar um conjunto grande inteiro na tela
+ao mesmo tempo (não fatiado em páginas). `@tanstack/react-virtual` é a
+biblioteca padrão do ecossistema React pra isso hoje — mede a altura
+disponível, calcula quais itens estariam visíveis, e só desenha esses no
+DOM real, trocando o resto por um espaçador do tamanho certo.

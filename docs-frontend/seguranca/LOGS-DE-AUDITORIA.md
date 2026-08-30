@@ -14,8 +14,7 @@ documento é só sobre a primeira.
 
 ## No padrão frontend
 
-**O dado já existe, real, gravado a cada mudança — não é usado em lugar
-nenhum.** Toda tabela do projeto herda `has_paper_trail`
+**Implementado de ponta a ponta — API e front.** Toda tabela do projeto herda `has_paper_trail`
 (`api/app/models/application_record.rb`) — o PaperTrail já grava uma
 linha na tabela `versions` a cada `create`/`update`/`destroy` de
 qualquer registro, com `whodunnit` (id do usuário logado,
@@ -74,14 +73,13 @@ rota própria, não modal, mesmo padrão do resto do admin). Menu
 
 **O que isso resolve:** visibilidade de mudança de dado — "quem alterou o
 papel X", "quando esse usuário foi criado", útil pra qualquer
-investigação depois de um incidente. **O que isso não resolve:** o
-gap de log de evento de segurança (login falho, bloqueio de rack-attack,
-autorização negada) documentado em
-[Força bruta e bloqueio](FORCA-BRUTA-E-BLOQUEIO.md) e
-[IDOR e autorização](IDOR-E-AUTORIZACAO.md) — PaperTrail só grava
-mudança de model, e nenhum desses três eventos toca um model. Fechar os
-dois gaps juntos (uma tela de logs que mostre auditoria de dado **e**
-evento de segurança) exigiria primeiro criar o registro de evento de
-segurança em si (uma tabela nova, ou um log estruturado), porque hoje
-esse segundo tipo de evento simplesmente não é gravado em lugar nenhum —
-não tem nem no banco pra expor.
+investigação depois de um incidente. É um tipo de log diferente de log de
+evento de segurança (login falho, bloqueio de rack-attack, autorização
+negada — ver [Força bruta e bloqueio](FORCA-BRUTA-E-BLOQUEIO.md) e
+[IDOR e autorização](IDOR-E-AUTORIZACAO.md)): PaperTrail grava mudança de
+*model*, não evento de autenticação/autorização em si — os dois
+complementam um ao outro, cada um respondendo uma pergunta diferente
+("o que mudou" vs. "quem tentou o quê"). Uma tela de logs unificada,
+mostrando os dois tipos lado a lado, precisaria de um registro estruturado
+próprio pra evento de segurança — PaperTrail sozinho não cobre esse
+segundo tipo por natureza (ele só reage a mudança de registro).

@@ -14,10 +14,10 @@ cumpre no produto.
 
 ## No padrão frontend
 
-Não é usado — o padrão de organização de `shared/ui/` (ver
-[Componentes](/padrao-frontend/componentes)) já segue uma taxonomia
-própria, deliberada, só que organizada por **papel** em vez de camada
-estrutural:
+O padrão de organização de `shared/ui/` (ver
+[Componentes](/padrao-frontend/componentes)) usa uma taxonomia
+própria, deliberada, organizada por **papel** em vez de camada
+estrutural (a classificação do Atomic Design):
 
 ```text
 shared/ui/
@@ -28,11 +28,11 @@ shared/ui/
   sistema/    # componentes transversais, feedback, utilitários visuais
 ```
 
-Não adotamos porque essa árvore já responde bem a pergunta que importa pro
-dia a dia: o componente de busca é "controle de busca/filtro" (diz pra que
-serve), não "molécula" (diz só que tem mais de um elemento filho).
-Reclassificar o que já funciona pela pergunta estrutural do Atomic Design
-não seria ganho.
+Essa árvore responde bem a pergunta que importa pro dia a dia: o
+componente de busca é "controle de busca/filtro" (diz pra que serve), não
+"molécula" (diz só que tem mais de um elemento filho). Reclassificar o
+que já funciona pela pergunta estrutural do Atomic Design não seria
+ganho.
 
 Mesmo raciocínio usado pra decidir não trazer shadcn/ui nem MUI X Charts
 pro padrão (ver [Tecnologias](/padrao-frontend/tecnologias)): trocar uma

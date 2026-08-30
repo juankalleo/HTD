@@ -12,19 +12,22 @@ conteúdo essencial deve funcionar mesmo sem JavaScript (ou com um
 navegador limitado), com camadas de interação melhor sobrepostas por
 cima quando o ambiente suporta.
 
-## No padrão frontend
+## Quando decide se você precisa disso
 
-Não é usado — o pressuposto que justifica essa estratégia ("visitante
-público, talvez sem JS") não existe aqui. Toda rota do padrão frontend,
-sem exceção, fica atrás de autenticação (`AuthGuard`, montado uma vez em
-`AppShell`, envolvendo as áreas admin e dashboard) — a raiz (`/`)
-redireciona direto pra dentro da área autenticada, sem nenhuma página de
-conteúdo público em nenhum lugar. Não existe "visitante anônimo" pra
-progressivamente aprimorar a experiência: o usuário já chega autenticado
-ou é mandado pro login, sempre com JavaScript disponível (é um app
-interno, não um site de conteúdo).
+A pergunta central é: existe visitante anônimo, sem sessão garantida,
+possivelmente sem JavaScript funcionando (rede lenta, script bloqueado,
+navegador limitado)? Progressive Enhancement só é uma decisão real em
+páginas de conteúdo público — landing page, blog, página de status,
+qualquer coisa que alguém possa abrir sem estar logado.
 
-**Quando usaríamos:** se o produto ganhar uma superfície pública de
-verdade (uma landing, uma página de status), Progressive Enhancement vira
-uma decisão real a tomar pra **essa página específica** — não pro app
-autenticado.
+Num app que fica inteiro atrás de autenticação (login obrigatório antes
+de qualquer tela), o pressuposto que justifica a técnica não se aplica: o
+usuário só chega lá autenticado, com JavaScript já carregado — não tem
+"experiência básica sem JS" pra ser a camada de baixo. Nesse caso a
+estratégia certa é Server-Side Rendering pra performance (ver [SSR](/padrao-frontend/conceitos-tecnicos/ssr)), não Progressive Enhancement pra resiliência.
+
+Quando ela se aplica de verdade, o padrão é: HTML semântico funcional por
+si só primeiro (formulário que faz submit normal, link que navega), então
+JavaScript camadas em cima pra melhorar (submit via fetch sem reload,
+validação inline, feedback instantâneo) — nunca o inverso, onde a página
+só funciona depois que um bundle JS carrega e hidrata.

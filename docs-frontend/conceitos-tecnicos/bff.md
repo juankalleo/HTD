@@ -13,13 +13,13 @@ reformata ou simplifica o que a API real expõe.
 
 ## No padrão frontend
 
-Não é usado, por decisão explícita: o navegador chama a API Rails
-**direto**, sem proxy Next.js no meio, token em `localStorage` (ver
-[Autenticação](/padrao-frontend/seguranca/autenticacao)). Um BFF criaria
-uma segunda camada de contrato — o Next reformatando/agregando dado do
-Rails só pra UI — que o padrão decidiu não ter: mais uma camada pra manter
-sincronizada com a API real, sem ganho comprovado pro tamanho típico
-desses projetos.
+O navegador chama a API Rails **direto**, sem proxy Next.js no meio,
+token em `localStorage` (ver
+[Autenticação](/padrao-frontend/seguranca/autenticacao)) — uma decisão
+deliberada de não adicionar essa camada extra. Um BFF criaria uma segunda
+camada de contrato — o Next reformatando/agregando dado do Rails só pra
+UI — mais uma camada pra manter sincronizada com a API real, sem ganho
+comprovado pro tamanho típico desses projetos.
 
 `app/api/relatorios/{pdf,excel}/route.ts` são a única rota de servidor que
 existe no Next, e não contam como BFF: existem só porque as libs de

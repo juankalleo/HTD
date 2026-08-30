@@ -11,25 +11,24 @@ mensagem um pro outro a qualquer momento, sem que o cliente precise
 perguntar primeiro. É o oposto do modelo request/response do HTTP comum:
 o servidor pode **empurrar** dado sem esperar o cliente pedir.
 
-## No padrão frontend
+## Quando decide se você precisa disso
 
-Não é usado — confirmado por grep, zero `WebSocket`/`socket.io` em
-qualquer lugar do projeto. Não existe hoje nenhuma tela que precise
-receber atualização do servidor sem o usuário disparar uma ação: toda
-tela de listagem admin busca dado sob demanda (ao montar, ao mudar
-filtro, ao invalidar cache depois de uma mutation — ver
-[Fetch x TanStack Query](/padrao-frontend/conceitos-tecnicos/fetch-tanstack-query)),
-nunca fica "escutando" o servidor.
+A alternativa mais simples de tudo é *polling* — buscar de novo depois de
+X segundos (`refetchInterval` do TanStack Query, por exemplo, ver
+[Fetch x TanStack Query](/padrao-frontend/conceitos-tecnicos/fetch-tanstack-query)).
+Polling resolve a maioria dos casos de "dado que muda por fora" sem a
+complexidade operacional extra de manter uma conexão persistente
+(reconexão automática, keep-alive, servidor stateful por trás). A
+pergunta que decide entre os dois: o atraso de alguns segundos até a
+próxima busca é aceitável, ou o caso de uso exige entrega quase
+instantânea (chat, notificação de presença, colaboração em tempo real)?
 
-**Quando usaríamos:** o candidato mais concreto, dado o resto desta
-documentação, é uma notificação de conflito em tempo real — ver
-[Lost Update](/padrao-frontend/conceitos-tecnicos/lost-update). Hoje, se
-dois admins abrem o mesmo `a_papel` pra editar, nenhum sabe que o outro
-está lá; um WebSocket poderia avisar "fulano também está editando este
-registro agora" assim que o segundo admin abrisse a tela — mas isso
-pressupõe a API expor esse canal primeiro (nenhuma rota de WebSocket
-existe no backend Rails hoje), e o problema de fundo (lost update em si)
-já não ter proteção nenhuma é a lacuna mais urgente antes dessa.
+Quando o WebSocket é a escolha certa, o front precisa tratar: reconexão
+automática com backoff quando a conexão cai (rede instável, servidor
+reiniciando), um estado local de "conectado/reconectando/offline" visível
+pro usuário, e — porque a conexão sobrevive além de um único componente —
+geralmente um provider/context próprio em vez de abrir a conexão dentro
+de cada tela que precisa dela.
 
 ## Leitura de apoio
 

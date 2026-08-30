@@ -14,9 +14,9 @@ digitar"), **throttle** garante um intervalo mínimo entre execuções,
 mesmo que o evento continue disparando sem parar (útil pra scroll/resize,
 que disparam dezenas de vezes por segundo).
 
-## No padrão frontend
+## Debounce
 
-**Debounce** é o padrão de todo campo de busca — o componente de busca
+É o padrão de todo campo de busca — o componente de busca
 compartilhado (`shared/ui/filtros/search-input.tsx`, ver
 [Busca](/padrao-frontend/componentes/busca)) guarda o que o usuário está
 digitando num estado local (`rascunho`) e só propaga pro filtro real (e
@@ -44,8 +44,26 @@ tecla — 350ms é o equilíbrio entre "sentir responsivo" e "não spammar a
 API". Filtro por `<select>` não precisa disso (o disparo já é discreto,
 por `onChange`, não por tecla).
 
-**Throttle** não é usado hoje — não existe no padrão nenhum handler de
-evento de alta frequência (scroll, resize, mousemove) pra limitar. Se
-aparecer um caso (por exemplo, recalcular um layout no resize da janela),
-o padrão a seguir é o mesmo do debounce acima: estado local + `setTimeout`
-próprio, sem trazer lib nova (`lodash.throttle` etc.) só pra um caso.
+## Throttle
+
+Faz sentido pra handler de evento de alta frequência — scroll, resize,
+mousemove — onde debounce (esperar silêncio) não serve, porque o objetivo
+é reagir *durante* o evento contínuo, só que num ritmo controlado, não a
+cada disparo. Implementação equivalente à do debounce acima, trocando a
+lógica do timeout: em vez de resetar o timer a cada chamada, ignora
+chamada nova enquanto o intervalo mínimo não passou.
+
+```ts
+function throttle<T extends (...args: unknown[]) => void>(fn: T, intervaloMs: number) {
+  let bloqueado = false;
+  return (...args: Parameters<T>) => {
+    if (bloqueado) return;
+    fn(...args);
+    bloqueado = true;
+    setTimeout(() => { bloqueado = false; }, intervaloMs);
+  };
+}
+```
+
+Pra um caso pontual, essa função de ~8 linhas resolve sem precisar trazer
+`lodash.throttle` como dependência nova.

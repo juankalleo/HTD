@@ -128,11 +128,9 @@ Convenção do nome — verbo **antes** do módulo/recurso, no mesmo lugar que
 | Ação de membro (com `id`) | `<verbo>_<modulo>_<recurso>_path(id)` | `aprovar_o_proposta_path(id)` |
 | Ação de coleção (sem `id`) | `<verbo>_<modulo>_<recursos>_path` | `minhas_c_requisicoes_path` |
 
-Nenhuma rota assim existe no [HTD-Front](https://github.com/juankalleo/HTD-Front) hoje (todo fluxo atual é
-CRUD puro), então **nenhum helper novo entrou em `lib/routes.ts`** — não
-tem sentido escrever código pra um caso que ainda não aconteceu. O que já
-existe é reaproveitável no dia que precisar, sem função nova: `memberPath`
-já monta `<base>/<id>`, então uma ação de membro é só
+O helper existente (`memberPath`, que já monta `<base>/<id>` pra
+`a_papel_path`/`edit_a_papel_path`) é reaproveitável direto pra esse
+caso, sem função nova — uma ação de membro é só
 
 ```ts
 aprovar_o_proposta_path: (id: RouteId) => `${memberPath("/propostas", id)}/aprovar`,
