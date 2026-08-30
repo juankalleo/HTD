@@ -10,15 +10,34 @@ export const metadata: Metadata = {
   description: "Canais, livros, documentações e empresas citadas nos materiais do How to Dev.",
 };
 
+function isExternalUrl(url: string) {
+  return url.startsWith("http://") || url.startsWith("https://");
+}
+
+function formatUrl(url: string) {
+  return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}
+
+function CreditLink({ href }: { href: string }) {
+  return (
+    <a
+      href={href}
+      rel={isExternalUrl(href) ? "noopener noreferrer" : undefined}
+      target={isExternalUrl(href) ? "_blank" : undefined}
+    >
+      {formatUrl(href)}
+    </a>
+  );
+}
+
 export default function CreditsPage() {
   const { videoChannels, books, externalSources } = getCreditsData();
 
   return (
     <>
       <Navbar activeHref="/creditos" />
-      <main className="credits-main">
+      <main className="credits-main markdown credits-markdown">
         <section className="credits-hero">
-          <p className="credits-eyebrow">Créditos</p>
           <h1>Fontes usadas no How to Dev</h1>
           <p>
             Relação dos canais de vídeo, livros, documentações, empresas e artigos citados nas páginas do projeto.
@@ -26,52 +45,87 @@ export default function CreditsPage() {
         </section>
 
         <section className="credits-section">
-          <div className="credits-section-heading">
-            <h2>Canais de vídeo</h2>
-            <span>{videoChannels.length} canais</span>
-          </div>
-          <div className="credits-link-grid credits-link-grid--compact">
-            {videoChannels.map((channel) => (
-              <a key={channel.url} className="credits-link-card" href={channel.url} target="_blank" rel="noopener noreferrer">
-                <span>{channel.name}</span>
-                <small>YouTube</small>
-              </a>
-            ))}
+          <h2>Canais de vídeo</h2>
+          <p>{videoChannels.length} canais citados nos vídeos explicativos e páginas de apoio.</p>
+          <div className="credits-table-wrap">
+            <table className="credits-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                {videoChannels.map((channel) => (
+                  <tr key={channel.url}>
+                    <td>{channel.name}</td>
+                    <td>
+                      <CreditLink href={channel.url} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
         <section className="credits-section">
-          <div className="credits-section-heading">
-            <h2>Livros</h2>
-            <span>{books.length} referências</span>
-          </div>
-          <div className="credits-book-grid">
-            {books.map((book) => (
-              <a key={book.name} className="credits-book-card" href={book.url}>
-                <span className="credits-book-title">{book.name}</span>
-                <span className="credits-book-meta">{book.authors}</span>
-                <small>
-                  {book.publisher} · {book.year}
-                </small>
-              </a>
-            ))}
+          <h2>Livros</h2>
+          <p>{books.length} livros usados como referência conceitual.</p>
+          <div className="credits-table-wrap">
+            <table className="credits-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Autores</th>
+                  <th>Editora / ano</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                {books.map((book) => (
+                  <tr key={book.name}>
+                    <td>{book.name}</td>
+                    <td>{book.authors}</td>
+                    <td>
+                      {book.publisher} · {book.year}
+                    </td>
+                    <td>
+                      <CreditLink href={book.url} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
         <section className="credits-section credits-section--last">
-          <div className="credits-section-heading">
-            <h2>Documentações, empresas e artigos</h2>
-            <span>{externalSources.length} fontes</span>
-          </div>
-          <div className="credits-link-grid">
-            {externalSources.map((source) => (
-              <a key={source.domain} className="credits-link-card" href={source.url} target="_blank" rel="noopener noreferrer">
-                <span>{source.name}</span>
-                <small>
-                  {source.domain} · {source.references} {source.references === 1 ? "citação" : "citações"}
-                </small>
-              </a>
-            ))}
+          <h2>Documentações, empresas e artigos</h2>
+          <p>{externalSources.length} fontes externas encontradas nas páginas Markdown do projeto.</p>
+          <div className="credits-table-wrap">
+            <table className="credits-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Domínio</th>
+                  <th>Citações</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                {externalSources.map((source) => (
+                  <tr key={source.domain}>
+                    <td>{source.name}</td>
+                    <td>{source.domain}</td>
+                    <td>{source.references}</td>
+                    <td>
+                      <CreditLink href={source.url} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
       </main>

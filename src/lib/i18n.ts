@@ -19,6 +19,13 @@ type HomeRoadmapTrack = {
   items: string[];
 };
 
+type HomeControlRow = {
+  risk: string;
+  htd: string;
+  href: string;
+  source: string;
+};
+
 type Dictionary = {
   nav: {
     areas: Record<AreaKey, string>;
@@ -55,6 +62,16 @@ type Dictionary = {
     eyebrow: string;
     title: string;
     tagline: string;
+    imageAlt: string;
+    sidebarTitle: string;
+    navIntroduction: string;
+    navIndexes: string;
+    navSecurityControls: string;
+    navRoadmap: string;
+    navProjectLinks: string;
+    bannerLabel: string;
+    bannerStatus: string;
+    bannerText: string;
     primaryCta: string;
     secondaryCta: string;
     purposeHeading: string;
@@ -65,6 +82,16 @@ type Dictionary = {
     whyBodyAfter: string;
     areasHeading: string;
     areasBody: string;
+    cheatsheetsHeading: string;
+    cheatsheetLinks: HomeSourceLink[];
+    indexHeading: string;
+    indexBody: string;
+    controlsHeading: string;
+    controlsBody: string;
+    controlTableRisk: string;
+    controlTableHtd: string;
+    controlTableSource: string;
+    controlRows: HomeControlRow[];
     cards: Record<AreaKey, { title: string; status: string; description: string }>;
     statusReady: string;
     statusWip: string;
@@ -75,6 +102,9 @@ type Dictionary = {
     roadmapSourceBody: string;
     roadmapSourceLinks: HomeSourceLink[];
     roadmapTracks: HomeRoadmapTrack[];
+    projectLinksHeading: string;
+    projectLinks: HomeSourceLink[];
+    onThisPageHeading: string;
   };
 };
 
@@ -127,6 +157,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "How to Dev",
       tagline:
         "A personal, security-first reference for structuring Next.js and Rails applications — documented with real code, real trade-offs, and nothing hidden. Current release: How to Dev v1.0.",
+      imageAlt: "How to Dev dice logo",
+      sidebarTitle: "How to Dev",
+      navIntroduction: "Introduction",
+      navIndexes: "Index HTD",
+      navSecurityControls: "Security controls",
+      navRoadmap: "Study roadmap",
+      navProjectLinks: "Project links",
+      bannerLabel: "HTD",
+      bannerStatus: "v1.0 reference",
+      bannerText: "frontend standard available",
       primaryCta: "Open Frontend Standard",
       secondaryCta: "See credits",
       purposeHeading: "Purpose",
@@ -141,6 +181,76 @@ export const dictionaries: Record<Locale, Dictionary> = {
       areasHeading: "System areas",
       areasBody:
         "The content is organized as a reference index: start with the available Frontend Standard, then expand into API, infrastructure, and complete examples.",
+      cheatsheetsHeading: "Cheatsheets",
+      cheatsheetLinks: [
+        { label: "Frontend overview", href: "/padrao-frontend" },
+        { label: "Routing", href: "/padrao-frontend/roteamento" },
+        { label: "Cache", href: "/padrao-frontend/cache" },
+        { label: "Tables", href: "/padrao-frontend/tabelas" },
+        { label: "Forms", href: "/padrao-frontend/formularios" },
+        { label: "Files", href: "/padrao-frontend/arquivos" },
+        { label: "Reports", href: "/padrao-frontend/relatorios" },
+        { label: "Authentication", href: "/padrao-frontend/seguranca/autenticacao" },
+        { label: "Authorization and IDOR", href: "/padrao-frontend/seguranca/idor-e-autorizacao" },
+        { label: "HTTP Security Headers", href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http" },
+        { label: "Cross Site Scripting", href: "/padrao-frontend/seguranca/xss" },
+        { label: "Cross-Site Request Forgery", href: "/padrao-frontend/seguranca/csrf" },
+        { label: "Content Security Policy", href: "/padrao-frontend/seguranca/csp" },
+        { label: "JSON Web Token", href: "/padrao-frontend/seguranca/jwt" },
+        { label: "PDF Security", href: "/padrao-frontend/seguranca/seguranca-pdf" },
+        { label: "Audit Logs", href: "/padrao-frontend/seguranca/logs-de-auditoria" },
+        { label: "Next.js", href: "/padrao-frontend/tecnologias/nextjs" },
+        { label: "Zod", href: "/padrao-frontend/tecnologias/zod" },
+        { label: "TanStack Query", href: "/padrao-frontend/tecnologias/react-query" },
+        { label: "Tailwind", href: "/padrao-frontend/tecnologias/tailwind" },
+      ],
+      indexHeading: "HTD indexes",
+      indexBody:
+        "Use these entry points like the OWASP indexes: choose a subject, open the reference page, then jump into the implementation notes and checklist.",
+      controlsHeading: "Security control mapping",
+      controlsBody:
+        "The security section is mapped to practical implementation areas so the reader can move from risk category to the HTD page that explains the control.",
+      controlTableRisk: "Risk or control",
+      controlTableHtd: "HTD reference",
+      controlTableSource: "Reference model",
+      controlRows: [
+        {
+          risk: "Access control and IDOR",
+          htd: "IDOR and authorization",
+          href: "/padrao-frontend/seguranca/idor-e-autorizacao",
+          source: "OWASP Top 10 A01",
+        },
+        {
+          risk: "XSS and unsafe input",
+          htd: "XSS and input sanitization",
+          href: "/padrao-frontend/seguranca/xss",
+          source: "OWASP injection guidance",
+        },
+        {
+          risk: "Authentication and token lifecycle",
+          htd: "Authentication and JWT",
+          href: "/padrao-frontend/seguranca/jwt",
+          source: "OWASP authentication/JWT cheat sheets",
+        },
+        {
+          risk: "Browser hardening",
+          htd: "HTTP headers and CSP",
+          href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http",
+          source: "OWASP proactive controls",
+        },
+        {
+          risk: "Export and generated file abuse",
+          htd: "PDF and export security",
+          href: "/padrao-frontend/seguranca/seguranca-exportacao",
+          source: "HTD implementation checklist",
+        },
+        {
+          risk: "Monitoring and audit trail",
+          htd: "Audit logs",
+          href: "/padrao-frontend/seguranca/logs-de-auditoria",
+          source: "OWASP logging guidance",
+        },
+      ],
       cards: {
         "padrao-frontend": {
           title: "Frontend Standard",
@@ -241,6 +351,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
           ],
         },
       ],
+      projectLinksHeading: "Project links",
+      projectLinks: [
+        { label: "Credits", href: "/creditos" },
+        { label: "Frontend Standard", href: "/padrao-frontend" },
+        { label: "Security checklist", href: "/padrao-frontend/seguranca" },
+        { label: "OWASP Cheat Sheet Series", href: "https://cheatsheetseries.owasp.org/" },
+        { label: "OWASP Top 10 index", href: "https://cheatsheetseries.owasp.org/IndexTopTen.html" },
+      ],
+      onThisPageHeading: "On this page",
     },
   },
   pt: {
@@ -290,6 +409,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "How to Dev",
       tagline:
         "Referência pessoal e security-first para estruturar aplicações Next.js e Rails — documentada com código real, decisões reais e nada escondido. Versão atual: How to Dev v1.0.",
+      imageAlt: "Logo How to Dev com dados",
+      sidebarTitle: "How to Dev",
+      navIntroduction: "Introdução",
+      navIndexes: "Índice HTD",
+      navSecurityControls: "Controles de segurança",
+      navRoadmap: "Roadmap de estudo",
+      navProjectLinks: "Links do projeto",
+      bannerLabel: "HTD",
+      bannerStatus: "referência v1.0",
+      bannerText: "padrão frontend disponível",
       primaryCta: "Abrir Padrão Frontend",
       secondaryCta: "Ver créditos",
       purposeHeading: "Propósito",
@@ -304,6 +433,76 @@ export const dictionaries: Record<Locale, Dictionary> = {
       areasHeading: "Áreas do sistema",
       areasBody:
         "O conteúdo fica organizado como um índice de referência: começa pelo Padrão Frontend disponível e evolui para API, infraestrutura e exemplos completos.",
+      cheatsheetsHeading: "Cheatsheets",
+      cheatsheetLinks: [
+        { label: "Visão geral do frontend", href: "/padrao-frontend" },
+        { label: "Roteamento", href: "/padrao-frontend/roteamento" },
+        { label: "Cache", href: "/padrao-frontend/cache" },
+        { label: "Tabelas", href: "/padrao-frontend/tabelas" },
+        { label: "Formulários", href: "/padrao-frontend/formularios" },
+        { label: "Arquivos", href: "/padrao-frontend/arquivos" },
+        { label: "Relatórios", href: "/padrao-frontend/relatorios" },
+        { label: "Autenticação", href: "/padrao-frontend/seguranca/autenticacao" },
+        { label: "Autorização e IDOR", href: "/padrao-frontend/seguranca/idor-e-autorizacao" },
+        { label: "Headers de segurança HTTP", href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http" },
+        { label: "Cross Site Scripting", href: "/padrao-frontend/seguranca/xss" },
+        { label: "Cross-Site Request Forgery", href: "/padrao-frontend/seguranca/csrf" },
+        { label: "Content Security Policy", href: "/padrao-frontend/seguranca/csp" },
+        { label: "JSON Web Token", href: "/padrao-frontend/seguranca/jwt" },
+        { label: "Segurança em PDF", href: "/padrao-frontend/seguranca/seguranca-pdf" },
+        { label: "Logs de auditoria", href: "/padrao-frontend/seguranca/logs-de-auditoria" },
+        { label: "Next.js", href: "/padrao-frontend/tecnologias/nextjs" },
+        { label: "Zod", href: "/padrao-frontend/tecnologias/zod" },
+        { label: "TanStack Query", href: "/padrao-frontend/tecnologias/react-query" },
+        { label: "Tailwind", href: "/padrao-frontend/tecnologias/tailwind" },
+      ],
+      indexHeading: "Índices HTD",
+      indexBody:
+        "Use estes pontos de entrada como os índices da OWASP: escolha o assunto, abra a página de referência e avance para as notas de implementação e checklist.",
+      controlsHeading: "Mapeamento de controles de segurança",
+      controlsBody:
+        "A seção de segurança fica ligada a áreas práticas de implementação para o leitor sair da categoria de risco e cair direto na página HTD que explica o controle.",
+      controlTableRisk: "Risco ou controle",
+      controlTableHtd: "Referência HTD",
+      controlTableSource: "Modelo de referência",
+      controlRows: [
+        {
+          risk: "Controle de acesso e IDOR",
+          htd: "IDOR e autorização",
+          href: "/padrao-frontend/seguranca/idor-e-autorizacao",
+          source: "OWASP Top 10 A01",
+        },
+        {
+          risk: "XSS e input inseguro",
+          htd: "XSS e sanitização de inputs",
+          href: "/padrao-frontend/seguranca/xss",
+          source: "Guia OWASP de injection",
+        },
+        {
+          risk: "Autenticação e ciclo de vida do token",
+          htd: "Autenticação e JWT",
+          href: "/padrao-frontend/seguranca/jwt",
+          source: "Cheat sheets OWASP de autenticação/JWT",
+        },
+        {
+          risk: "Hardening do navegador",
+          htd: "Headers HTTP e CSP",
+          href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http",
+          source: "OWASP Proactive Controls",
+        },
+        {
+          risk: "Abuso em exportação e arquivo gerado",
+          htd: "Segurança em PDF e exportação",
+          href: "/padrao-frontend/seguranca/seguranca-exportacao",
+          source: "Checklist de implementação HTD",
+        },
+        {
+          risk: "Monitoramento e trilha de auditoria",
+          htd: "Logs de auditoria",
+          href: "/padrao-frontend/seguranca/logs-de-auditoria",
+          source: "Guia OWASP de logging",
+        },
+      ],
       cards: {
         "padrao-frontend": {
           title: "Padrão Frontend",
@@ -404,6 +603,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
           ],
         },
       ],
+      projectLinksHeading: "Links do projeto",
+      projectLinks: [
+        { label: "Créditos", href: "/creditos" },
+        { label: "Padrão Frontend", href: "/padrao-frontend" },
+        { label: "Checklist de segurança", href: "/padrao-frontend/seguranca" },
+        { label: "OWASP Cheat Sheet Series", href: "https://cheatsheetseries.owasp.org/" },
+        { label: "Índice OWASP Top 10", href: "https://cheatsheetseries.owasp.org/IndexTopTen.html" },
+      ],
+      onThisPageHeading: "Nesta página",
     },
   },
 };

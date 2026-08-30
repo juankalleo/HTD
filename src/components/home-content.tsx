@@ -12,147 +12,156 @@ const AREA_HREF: Record<AreaKey, string> = {
   examples: "/examples",
 };
 
-const AREA_ICON: Record<AreaKey, React.ReactNode> = {
-  "padrao-frontend": (
-    <>
-      <rect x="3.5" y="4.5" width="17" height="15" rx="2.5" />
-      <path d="M3.5 9.5h17M8.5 19.5v-5M15.5 19.5v-5" />
-    </>
-  ),
-  "padrao-api": <path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" />,
-  "padrao-infraestrutura": (
-    <>
-      <rect x="4" y="4" width="16" height="6" rx="2" />
-      <rect x="4" y="14" width="16" height="6" rx="2" />
-      <path d="M8 7h.01M8 17h.01M12 7h4M12 17h4" />
-    </>
-  ),
-  examples: (
-    <>
-      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
-      <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
-    </>
-  ),
-};
-
 export function HomeContent() {
   const { t } = useLocale();
   const home = t.home;
 
   return (
     <main className="home-main">
-      <section className="home-hero">
-        <div className="home-hero-copy">
-          <p className="home-hero-eyebrow">{home.eyebrow}</p>
-          <h1 className="home-hero-title">{home.title}</h1>
-          <p className="home-hero-tagline">{home.tagline}</p>
-          <div className="home-hero-actions">
-            <a className="home-action home-action-primary" href="/padrao-frontend">
-              {home.primaryCta}
-            </a>
-            <a className="home-action" href="/creditos">
-              {home.secondaryCta}
-            </a>
-          </div>
-        </div>
-      </section>
+      <div className="home-doc-layout">
+        <aside className="home-doc-nav" aria-label={home.sidebarTitle}>
+          <h2>{home.sidebarTitle}</h2>
+          <nav className="home-doc-nav-group" aria-label={home.indexHeading}>
+            <a href="#introduction">{home.navIntroduction}</a>
+            <a href="#indexes">{home.navIndexes}</a>
+            <a href="#controls">{home.navSecurityControls}</a>
+            <a href="#roadmap">{home.navRoadmap}</a>
+            <a href="#project-links">{home.navProjectLinks}</a>
+          </nav>
+          <h3>{home.cheatsheetsHeading}</h3>
+          <nav className="home-cheatsheet-list" aria-label={home.cheatsheetsHeading}>
+            {home.cheatsheetLinks.map((link) => (
+              <a href={link.href} key={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </aside>
 
-      <div className="home-inner">
-        <section className="home-section home-orientation">
-          <article>
-            <h2>{home.purposeHeading}</h2>
+        <article className="home-doc-page">
+          <section className="home-doc-intro" id="introduction">
+            <div className="home-flagship-banner">
+              <strong>{home.bannerLabel}</strong>
+              <span>{home.bannerStatus}</span>
+              <small>{home.bannerText}</small>
+            </div>
+            <img className="home-doc-logo" src="/img/blog/htd-dice.png" alt={home.imageAlt} />
+            <h1>{home.title}</h1>
             <p>{home.purposeBody}</p>
-          </article>
-          <article>
-            <h2>{home.whyHeading}</h2>
             <p>
               {home.whyBodyBefore}{" "}
               <a href="/padrao-frontend/seguranca">{home.whySecurityLink}</a>{" "}
               {home.whyBodyAfter}
             </p>
-          </article>
-        </section>
+          </section>
 
-        <section className="home-areas">
-          <div className="home-section-heading">
-            <h2>{home.areasHeading}</h2>
-            <p>{home.areasBody}</p>
-          </div>
-          <div className="home-cards">
+          <section className="home-doc-section" id="indexes">
+            <h2>{home.indexHeading}</h2>
+            <p>{home.indexBody}</p>
+            <div className="home-index-links">
+              <a href="/padrao-frontend">{home.cards["padrao-frontend"].title}</a>
+              <a href="/padrao-api">{home.cards["padrao-api"].title}</a>
+              <a href="/padrao-infraestrutura">{home.cards["padrao-infraestrutura"].title}</a>
+              <a href="/examples">{home.cards.examples.title}</a>
+              <a href="/creditos">{home.secondaryCta}</a>
+            </div>
+          </section>
+
+          <section className="home-doc-section" id="controls">
+            <h2>{home.controlsHeading}</h2>
+            <p>{home.controlsBody}</p>
+            <div className="home-table-wrap">
+              <table className="home-reference-table">
+                <thead>
+                  <tr>
+                    <th>{home.controlTableRisk}</th>
+                    <th>{home.controlTableHtd}</th>
+                    <th>{home.controlTableSource}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {home.controlRows.map((row) => (
+                    <tr key={row.href}>
+                      <td>{row.risk}</td>
+                      <td>
+                        <a href={row.href}>{row.htd}</a>
+                      </td>
+                      <td>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="home-doc-section" id="roadmap">
+            <h2>{home.roadmapHeading}</h2>
+            <p>{home.roadmapIntro}</p>
+            <ol className="home-roadmap-list">
+              {home.roadmapTracks.map((track) => (
+                <li key={track.step}>
+                  <span className="home-roadmap-step">{track.step}</span>
+                  <div>
+                    <h3>
+                      <a href={track.href}>{track.title}</a>
+                      <span>{track.status}</span>
+                    </h3>
+                    <p>{track.description}</p>
+                    <ul>
+                      {track.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section className="home-doc-section" id="project-links">
+            <h2>{home.projectLinksHeading}</h2>
+            <ul className="home-project-links">
+              {home.projectLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </article>
+
+        <aside className="home-page-toc" aria-label={home.onThisPageHeading}>
+          <h2>{home.onThisPageHeading}</h2>
+          <a href="#introduction">{home.navIntroduction}</a>
+          <a href="#indexes">{home.navIndexes}</a>
+          <a href="#controls">{home.navSecurityControls}</a>
+          <a href="#roadmap">{home.navRoadmap}</a>
+          <a href="#project-links">{home.navProjectLinks}</a>
+          <h3>{home.areasHeading}</h3>
+          <ul>
             {AREA_ORDER.map((area) => {
               const card = home.cards[area];
               return (
-                <a key={area} href={AREA_HREF[area]} className="home-card">
-                  <div className="home-card-top">
-                    <svg
-                      className="home-card-icon"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.15}
-                    >
-                      {AREA_ICON[area]}
-                    </svg>
-                    <span
-                      className={`home-card-status home-card-status--${
-                        card.status === home.statusReady ? "ready" : "wip"
-                      }`}
-                    >
-                      {card.status}
-                    </span>
-                  </div>
-                  <h3 className="home-card-title">{card.title}</h3>
-                  <p className="home-card-description">{card.description}</p>
-                </a>
+                <li key={area}>
+                  <a href={AREA_HREF[area]}>{card.title}</a>
+                  <span>{card.status}</span>
+                </li>
               );
             })}
-          </div>
-        </section>
-
-        <section className="home-roadmap">
-          <div className="home-roadmap-intro">
-            <p className="home-hero-eyebrow">{home.roadmapEyebrow}</p>
-            <h2>{home.roadmapHeading}</h2>
-            <p>{home.roadmapIntro}</p>
-            <div className="home-roadmap-source">
-              <h3>{home.roadmapSourceHeading}</h3>
-              <p>{home.roadmapSourceBody}</p>
-              <div className="home-source-links">
-                {home.roadmapSourceLinks.map((source) => (
-                  <a
-                    href={source.href}
-                    key={source.href}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {source.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="home-roadmap-grid">
-            {home.roadmapTracks.map((track) => (
-              <a className="home-roadmap-card" href={track.href} key={track.step}>
-                <div className="home-roadmap-card-top">
-                  <span className="home-roadmap-step">{track.step}</span>
-                  <span className="home-roadmap-status">{track.status}</span>
-                </div>
-                <h3>{track.title}</h3>
-                <p>{track.description}</p>
-                <ul>
-                  {track.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </a>
-            ))}
-          </div>
-        </section>
+          </ul>
+          <h3>{home.roadmapSourceHeading}</h3>
+          {home.roadmapSourceLinks.map((source) => (
+            <a href={source.href} key={source.href} rel="noreferrer" target="_blank">
+              {source.label}
+            </a>
+          ))}
+        </aside>
       </div>
     </main>
   );
