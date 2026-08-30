@@ -43,7 +43,7 @@ default: &default
       polling_interval: 1
 ```
 
-## Exemplo real
+## Exemplo de uso
 
 ```ruby
 # app/jobs/application_job.rb — a base, ainda no estado padrão do Rails

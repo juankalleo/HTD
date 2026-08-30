@@ -28,10 +28,13 @@ def paginate(query, per_page, serializer: nil, serializer_options: {})
 end
 ```
 
-Padrão de 25 itens por página se o client não pedir nada; teto rígido de
-100 (`.clamp(1, MAX_PER_PAGE)`), mesmo que o client peça `per_page=99999`
-— sem o teto, um client (malicioso ou só descuidado) poderia forçar a
-API a montar e serializar a tabela inteira numa resposta só.
+Nesse exemplo, o padrão é 25 itens por página se o client não pedir nada,
+com um teto rígido de 100 (`.clamp(1, MAX_PER_PAGE)`), mesmo que o client
+peça `per_page=99999` — os dois números são só um ponto de partida, cada
+projeto calibra conforme o tamanho típico de registro e o que a UI
+aguenta renderizar de uma vez. O que importa é **ter** um teto: sem ele,
+um client (malicioso ou só descuidado) poderia forçar a API a montar e
+serializar a tabela inteira numa resposta só.
 
 ## Como fica o JSON
 
@@ -51,7 +54,7 @@ total de páginas, total de registros, tamanho de página) — não o objeto
 `Pagy` inteiro do Ruby, que carrega mais estado do que uma resposta HTTP
 deveria expor.
 
-## Uso real num controller
+## Uso num controller
 
 ```ruby
 def index

@@ -33,14 +33,16 @@ emitido antes disso, mesmo que o token em si ainda não tenha expirado.
 ```ruby
 config.jwt do |jwt|
   jwt.secret = jwt_secret.presence || Rails.application.secret_key_base
-  jwt.expiration_time = 24.hours.to_i
+  jwt.expiration_time = 24.hours.to_i # valor de exemplo — ver nota abaixo
   jwt.dispatch_requests = [[ "POST", %r{^/api/v1/auth/sign_in$} ]]
   jwt.revocation_requests = [[ "DELETE", %r{^/api/v1/auth/sign_out$} ]]
 end
 ```
 
-Token expira em 24h — depois disso, mesmo sem logout explícito, deixa de
-ser aceito. `dispatch_requests` e `revocation_requests` dizem ao
+`expiration_time` é só um valor de exemplo, não uma regra fixa — cada
+projeto ajusta esse prazo conforme o perfil de risco (mais curto pra dado
+sensível, mais longo pra reduzir fricção de login). Depois de expirado,
+mesmo sem logout explícito, o token deixa de ser aceito. `dispatch_requests` e `revocation_requests` dizem ao
 devise-jwt exatamente quais rotas emitem token (`sign_in`) e quais o
 revogam (`sign_out`) — fora dessas duas, o middleware do devise-jwt nem
 intercepta a resposta.

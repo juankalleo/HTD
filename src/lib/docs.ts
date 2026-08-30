@@ -306,6 +306,20 @@ const AREA_ORDER: Record<string, string[]> = {
     "multi-tenancy",
     "migrations",
   ],
+  // Topo de padrao-infraestrutura
+  "padrao-infraestrutura::.": ["conceitos-tecnicos", "tecnologias"],
+  // Dentro de padrao-infraestrutura/conceitos-tecnicos — fundamento (hardware,
+  // rede) até operação (firewall, proxy, limite de recurso, cultura)
+  "padrao-infraestrutura::conceitos-tecnicos": [
+    "hardware-kernel-e-processos",
+    "rede-e-protocolos",
+    "http-https-e-tls",
+    "vps-e-containers",
+    "kernel-netfilter-e-firewall",
+    "proxy-reverso-e-cdn",
+    "limites-de-recursos-e-oom",
+    "devops-e-cultura",
+  ],
 };
 
 function orderRank(order: string[] | undefined, name: string): number {

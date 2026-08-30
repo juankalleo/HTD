@@ -4,16 +4,16 @@ sidebar_label: Visão geral
 
 # Padrão Banco de Dados
 
-> **Tecnologia principal: PostgreSQL + ActiveRecord** (Ruby on Rails 8). Camada separada de propósito do [Padrão API](/padrao-api): lá é contrato HTTP, aqui é schema, migration e model. As duas se encontram no mesmo código real, mas merecem cada uma sua própria régua.
+> **Tecnologia principal: PostgreSQL + ActiveRecord** (Ruby on Rails 8). Camada separada de propósito do [Padrão API](/padrao-api): lá é contrato HTTP, aqui é schema, migration e model. As duas camadas convivem no mesmo projeto, mas merecem cada uma sua própria régua.
 
 ## Visão geral
 
-Esta área documenta como o schema é modelado numa API Rails real,
-multi-tenant, em produção: convenção de nome de tabela, como a hierarquia
-de tenant é representada no banco, trilha de auditoria, soft delete, e a
-disciplina de migration que mantém tudo isso consistente conforme o
-projeto cresce. PostgreSQL, ActiveRecord — sem exagero de abstração:
-regra simples, aplicada sem exceção.
+Esta área documenta como modelar schema numa API Rails multi-tenant:
+convenção de nome de tabela, como a hierarquia de tenant é representada
+no banco, trilha de auditoria, soft delete, e a disciplina de migration
+que mantém tudo isso consistente conforme o projeto cresce. PostgreSQL,
+ActiveRecord — sem exagero de abstração: regra simples, aplicada sem
+exceção.
 
 ## Modelagem base
 
@@ -31,8 +31,8 @@ documenta o prefixo de uma letra por módulo de negócio (`a_`, `g_`, `c_`)
 ## Multi-tenancy
 
 [Multi-tenancy](/padrao-banco-de-dados/conceitos-tecnicos/multi-tenancy)
-documenta a hierarquia real tenant → órgão → unidade → usuário, com
-schema real, e onde o isolamento entre tenant é de fato aplicado.
+documenta a hierarquia tenant → órgão → unidade → usuário, o schema por
+trás dela, e onde o isolamento entre tenant é de fato aplicado.
 
 ## Tabela de referência em vez de enum
 
@@ -43,7 +43,7 @@ string mágica — todo campo que "parece enum" vira tabela própria com FK.
 ## Migrations
 
 [Migrations](/padrao-banco-de-dados/conceitos-tecnicos/migrations)
-documenta o formato real de toda migration do projeto: idempotente,
+documenta o formato de migration seguido neste padrão: idempotente,
 `up`/`down` explícitos, e as colunas de auditoria que entram por padrão
 em toda tabela nova.
 
@@ -51,4 +51,4 @@ em toda tabela nova.
 
 [Tecnologias](/padrao-banco-de-dados/tecnologias) cobre PaperTrail
 (versionamento) e paranoia (soft delete) — o quê, o porquê, a versão e um
-exemplo real de cada uma.
+exemplo de uso de cada uma.

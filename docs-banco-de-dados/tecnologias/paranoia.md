@@ -35,7 +35,7 @@ A migration de cada tabela precisa da coluna `deleted_at` (ver
 [Migrations](/padrao-banco-de-dados/conceitos-tecnicos/migrations) —
 já entra por padrão no template de `create_table` do projeto).
 
-## Exemplo real
+## Exemplo de uso
 
 ```ruby
 create_table :a_orgaos do |t|

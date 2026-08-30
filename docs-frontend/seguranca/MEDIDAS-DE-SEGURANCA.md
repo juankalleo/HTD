@@ -103,14 +103,15 @@ Detalhe completo, incluindo as decisões reais de implementação, em
 
 ## Proteção da própria wiki
 
-Este site (`WIKI-NEXT`), separado do [HTD-Front](https://github.com/juankalleo/HTD-Front), usa HTTP Basic Auth
-via `middleware.ts` próprio — falha fechada em produção sem credencial
-configurada, comparação resistente a timing attack. Diferente do
-`AuthGuard` do [HTD-Front](https://github.com/juankalleo/HTD-Front) (client-side, funciona porque o dado
-protegido chega depois via `fetch` condicional), o conteúdo desta wiki já
-está completo no HTML da primeira resposta — por isso a checagem aqui é
-**server-side**, não client-side. Detalhe completo em
-[Proteção da wiki](PROTECAO-DA-WIKI.md).
+Este site (How to Dev), separado do [HTD-Front](https://github.com/juankalleo/HTD-Front), é público de propósito
+— sem Basic Auth nem qualquer outro controle de acesso, pensado pra ser
+indexado e lido por qualquer um. Diferente do `AuthGuard` do
+[HTD-Front](https://github.com/juankalleo/HTD-Front) (client-side, funciona porque o dado
+protegido chega depois via `fetch` condicional), o conteúdo deste site já
+está completo no HTML da primeira resposta — o que, se algum dia
+precisasse de controle de acesso, exigiria uma checagem **server-side**,
+não client-side. Detalhe completo, incluindo o porquê de já ter existido
+e sido removido, em [Proteção da wiki](PROTECAO-DA-WIKI.md).
 
 ## Cabeçalhos e plataforma
 
@@ -145,7 +146,7 @@ está completo no HTML da primeira resposta — por isso a checagem aqui é
 | Teste de controller com usuário restrito | ❌ só o admin wildcard é testado (Rails) |
 | Revogação de JWT no logout | ✅ (`jti` real, não `Null`) |
 | Tela de logs de auditoria (PaperTrail) | ✅ `/logs` no front, `GET /api/v1/admin/versions` na API |
-| Autenticação na própria wiki (`WIKI-NEXT`) | ✅ HTTP Basic Auth via `middleware.ts` |
+| Auth na própria wiki (How to Dev) | ❌ removido de propósito — site público, ver [Proteção da wiki](PROTECAO-DA-WIKI.md) |
 
 ## Leitura de apoio
 

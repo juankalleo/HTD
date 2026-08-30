@@ -39,7 +39,7 @@ include Devise::JWT::RevocationStrategies::JTIMatcher
 devise :database_authenticatable, :jwt_authenticatable, jwt_revocation_strategy: self
 ```
 
-## Exemplo real
+## Exemplo de uso
 
 `config/initializers/devise.rb`:
 

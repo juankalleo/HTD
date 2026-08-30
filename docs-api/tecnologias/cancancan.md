@@ -38,7 +38,7 @@ def current_ability
 end
 ```
 
-## Exemplo real
+## Exemplo de uso
 
 Uso num controller (`app/controllers/api/v1/admin/a_papeis_controller.rb`):
 

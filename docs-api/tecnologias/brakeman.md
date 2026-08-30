@@ -35,7 +35,7 @@ end
 bin/brakeman --no-pager
 ```
 
-## Exemplo real
+## Exemplo de uso
 
 Rodar sem `--no-pager` abre um pager interativo (bom pra ler no
 terminal); `--no-pager` é o que entra em CI/script, pra não travar

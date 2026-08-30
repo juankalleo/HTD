@@ -4,8 +4,8 @@ sidebar_label: Proteção da wiki
 
 # Proteção da própria wiki
 
-Toda página desta seção documenta, em detalhe real (código, threshold
-exato, nome de arquivo), o que protege — e o que ainda não protege — o
+Toda página desta seção documenta, em detalhe (código, configuração,
+nome de arquivo), o que protege — e o que ainda não protege — o
 [HTD-Front](https://github.com/juankalleo/HTD-Front) e a API por trás dele. Isso é bom pra quem devia ler
 (o time), e ajuda quem não devia: os thresholds exatos do rack-attack, a
 confirmação de que autorização negada não gera log, o comportamento

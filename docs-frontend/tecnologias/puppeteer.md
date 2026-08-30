@@ -11,7 +11,7 @@ Biblioteca de automação de navegador headless (Chromium) — controla uma pág
 
 ## Por que essa
 
-Quando o grupo precisa validar um fluxo inteiro pelo navegador (login → tela → submit) ou capturar o estado visual de uma página fora do Jest, o Puppeteer dá controle fininho do Chromium sem dependência de serviço externo. Alternativa de mercado é o Playwright — o `WIKI-NEXT` já traz `@playwright/test` em devDependencies como runner de e2e; Puppeteer entra como a opção de automação por script/node quando se quer só a API do Chromium (ex.: screenshot de relatório, crawler de página autenticada).
+Quando o time precisa validar um fluxo inteiro pelo navegador (login → tela → submit) ou capturar o estado visual de uma página fora do Jest, o Puppeteer dá controle fininho do Chromium sem dependência de serviço externo. Alternativa de mercado é o Playwright, mais focado em teste e2e; Puppeteer entra como a opção de automação por script/node quando se quer só a API do Chromium (ex.: screenshot de relatório, crawler de página autenticada).
 Leitura de apoio: [documentação oficial do Puppeteer](https://pptr.dev/) — por
 que automação por script do Chromium para PDF/screenshot sem serviço externo.
 
@@ -25,7 +25,7 @@ pnpm add puppeteer
 import puppeteer from "puppeteer";
 ```
 
-## Exemplo real
+## Exemplo de uso
 
 Gerar PDF de relatório a partir de HTML estável (`lib/server/relatorio-pdf/core.ts`):
 

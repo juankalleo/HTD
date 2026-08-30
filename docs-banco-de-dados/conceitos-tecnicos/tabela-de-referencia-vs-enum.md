@@ -66,8 +66,9 @@ fricção.
 `a_recursos.descricao` guarda o nome literal de uma classe Ruby
 (`"APapel"`, não `"A_PAPEL"`) — normalizar pra maiúsculo quebraria
 `safe_constantize` (`"APAPEL".safe_constantize` não resolve pra classe
-nenhuma). É uma exceção documentada depois de um bug real, não uma
-inconsistência esquecida.
+nenhuma). É uma exceção documentada de propósito, não uma inconsistência
+esquecida — o tipo de detalhe fácil de perder se alguém "arrumar" a
+normalização sem entender por que essa tabela é diferente das outras.
 
 ## Nunca buscar por string solta
 

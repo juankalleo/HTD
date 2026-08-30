@@ -32,7 +32,7 @@ engenharia é uma troca entre custo agora e custo daqui a 5 anos.
 
 ## Onde aparece no padrão frontend
 
-Base do princípio que atravessa todo `front/docs/` e `WIKI-NEXT`: cada
+Base do princípio que atravessa toda esta documentação: cada
 decisão registrada com o **porquê**, não só o **o quê** — inclusive
 quando a decisão é "avaliado, não adotado" (ver
 [Atomic Design](/padrao-frontend/conceitos-tecnicos/atomic-design),

@@ -6,14 +6,14 @@ sidebar_label: Visão geral
 
 # Padrão API
 
-> **Tecnologia principal: Ruby on Rails 8** (`ActionController::API`). Baseado numa API Rails real, multi-tenant, em produção — não um exemplo genérico. Cada página aqui cita arquivo e linha real.
+> **Tecnologia principal: Ruby on Rails 8** (`ActionController::API`). Cobre o ciclo completo de uma requisição — roteamento, autenticação, autorização, erro — com o padrão que uma API Rails bem estruturada segue na prática.
 
 ## Visão geral
 
 Esta área documenta o padrão de API usado como referência para os
 sistemas do How to Dev: como uma requisição é roteada, tratada,
 autenticada, autorizada e respondida — o ciclo completo, do jeito que uma
-API Rails real e madura faz isso. O escopo é deliberadamente a **camada
+API Rails madura faz isso. O escopo é deliberadamente a **camada
 de API**: contrato HTTP, controllers, serialização, autenticação,
 autorização, erros. Modelagem de dado (schema, migration, associação
 ActiveRecord) fica **fora** daqui de propósito — é assunto de um Padrão
@@ -48,7 +48,8 @@ Detalhe completo, com o código que gera isso, em
 
 [Roteamento e versionamento](/padrao-api/roteamento-e-versionamento)
 documenta como toda rota vive sob `/api/v1/...`, a separação
-`admin`/`auth`, e um bug real de catch-all já corrigido — não teórico.
+`admin`/`auth`, e uma pegadinha comum de configurar uma rota catch-all no
+lugar errado.
 
 ## Tratamento de erros
 
@@ -58,9 +59,9 @@ de status (404, 422, 401, 403, 500).
 
 ## Paginação
 
-[Paginação](/padrao-api/conceitos-tecnicos/paginacao) documenta o Pagy
-real usado, o teto de itens por página, e o formato de metadado que volta
-pro front.
+[Paginação](/padrao-api/conceitos-tecnicos/paginacao) documenta como o
+Pagy é configurado, o teto de itens por página, e o formato de metadado
+que volta pro front.
 
 ## Filtros e busca
 
@@ -78,6 +79,6 @@ service devolve um `ServiceResult` só, controller só chama `render_result`.
 
 [Segurança](/padrao-api/seguranca) cobre autenticação (JWT via
 devise-jwt), autorização (CanCanCan orientado a dado), força bruta e
-bloqueio (Rack::Attack, thresholds reais) e CORS — mesma régua de
-documentação completa do Padrão Frontend: o que protege, com detalhe
-real, não resumo.
+bloqueio (Rack::Attack) e CORS — mesma régua de documentação completa do
+Padrão Frontend: o que cada camada protege e como configurar, em
+detalhe, não resumo.

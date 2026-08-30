@@ -40,7 +40,7 @@ bin/rubocop          # checa
 bin/rubocop -a       # autocorrige o que for seguro autocorrigir
 ```
 
-## Exemplo real
+## Exemplo de uso
 
 ```yaml
 # .rubocop.yml

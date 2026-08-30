@@ -6,7 +6,7 @@ sidebar_label: CORS
 
 # CORS
 
-Config real, `config/initializers/cors.rb` — liberada só em
+Configuração em `config/initializers/cors.rb` — liberada só em
 desenvolvimento, de propósito.
 
 ```ruby

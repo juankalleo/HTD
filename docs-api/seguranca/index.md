@@ -7,10 +7,10 @@ sidebar_label: Visão geral
 # Segurança
 
 Mesma régua do [Padrão Frontend](/padrao-frontend/seguranca): documentação
-completa, com detalhe real (threshold exato, nome de arquivo, código
-verificado na fonte) — não um resumo que esconde o que ainda não está
-coberto. A postura certa não é documentar menos, é garantir que o que
-está exposto seja exatamente o que deveria estar.
+completa, com o detalhe de configuração de cada camada — não um resumo
+que esconde o que ainda não está coberto. A postura certa não é
+documentar menos, é garantir que o que está exposto seja exatamente o
+que deveria estar.
 
 ## Autenticação
 
@@ -27,11 +27,11 @@ permissão vem de papel/permissão cadastrados, escopados por tenant.
 ## Força bruta e bloqueio
 
 [Força bruta e bloqueio](/padrao-api/seguranca/forca-bruta-e-bloqueio)
-documenta os thresholds reais do Rack::Attack no endpoint de login — por
-IP, por e-mail, e o bloqueio automático de força bruta.
+documenta como calibrar os thresholds do Rack::Attack no endpoint de
+login — por IP, por e-mail, e o bloqueio automático de força bruta.
 
 ## CORS
 
-[CORS](/padrao-api/seguranca/cors) documenta a configuração real —
+[CORS](/padrao-api/seguranca/cors) documenta a configuração —
 liberada só em desenvolvimento, e por que produção não tem (nem precisa
 de) bloco próprio.

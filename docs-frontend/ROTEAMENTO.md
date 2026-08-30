@@ -24,30 +24,28 @@ ROUTES.edit_a_tipo_usuario_path(tipoUsuario.id);
 
 ## Por que essa disciplina
 
-Comparado contra três projetos irmãos reais (não hipotéticos) que usam o
-mesmo template de backend Rails:
+Dois anti-padrões comuns aparecem em projetos que não centralizam rota assim:
 
-- **`nextfrotas-combustivel`** (produto Next.js real em produção, com
-  `motorista/`, `empresas/`, `admin/`) **não tem helper de rota nenhum** —
-  toda navegação é string literal espalhada (`router.push("/motorista/bdt?
-  autorizacao_tipo=padrao")`, `router.push("/admin")` repetido em vários
-  componentes). Sem um `ROUTES` central, renomear uma URL significa caçar
-  cada ocorrência manualmente.
-- **`frotas-mvc`** (Rails MVC mais antigo do mesmo grupo de produtos) usa
-  `resources` com prefixo de módulo, só que a seção de relatórios cresceu
-  sem nesting — hoje são **~90 rotas nomeadas na mão**
-  (`relatorios_ordens_servico_fornecedor_pdf`,
-  `relatorios_bdts_gestor_prestacao_print`...) em vez de um bloco
-  `member`/`collection` aninhado. É o resultado de não aplicar a mesma
-  disciplina de nomeação num canto do projeto.
-- **[HTD-Front](https://github.com/juankalleo/HTD-Front)** (aqui): toda página em `app/` tem um helper
-  correspondente em `ROUTES`, e nenhum outro arquivo do projeto usa string
-  literal de rota — confirmado por grep, zero ocorrência de
-  `router.push("/...")`/`href="/..."` fora de `lib/routes.ts` e do teste
-  dele. Esse é o resultado de tratar `lib/routes.ts` como porta única, e é
-  a régua pra manter conforme o projeto cresce (ver "Ação de membro/coleção"
-  abaixo, pensado especificamente pra `relatorios_*` não repetir o sprawl
-  do `frotas-mvc`).
+- **Sem helper nenhum**: toda navegação vira string literal espalhada pelo
+  código (`router.push("/admin/pedidos?status=pendente")` repetido em
+  vários componentes). Sem um `ROUTES` central, renomear uma URL significa
+  caçar cada ocorrência manualmente, e um typo na string só quebra em
+  runtime, sem o TypeScript avisar.
+- **Nomeação sem convenção que se sustente**: mesmo um projeto que começa
+  organizado pode deixar uma seção crescer sem nesting — dezenas de rotas
+  nomeadas na mão (`relatorios_x_pdf`, `relatorios_x_print`,
+  `relatorios_x_gestor_preview`...) em vez de um padrão reutilizável tipo
+  `member`/`collection`. É o resultado de não aplicar a mesma disciplina de
+  nomeação em todo canto do projeto conforme ele cresce.
+
+Neste projeto ([HTD-Front](https://github.com/juankalleo/HTD-Front)): toda página em `app/` tem um helper
+correspondente em `ROUTES`, e nenhum outro arquivo do projeto usa string
+literal de rota — confirmado por grep, zero ocorrência de
+`router.push("/...")`/`href="/..."` fora de `lib/routes.ts` e do teste
+dele. Esse é o resultado de tratar `lib/routes.ts` como porta única, e é
+a régua pra manter conforme o projeto cresce (ver "Ação de membro/coleção"
+abaixo, pensado especificamente pra `relatorios_*` não crescer flat com o
+tempo).
 
 ## Onde fica
 
@@ -102,23 +100,22 @@ O prefixo indica a área do domínio:
 | `m_` | Usuários/membros do sistema (caso `m_usuarios`). |
 | `relatorios_` | Telas analíticas e exportações. |
 
-`m_` não é invenção deste projeto — mesmo prefixo, mesmo motivo, no
-`config/routes.rb` real do `frotas-mvc`: `resources :users, path:
-'m_usuarios', as: :m_usuarios`. Um `User`/`users` sem prefixo (a exceção
-documentada no template do backend) ainda ganha `m_` na camada de rota,
-nos dois projetos, de forma independente — bom sinal de que é convenção
-estável, não acidente.
+`m_` não é uma invenção isolada desta camada de rota — o mesmo prefixo,
+pelo mesmo motivo, aparece do lado do backend Rails (ver
+[Nomenclatura e módulos](/padrao-banco-de-dados/conceitos-tecnicos/nomenclatura-e-modulos)
+no Padrão Banco de Dados): um `User`/`users` sem prefixo no model (a
+exceção documentada da regra) ainda ganha `m_` na camada de rota —
+convenção consistente entre as duas camadas, não coincidência.
 
 ## Ação de membro/coleção com verbo
 
 Nem toda rota é lista/novo/registro/edição. Um botão como "aprovar",
 "cancelar" ou "validar" numa tela específica é uma **ação de membro**
 (opera sobre um registro, precisa de `id`) ou **ação de coleção** (não
-precisa de `id`, filtra ou agrega o conjunto inteiro) — o padrão ainda não
-tinha isso documentado, apesar de já existir em produtos irmãos:
-`nextfrotas-api` (`member { patch :validar_voucher; patch :cancelar }`,
-gerando `validar_voucher_..._path(id)`) e `frotas-mvc` (`member { post
-:aprovar }`).
+precisa de `id`, filtra ou agrega o conjunto inteiro) — o mesmo conceito
+que o Rails expõe nativamente no roteador via bloco `member`/`collection`
+(`member { post :aprovar }`, `collection { get :pendentes }`), replicado
+aqui do lado do front pra manter o mesmo vocabulário nas duas camadas.
 
 Convenção do nome — verbo **antes** do módulo/recurso, no mesmo lugar que
 `new_`/`edit_` já ocupam:
@@ -230,8 +227,8 @@ withQuery(ROUTES.relatorios_orgaos_path, {
 8. Adicionou helper compartilhado: cobrir em `lib/__tests__/routes.test.ts`.
 9. Criou ação de verbo (aprovar/cancelar/validar): nomear
    `<verbo>_<modulo>_<recurso>_path`, montar com `memberPath` existente —
-   nunca deixar `relatorios_*` (ou qualquer seção) crescer flat feito o
-   `frotas-mvc`.
+   nunca deixar `relatorios_*` (ou qualquer seção) crescer flat, com
+   dezenas de rotas nomeadas na mão sem nesting.
 
 ## Leitura de apoio
 

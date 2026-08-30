@@ -5,12 +5,12 @@ sidebar_label: Multi-tenancy
 # Multi-tenancy
 
 Um banco só, várias organizações isoladas dentro dele (multi-tenancy por
-linha, não por schema/banco separado) — a hierarquia real tem três
+linha, não por schema/banco separado) — a hierarquia tem três
 níveis.
 
-## A hierarquia real
+## A hierarquia
 
-`a_tenant` (o cliente SaaS — o estado, a prefeitura) → `a_orgao`
+`a_tenant` (o cliente SaaS — a organização no topo) → `a_orgao`
 (órgão/CNPJ, pertence a **um** tenant) → `a_unidade` (divisão/setor,
 pertence a **um** órgão) → `users.a_unidade_id` (opcional — nem todo
 usuário está preso a uma unidade específica).

@@ -56,11 +56,12 @@ namespace :api do
 end
 ```
 
-Achado real, não teórico: um catch-all (`match "*unmatched", ...`) puxado
-pra fora de `namespace :api`, na raiz do arquivo de rotas, quebrava a
-resolução de URL do ActiveStorage — rotas do Rails que também vivem na
-raiz passavam a cair no catch-all antes de chegar na rota real delas. A
-correção foi simplesmente manter o catch-all como o **último** item
+Uma pegadinha comum, fácil de cair sem perceber: um catch-all
+(`match "*unmatched", ...`) puxado pra fora de `namespace :api`, na raiz
+do arquivo de rotas, quebra a resolução de URL de qualquer rota do
+próprio Rails que também viva na raiz (o ActiveStorage é um exemplo
+típico) — essas rotas passam a cair no catch-all antes de chegar na rota
+delas. A correção é manter o catch-all como o **último** item
 dentro do próprio `namespace :api`, escopado só ao que já é `/api/*` —
 ele nunca compete com rota de fora da API. `/errors#not_found` devolve o
 mesmo envelope de erro de qualquer outro 404 (ver

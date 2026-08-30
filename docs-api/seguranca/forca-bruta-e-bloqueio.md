@@ -18,11 +18,16 @@ Rack::Attack.cache.store = Rails.cache
 Detalhe fácil de errar: o padrão do Rack::Attack, sem configurar isso, é
 guardar contador em memória do próprio processo — funciona sozinho, mas
 com mais de um worker Puma (o normal em produção), cada worker teria seu
-próprio contador, e o limite real seria multiplicado pelo número de
-workers sem ninguém perceber. Apontar pro `Rails.cache` (compartilhado
+próprio contador, e o limite configurado seria multiplicado pelo número
+de workers sem ninguém perceber. Apontar pro `Rails.cache` (compartilhado
 entre workers) é o que faz o threshold configurado valer de verdade.
 
 ## Os três throttles
+
+Os números abaixo (`limit`, `period`, `maxretry`...) são um exemplo de
+calibração, não uma regra fixa — cada projeto ajusta esses valores
+conforme o volume de tráfego legítimo esperado e a sensibilidade do
+endpoint:
 
 ```ruby
 throttle("logins/ip", limit: 30, period: 5.minutes) do |req|
@@ -40,15 +45,17 @@ blocklist("block brute force logins") do |req|
 end
 ```
 
-- **Por IP** — 30 tentativas a cada 5 minutos. Cobre um IP único tentando
-  senha em várias contas (credential stuffing).
-- **Por identificador** (e-mail) — 8 tentativas a cada 15 minutos, **por
-  e-mail**, não por IP. Cobre o ataque distribuído — várias origens (IP
-  rotativo, rede de bot) tentando a mesma conta.
-- **Bloqueio automático** (`Allow2Ban`) — 10 tentativas em 1 minuto bane
-  o IP por 1 hora inteira. Mais agressivo que os dois throttles acima:
-  não é "espera e tenta de novo", é bloqueio direto pra um padrão de
-  ataque rápido e concentrado.
+- **Por IP** — nesse exemplo, 30 tentativas a cada 5 minutos (valor
+  ajustável). Cobre um IP único tentando senha em várias contas
+  (credential stuffing).
+- **Por identificador** (e-mail) — nesse exemplo, 8 tentativas a cada 15
+  minutos, **por e-mail**, não por IP (valor ajustável). Cobre o ataque
+  distribuído — várias origens (IP rotativo, rede de bot) tentando a
+  mesma conta.
+- **Bloqueio automático** (`Allow2Ban`) — nesse exemplo, 10 tentativas em
+  1 minuto bane o IP por 1 hora inteira (valores ajustáveis). Mais
+  agressivo que os dois throttles acima: não é "espera e tenta de novo",
+  é bloqueio direto pra um padrão de ataque rápido e concentrado.
 
 As três rodam em paralelo, no mesmo endpoint — um ataque só precisa
 disparar uma delas pra ser barrado, não todas as três.

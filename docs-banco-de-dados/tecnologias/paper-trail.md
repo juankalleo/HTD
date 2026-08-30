@@ -38,7 +38,7 @@ primeiro, `has_paper_trail` falha em runtime (não no boot) com
 `relation "versions" does not exist`, no primeiro `create`/`update` que
 tentar gravar uma versão.
 
-## Exemplo real
+## Exemplo de uso
 
 ```ruby
 # app/models/application_record.rb

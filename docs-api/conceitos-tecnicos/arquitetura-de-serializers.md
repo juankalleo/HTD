@@ -58,8 +58,8 @@ não só o `id` da FK.
 automaticamente, por convenção de nome de classe (`Model` →
 `ModelSerializer`) — nenhum controller passa `serializer:` explícito na
 maioria dos casos. Essa convenção **quebra** quando o nome da classe do
-model não bate com o nome do serializer — o caso real do projeto é
-`PaperTrail::Version` (a gem), cujo serializer correto (`VersionLogSerializer`)
+model não bate com o nome do serializer — um exemplo comum é model vindo
+de uma gem externa, como `PaperTrail::Version`, cujo serializer correto (`VersionLogSerializer`)
 não segue o padrão `PaperTrail::VersionSerializer` de propósito (nome
 teria que colidir com o namespace da gem — ver
 [Modelagem base](/padrao-banco-de-dados/conceitos-tecnicos/modelagem-base)

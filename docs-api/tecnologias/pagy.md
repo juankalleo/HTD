@@ -17,7 +17,7 @@ Escolhida pela leveza e por já ser a paginação usada em outros projetos
 irmãos do mesmo template de backend — reaproveitar a mesma lib entre
 projetos evita reaprender uma API de paginação diferente a cada vez. Ver
 [Paginação](/padrao-api/conceitos-tecnicos/paginacao) pro funcionamento
-completo (teto de itens, formato do metadado, uso real num controller).
+completo (teto de itens, formato do metadado, uso num controller).
 
 ## Versão
 
@@ -25,7 +25,7 @@ completo (teto de itens, formato do metadado, uso real num controller).
 
 ```ruby
 # Gemfile
-gem "pagy", "~> 5.10" # travado na major usada em locacao/api — Pagy 6+/40+ mudou a API (Pagy::Backend não existe mais do mesmo jeito)
+gem "pagy", "~> 5.10" # travado nessa major — Pagy 6+ mudou a API (Pagy::Backend não existe mais do mesmo jeito)
 ```
 
 Trocar de major sem revisar a migração da gem quebraria o
@@ -43,7 +43,7 @@ gem "pagy", "~> 5.10"
 include Pagy::Backend
 ```
 
-## Exemplo real
+## Exemplo de uso
 
 ```ruby
 MAX_PER_PAGE = 100
