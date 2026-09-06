@@ -57,19 +57,9 @@ export function HomeContent() {
 
         <article className="home-doc-page">
           <section className="home-doc-intro" id="introduction">
-            <div className="home-flagship-banner">
-              <strong>{home.bannerLabel}</strong>
-              <span>{home.bannerStatus}</span>
-              <small>{home.bannerText}</small>
-            </div>
-            <img className="home-doc-logo" src="/img/blog/htd-dice.png" alt={home.imageAlt} />
+            <span className="home-hero-eyebrow">{home.bannerText}</span>
             <h1>{home.title}</h1>
-            <p>{home.purposeBody}</p>
-            <p>
-              {home.whyBodyBefore}{" "}
-              <a href="/padrao-frontend/seguranca">{home.whySecurityLink}</a>{" "}
-              {home.whyBodyAfter}
-            </p>
+            <p className="home-hero-lede">{home.purposeBody}</p>
             <div className="home-hero-actions">
               <a className="home-hero-cta home-hero-cta--primary" href="/aprenda">
                 {home.primaryCta}
@@ -78,6 +68,12 @@ export function HomeContent() {
                 {home.cards["padrao-frontend"].title}
               </a>
             </div>
+            <img className="home-doc-logo" src="/img/blog/htd-dice.png" alt={home.imageAlt} />
+            <p>
+              {home.whyBodyBefore}{" "}
+              <a href="/padrao-frontend/seguranca">{home.whySecurityLink}</a>{" "}
+              {home.whyBodyAfter}
+            </p>
           </section>
 
           <section className="home-doc-section" id="indexes">

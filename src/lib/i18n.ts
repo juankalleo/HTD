@@ -72,8 +72,6 @@ type Dictionary = {
     navRoadmap: string;
     navProjectLinks: string;
     navAbout: string;
-    bannerLabel: string;
-    bannerStatus: string;
     bannerText: string;
     primaryCta: string;
     secondaryCta: string;
@@ -176,9 +174,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       navRoadmap: "Study roadmap",
       navProjectLinks: "Project links",
       navAbout: "About me",
-      bannerLabel: "HTD",
-      bannerStatus: "v1.0 reference",
-      bannerText: "frontend standard available",
+      bannerText: "Frontend Standard available",
       primaryCta: "Start learning free",
       secondaryCta: "See credits",
       purposeHeading: "Purpose",
@@ -372,9 +368,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       navRoadmap: "Roadmap de estudo",
       navProjectLinks: "Links do projeto",
       navAbout: "Sobre mim",
-      bannerLabel: "HTD",
-      bannerStatus: "referência v1.0",
-      bannerText: "padrão frontend disponível",
+      bannerText: "Padrão Frontend disponível",
       primaryCta: "Comece a aprender grátis",
       secondaryCta: "Ver créditos",
       purposeHeading: "Propósito",

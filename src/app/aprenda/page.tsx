@@ -6,7 +6,7 @@ import { getTrackLessons } from "@/content/aprenda/registry";
 export const metadata: Metadata = {
   title: "Aprenda | How to Dev",
   description:
-    "Aprenda Frontend (Tailwind e Next.js), Ruby on Rails e Docker do zero — exemplos de código, exercícios e quiz, do básico ao avançado.",
+    "Git, JavaScript, TypeScript, redes, Frontend (Tailwind e Next.js), SQL, Ruby on Rails e Docker do zero — exemplos de código, exercícios e quiz, do básico ao avançado.",
 };
 
 export default function AprendaPage() {
@@ -15,6 +15,7 @@ export default function AprendaPage() {
     lessons: getTrackLessons(track.slug).map((lessonModule) => lessonModule.meta),
   }));
   const totalLessons = tracksWithLessons.reduce((acc, t) => acc + t.lessons.length, 0);
+  const totalTracks = tracksWithLessons.length;
 
   return (
     <div className="nexttech-aprenda-hub">
@@ -22,11 +23,12 @@ export default function AprendaPage() {
         <p className="nexttech-aprenda-hub__eyebrow">Aprenda</p>
         <h1>Do básico ao avançado, com exemplos de verdade</h1>
         <p>
-          {totalLessons} {totalLessons === 1 ? "lição" : "lições"} em 3 trilhas — Frontend (Tailwind e Next.js), Ruby
-          on Rails e Docker. Cada aula tem exemplo de código, exercício e um quiz rápido no final.
+          {totalLessons} {totalLessons === 1 ? "lição" : "lições"} em {totalTracks} trilhas — Git, JavaScript,
+          TypeScript, Redes, Frontend, SQL, Ruby on Rails e Docker. Cada aula tem exemplo de código, exercício e um
+          quiz rápido no final.
         </p>
       </header>
-      <StudyTree tracksWithLessons={tracksWithLessons} maxChaptersShown={10} />
+      <StudyTree tracksWithLessons={tracksWithLessons} />
     </div>
   );
 }

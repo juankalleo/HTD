@@ -17,7 +17,7 @@ export type TrackWithLessons = { track: TrackMeta; lessons: LessonMeta[] };
  */
 export function StudyTree({
   tracksWithLessons,
-  maxChaptersShown = 5,
+  maxChaptersShown = 3,
 }: {
   tracksWithLessons: TrackWithLessons[];
   maxChaptersShown?: number;
@@ -58,10 +58,10 @@ export function StudyTree({
           const entryHref = lessons[0] ? `/aprenda/${track.slug}/${lessons[0].slug}` : `/aprenda/${track.slug}`;
           return (
             <div key={track.slug} className="nexttech-study-tree__track">
-              <Link href={entryHref} className="nexttech-study-tree__track-header">
+              <div className="nexttech-study-tree__track-header">
                 <strong>{track.title}</strong>
                 <span>{percent}%</span>
-              </Link>
+              </div>
               <p className="nexttech-study-tree__track-summary">{track.summary}</p>
               {lessons.length === 0 ? (
                 <p className="nexttech-study-tree__empty">Em construção</p>
@@ -74,13 +74,18 @@ export function StudyTree({
                       </Link>
                     </li>
                   ))}
-                  {remaining > 0 && (
-                    <li className="nexttech-study-tree__more">
-                      <Link href={`/aprenda/${track.slug}`}>+{remaining} lições →</Link>
-                    </li>
-                  )}
                 </ul>
               )}
+              <div className="nexttech-study-tree__track-footer">
+                {remaining > 0 && (
+                  <Link href={`/aprenda/${track.slug}`} className="nexttech-study-tree__more">
+                    ver todas as {lessons.length} lições
+                  </Link>
+                )}
+                <Link href={entryHref} className="nexttech-study-tree__cta">
+                  {percent > 0 ? "Continuar" : "Começar"} →
+                </Link>
+              </div>
             </div>
           );
         })}
