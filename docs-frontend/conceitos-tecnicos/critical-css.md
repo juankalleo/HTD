@@ -2,6 +2,7 @@
 video: bZpNSxOlCjs
 videoEn: txAE6yT0Eu8
 sidebar_label: Critical CSS
+date: "29 de agosto de 2026"
 ---
 
 # Critical CSS

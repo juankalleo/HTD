@@ -1,5 +1,6 @@
 ---
 videoEn: Gi8DQOiDq1E
+date: "30 de agosto de 2026"
 ---
 
 # CanCanCan

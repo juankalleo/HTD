@@ -2,6 +2,7 @@
 video: kHTPsCMf9CA
 videoEn: stMj5jlu1-4
 sidebar_label: Man-in-the-Middle
+date: "29 de agosto de 2026"
 ---
 
 # Man-in-the-Middle (MitM) no Frontend

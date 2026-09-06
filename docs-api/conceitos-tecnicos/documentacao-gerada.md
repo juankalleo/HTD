@@ -1,5 +1,6 @@
 ---
 sidebar_label: Documentação gerada automaticamente
+date: "30 de agosto de 2026"
 ---
 
 # Documentação gerada automaticamente

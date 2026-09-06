@@ -1,5 +1,6 @@
 ---
 sidebar_label: Conceitos técnicos
+date: "29 de agosto de 2026"
 ---
 
 # Conceitos técnicos

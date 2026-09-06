@@ -2,6 +2,7 @@
 video: xxdZyc-s9jU
 videoEn: rtg-5EXwpbg
 sidebar_label: Filtros e busca
+date: "30 de agosto de 2026"
 ---
 
 # Filtros e busca

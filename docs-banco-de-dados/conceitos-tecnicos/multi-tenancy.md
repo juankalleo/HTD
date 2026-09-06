@@ -1,5 +1,6 @@
 ---
 sidebar_label: Multi-tenancy
+date: "30 de agosto de 2026"
 ---
 
 # Multi-tenancy

@@ -1,5 +1,6 @@
 ---
 sidebar_label: Lost Update
+date: "29 de agosto de 2026"
 ---
 
 # Lost Update

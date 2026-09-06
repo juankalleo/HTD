@@ -1,5 +1,6 @@
 ---
 sidebar_label: Arquitetura de controllers
+date: "30 de agosto de 2026"
 ---
 
 # Arquitetura de controllers

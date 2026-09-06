@@ -1,5 +1,6 @@
 ---
 sidebar_label: Visão geral
+date: "30 de agosto de 2026"
 ---
 
 # Padrão Banco de Dados

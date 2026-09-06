@@ -2,6 +2,7 @@
 video: SbXldeAb2D4
 videoEn: -LjPRzFR5f0
 sidebar_label: CSP
+date: "29 de agosto de 2026"
 ---
 
 # CSP (Content Security Policy)

@@ -1,6 +1,7 @@
 ---
 video: m54omTveWa8
 videoEn: Y5TYDo9Qcv4
+date: "29 de agosto de 2026"
 ---
 
 # Tipografia
@@ -38,6 +39,37 @@ secundário). O que se repete em toda tela:
 | Texto de corpo | `text-sm` / `text-base` |
 | Texto de apoio / dica | `text-xs text-base-content/60` |
 | Valor de KPI / número | `font-semibold` |
+
+## O catálogo de fontes institucionais — e o que faz uma fonte boa pra UI
+
+`FONTES_INSTITUCIONAIS` (`theme/fonts.ts`) lista as fontes que a Configuração Institucional pode
+aplicar: Geist (padrão), Inter, Roboto, Open Sans, Lato, Montserrat, Poppins, Source Sans, Nunito,
+Work Sans, Rubik, Raleway, IBM Plex Sans. Nenhuma escolhida ao acaso — todas compartilham um
+punhado de característica que faz uma fonte funcionar bem em UI de produto (diferente de fonte
+boa pra título de marketing ou impressão):
+
+- **x-height alta** — a altura das letras minúsculas relativa às maiúsculas. Texto de interface é
+  majoritariamente minúsculo e pequeno (rótulo, dado de tabela); x-height baixa fica ilegível
+  cedo demais quando o tamanho de fonte cai.
+- **Peso variável disponível** (`next/font` carrega múltiplos `font-weight` da mesma família) —
+  permite usar `font-semibold`/`font-bold` pra hierarquia sem precisar de uma segunda fonte só
+  pra destaque.
+- **Cobertura de caractere ampla** — acento, cedilha, todo o alfabeto latino estendido sem
+  glyph faltando (relevante pra qualquer sistema em português).
+- **Neutra o bastante pra não competir com o conteúdo** — a fonte de um painel administrativo não
+  deveria "chamar atenção" pra si mesma; é uma característica de design deliberada, não falta de
+  personalidade.
+
+**Inter** é hoje talvez a fonte mais usada em produto de software do mercado — desenhada
+especificamente pra tela (o nome vem de "interface"), x-height generosa, ótima legibilidade em
+tamanho pequeno. **Nunito** é geométrica com cantos arredondados — mais amigável/menos corporativa
+que Inter, ainda mantendo boa legibilidade. **Geist** (a fonte padrão aqui, da Vercel) segue a
+mesma família de raciocínio — moderna, neutra, feita pra interface. As outras do catálogo (Roboto,
+Open Sans, Lato, Montserrat, Poppins, Work Sans, Rubik...) seguem o mesmo critério — cada uma um
+ponto ligeiramente diferente de personalidade (mais geométrica, mais humanista, mais compacta),
+mas todas dentro da mesma categoria "sans-serif desenhada pra tela, com bom x-height e peso
+variável". Escolher fonte pra uma UI nova é escolher dentro dessa categoria — não vale a pena sair
+dela pra algo decorativo/serifado no corpo do texto de um sistema administrativo.
 
 ## Texto longo (prose)
 

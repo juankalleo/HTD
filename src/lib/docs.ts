@@ -36,7 +36,7 @@ const AREAS: Record<string, AreaConfig> = {
   "padrao-frontend": {
     folder: "docs-frontend",
     title: "Padrão Frontend",
-    cargo: "Senior Fullstack",
+    cargo: "Fullstack Engineer",
     area: "Padrão Frontend",
   },
   "padrao-api": {
@@ -60,7 +60,7 @@ const AREAS: Record<string, AreaConfig> = {
   examples: {
     folder: "docs-examples",
     title: "Exemplos",
-    cargo: "Senior Fullstack",
+    cargo: "Fullstack Engineer",
     area: "Exemplos",
   },
 };
@@ -317,9 +317,13 @@ const AREA_ORDER: Record<string, string[]> = {
     "vps-e-containers",
     "kernel-netfilter-e-firewall",
     "proxy-reverso-e-cdn",
+    "fail2ban-e-controle-de-acesso",
     "limites-de-recursos-e-oom",
+    "load-balancer",
+    "ci-cd",
     "devops-e-cultura",
   ],
+  "padrao-infraestrutura::tecnologias": ["docker-compose", "nginx"],
 };
 
 function orderRank(order: string[] | undefined, name: string): number {

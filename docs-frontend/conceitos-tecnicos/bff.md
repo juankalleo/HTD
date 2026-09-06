@@ -2,6 +2,7 @@
 video: JXmEZr77voo
 videoEn: SSo-z16wEnc
 sidebar_label: BFF
+date: "29 de agosto de 2026"
 ---
 
 # BFF (Backend For Frontend)

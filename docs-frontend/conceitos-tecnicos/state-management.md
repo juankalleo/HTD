@@ -2,6 +2,7 @@
 video: unfHrB2sGGM
 videoEn: VenLRGHx3D4
 sidebar_label: State Management
+date: "29 de agosto de 2026"
 ---
 
 # State Management

@@ -1,6 +1,7 @@
 ---
 video: k_rCfuqC0og
 videoEn: RPgZIIxKCgU
+date: "29 de agosto de 2026"
 ---
 
 # Select

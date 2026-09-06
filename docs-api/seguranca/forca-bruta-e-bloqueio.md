@@ -2,6 +2,7 @@
 video: mlzPJlQeqBM
 videoEn: Sas6vxlMxCE
 sidebar_label: Força bruta e bloqueio
+date: "30 de agosto de 2026"
 ---
 
 # Força bruta e bloqueio

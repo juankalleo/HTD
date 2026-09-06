@@ -2,6 +2,7 @@
 video: nMFffjHIlRg
 videoEn: R-4_DbV1Su4
 sidebar_label: Visão geral
+date: "30 de agosto de 2026"
 ---
 
 # Segurança

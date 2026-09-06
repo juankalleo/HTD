@@ -1,5 +1,6 @@
 ---
 sidebar_label: WebSocket
+date: "29 de agosto de 2026"
 ---
 
 # WebSocket

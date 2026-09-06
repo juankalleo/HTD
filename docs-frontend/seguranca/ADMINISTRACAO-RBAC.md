@@ -1,6 +1,7 @@
 ---
 video: VWFgq0fse2Y
 videoEn: 4Uya_I_Oxjk
+date: "29 de agosto de 2026"
 ---
 
 # Administração e RBAC

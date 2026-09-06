@@ -2,6 +2,7 @@
 video: ikjo5JUcTf4
 videoEn: eWEgUcHPle0
 sidebar_label: CSRF
+date: "29 de agosto de 2026"
 ---
 
 # CSRF (Cross-Site Request Forgery)

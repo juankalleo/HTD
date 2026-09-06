@@ -2,6 +2,7 @@
 video: jcA_Nn2xPXg
 videoEn: WZ--LRRyeTQ
 sidebar_label: Tecnologias
+date: "30 de agosto de 2026"
 ---
 
 # Tecnologias do sistema

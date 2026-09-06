@@ -1,5 +1,6 @@
 ---
 sidebar_label: Fetch x TanStack Query
+date: "29 de agosto de 2026"
 ---
 
 # Fetch x TanStack Query

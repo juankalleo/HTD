@@ -1,5 +1,6 @@
 ---
 sidebar_label: Distributed Systems
+date: "29 de agosto de 2026"
 ---
 
 # Distributed Systems

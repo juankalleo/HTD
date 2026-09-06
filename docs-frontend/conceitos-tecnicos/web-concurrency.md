@@ -1,5 +1,6 @@
 ---
 sidebar_label: Web Concurrency
+date: "29 de agosto de 2026"
 ---
 
 # Web Concurrency (concorrência no navegador)

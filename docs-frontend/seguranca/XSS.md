@@ -2,6 +2,7 @@
 video: 2LYPyUk-L0k
 videoEn: EoaDgUgS6QA
 sidebar_label: XSS
+date: "29 de agosto de 2026"
 ---
 
 # XSS (Cross-Site Scripting)

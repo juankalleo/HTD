@@ -1,6 +1,7 @@
 ---
 video: ghTrp1x_1As
 videoEn: lsMQRaeKNDk
+date: "29 de agosto de 2026"
 ---
 
 # Dados e API

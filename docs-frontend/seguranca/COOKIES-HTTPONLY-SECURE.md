@@ -2,6 +2,7 @@
 video: rCVivc9-rWs
 videoEn: GhrvZ5nUWNg
 sidebar_label: Cookies HttpOnly & Secure
+date: "29 de agosto de 2026"
 ---
 
 # Cookies HttpOnly & Secure

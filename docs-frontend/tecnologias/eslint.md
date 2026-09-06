@@ -1,6 +1,7 @@
 ---
 video: cbSHUVSUFgY
 videoEn: lHAeK8t94as
+date: "29 de agosto de 2026"
 ---
 
 # ESLint

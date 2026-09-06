@@ -1,6 +1,7 @@
 ---
 video: yMif1McmBls
 videoEn: ir9klkHKCmE
+date: "29 de agosto de 2026"
 ---
 
 # SweetAlert2

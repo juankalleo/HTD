@@ -1,6 +1,7 @@
 ---
 video: WEitNRycnpI
 videoEn: iM0z_JOgM60
+date: "29 de agosto de 2026"
 ---
 
 # ECharts / EvilCharts

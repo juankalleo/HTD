@@ -2,6 +2,7 @@
 video: er_QPBldsXE
 videoEn: wcTzlJi2Oz4
 sidebar_label: shadcn/ui
+date: "29 de agosto de 2026"
 ---
 
 # shadcn/ui — avaliado, não adotado

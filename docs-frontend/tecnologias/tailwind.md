@@ -1,6 +1,7 @@
 ---
 video: esfzSt8V7ek
 videoEn: UBOj6rqRUME
+date: "29 de agosto de 2026"
 ---
 
 # Tailwind CSS

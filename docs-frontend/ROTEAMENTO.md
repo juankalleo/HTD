@@ -2,6 +2,7 @@
 video: nlc-l2nW_J0
 videoEn: gSSsZReIFRk
 sidebar_label: Roteamento
+date: "30 de agosto de 2026"
 ---
 
 # Roteamento

@@ -1,6 +1,7 @@
 ---
 video: XSbMSSdGSdg
 videoEn: cc_xmawJ8Kg
+date: "29 de agosto de 2026"
 ---
 
 # React Hook Form + Zod

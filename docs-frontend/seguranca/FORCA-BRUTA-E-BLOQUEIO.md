@@ -1,5 +1,6 @@
 ---
 sidebar_label: Força bruta e bloqueio
+date: "29 de agosto de 2026"
 ---
 
 # Força bruta e bloqueio

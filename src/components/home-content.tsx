@@ -1,7 +1,16 @@
 "use client";
 
 import { useLocale } from "./locale-provider";
+import { PtOnlyNotice } from "./pt-only-notice";
+import { StudyTree } from "./aprenda/study-tree";
+import { TRACKS } from "@/content/aprenda/tracks";
+import { getTrackLessons } from "@/content/aprenda/registry";
 import type { AreaKey } from "@/lib/i18n";
+
+const TRACKS_WITH_LESSONS = TRACKS.map((track) => ({
+  track,
+  lessons: getTrackLessons(track.slug).map((lessonModule) => lessonModule.meta),
+}));
 
 const AREA_ORDER: AreaKey[] = [
   "padrao-frontend",
@@ -61,6 +70,14 @@ export function HomeContent() {
               <a href="/padrao-frontend/seguranca">{home.whySecurityLink}</a>{" "}
               {home.whyBodyAfter}
             </p>
+            <div className="home-hero-actions">
+              <a className="home-hero-cta home-hero-cta--primary" href="/aprenda">
+                {home.primaryCta}
+              </a>
+              <a className="home-hero-cta home-hero-cta--secondary" href="/padrao-frontend">
+                {home.cards["padrao-frontend"].title}
+              </a>
+            </div>
           </section>
 
           <section className="home-doc-section" id="indexes">
@@ -104,25 +121,8 @@ export function HomeContent() {
           <section className="home-doc-section" id="roadmap">
             <h2>{home.roadmapHeading}</h2>
             <p>{home.roadmapIntro}</p>
-            <ol className="home-roadmap-list">
-              {home.roadmapTracks.map((track) => (
-                <li key={track.step}>
-                  <span className="home-roadmap-step">{track.step}</span>
-                  <div>
-                    <h3>
-                      <a href={track.href}>{track.title}</a>
-                      <span>{track.status}</span>
-                    </h3>
-                    <p>{track.description}</p>
-                    <ul>
-                      {track.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <PtOnlyNotice translated={false} />
+            <StudyTree tracksWithLessons={TRACKS_WITH_LESSONS} maxChaptersShown={4} />
           </section>
 
           <section className="home-doc-section" id="project-links">

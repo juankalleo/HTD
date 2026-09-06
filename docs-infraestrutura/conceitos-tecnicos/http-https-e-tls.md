@@ -1,5 +1,6 @@
 ---
 sidebar_label: HTTP, HTTPS e TLS
+date: "30 de agosto de 2026"
 ---
 
 # HTTP, HTTPS e TLS

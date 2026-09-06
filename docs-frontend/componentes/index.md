@@ -1,5 +1,6 @@
 ---
 sidebar_label: Componentes
+date: "29 de agosto de 2026"
 ---
 
 # Componentes reutilizáveis

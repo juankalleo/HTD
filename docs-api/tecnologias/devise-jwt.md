@@ -1,5 +1,6 @@
 ---
 videoEn: 0ounptRMU9o
+date: "30 de agosto de 2026"
 ---
 
 # Devise + devise-jwt

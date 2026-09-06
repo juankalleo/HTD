@@ -2,6 +2,7 @@
 video: njTL7-eZ1AI
 videoEn: ObrSuDYMl1s
 sidebar_label: SSR
+date: "29 de agosto de 2026"
 ---
 
 # Server-Side Rendering (SSR)

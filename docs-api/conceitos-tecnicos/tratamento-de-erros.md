@@ -1,6 +1,7 @@
 ---
 videoEn: RQQ98mbh2Ic
 sidebar_label: Tratamento de erros
+date: "30 de agosto de 2026"
 ---
 
 # Tratamento de erros

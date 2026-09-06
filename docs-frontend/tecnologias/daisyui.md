@@ -1,6 +1,7 @@
 ---
 video: 1OCN03HHXAQ
 videoEn: Dw8Ut7oo6H0
+date: "29 de agosto de 2026"
 ---
 
 # DaisyUI

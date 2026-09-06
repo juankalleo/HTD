@@ -2,6 +2,7 @@
 video: sUHY5_0-VnQ
 videoEn: 87i0pejrULw
 sidebar_label: Hydration
+date: "29 de agosto de 2026"
 ---
 
 # Hydration

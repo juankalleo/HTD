@@ -1,5 +1,6 @@
 ---
 sidebar_label: Hardware, kernel e processos
+date: "30 de agosto de 2026"
 ---
 
 # Hardware, kernel e processos

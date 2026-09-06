@@ -1,5 +1,6 @@
 ---
 sidebar_label: Proteção da wiki
+date: "30 de agosto de 2026"
 ---
 
 # Proteção da própria wiki

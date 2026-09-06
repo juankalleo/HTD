@@ -1,5 +1,6 @@
 ---
 sidebar_label: Visão geral
+date: "30 de agosto de 2026"
 ---
 
 # Padrão Infraestrutura
@@ -26,12 +27,16 @@ investimento, porque toda decisão de infra depende desses conceitos.
 
 - [Kernel, netfilter e firewall](/padrao-infraestrutura/conceitos-tecnicos/kernel-netfilter-e-firewall) — do pacote chegando na placa de rede até a decisão `ACCEPT`/`DROP`, passando por `iptables` e `ufw`.
 - [Proxy reverso e CDN](/padrao-infraestrutura/conceitos-tecnicos/proxy-reverso-e-cdn) — por que colocar algo na frente da aplicação, e o que um CDN resolve além de cache.
+- [Fail2ban e controle de acesso](/padrao-infraestrutura/conceitos-tecnicos/fail2ban-e-controle-de-acesso) — banimento dinâmico por comportamento, lista de acesso por IP, Basic Auth como camada extra.
 
-## Operação
+## Operação e entrega
 
 - [Limites de recursos e OOM Killer](/padrao-infraestrutura/conceitos-tecnicos/limites-de-recursos-e-oom) — por que todo container precisa de teto de CPU/memória definido, e o que acontece quando a memória do host acaba.
+- [Load balancer](/padrao-infraestrutura/conceitos-tecnicos/load-balancer) — algoritmo de distribuição, health check, escala horizontal vs. vertical, camada 4 vs. 7.
+- [CI/CD](/padrao-infraestrutura/conceitos-tecnicos/ci-cd) — integração contínua, entrega/deploy contínuo, estágio de pipeline, artefato, segredo.
 - [Cultura DevOps](/padrao-infraestrutura/conceitos-tecnicos/devops-e-cultura) — de onde o termo vem, e por que não é sinônimo de "ferramenta de deploy".
 
 ## Tecnologias
 
-- [Docker Compose](/padrao-infraestrutura/tecnologias/docker-compose) — o formato real de um `docker-compose.yml` de app + banco, com build-time vs. runtime bem separados.
+- [Docker Compose](/padrao-infraestrutura/tecnologias/docker-compose) — o formato de um `docker-compose.yml` de app, banco compartilhado e banco isolado por ambiente, com build-time vs. runtime bem separados.
+- [Nginx](/padrao-infraestrutura/tecnologias/nginx) — proxy reverso na prática: `server block`, headers `X-Forwarded-*`, controle de acesso na borda, balanceamento via `upstream`.

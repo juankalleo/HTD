@@ -1,5 +1,6 @@
 ---
 sidebar_label: Kernel, netfilter e firewall
+date: "30 de agosto de 2026"
 ---
 
 # Kernel, netfilter e firewall

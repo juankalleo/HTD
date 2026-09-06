@@ -2,6 +2,7 @@
 video: exaamM0COw0
 videoEn: cK_oUe6MbH8
 sidebar_label: Tree Shaking
+date: "29 de agosto de 2026"
 ---
 
 # Tree Shaking

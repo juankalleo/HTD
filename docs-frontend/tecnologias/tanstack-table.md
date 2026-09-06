@@ -1,6 +1,7 @@
 ---
 video: NJ_X8rbH600
 videoEn: F4zshDInsJY
+date: "29 de agosto de 2026"
 ---
 
 # TanStack Table

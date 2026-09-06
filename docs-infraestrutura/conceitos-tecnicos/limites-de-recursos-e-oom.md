@@ -1,5 +1,6 @@
 ---
 sidebar_label: Limites de recursos e OOM Killer
+date: "30 de agosto de 2026"
 ---
 
 # Limites de recursos e OOM Killer

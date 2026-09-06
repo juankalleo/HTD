@@ -2,6 +2,7 @@
 video: 9VQv-H1jvbg
 videoEn: cjIswDCKgu0
 sidebar_label: Debounce & Throttle
+date: "29 de agosto de 2026"
 ---
 
 # Debounce & Throttle

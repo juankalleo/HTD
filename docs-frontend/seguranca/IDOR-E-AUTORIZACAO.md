@@ -1,5 +1,6 @@
 ---
 sidebar_label: IDOR e autorização
+date: "29 de agosto de 2026"
 ---
 
 # IDOR e autorização

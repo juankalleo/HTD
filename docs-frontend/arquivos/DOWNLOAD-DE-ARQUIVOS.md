@@ -1,6 +1,7 @@
 ---
 video: J6qZ14Ugz7A
 videoEn: 6T_tiHBEvq8
+date: "29 de agosto de 2026"
 ---
 
 # Download de arquivos

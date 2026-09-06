@@ -1,6 +1,7 @@
 ---
 video: Gyq-yeot8qM
 videoEn: Y2H3DXDeS3Q
+date: "29 de agosto de 2026"
 ---
 
 # Autenticação — como funciona

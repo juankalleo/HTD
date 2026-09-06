@@ -1,6 +1,7 @@
 ---
 video: e6FigV2fLC8
 videoEn: ZVnjOPwW4ZA
+date: "29 de agosto de 2026"
 ---
 
 # Next.js (App Router)

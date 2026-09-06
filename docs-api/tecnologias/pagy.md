@@ -1,6 +1,7 @@
 ---
 video: YSJASENALrE
 videoEn: 4nrmf5KfD8Y
+date: "30 de agosto de 2026"
 ---
 
 # Pagy

@@ -1,6 +1,7 @@
 ---
 video: I8iGQjKGjDA
 videoEn: 6FyXURRVmR0
+date: "29 de agosto de 2026"
 ---
 
 # Cache

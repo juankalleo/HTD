@@ -1,5 +1,6 @@
 ---
 sidebar_label: JWT
+date: "29 de agosto de 2026"
 ---
 
 # JWT

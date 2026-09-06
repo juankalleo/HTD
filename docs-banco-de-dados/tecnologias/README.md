@@ -1,5 +1,6 @@
 ---
 sidebar_label: Tecnologias
+date: "30 de agosto de 2026"
 ---
 
 # Tecnologias do banco de dados

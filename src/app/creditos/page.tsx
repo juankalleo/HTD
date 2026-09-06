@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { getCreditsData } from "@/lib/credits";
+import { getGlobalSearchIndex } from "@/lib/search-index";
+import { getServerLocale } from "@/lib/locale-server";
 
 export const dynamic = "force-dynamic";
 
@@ -30,12 +32,14 @@ function CreditLink({ href }: { href: string }) {
   );
 }
 
-export default function CreditsPage() {
+export default async function CreditsPage() {
   const { videoChannels, books, externalSources } = getCreditsData();
+  const locale = await getServerLocale();
+  const searchEntries = getGlobalSearchIndex(locale);
 
   return (
     <>
-      <Navbar activeHref="/creditos" />
+      <Navbar activeHref="/creditos" searchEntries={searchEntries} />
       <main className="credits-main markdown credits-markdown">
         <section className="credits-hero">
           <h1>Fontes usadas no How to Dev</h1>

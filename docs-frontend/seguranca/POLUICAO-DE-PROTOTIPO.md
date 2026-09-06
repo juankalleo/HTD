@@ -2,6 +2,7 @@
 video: bFycRzkXp1U
 videoEn: W9_x8pc_bh8
 sidebar_label: Poluição de Protótipo
+date: "29 de agosto de 2026"
 ---
 
 # Poluição de Protótipo (Prototype Pollution)

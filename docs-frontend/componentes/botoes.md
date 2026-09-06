@@ -2,6 +2,7 @@
 video: oPOKpSFqy-I
 videoEn: _-G7VTWqMfc
 sidebar_label: Botões
+date: "29 de agosto de 2026"
 ---
 
 # Botões (`Button`)

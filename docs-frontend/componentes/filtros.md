@@ -2,6 +2,7 @@
 video: L6raE_UfweY
 videoEn: Y9qpEa0oqcs
 sidebar_label: Filtros
+date: "29 de agosto de 2026"
 ---
 
 # Filtros (`FilterSelect`)

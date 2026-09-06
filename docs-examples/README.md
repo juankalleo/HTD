@@ -1,3 +1,7 @@
+---
+date: "29 de agosto de 2026"
+---
+
 # Exemplos
 
 > Conteúdo em definição: esta área mantém a navegação pronta para receber exemplos reais dos padrões quando eles forem extraídos do projeto base.

@@ -2,6 +2,7 @@
 video: xUgCMMVZ2_A
 videoEn: Pdc5KJfOQpI
 sidebar_label: Clickjacking
+date: "29 de agosto de 2026"
 ---
 
 # Clickjacking (UI Redressing)

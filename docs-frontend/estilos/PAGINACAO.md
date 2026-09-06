@@ -1,6 +1,7 @@
 ---
 video: uKUA4N2oPxY
 videoEn: wAGIOCqS8tk
+date: "29 de agosto de 2026"
 ---
 
 # Paginação

@@ -1,6 +1,7 @@
 ---
 video: Q-206WRzOHQ
 videoEn: 8K1N3fE-cDs
+date: "29 de agosto de 2026"
 ---
 
 # TanStack React Query

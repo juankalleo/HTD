@@ -1,5 +1,6 @@
 ---
 sidebar_label: XHR / fetch
+date: "29 de agosto de 2026"
 ---
 
 # XHR / fetch

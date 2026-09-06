@@ -2,6 +2,7 @@
 video: IOErtWIJCgo
 videoEn: kHQNK2jU_TQ
 sidebar_label: Class Variance Authority
+date: "29 de agosto de 2026"
 ---
 
 # Class Variance Authority

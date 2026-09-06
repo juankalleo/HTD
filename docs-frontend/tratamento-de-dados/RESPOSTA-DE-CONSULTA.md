@@ -1,6 +1,7 @@
 ---
 video: 7zb1-pR3Jxk
 videoEn: IiAy1IQoYRI
+date: "29 de agosto de 2026"
 ---
 
 # Resposta de consulta (lista paginada)

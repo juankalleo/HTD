@@ -9,10 +9,10 @@
   --nexttech-active: #e2f0ff;
   --nexttech-blue: #0c66e4;
   --nexttech-blue-dark: #0747a6;
-  --nexttech-topbar-bg: #252a32;
-  --nexttech-sidebar-bg: #2c313a;
-  --nexttech-sidebar-bg-deep: #22272f;
-  --nexttech-sidebar-bg-soft: #383f49;
+  --nexttech-topbar-bg: #0b1a33;
+  --nexttech-sidebar-bg: #0f2247;
+  --nexttech-sidebar-bg-deep: #081426;
+  --nexttech-sidebar-bg-soft: #16305c;
   --nexttech-sidebar-border: rgba(255, 255, 255, .12);
   --nexttech-sidebar-text: #f8fafc;
   --nexttech-sidebar-muted: #cbd5e1;
@@ -47,17 +47,6 @@ body {
   right: 0;
   top: 0;
   z-index: 200;
-}
-
-[data-theme="light"] body:has(.home-main) .theme-layout-navbar.navbar,
-[data-theme="light"] body:has(.credits-markdown) .theme-layout-navbar.navbar {
-  background: #4051b5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .18);
-}
-
-[data-theme="light"] body:has(.home-main) .theme-layout-navbar .nexttech-nav-icon,
-[data-theme="light"] body:has(.credits-markdown) .theme-layout-navbar .nexttech-nav-icon {
-  color: rgba(255, 255, 255, .92);
 }
 
 .theme-layout-navbar .navbar__inner {
@@ -172,10 +161,13 @@ body {
 
 .nexttech-topbar-search {
   align-items: center;
+  appearance: none;
   background: rgba(255, 255, 255, .07);
   border: 1px solid rgba(255, 255, 255, .12);
   border-radius: 4px;
+  cursor: pointer;
   display: inline-flex;
+  font-family: inherit;
   gap: 8px;
   height: 32px;
   margin-right: 12px;
@@ -184,7 +176,8 @@ body {
   width: min(280px, 22vw);
 }
 
-.nexttech-topbar-search:focus-within {
+.nexttech-topbar-search:hover,
+.nexttech-topbar-search:focus-visible {
   background: rgba(255, 255, 255, .1);
   border-color: rgba(255, 255, 255, .28);
 }
@@ -196,19 +189,173 @@ body {
   width: 15px;
 }
 
-.nexttech-topbar-search input {
+.nexttech-topbar-search__label {
+  color: rgba(248, 250, 252, .62);
+  flex: 1;
+  font: 600 13px/1.2 var(--ifm-font-family-base);
+  text-align: left;
+}
+
+.nexttech-topbar-search__kbd {
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 4px;
+  color: rgba(248, 250, 252, .78);
+  flex: 0 0 auto;
+  font: 700 11px/1.6 var(--ifm-font-family-base);
+  padding: 0 5px;
+}
+
+@media (max-width: 996px) {
+  .nexttech-topbar-search {
+    display: none;
+  }
+}
+
+.nexttech-command-overlay {
+  background: rgba(8, 15, 30, .6);
+  inset: 0;
+  position: fixed;
+  z-index: 300;
+}
+
+.nexttech-command-dialog {
+  background: var(--nexttech-panel);
+  border: 1px solid var(--nexttech-border);
+  border-radius: 12px;
+  box-shadow: 0 24px 48px rgba(2, 10, 24, .35);
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  max-height: min(60vh, 480px);
+  max-width: min(600px, 92vw);
+  overflow: hidden;
+  position: fixed;
+  top: 14vh;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 301;
+}
+
+[data-theme="dark"] .nexttech-command-dialog {
+  background: #101722;
+  border-color: rgba(148, 163, 184, .24);
+}
+
+.nexttech-command-dialog [cmdk-input] {
   background: transparent;
   border: 0;
-  color: #f8fafc;
-  font: 600 13px/1.2 var(--ifm-font-family-base);
-  min-width: 0;
+  border-bottom: 1px solid var(--nexttech-border);
+  color: var(--ifm-font-color-base);
+  flex: 0 0 auto;
+  font-size: 15px;
   outline: 0;
-  padding: 0;
+  padding: 16px 18px;
   width: 100%;
 }
 
-.nexttech-topbar-search input::placeholder {
-  color: rgba(248, 250, 252, .62);
+[data-theme="dark"] .nexttech-command-dialog [cmdk-input] {
+  border-bottom-color: rgba(148, 163, 184, .24);
+}
+
+.nexttech-command-dialog [cmdk-list] {
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.nexttech-command-dialog [cmdk-group-heading] {
+  color: var(--nexttech-muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  padding: 10px 10px 4px;
+  text-transform: uppercase;
+}
+
+.nexttech-command-dialog [cmdk-item] {
+  border-radius: 6px;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 9px 10px;
+}
+
+.nexttech-command-dialog [cmdk-item][aria-selected="true"] {
+  background: var(--nexttech-active);
+  color: var(--nexttech-blue-dark);
+}
+
+[data-theme="dark"] .nexttech-command-dialog [cmdk-item][aria-selected="true"] {
+  background: rgba(12, 102, 228, .22);
+  color: #8ab4ff;
+}
+
+.nexttech-command-dialog [cmdk-empty] {
+  color: var(--nexttech-muted);
+  font-size: 14px;
+  padding: 24px 12px;
+  text-align: center;
+}
+
+.nexttech-docs-menu-link {
+  align-items: center;
+  display: flex !important;
+  gap: 9px;
+}
+
+.nexttech-docs-menu-link .nexttech-nav-icon {
+  height: 18px;
+  width: 18px;
+}
+
+.nexttech-docs-menu--active > a.navbar__link {
+  box-shadow: inset 0 -2px 0 var(--nexttech-blue);
+}
+
+.nexttech-mobile-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nexttech-mobile-group-toggle {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-weight: 700;
+  justify-content: space-between;
+  padding: 11px 10px;
+}
+
+.nexttech-mobile-group-toggle:hover {
+  background: var(--nexttech-hover);
+}
+
+.nexttech-mobile-group-chevron {
+  color: var(--nexttech-blue);
+  font-size: 16px;
+  line-height: 1;
+  transform: rotate(-90deg);
+  transition: transform .15s ease;
+}
+
+.nexttech-mobile-group-chevron--open {
+  transform: rotate(0deg);
+}
+
+.nexttech-mobile-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 6px;
+}
+
+.nexttech-mobile-link--nested {
+  padding-left: 20px;
 }
 
 .nexttech-external-site-link {
@@ -1170,4 +1317,731 @@ html.nexttech-no-scroll {
   border-color: var(--nexttech-blue);
   color: var(--nexttech-blue);
   background: var(--nexttech-active);
+}
+
+/* ==========================================================================
+   Aprenda — CTA na topbar, home hero, e todos os componentes da seção
+   (lição, quiz, exercício, editor ao vivo, árvore de estudo). Texto/borda
+   usa a mesma cadeia de fallback que .markdown já usa em globals.css
+   (--htd-doc-* quando dentro da home, senão --ifm-color-content*, que já é
+   ciente de claro/escuro pelo bundle vendorizado) — garante legibilidade
+   tanto embutido na home quanto nas rotas /aprenda isoladas.
+   ========================================================================== */
+
+.nexttech-cta-aprenda {
+  align-items: center;
+  background: var(--nexttech-blue);
+  border-radius: 6px;
+  color: #fff !important;
+  display: inline-flex;
+  font-weight: 800;
+  margin-right: 4px;
+  padding: 7px 14px;
+}
+
+.nexttech-cta-aprenda:hover {
+  background: var(--nexttech-blue-dark);
+}
+
+.nexttech-cta-aprenda--active {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .5);
+}
+
+.nexttech-cta-aprenda-mobile {
+  background: var(--nexttech-blue);
+  color: #fff !important;
+  font-weight: 800;
+  justify-content: center;
+}
+
+.nexttech-aprenda-wrapper {
+  margin-top: var(--ifm-navbar-height, 64px);
+  min-height: calc(100vh - var(--ifm-navbar-height, 64px));
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 8px 0 28px;
+}
+
+.home-hero-cta {
+  border-radius: 8px;
+  font-weight: 700;
+  padding: 12px 22px;
+  text-decoration: none !important;
+}
+
+.home-hero-cta--primary {
+  background: var(--nexttech-blue);
+  color: #fff !important;
+}
+
+.home-hero-cta--primary:hover {
+  background: var(--nexttech-blue-dark);
+}
+
+.home-hero-cta--secondary {
+  border: 1px solid var(--htd-doc-border, var(--ifm-color-emphasis-300, #d8e6f7));
+  color: var(--htd-doc-text, var(--ifm-color-content)) !important;
+}
+
+.home-hero-cta--secondary:hover {
+  background: var(--htd-doc-rule, var(--ifm-color-emphasis-200, #f0f0f0));
+}
+
+/* Árvore de estudo — home e hub /aprenda */
+
+.nexttech-study-tree {
+  margin-top: 8px;
+}
+
+.nexttech-study-tree__continue {
+  display: inline-flex;
+  margin-bottom: 18px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--nexttech-active);
+  color: var(--nexttech-blue-dark) !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.nexttech-study-tree__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.nexttech-study-tree__track {
+  border: 1px solid var(--htd-doc-border, var(--ifm-color-emphasis-300, #d8e6f7));
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.nexttech-study-tree__track-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  text-decoration: none !important;
+}
+
+.nexttech-study-tree__track-header strong {
+  color: var(--htd-doc-text, var(--ifm-color-content));
+  font-size: 17px;
+}
+
+.nexttech-study-tree__track-header span {
+  background: var(--nexttech-active);
+  border-radius: 999px;
+  color: var(--nexttech-blue-dark);
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 9px;
+}
+
+.nexttech-study-tree__track-summary {
+  color: var(--htd-doc-muted, var(--ifm-color-content-secondary, var(--ifm-color-content)));
+  font-size: 13.5px;
+  margin: 8px 0 14px;
+}
+
+.nexttech-study-tree__track ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nexttech-study-tree__track li a {
+  border-radius: 6px;
+  color: var(--htd-doc-text, var(--ifm-color-content)) !important;
+  display: block;
+  font-size: 14px;
+  padding: 6px 8px;
+  text-decoration: none !important;
+}
+
+.nexttech-study-tree__track li a:hover {
+  background: var(--nexttech-hover);
+}
+
+.nexttech-study-tree__more a {
+  color: var(--nexttech-blue) !important;
+  font-weight: 700;
+}
+
+.nexttech-study-tree__empty {
+  color: var(--htd-doc-muted, var(--ifm-color-content-secondary, var(--ifm-color-content)));
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Hub /aprenda */
+
+.nexttech-aprenda-hub {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 48px 24px 80px;
+}
+
+.nexttech-aprenda-hub__header {
+  margin-bottom: 32px;
+  max-width: 720px;
+}
+
+.nexttech-aprenda-hub__eyebrow {
+  color: var(--nexttech-blue);
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.nexttech-aprenda-hub__header h1 {
+  color: var(--ifm-color-content);
+  font-size: 32px;
+  margin: 6px 0 14px;
+}
+
+.nexttech-aprenda-hub__header p {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Visão geral de uma trilha /aprenda/[track] */
+
+.nexttech-track-overview {
+  margin: 0 auto;
+  max-width: 820px;
+  padding: 48px 24px 80px;
+}
+
+.nexttech-track-overview__breadcrumb a {
+  color: var(--nexttech-blue);
+  font-weight: 700;
+}
+
+.nexttech-track-overview__header h1 {
+  color: var(--ifm-color-content);
+  font-size: 30px;
+  margin: 8px 0 12px;
+}
+
+.nexttech-track-overview__header > p {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 16px;
+}
+
+.nexttech-track-overview__cta {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--nexttech-blue);
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.nexttech-track-overview__cta:hover {
+  background: var(--nexttech-blue-dark);
+}
+
+.nexttech-track-overview__empty {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-style: italic;
+  margin-top: 24px;
+}
+
+.nexttech-track-overview__list {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+}
+
+.nexttech-track-overview__item {
+  align-items: center;
+  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  border-radius: 10px;
+  color: var(--ifm-color-content) !important;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+  text-decoration: none !important;
+}
+
+.nexttech-track-overview__item:hover {
+  border-color: var(--nexttech-blue);
+}
+
+.nexttech-track-overview__item.is-done {
+  opacity: .75;
+}
+
+.nexttech-track-overview__item-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nexttech-track-overview__item-text small {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 13px;
+}
+
+.nexttech-track-overview__minutes {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Chrome comum de progresso (compartilhado por lição e visão da trilha) */
+
+.nexttech-lesson-chapters__progress {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.nexttech-lesson-chapters__bar {
+  background: var(--ifm-color-emphasis-200, #eef1f6);
+  border-radius: 999px;
+  flex: 1;
+  height: 6px;
+  max-width: 220px;
+  overflow: hidden;
+}
+
+.nexttech-lesson-chapters__bar-fill {
+  background: var(--nexttech-blue);
+  height: 100%;
+  transition: width .2s ease;
+}
+
+.nexttech-lesson-chapters__progress span {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nexttech-lesson-chapters__index {
+  align-items: center;
+  background: var(--ifm-color-emphasis-200, #eef1f6);
+  border-radius: 50%;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 800;
+  height: 22px;
+  justify-content: center;
+  width: 22px;
+}
+
+/* Lição /aprenda/[track]/[lesson] */
+
+.nexttech-lesson-layout {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 260px minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.nexttech-lesson-toggle {
+  display: none;
+  margin: 16px 24px 0;
+}
+
+.nexttech-lesson-chapters-panel {
+  border-right: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  padding: 32px 20px;
+}
+
+.nexttech-lesson-chapters__track {
+  color: var(--ifm-color-content);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.nexttech-lesson-chapters ol {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.nexttech-lesson-chapters__link {
+  align-items: center;
+  border-radius: 8px;
+  color: var(--ifm-color-content) !important;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 2px;
+  padding: 8px 10px;
+  text-decoration: none !important;
+}
+
+.nexttech-lesson-chapters__link:hover {
+  background: var(--nexttech-hover);
+}
+
+.nexttech-lesson-chapters__link.is-active {
+  background: var(--nexttech-active);
+  color: var(--nexttech-blue-dark) !important;
+  font-weight: 700;
+}
+
+.nexttech-lesson-chapters__link.is-done .nexttech-lesson-chapters__index {
+  background: var(--nexttech-blue);
+  color: #fff;
+}
+
+.nexttech-lesson-content {
+  padding: 32px 40px 64px;
+}
+
+.nexttech-lesson-breadcrumb {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.nexttech-lesson-breadcrumb a {
+  color: var(--nexttech-blue);
+}
+
+.nexttech-lesson-header h1 {
+  color: var(--ifm-color-content);
+  font-size: 28px;
+  margin: 0 0 28px;
+}
+
+.nexttech-lesson-footer {
+  align-items: center;
+  border-top: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+}
+
+.nexttech-lesson-nav-btn {
+  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  border-radius: 8px;
+  color: var(--ifm-color-content) !important;
+  font-weight: 700;
+  padding: 10px 16px;
+  text-decoration: none !important;
+}
+
+.nexttech-lesson-nav-btn:hover {
+  border-color: var(--nexttech-blue);
+}
+
+.nexttech-lesson-nav-btn--next {
+  background: var(--nexttech-blue);
+  border-color: var(--nexttech-blue);
+  color: #fff !important;
+  margin-left: auto;
+}
+
+.nexttech-lesson-nav-btn--next:hover {
+  background: var(--nexttech-blue-dark);
+}
+
+@media (max-width: 900px) {
+  .nexttech-lesson-layout {
+    display: block;
+  }
+
+  .nexttech-lesson-toggle {
+    display: inline-flex;
+  }
+
+  .nexttech-lesson-chapters-panel {
+    background: var(--ifm-background-surface-color, #fff);
+    border-right: 0;
+    height: 100vh;
+    left: 0;
+    max-width: 86vw;
+    opacity: 0;
+    overflow-y: auto;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform .18s ease, opacity .18s ease;
+    visibility: hidden;
+    width: 86vw;
+    z-index: 210;
+  }
+
+  .nexttech-lesson-chapters-panel.is-open {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .nexttech-lesson-content {
+    padding: 20px 18px 56px;
+  }
+}
+
+/* Callout — cross-link pra documentação de referência */
+
+.nexttech-callout {
+  align-items: flex-start;
+  background: var(--nexttech-hover);
+  border-left: 4px solid var(--nexttech-blue);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+  padding: 16px 18px;
+}
+
+.nexttech-callout-icon {
+  background: var(--nexttech-blue);
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: 8px;
+  margin-top: 7px;
+  width: 8px;
+}
+
+.nexttech-callout-body strong {
+  color: var(--ifm-color-content);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.nexttech-callout-body p {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.nexttech-callout-link {
+  color: var(--nexttech-blue) !important;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* CodeExample — bloco de código das lições (highlight.js direto no client) */
+
+.nexttech-code-example {
+  background: #101722;
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+  margin: 1.1rem 0 1.45rem;
+  overflow: hidden;
+}
+
+.nexttech-code-example__header {
+  align-items: center;
+  background: #202631;
+  border-bottom: 1px solid rgba(148, 163, 184, .22);
+  color: #cbd5e1;
+  display: flex;
+  gap: 10px;
+  padding: 8px 14px;
+}
+
+.nexttech-code-example__label {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.nexttech-code-example__tabs {
+  display: flex;
+  gap: 4px;
+  margin-right: auto;
+}
+
+.nexttech-code-example__tab {
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+}
+
+.nexttech-code-example__tab.is-active {
+  background: #1d2633;
+  color: #e5edf7;
+}
+
+.nexttech-code-example__copy {
+  background: #1d2633;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  color: #e5edf7;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+}
+
+.nexttech-code-example__copy:hover {
+  background: #273449;
+}
+
+.nexttech-code-example__pre {
+  color: #e5e7eb;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 0;
+  overflow-x: auto;
+  padding: 16px 18px;
+}
+
+.nexttech-code-example__result {
+  color: #86efac;
+  white-space: pre-wrap;
+}
+
+/* Quiz */
+
+.nexttech-quiz {
+  background: var(--ifm-background-surface-color, #f6f9fc);
+  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  border-radius: 10px;
+  margin: 28px 0;
+  padding: 20px;
+}
+
+.nexttech-quiz__title {
+  color: var(--ifm-color-content);
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+
+.nexttech-quiz__question {
+  border: 0;
+  margin: 0 0 18px;
+  padding: 0;
+}
+
+.nexttech-quiz__question legend {
+  color: var(--ifm-color-content);
+  font-weight: 700;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.nexttech-quiz__option {
+  align-items: center;
+  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+  padding: 9px 12px;
+}
+
+.nexttech-quiz__option:has(input:checked) {
+  border-color: var(--nexttech-blue);
+}
+
+.nexttech-quiz__option.is-correct {
+  background: rgba(34, 197, 94, .12);
+  border-color: #22c55e;
+}
+
+.nexttech-quiz__option.is-wrong {
+  background: rgba(239, 68, 68, .1);
+  border-color: #ef4444;
+}
+
+.nexttech-quiz__submit {
+  background: var(--nexttech-blue);
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 18px;
+}
+
+.nexttech-quiz__submit:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.nexttech-quiz__submit:not(:disabled):hover {
+  background: var(--nexttech-blue-dark);
+}
+
+.nexttech-quiz__result {
+  color: var(--ifm-color-content);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Exercise */
+
+.nexttech-exercise {
+  border: 1px dashed var(--ifm-color-emphasis-300, #d8e6f7);
+  border-radius: 10px;
+  margin: 28px 0;
+  padding: 20px;
+}
+
+.nexttech-exercise__title {
+  color: var(--ifm-color-content);
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.nexttech-exercise__prompt {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  margin-bottom: 14px;
+}
+
+.nexttech-exercise__reveal {
+  background: transparent;
+  border: 1px solid var(--nexttech-blue);
+  border-radius: 8px;
+  color: var(--nexttech-blue);
+  cursor: pointer;
+  font-weight: 700;
+  padding: 8px 16px;
+}
+
+.nexttech-exercise__reveal:hover {
+  background: var(--nexttech-hover);
+}
+
+/* LiveEditor (Sandpack) */
+
+.nexttech-live-editor {
+  margin: 1.1rem 0 1.45rem;
+}
+
+.nexttech-live-editor__loading {
+  align-items: center;
+  background: #101722;
+  border-radius: 6px;
+  color: #94a3b8;
+  display: flex;
+  height: 360px;
+  justify-content: center;
 }

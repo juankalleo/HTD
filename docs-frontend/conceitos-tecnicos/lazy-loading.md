@@ -2,6 +2,7 @@
 video: DQoH30T7vu4
 videoEn: IpuOnfjY82E
 sidebar_label: Lazy Loading
+date: "29 de agosto de 2026"
 ---
 
 # Lazy Loading

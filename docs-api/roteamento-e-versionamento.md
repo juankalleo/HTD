@@ -1,6 +1,7 @@
 ---
 video: 1j85zzhclu8
 videoEn: jcOp-R7hV5s
+date: "30 de agosto de 2026"
 ---
 
 # Roteamento e versionamento

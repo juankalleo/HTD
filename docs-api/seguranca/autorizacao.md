@@ -1,6 +1,7 @@
 ---
 videoEn: xIevWxPwVCE
 sidebar_label: Autorização
+date: "30 de agosto de 2026"
 ---
 
 # Autorização

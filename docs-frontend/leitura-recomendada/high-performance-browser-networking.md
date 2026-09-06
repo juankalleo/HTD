@@ -1,5 +1,6 @@
 ---
 sidebar_label: High Performance Browser Networking
+date: "29 de agosto de 2026"
 ---
 
 # High Performance Browser Networking

@@ -1,5 +1,6 @@
 ---
 sidebar_label: Refactoring
+date: "29 de agosto de 2026"
 ---
 
 # Refactoring

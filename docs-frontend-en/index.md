@@ -1,6 +1,7 @@
 ---
 video: NhUr8cwDiiM
 videoEn: WaFBiDgqctY
+date: "August 29, 2026"
 ---
 
 # Frontend Standard

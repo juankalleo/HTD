@@ -1,6 +1,7 @@
 ---
 video: xkkSiYitZbM
 videoEn: IU_qq_c_lKA
+date: "29 de agosto de 2026"
 ---
 
 # Otimização de imagem

@@ -1,6 +1,7 @@
 ---
 video: xV8gXdy2-3s
 videoEn: E_AHkWHhUz4
+date: "29 de agosto de 2026"
 ---
 
 # Upload de imagem: recorte antes de enviar

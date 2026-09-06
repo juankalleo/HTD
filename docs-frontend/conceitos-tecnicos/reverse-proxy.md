@@ -1,5 +1,6 @@
 ---
 sidebar_label: Reverse Proxy
+date: "29 de agosto de 2026"
 ---
 
 # Reverse Proxy (tratamento de proxy)

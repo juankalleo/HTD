@@ -2,6 +2,7 @@
 video: EOsigJta6cI
 videoEn: MHm-2YmWEek
 sidebar_label: Busca
+date: "29 de agosto de 2026"
 ---
 
 # Busca (`SearchInput`)

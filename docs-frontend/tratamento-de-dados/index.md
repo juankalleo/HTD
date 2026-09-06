@@ -1,5 +1,6 @@
 ---
 sidebar_label: Tratamento de dados
+date: "29 de agosto de 2026"
 ---
 
 # Tratamento de dados

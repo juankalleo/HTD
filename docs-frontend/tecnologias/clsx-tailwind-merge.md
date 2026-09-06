@@ -1,6 +1,7 @@
 ---
 video: h3s47owx8io
 videoEn: re2JFITR7TI
+date: "29 de agosto de 2026"
 ---
 
 # clsx + tailwind-merge (`cn()`)

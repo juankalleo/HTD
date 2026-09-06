@@ -1,5 +1,6 @@
 ---
 sidebar_label: Sanitização de Inputs
+date: "29 de agosto de 2026"
 ---
 
 # Sanitização de Inputs

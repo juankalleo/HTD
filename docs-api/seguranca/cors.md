@@ -2,6 +2,7 @@
 video: GZV-FUdeVwE
 videoEn: PNtFSVU-YTI
 sidebar_label: CORS
+date: "30 de agosto de 2026"
 ---
 
 # CORS

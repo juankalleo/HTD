@@ -1,6 +1,7 @@
 ---
 video: AoU7aEdTldE
 videoEn: C3drtMt4g2E
+date: "29 de agosto de 2026"
 ---
 
 # Estilos de PDF

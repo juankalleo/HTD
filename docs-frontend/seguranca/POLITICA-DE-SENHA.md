@@ -1,5 +1,6 @@
 ---
 sidebar_label: Política de senha
+date: "29 de agosto de 2026"
 ---
 
 # Política de senha

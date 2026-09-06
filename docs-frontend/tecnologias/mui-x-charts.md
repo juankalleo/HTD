@@ -1,6 +1,7 @@
 ---
 video: WEitNRycnpI
 videoEn: haVAA43wVV8
+date: "29 de agosto de 2026"
 ---
 
 # MUI X Charts — avaliado, não adotado

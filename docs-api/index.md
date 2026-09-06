@@ -2,6 +2,7 @@
 video: 8BuvfgIEz20
 videoEn: 6KqbPJtA5O8
 sidebar_label: Visão geral
+date: "30 de agosto de 2026"
 ---
 
 # Padrão API

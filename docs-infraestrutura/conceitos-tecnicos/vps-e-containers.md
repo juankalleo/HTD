@@ -1,5 +1,6 @@
 ---
 sidebar_label: VPS e containers
+date: "30 de agosto de 2026"
 ---
 
 # VPS e containers
@@ -60,6 +61,16 @@ rede. Um ambiente com múltiplos containers de perfis diferentes (produção, de
 ferramentas internas) numa única rede compartilhada tem, na prática, zero segmentação entre eles —
 o princípio correto é o oposto: cada grupo de containers que não precisa conversar entre si deveria
 viver em redes Docker separadas, conectando só o que realmente precisa se comunicar entre grupos.
+
+**Container sem rota exposta**: publicar porta (`ports:` no Compose) coloca aquele container
+diretamente acessível pelo host — e, se o host não tiver firewall cobrindo essa porta, pela
+internet. A prática correta pra qualquer arquitetura com proxy reverso (ver
+[Proxy reverso e CDN](/padrao-infraestrutura/conceitos-tecnicos/proxy-reverso-e-cdn) e
+[Nginx](/padrao-infraestrutura/tecnologias/nginx)) é só o **container do proxy** publicar porta
+pro host — todo o resto (aplicação, banco, cache) fica só na rede Docker interna, alcançável pelo
+proxy via nome de serviço, e por mais nenhum lugar. Um container de aplicação sem porta publicada
+nenhuma não tem "porta fechada" — tem porta que **não existe** do ponto de vista de fora do host,
+o que é uma garantia mais forte que depender só de regra de firewall pra bloquear acesso direto.
 
 ## Leitura de apoio
 

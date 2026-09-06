@@ -4,8 +4,10 @@ import type { SidebarItem } from "./sidebar";
 import { DocsSidebarPanel } from "./docs-sidebar-panel";
 import { Footer } from "./footer";
 import type { AreaKey } from "@/lib/i18n";
+import { getGlobalSearchIndex } from "@/lib/search-index";
+import { getServerLocale } from "@/lib/locale-server";
 
-export function DocsLayout({
+export async function DocsLayout({
   activeHref,
   children,
   area,
@@ -16,9 +18,11 @@ export function DocsLayout({
   area: AreaKey;
   sidebarTree: SidebarItem[];
 }) {
+  const locale = await getServerLocale();
+  const searchEntries = getGlobalSearchIndex(locale);
   return (
     <>
-      <Navbar activeHref={activeHref} />
+      <Navbar activeHref={activeHref} searchEntries={searchEntries} />
       <div className="theme-layout-main main-wrapper mainWrapper_Bn9y">
         <div className="container margin-vert--lg">
           <div className="row">

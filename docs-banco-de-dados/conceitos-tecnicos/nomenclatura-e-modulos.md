@@ -1,5 +1,6 @@
 ---
 sidebar_label: Nomenclatura e módulos
+date: "30 de agosto de 2026"
 ---
 
 # Nomenclatura e módulos

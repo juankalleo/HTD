@@ -1,6 +1,7 @@
 ---
 video: fZeNbnMqMLM
 videoEn: 60ccSmOxpMw
+date: "29 de agosto de 2026"
 ---
 
 # Configuração institucional

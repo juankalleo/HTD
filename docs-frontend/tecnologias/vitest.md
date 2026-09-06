@@ -2,6 +2,7 @@
 video: MtuCkfLxXDk
 videoEn: CxSL0knFxAs
 sidebar_label: Vitest
+date: "29 de agosto de 2026"
 ---
 
 # Vitest

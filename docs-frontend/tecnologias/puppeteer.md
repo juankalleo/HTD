@@ -1,6 +1,7 @@
 ---
 video: 23ZPUwMi3JQ
 videoEn: 9VgghGKx_1c
+date: "30 de agosto de 2026"
 ---
 
 # Puppeteer

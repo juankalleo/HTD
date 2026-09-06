@@ -1,6 +1,7 @@
 ---
 video: AoU7aEdTldE
 videoEn: 9VgghGKx_1c
+date: "29 de agosto de 2026"
 ---
 
 # Segurança do PDF de relatório

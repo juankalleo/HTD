@@ -1,6 +1,7 @@
 ---
 video: NhUr8cwDiiM
 videoEn: WaFBiDgqctY
+date: "30 de agosto de 2026"
 ---
 
 # Padrão Frontend

@@ -1,5 +1,6 @@
 ---
 sidebar_label: Migrations
+date: "30 de agosto de 2026"
 ---
 
 # Migrations

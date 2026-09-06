@@ -2,6 +2,7 @@
 video: BaStnSwAWdU
 videoEn: SQhj5gBNTB0
 sidebar_label: Paginação
+date: "30 de agosto de 2026"
 ---
 
 # Paginação

@@ -1,6 +1,7 @@
 ---
 video: p9sXaDSOJ5k
 videoEn: xZ1ba-RLrjo
+date: "29 de agosto de 2026"
 ---
 
 # Arquitetura de relatórios

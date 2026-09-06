@@ -2,6 +2,7 @@
 video: lC0cr-fdZ2s
 videoEn: DBdo7mmuGx4
 sidebar_label: Virtual Scrolling
+date: "29 de agosto de 2026"
 ---
 
 # Virtual Scrolling

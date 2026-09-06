@@ -1,6 +1,7 @@
 ---
 video: z53CWrFP9GY
 videoEn: L6BE-U3oy80
+date: "29 de agosto de 2026"
 ---
 
 # Zod

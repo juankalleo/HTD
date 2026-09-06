@@ -2,6 +2,7 @@
 video: H2sHmB28O_M
 videoEn: xnvIAHlbqI0
 sidebar_label: Progressive Enhancement
+date: "29 de agosto de 2026"
 ---
 
 # Progressive Enhancement

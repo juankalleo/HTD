@@ -2,6 +2,7 @@
 video: fB4vG3MmuDo
 videoEn: JU6sl_yyZqs
 sidebar_label: Code Splitting
+date: "29 de agosto de 2026"
 ---
 
 # Code Splitting

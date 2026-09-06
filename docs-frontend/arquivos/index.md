@@ -1,5 +1,6 @@
 ---
 sidebar_label: Arquivos
+date: "29 de agosto de 2026"
 ---
 
 # Arquivos

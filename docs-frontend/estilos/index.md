@@ -1,5 +1,6 @@
 ---
 sidebar_label: Estilos e Aparência
+date: "29 de agosto de 2026"
 ---
 
 # Estilos e Aparência

@@ -1,5 +1,6 @@
 ---
 sidebar_label: Concerns e composição
+date: "30 de agosto de 2026"
 ---
 
 # Concerns e composição

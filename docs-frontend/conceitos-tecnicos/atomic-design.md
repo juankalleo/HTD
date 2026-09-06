@@ -2,6 +2,7 @@
 video: x-4li6foEN8
 videoEn: Yi-A20x2dcA
 sidebar_label: Atomic Design
+date: "29 de agosto de 2026"
 ---
 
 # Atomic Design

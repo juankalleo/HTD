@@ -1,5 +1,6 @@
 ---
 sidebar_label: Logs de auditoria
+date: "29 de agosto de 2026"
 ---
 
 # Logs de auditoria

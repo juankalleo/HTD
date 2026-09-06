@@ -1,5 +1,6 @@
 ---
 sidebar_label: Rede e protocolos
+date: "30 de agosto de 2026"
 ---
 
 # Rede e protocolos

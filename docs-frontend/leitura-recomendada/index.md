@@ -1,5 +1,6 @@
 ---
 sidebar_label: Leitura recomendada
+date: "29 de agosto de 2026"
 ---
 
 # Leitura recomendada

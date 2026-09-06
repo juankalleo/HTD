@@ -1,5 +1,6 @@
 ---
 sidebar_label: Proxy reverso e CDN
+date: "30 de agosto de 2026"
 ---
 
 # Proxy reverso e CDN

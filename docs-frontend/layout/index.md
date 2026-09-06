@@ -1,5 +1,6 @@
 ---
 sidebar_label: Layout
+date: "29 de agosto de 2026"
 ---
 
 # Layout da aplicação

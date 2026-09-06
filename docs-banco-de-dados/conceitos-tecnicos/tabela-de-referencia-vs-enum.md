@@ -1,5 +1,6 @@
 ---
 sidebar_label: Tabela de referência vs. enum
+date: "30 de agosto de 2026"
 ---
 
 # Tabela de referência em vez de enum

@@ -1,6 +1,7 @@
 ---
 video: 0RMYomgf4a8
 videoEn: wUaeKEl1RCw
+date: "30 de agosto de 2026"
 ---
 
 # Medidas de segurança do sistema

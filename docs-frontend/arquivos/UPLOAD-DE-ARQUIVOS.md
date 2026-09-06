@@ -1,6 +1,7 @@
 ---
 video: G5UZmvkLWSQ
 videoEn: 83bECYmPbI4
+date: "29 de agosto de 2026"
 ---
 
 # Upload de arquivos (geral)

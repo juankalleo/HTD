@@ -2,6 +2,7 @@
 video: z-RuvnMlw34
 videoEn: ZV5yTm4pT8g
 sidebar_label: Segurança
+date: "29 de agosto de 2026"
 ---
 
 # Segurança no frontend

@@ -2,6 +2,7 @@
 video: zWARLxSSDHI
 videoEn: 2oiBKSjOOFE
 sidebar_label: Web Accessibility (a11y)
+date: "29 de agosto de 2026"
 ---
 
 # Web Accessibility (a11y)

@@ -1,6 +1,7 @@
 ---
 video: F3pTdRQPH70
 videoEn: FncLJLfXRDM
+date: "29 de agosto de 2026"
 ---
 
 # lucide-react

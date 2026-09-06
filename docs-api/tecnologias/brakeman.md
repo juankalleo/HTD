@@ -1,3 +1,7 @@
+---
+date: "30 de agosto de 2026"
+---
+
 # Brakeman
 
 ## O que é

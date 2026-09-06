@@ -1,6 +1,7 @@
 ---
 video: GW2eniPPiJc
 videoEn: TcxWROjyA7U
+date: "29 de agosto de 2026"
 ---
 
 # Aparência avançada: overrides por cima do tema
@@ -178,8 +179,18 @@ formulário como efeito colateral (já que `--input-color` deriva de
 6. Documentar aqui — que token/componente ele toca, e qualquer limite real
    descoberto testando (como o de `--input-color` acima).
 
+## Escolhendo a paleta de cor de um override
+
+Antes de digitar um hex direto em `cor_sidebar`/`cor_topbar`/`cor_borda_sistema`, vale montar a
+paleta inteira de propósito, não cor por cor isolada — duas cores que parecem boas sozinhas podem
+não funcionar lado a lado (contraste, harmonia). [Coolors](https://coolors.co/palettes/trending)
+é uma ferramenta útil pra isso: gera e explora paleta pronta, com o hex de cada cor já calculado
+pra funcionar junto — o ponto de partida, depois validado contra a regra de contraste da seção
+"Cuidado real" acima (fundo escuro exige `cor_titulos_sidebar` clara, e por aí vai).
+
 ## Leitura de apoio
 
 - [Tailwind CSS v4 — Docs](https://tailwindcss.com/docs) — utility-first e CSS variables (tokens) usados nos overrides.
 - [daisyUI — Docs](https://daisyui.com) — temas e tokens (`--color-base-300`, `--color-base-content`) sobrescritos aqui.
 - [Why Tailwind CSS (swyx)](https://swyx.io/why-tailwind) — por que design system via tokens em vez de CSS espalhado.
+- [Coolors — paletas em alta](https://coolors.co/palettes/trending) — ferramenta pra montar/explorar paleta de cor coesa antes de aplicar num override.

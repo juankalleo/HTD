@@ -1,6 +1,7 @@
 ---
 video: dCuGOXFC4RQ
 videoEn: L8_98i_bMMA
+date: "29 de agosto de 2026"
 ---
 
 # Otimização de fontes

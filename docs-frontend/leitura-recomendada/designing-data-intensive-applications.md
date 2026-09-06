@@ -1,5 +1,6 @@
 ---
 sidebar_label: Designing Data-Intensive Applications
+date: "29 de agosto de 2026"
 ---
 
 # Designing Data-Intensive Applications

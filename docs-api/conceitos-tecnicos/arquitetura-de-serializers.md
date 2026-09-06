@@ -1,5 +1,6 @@
 ---
 sidebar_label: Arquitetura de serializers
+date: "30 de agosto de 2026"
 ---
 
 # Arquitetura de serializers

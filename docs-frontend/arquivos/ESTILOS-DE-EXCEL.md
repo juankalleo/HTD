@@ -1,6 +1,7 @@
 ---
 video: 0HRsrZb1Gls
 videoEn: F7dQLO5Jhp4
+date: "29 de agosto de 2026"
 ---
 
 # Estilos de Excel

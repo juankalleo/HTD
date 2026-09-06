@@ -1,5 +1,6 @@
 ---
 sidebar_label: Autorização automatizada
+date: "29 de agosto de 2026"
 ---
 
 # Autorização automatizada

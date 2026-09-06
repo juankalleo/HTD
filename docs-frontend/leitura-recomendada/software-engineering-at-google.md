@@ -1,5 +1,6 @@
 ---
 sidebar_label: Software Engineering at Google
+date: "30 de agosto de 2026"
 ---
 
 # Software Engineering at Google

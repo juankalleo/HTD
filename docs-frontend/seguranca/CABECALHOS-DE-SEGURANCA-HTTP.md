@@ -2,6 +2,7 @@
 video: 1APq9La22cs
 videoEn: 7MWXTXjtl8s
 sidebar_label: Cabeçalhos de Segurança HTTP
+date: "29 de agosto de 2026"
 ---
 
 # Cabeçalhos de Segurança HTTP

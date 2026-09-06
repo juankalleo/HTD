@@ -1,6 +1,7 @@
 ---
 video: GYG_4YMs8RA
 videoEn: aQxk5NCE15w
+date: "29 de agosto de 2026"
 ---
 
 # Segurança de exportação (PDF e Excel)

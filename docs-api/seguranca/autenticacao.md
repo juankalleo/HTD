@@ -2,6 +2,7 @@
 video: SW_YjocL_Lk
 videoEn: wVNQwrALp1A
 sidebar_label: Autenticação
+date: "30 de agosto de 2026"
 ---
 
 # Autenticação

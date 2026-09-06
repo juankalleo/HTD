@@ -1,5 +1,6 @@
 ---
 sidebar_label: Redefinição de senha
+date: "29 de agosto de 2026"
 ---
 
 # Redefinição de senha

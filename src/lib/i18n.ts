@@ -15,15 +15,6 @@ type HomeSourceLink = {
   href: string;
 };
 
-type HomeRoadmapTrack = {
-  step: string;
-  title: string;
-  status: string;
-  href: string;
-  description: string;
-  items: string[];
-};
-
 type HomeControlRow = {
   risk: string;
   htd: string;
@@ -35,6 +26,7 @@ type Dictionary = {
     areas: Record<AreaKey, string>;
     credits: string;
     languageName: string;
+    docsMenu: string;
   };
   sidebar: {
     ariaNav: string;
@@ -60,6 +52,12 @@ type Dictionary = {
   theme: {
     toggleTitle: string;
     toggleAria: string;
+  };
+  search: {
+    buttonLabel: string;
+    placeholder: string;
+    noResults: (query: string) => string;
+    shortcutHint: string;
   };
   ptOnlyNotice: string;
   home: {
@@ -102,7 +100,6 @@ type Dictionary = {
     roadmapEyebrow: string;
     roadmapHeading: string;
     roadmapIntro: string;
-    roadmapTracks: HomeRoadmapTrack[];
     projectLinksHeading: string;
     projectLinks: HomeSourceLink[];
     aboutHeading: string;
@@ -125,6 +122,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
       credits: "Credits",
       languageName: "EN",
+      docsMenu: "Documentation",
     },
     sidebar: {
       ariaNav: "Content navigation",
@@ -157,6 +155,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
       toggleTitle: "Toggle theme",
       toggleAria: "Toggle between light and dark mode",
     },
+    search: {
+      buttonLabel: "Search...",
+      placeholder: "Search pages and sections...",
+      noResults: (query) => `No results for "${query}".`,
+      shortcutHint: "⌘K",
+    },
     ptOnlyNotice:
       "This page hasn't been translated to English yet — showing the original Portuguese content.",
     home: {
@@ -175,7 +179,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       bannerLabel: "HTD",
       bannerStatus: "v1.0 reference",
       bannerText: "frontend standard available",
-      primaryCta: "Open Frontend Standard",
+      primaryCta: "Start learning free",
       secondaryCta: "See credits",
       purposeHeading: "Purpose",
       purposeBody:
@@ -285,102 +289,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       roadmapEyebrow: "Learning map",
       roadmapHeading: "Study roadmap",
       roadmapIntro:
-        "Goes from the basics to the more advanced parts of the standard, in the order I'd actually recommend reading them — each step links straight into the real Frontend Standard content that exists today.",
-      roadmapTracks: [
-        {
-          step: "01",
-          title: "Foundation",
-          status: "Available",
-          href: "/padrao-frontend",
-          description: "Start here: what the standard is for, and how the App Router shapes routes and folders.",
-          items: [
-            "Overview and project structure",
-            "Routing — App Router, folders, private/public routes",
-          ],
-        },
-        {
-          step: "02",
-          title: "Core web concepts",
-          status: "Available",
-          href: "/padrao-frontend/conceitos-tecnicos",
-          description: "The fundamentals every other page assumes: how rendering, caching, and the browser actually behave.",
-          items: [
-            "SSR, hydration, and code-splitting",
-            "CORS, BFF, and state management",
-            "Accessibility and progressive enhancement",
-          ],
-        },
-        {
-          step: "03",
-          title: "Building the UI",
-          status: "Available",
-          href: "/padrao-frontend/componentes",
-          description: "Turn concepts into screen: reusable components and the styling decisions behind them.",
-          items: [
-            "Buttons, search, filters, and typed props",
-            "Modals, select, pagination, and typography",
-          ],
-        },
-        {
-          step: "04",
-          title: "Data and forms",
-          status: "Available",
-          href: "/padrao-frontend/formularios",
-          description: "How data actually moves: forms, validation, caching, and the request/response lifecycle.",
-          items: [
-            "Forms with React Hook Form + Zod",
-            "Cache, mutations, and query responses (TanStack Query)",
-            "File uploads/downloads and PDF/Excel reports",
-          ],
-        },
-        {
-          step: "05",
-          title: "Security checklist",
-          status: "Available",
-          href: "/padrao-frontend/seguranca",
-          description: "Security as implementation work, not a final review — the most detailed section on HTD.",
-          items: [
-            "XSS, CSRF, JWT, IDOR, and RBAC",
-            "HTTP headers, CSP, and cookie handling",
-            "Password policy, brute force, and audit logs",
-          ],
-        },
-        {
-          step: "06",
-          title: "API layer",
-          status: "Available",
-          href: "/padrao-api",
-          description: "The same standard applied to a real Rails API — request, handling, routing, response, all the way through.",
-          items: [
-            "Routing, versioning, response envelope, error handling",
-            "Controllers, serializers, concerns, service objects",
-            "Auth (JWT), authorization (data-driven), brute-force throttling",
-          ],
-        },
-        {
-          step: "07",
-          title: "Database layer",
-          status: "Available",
-          href: "/padrao-banco-de-dados",
-          description: "One layer deeper: how the schema itself is modeled, kept separate from the API contract on purpose.",
-          items: [
-            "Base model behavior, naming convention, migrations",
-            "Multi-tenancy at the schema level",
-            "Reference tables instead of enums, PaperTrail, soft delete",
-          ],
-        },
-        {
-          step: "08",
-          title: "Infrastructure, examples",
-          status: "In progress",
-          href: "/examples",
-          description: "The parts that expand the same standard beyond app code — not written yet.",
-          items: [
-            "Infrastructure Standard — environments, deploy, observability",
-            "Examples — complete reference flows",
-          ],
-        },
-      ],
+        "Goes from the basics to the more advanced parts of the standard, in the order I'd actually recommend reading them — each step links straight into a real, hands-on lesson.",
       projectLinksHeading: "Project links",
       projectLinks: [
         { label: "Credits", href: "/creditos" },
@@ -410,6 +319,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
       credits: "Créditos",
       languageName: "PT-BR",
+      docsMenu: "Documentação",
     },
     sidebar: {
       ariaNav: "Navegação de conteúdo",
@@ -442,6 +352,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
       toggleTitle: "Alternar tema",
       toggleAria: "Alternar entre modo claro e escuro",
     },
+    search: {
+      buttonLabel: "Buscar...",
+      placeholder: "Buscar páginas e seções...",
+      noResults: (query) => `Nenhum resultado para "${query}".`,
+      shortcutHint: "⌘K",
+    },
     ptOnlyNotice: "",
     home: {
       eyebrow: "v1.0 · Padrão Frontend disponível",
@@ -459,7 +375,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       bannerLabel: "HTD",
       bannerStatus: "referência v1.0",
       bannerText: "padrão frontend disponível",
-      primaryCta: "Abrir Padrão Frontend",
+      primaryCta: "Comece a aprender grátis",
       secondaryCta: "Ver créditos",
       purposeHeading: "Propósito",
       purposeBody:
@@ -569,102 +485,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       roadmapEyebrow: "Mapa de aprendizado",
       roadmapHeading: "Roadmap de estudo",
       roadmapIntro:
-        "Vai do básico até as partes mais avançadas do padrão, na ordem que eu de fato recomendaria ler — cada etapa linka direto pro conteúdo real do Padrão Frontend que já existe hoje.",
-      roadmapTracks: [
-        {
-          step: "01",
-          title: "Fundação",
-          status: "Disponível",
-          href: "/padrao-frontend",
-          description: "Comece por aqui: pra que serve o padrão e como o App Router organiza rotas e pastas.",
-          items: [
-            "Visão geral e estrutura do projeto",
-            "Roteamento — App Router, pastas, rotas privadas/públicas",
-          ],
-        },
-        {
-          step: "02",
-          title: "Conceitos técnicos essenciais",
-          status: "Disponível",
-          href: "/padrao-frontend/conceitos-tecnicos",
-          description: "Os fundamentos que toda outra página assume: como renderização, cache e o navegador se comportam de verdade.",
-          items: [
-            "SSR, hidratação e code-splitting",
-            "CORS, BFF e gerenciamento de estado",
-            "Acessibilidade e progressive enhancement",
-          ],
-        },
-        {
-          step: "03",
-          title: "Construindo a UI",
-          status: "Disponível",
-          href: "/padrao-frontend/componentes",
-          description: "Transforma conceito em tela: componentes reutilizáveis e as decisões de estilo por trás deles.",
-          items: [
-            "Botões, busca, filtros e props tipadas",
-            "Modal, select, paginação e tipografia",
-          ],
-        },
-        {
-          step: "04",
-          title: "Dados e formulários",
-          status: "Disponível",
-          href: "/padrao-frontend/formularios",
-          description: "Como o dado se move de verdade: formulário, validação, cache e o ciclo de requisição/resposta.",
-          items: [
-            "Formulários com React Hook Form + Zod",
-            "Cache, mutações e resposta de consulta (TanStack Query)",
-            "Upload/download de arquivo e relatórios em PDF/Excel",
-          ],
-        },
-        {
-          step: "05",
-          title: "Checklist de segurança",
-          status: "Disponível",
-          href: "/padrao-frontend/seguranca",
-          description: "Segurança como trabalho de implementação, não como revisão final — a seção mais detalhada do HTD.",
-          items: [
-            "XSS, CSRF, JWT, IDOR e RBAC",
-            "Headers HTTP, CSP e tratamento de cookie",
-            "Política de senha, força bruta e logs de auditoria",
-          ],
-        },
-        {
-          step: "06",
-          title: "Camada de API",
-          status: "Disponível",
-          href: "/padrao-api",
-          description: "O mesmo padrão aplicado numa API Rails real — requisição, tratamento, roteamento, resposta, do início ao fim.",
-          items: [
-            "Roteamento, versionamento, envelope de resposta, tratamento de erro",
-            "Controllers, serializers, concerns, service objects",
-            "Autenticação (JWT), autorização (orientada a dado), bloqueio de força bruta",
-          ],
-        },
-        {
-          step: "07",
-          title: "Camada de banco de dados",
-          status: "Disponível",
-          href: "/padrao-banco-de-dados",
-          description: "Uma camada mais fundo: como o schema em si é modelado, deliberadamente separado do contrato de API.",
-          items: [
-            "Comportamento base de model, convenção de nome, migrations",
-            "Multi-tenancy no nível de schema",
-            "Tabela de referência em vez de enum, PaperTrail, soft delete",
-          ],
-        },
-        {
-          step: "08",
-          title: "Infraestrutura, exemplos",
-          status: "Em construção",
-          href: "/examples",
-          description: "As partes que expandem o mesmo padrão pra além do código da aplicação — ainda não escritas.",
-          items: [
-            "Padrão Infraestrutura — ambientes, deploy, observabilidade",
-            "Exemplos — fluxos completos de referência",
-          ],
-        },
-      ],
+        "Vai do básico até as partes mais avançadas, na ordem que eu de fato recomendaria estudar — cada etapa linka direto pra uma lição prática, de verdade, não só um texto.",
       projectLinksHeading: "Links do projeto",
       projectLinks: [
         { label: "Créditos", href: "/creditos" },

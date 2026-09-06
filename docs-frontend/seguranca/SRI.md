@@ -2,6 +2,7 @@
 video: hcUBjPo5-jk
 videoEn: x5wX88YUf68
 sidebar_label: SRI
+date: "29 de agosto de 2026"
 ---
 
 # Subresource Integrity (SRI)

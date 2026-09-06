@@ -2,6 +2,7 @@
 video: s9qgTlpYDuA
 videoEn: p6dO9u0M7MQ
 sidebar_label: Tipos (TypeScript)
+date: "29 de agosto de 2026"
 ---
 
 # Tipos (TypeScript)

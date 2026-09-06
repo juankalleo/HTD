@@ -1,6 +1,7 @@
 ---
 videoEn: _gQaygjm_hg
 sidebar_label: Envelope de resposta
+date: "30 de agosto de 2026"
 ---
 
 # Envelope de resposta

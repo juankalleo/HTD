@@ -1,5 +1,6 @@
 ---
 sidebar_label: Docker Compose
+date: "30 de agosto de 2026"
 ---
 
 # Docker Compose
@@ -70,6 +71,77 @@ networks:
   app_net:
     external: true
 ```
+
+## Compose só do banco — quando o banco vive isolado, por ambiente
+
+Nem todo banco sobe junto com a aplicação no mesmo `docker-compose.yml`. Um padrão comum quando
+existe mais de um ambiente (desenvolvimento, homologação, produção — às vezes até mais de um por
+tipo) rodando **no mesmo host**: cada ambiente tem seu próprio `docker-compose.yml` só do banco,
+isolado dos outros por nomenclatura, sem que um ambiente arrisque colidir com o volume ou a rede
+de outro.
+
+```yaml
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: ${ENV}-postgres
+    restart: unless-stopped
+    env_file: [.env]
+    ports:
+      - "${DB_BIND_IP:-127.0.0.1}:${DB_PORT}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    networks: [db_net]
+
+volumes:
+  db_data:
+    name: ${ENV}_db_data
+
+networks:
+  db_net:
+    name: ${ENV}_db_net
+    driver: bridge
+```
+
+**`${ENV}`** — um prefixo que identifica o ambiente, definido no `.env` de cada deploy (`DEV`
+pra desenvolvimento, `HML` pra homologação, `PROD` pra produção, `RLS` pra um ambiente de release
+— a sigla exata varia por projeto, o que importa é ter uma). Aparece em toda parte do arquivo que
+precisa de nome único: `container_name`, nome do volume, nome da rede. Sem esse prefixo, dois
+`docker-compose.yml` desse mesmo formato — um de homologação, um de produção — rodando na mesma
+VPS tentariam usar o **mesmo** nome de volume/rede/container e colidiriam; com o prefixo, os dois
+convivem no mesmo host sem se enxergar nem se sobrescrever.
+
+**`image: postgres:18-alpine`** — a tag `alpine` usa uma distribuição base bem menor (Alpine
+Linux) que a imagem `postgres` padrão — imagem final menor, menos superfície de pacote instalado
+por padrão. A versão major (`18`) travada explicitamente, nunca `latest` — uma imagem que muda de
+versão sozinha a cada `docker compose pull` pode trazer uma migração de formato de dado que a
+aplicação não esperava.
+
+**`ports: ["${DB_BIND_IP:-127.0.0.1}:${DB_PORT}:5432"]`** — a forma completa de `ports` no Compose
+aceita um IP específico antes das duas portas (`IP:portaHost:portaContainer`), não só
+`portaHost:portaContainer`. Publicar a porta em `127.0.0.1` (o padrão aqui) significa que o
+Postgres só aceita conexão vinda da **própria máquina** — nem a rede local, nem a internet
+alcançam a porta 5432 diretamente, só um processo rodando no mesmo host (a aplicação, ou alguém
+com acesso SSH abrindo um túnel). Isso é diferente de não publicar porta nenhuma (ver
+[Kernel, netfilter e firewall](/padrao-infraestrutura/conceitos-tecnicos/kernel-netfilter-e-firewall)
+sobre por que a exposição de porta e o firewall são duas camadas, não uma só) — aqui o banco
+**precisa** aceitar conexão de fora do próprio container (de um outro `docker-compose.yml`, o da
+aplicação), só que restrita ao próprio host, não ao mundo.
+
+**`./init:/docker-entrypoint-initdb.d`** — a imagem oficial do Postgres executa automaticamente
+todo script `.sql`/`.sh` encontrado em `/docker-entrypoint-initdb.d`, mas **só na primeira
+inicialização** (quando o diretório de dado ainda está vazio) — nunca de novo depois disso, mesmo
+que o container reinicie. Útil pra bootstrap declarativo (criar extensão, schema inicial, role
+extra) sem precisar rodar comando manual depois do primeiro `up`; inútil pra migração contínua,
+que continua sendo responsabilidade da aplicação (`rails db:migrate` e afins) — esse mecanismo só
+roda uma vez, no nascimento do volume.
+
+**`name:` explícito em volume e rede** — sem isso, o Compose gera o nome automaticamente a partir
+do nome da pasta do projeto + nome do serviço, o que muda dependendo de onde o `docker-compose.yml`
+é executado. Declarar `name:` fixa o nome de verdade (aqui, com o prefixo `${ENV}` já embutido) —
+previsível, e o que permite outro `docker-compose.yml` (o da aplicação) referenciar essa mesma rede
+como `external: true` pelo nome exato.
 
 ## Build-time vs. runtime — a distinção que mais gera confusão
 

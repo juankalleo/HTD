@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
+import { SearchCommand } from "./search-command";
 import { useLocale } from "./locale-provider";
 import type { AreaKey } from "@/lib/i18n";
+import type { SearchEntry } from "@/lib/search-index";
 
-type NavItem =
-  | { area: AreaKey; href: string; icon: React.ReactNode }
-  | { labelKey: "credits"; href: string; icon: React.ReactNode };
+type AreaItem = { area: AreaKey; href: string; icon: React.ReactNode };
 
-const NAV_ITEMS: NavItem[] = [
+const AREA_ITEMS: AreaItem[] = [
   {
     area: "padrao-frontend",
     href: "/padrao-frontend",
@@ -47,29 +47,92 @@ const NAV_ITEMS: NavItem[] = [
       </>
     ),
   },
-  {
-    area: "examples",
-    href: "/examples",
-    icon: (
-      <>
-        <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
-        <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
-      </>
-    ),
-  },
-  {
-    labelKey: "credits",
-    href: "/creditos",
-    icon: (
-      <>
-        <path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" />
-        <path d="M8 4v13a3 3 0 0 0 3 3M9 8h6M9 12h5" />
-      </>
-    ),
-  },
 ];
 
-export function Navbar({ activeHref }: { activeHref: string }) {
+const EXAMPLES_ITEM: AreaItem = {
+  area: "examples",
+  href: "/examples",
+  icon: (
+    <>
+      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+      <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
+    </>
+  ),
+};
+
+const CREDITS_ICON: React.ReactNode = (
+  <>
+    <path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" />
+    <path d="M8 4v13a3 3 0 0 0 3 3M9 8h6M9 12h5" />
+  </>
+);
+
+function NavIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <svg
+      className="nexttech-nav-icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2.15}
+    >
+      {children}
+    </svg>
+  );
+}
+
+/**
+ * Grupo expansível "Documentação" do menu mobile — substitui os 4 links de
+ * área que antes ficavam soltos no topo do drawer. Mesmo padrão de toggle
+ * (useState + chevron) que `SidebarNode` já usa em sidebar.tsx.
+ */
+function MobileDocsGroup({ activeHref, onNavigate }: { activeHref: string; onNavigate: () => void }) {
+  const { t } = useLocale();
+  const [open, setOpen] = useState(true);
+
+  return (
+    <div className="nexttech-mobile-group">
+      <button
+        type="button"
+        className="nexttech-mobile-group-toggle"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span>{t.nav.docsMenu}</span>
+        <span
+          className={`nexttech-mobile-group-chevron${open ? " nexttech-mobile-group-chevron--open" : ""}`}
+          aria-hidden="true"
+        >
+          ⌄
+        </span>
+      </button>
+      {open && (
+        <div className="nexttech-mobile-group-items">
+          {AREA_ITEMS.map((item) => {
+            const active = activeHref === item.href;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`nexttech-mobile-link nexttech-mobile-link--nested${active ? " nexttech-mobile-link--active" : ""}`}
+                onClick={onNavigate}
+              >
+                <NavIcon>{item.icon}</NavIcon>
+                <span>{t.nav.areas[item.area]}</span>
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Navbar({ activeHref, searchEntries }: { activeHref: string; searchEntries: SearchEntry[] }) {
   const { locale, setLocale, t } = useLocale();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -85,6 +148,11 @@ export function Navbar({ activeHref }: { activeHref: string }) {
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [mobileOpen]);
+
+  const docsMenuActive = AREA_ITEMS.some((item) => item.href === activeHref);
+  const examplesActive = activeHref === EXAMPLES_ITEM.href;
+  const creditsActive = activeHref === "/creditos";
+  const aprendaActive = activeHref === "/aprenda" || activeHref.startsWith("/aprenda/");
 
   return (
     <nav aria-label="Main" className={`theme-layout-navbar navbar navbar--fixed-top${mobileOpen ? " navbar-sidebar--show" : ""}`}>
@@ -104,45 +172,51 @@ export function Navbar({ activeHref }: { activeHref: string }) {
           <a className="navbar__brand nexttech-brand" href="/">
             <b className="navbar__title text--truncate">How to Dev</b>
           </a>
-          {NAV_ITEMS.map((item) => {
-            const active = activeHref === item.href;
-            return (
-              <a
-                key={item.href}
-                aria-current={active ? "page" : undefined}
-                className={`navbar__item navbar__link${active ? " navbar__link--active" : ""} nexttech-nav-link`}
-                href={item.href}
-              >
-                <svg
-                  className="nexttech-nav-icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2.15}
-                >
-                  {item.icon}
-                </svg>
-                <span>{"area" in item ? t.nav.areas[item.area] : t.nav[item.labelKey]}</span>
-              </a>
-            );
-          })}
-        </div>
-        <div className="theme-layout-navbar-right navbar__items navbar__items--right">
-          <div className="navbar__item dropdown dropdown--hoverable dropdown--right nexttech-static-select">
+
+          <a
+            aria-current={aprendaActive ? "page" : undefined}
+            className={`navbar__item nexttech-cta-aprenda${aprendaActive ? " nexttech-cta-aprenda--active" : ""}`}
+            href="/aprenda"
+          >
+            Aprenda
+          </a>
+
+          <div
+            className={`navbar__item dropdown dropdown--hoverable nexttech-static-select nexttech-docs-menu${docsMenuActive ? " nexttech-docs-menu--active" : ""}`}
+          >
             <a className="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="#">
-              v1.0
+              {t.nav.docsMenu}
             </a>
             <ul className="dropdown__menu">
-              <li>
-                <a className="dropdown__link dropdown__link--active" href="#">
-                  v1.0
-                </a>
-              </li>
+              {AREA_ITEMS.map((item) => {
+                const active = activeHref === item.href;
+                return (
+                  <li key={item.href}>
+                    <a
+                      className={`dropdown__link nexttech-docs-menu-link${active ? " dropdown__link--active" : ""}`}
+                      href={item.href}
+                    >
+                      <NavIcon>{item.icon}</NavIcon>
+                      <span>{t.nav.areas[item.area]}</span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
+
+          <a
+            aria-current={examplesActive ? "page" : undefined}
+            className={`navbar__item navbar__link${examplesActive ? " navbar__link--active" : ""} nexttech-nav-link`}
+            href={EXAMPLES_ITEM.href}
+          >
+            <NavIcon>{EXAMPLES_ITEM.icon}</NavIcon>
+            <span>{t.nav.areas.examples}</span>
+          </a>
+        </div>
+        <div className="theme-layout-navbar-right navbar__items navbar__items--right">
+          <SearchCommand entries={searchEntries} />
+
           <div className="navbar__item dropdown dropdown--hoverable dropdown--right nexttech-static-select">
             <a href="#" aria-haspopup="true" aria-expanded="false" role="button" className="navbar__link">
               <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" className="iconLanguage_wzn9">
@@ -178,6 +252,15 @@ export function Navbar({ activeHref }: { activeHref: string }) {
             </ul>
           </div>
           <ThemeToggle />
+
+          <a
+            aria-current={creditsActive ? "page" : undefined}
+            className={`navbar__item navbar__link${creditsActive ? " navbar__link--active" : ""} nexttech-nav-link`}
+            href="/creditos"
+          >
+            <NavIcon>{CREDITS_ICON}</NavIcon>
+            <span>{t.nav.credits}</span>
+          </a>
         </div>
       </div>
 
@@ -201,33 +284,36 @@ export function Navbar({ activeHref }: { activeHref: string }) {
         </div>
         <div className="navbar-sidebar__items">
           <div className="navbar-sidebar__item nexttech-mobile-menu">
-            {NAV_ITEMS.map((item) => {
-              const active = activeHref === item.href;
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`nexttech-mobile-link${active ? " nexttech-mobile-link--active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.15}
-                    width={20}
-                    height={20}
-                  >
-                    {item.icon}
-                  </svg>
-                  <span>{"area" in item ? t.nav.areas[item.area] : t.nav[item.labelKey]}</span>
-                </a>
-              );
-            })}
+            <a
+              href="/aprenda"
+              aria-current={aprendaActive ? "page" : undefined}
+              className={`nexttech-mobile-link nexttech-cta-aprenda-mobile${aprendaActive ? " nexttech-mobile-link--active" : ""}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              Aprenda
+            </a>
+
+            <MobileDocsGroup activeHref={activeHref} onNavigate={() => setMobileOpen(false)} />
+
+            <a
+              href={EXAMPLES_ITEM.href}
+              aria-current={examplesActive ? "page" : undefined}
+              className={`nexttech-mobile-link${examplesActive ? " nexttech-mobile-link--active" : ""}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              <NavIcon>{EXAMPLES_ITEM.icon}</NavIcon>
+              <span>{t.nav.areas.examples}</span>
+            </a>
+
+            <a
+              href="/creditos"
+              aria-current={creditsActive ? "page" : undefined}
+              className={`nexttech-mobile-link${creditsActive ? " nexttech-mobile-link--active" : ""}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              <NavIcon>{CREDITS_ICON}</NavIcon>
+              <span>{t.nav.credits}</span>
+            </a>
 
             <div className="nexttech-mobile-divider" />
 
