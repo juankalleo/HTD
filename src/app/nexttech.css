@@ -89,10 +89,14 @@ body {
   border-radius: 0;
   box-shadow: none !important;
   display: inline-flex;
-  margin-right: 24px;
+  margin-right: 40px;
   min-height: 36px;
   min-width: 132px;
   padding: 0;
+}
+
+.theme-layout-navbar-left.navbar__items {
+  gap: 10px;
 }
 
 .nexttech-brand .navbar__title {

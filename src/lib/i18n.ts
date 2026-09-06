@@ -64,14 +64,6 @@ type Dictionary = {
     eyebrow: string;
     title: string;
     tagline: string;
-    imageAlt: string;
-    sidebarTitle: string;
-    navIntroduction: string;
-    navIndexes: string;
-    navSecurityControls: string;
-    navRoadmap: string;
-    navProjectLinks: string;
-    navAbout: string;
     bannerText: string;
     primaryCta: string;
     secondaryCta: string;
@@ -81,10 +73,6 @@ type Dictionary = {
     whyBodyBefore: string;
     whySecurityLink: string;
     whyBodyAfter: string;
-    areasHeading: string;
-    areasBody: string;
-    cheatsheetsHeading: string;
-    cheatsheetLinks: HomeSourceLink[];
     indexHeading: string;
     indexBody: string;
     controlsHeading: string;
@@ -104,7 +92,6 @@ type Dictionary = {
     aboutBody: string;
     aboutImageAlt: string;
     aboutGithubLabel: string;
-    onThisPageHeading: string;
   };
 };
 
@@ -166,14 +153,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "How to Dev",
       tagline:
         "A personal, security-first reference for structuring Next.js and Rails applications — documented with real code, real trade-offs, and nothing hidden. Current release: How to Dev v1.0.",
-      imageAlt: "How to Dev dice logo",
-      sidebarTitle: "How to Dev",
-      navIntroduction: "Introduction",
-      navIndexes: "Index HTD",
-      navSecurityControls: "Security controls",
-      navRoadmap: "Study roadmap",
-      navProjectLinks: "Project links",
-      navAbout: "About me",
       bannerText: "Frontend Standard available",
       primaryCta: "Start learning free",
       secondaryCta: "See credits",
@@ -186,32 +165,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       whySecurityLink: "Security",
       whyBodyAfter:
         "section, inside the Frontend Standard, was written with that exact bar: complete documentation, hiding no threshold, header, or authorization behavior. The only acceptable \"flaw\" is the system being too well protected.",
-      areasHeading: "System areas",
-      areasBody:
-        "The content is organized as a reference index: start with the available Frontend Standard, then expand into API, infrastructure, and complete examples.",
-      cheatsheetsHeading: "Cheatsheets",
-      cheatsheetLinks: [
-        { label: "Frontend overview", href: "/padrao-frontend" },
-        { label: "Routing", href: "/padrao-frontend/roteamento" },
-        { label: "Cache", href: "/padrao-frontend/cache" },
-        { label: "Tables", href: "/padrao-frontend/tabelas" },
-        { label: "Forms", href: "/padrao-frontend/formularios" },
-        { label: "Files", href: "/padrao-frontend/arquivos" },
-        { label: "Reports", href: "/padrao-frontend/relatorios" },
-        { label: "Authentication", href: "/padrao-frontend/seguranca/autenticacao" },
-        { label: "Authorization and IDOR", href: "/padrao-frontend/seguranca/idor-e-autorizacao" },
-        { label: "HTTP Security Headers", href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http" },
-        { label: "Cross Site Scripting", href: "/padrao-frontend/seguranca/xss" },
-        { label: "Cross-Site Request Forgery", href: "/padrao-frontend/seguranca/csrf" },
-        { label: "Content Security Policy", href: "/padrao-frontend/seguranca/csp" },
-        { label: "JSON Web Token", href: "/padrao-frontend/seguranca/jwt" },
-        { label: "PDF Security", href: "/padrao-frontend/seguranca/seguranca-pdf" },
-        { label: "Audit Logs", href: "/padrao-frontend/seguranca/logs-de-auditoria" },
-        { label: "Next.js", href: "/padrao-frontend/tecnologias/nextjs" },
-        { label: "Zod", href: "/padrao-frontend/tecnologias/zod" },
-        { label: "TanStack Query", href: "/padrao-frontend/tecnologias/react-query" },
-        { label: "Tailwind", href: "/padrao-frontend/tecnologias/tailwind" },
-      ],
       indexHeading: "HTD indexes",
       indexBody:
         "Use these entry points to jump straight to a subject: pick a topic, open the reference page, then read the implementation notes and checklist.",
@@ -301,7 +254,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "I'm Juan Kalleo, a Staff Fullstack Software Engineer on NextTech's frontend team, based in Porto Velho, Brazil. Secure software development is the focus that runs through most of what I build — HTD is where that focus turns into documentation, written the way I wish more of it was.",
       aboutImageAlt: "Photo of Juan Kalleo",
       aboutGithubLabel: "GitHub ↗",
-      onThisPageHeading: "On this page",
     },
   },
   pt: {
@@ -360,14 +312,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "How to Dev",
       tagline:
         "Referência pessoal e security-first para estruturar aplicações Next.js e Rails — documentada com código real, decisões reais e nada escondido. Versão atual: How to Dev v1.0.",
-      imageAlt: "Logo How to Dev com dados",
-      sidebarTitle: "How to Dev",
-      navIntroduction: "Introdução",
-      navIndexes: "Índice HTD",
-      navSecurityControls: "Controles de segurança",
-      navRoadmap: "Roadmap de estudo",
-      navProjectLinks: "Links do projeto",
-      navAbout: "Sobre mim",
       bannerText: "Padrão Frontend disponível",
       primaryCta: "Comece a aprender grátis",
       secondaryCta: "Ver créditos",
@@ -380,32 +324,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       whySecurityLink: "Segurança",
       whyBodyAfter:
         ", dentro do Padrão Frontend, foi escrita com essa régua: documentação completa, sem esconder threshold, header ou comportamento de autorização. A única \"falha\" aceitável é o sistema estar protegido demais.",
-      areasHeading: "Áreas do sistema",
-      areasBody:
-        "O conteúdo fica organizado como um índice de referência: começa pelo Padrão Frontend disponível e evolui para API, infraestrutura e exemplos completos.",
-      cheatsheetsHeading: "Cheatsheets",
-      cheatsheetLinks: [
-        { label: "Visão geral do frontend", href: "/padrao-frontend" },
-        { label: "Roteamento", href: "/padrao-frontend/roteamento" },
-        { label: "Cache", href: "/padrao-frontend/cache" },
-        { label: "Tabelas", href: "/padrao-frontend/tabelas" },
-        { label: "Formulários", href: "/padrao-frontend/formularios" },
-        { label: "Arquivos", href: "/padrao-frontend/arquivos" },
-        { label: "Relatórios", href: "/padrao-frontend/relatorios" },
-        { label: "Autenticação", href: "/padrao-frontend/seguranca/autenticacao" },
-        { label: "Autorização e IDOR", href: "/padrao-frontend/seguranca/idor-e-autorizacao" },
-        { label: "Headers de segurança HTTP", href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http" },
-        { label: "Cross Site Scripting", href: "/padrao-frontend/seguranca/xss" },
-        { label: "Cross-Site Request Forgery", href: "/padrao-frontend/seguranca/csrf" },
-        { label: "Content Security Policy", href: "/padrao-frontend/seguranca/csp" },
-        { label: "JSON Web Token", href: "/padrao-frontend/seguranca/jwt" },
-        { label: "Segurança em PDF", href: "/padrao-frontend/seguranca/seguranca-pdf" },
-        { label: "Logs de auditoria", href: "/padrao-frontend/seguranca/logs-de-auditoria" },
-        { label: "Next.js", href: "/padrao-frontend/tecnologias/nextjs" },
-        { label: "Zod", href: "/padrao-frontend/tecnologias/zod" },
-        { label: "TanStack Query", href: "/padrao-frontend/tecnologias/react-query" },
-        { label: "Tailwind", href: "/padrao-frontend/tecnologias/tailwind" },
-      ],
       indexHeading: "Índices HTD",
       indexBody:
         "Use estes pontos de entrada pra ir direto ao assunto: escolha o tema, abra a página de referência e leia as notas de implementação e o checklist.",
@@ -495,7 +413,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Sou o Juan Kalleo, Staff Fullstack Software Engineer no time de frontend da NextTech, baseado em Porto Velho, Brasil. Desenvolvimento seguro de software é o foco que atravessa a maior parte do que eu construo — o HTD é onde esse foco vira documentação, escrita do jeito que eu gostaria que mais gente escrevesse.",
       aboutImageAlt: "Foto de Juan Kalleo",
       aboutGithubLabel: "GitHub ↗",
-      onThisPageHeading: "Nesta página",
     },
   },
 };

@@ -163,63 +163,9 @@
 }
 
 .home-doc-layout {
-  display: grid;
-  grid-template-columns: 248px minmax(0, 760px) 220px;
-  gap: 36px;
-  max-width: 1230px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 48px 24px 72px;
-  align-items: start;
-}
-
-.home-doc-nav,
-.home-page-toc {
-  position: sticky;
-  top: calc(var(--ifm-navbar-height, 64px) + 32px);
-  max-height: calc(100vh - var(--ifm-navbar-height, 64px) - 48px);
-  overflow: auto;
-  scrollbar-width: thin;
-}
-
-.home-doc-nav h2,
-.home-doc-nav h3,
-.home-page-toc h2,
-.home-page-toc h3 {
-  margin: 0 0 10px;
-  color: var(--htd-doc-muted);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-.home-doc-nav h3,
-.home-page-toc h3 {
-  margin-top: 24px;
-}
-
-.home-doc-nav-group,
-.home-cheatsheet-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.home-doc-nav a,
-.home-page-toc a {
-  display: block;
-  padding: 4px 0;
-  color: var(--htd-doc-text);
-  font-size: 14px;
-  line-height: 1.35;
-}
-
-.home-doc-nav-group a:first-child,
-.home-page-toc > a:first-of-type {
-  color: var(--htd-doc-link);
-}
-
-.home-cheatsheet-list a {
-  padding: 5px 0;
 }
 
 .home-doc-page {
@@ -254,16 +200,6 @@
 .home-hero-lede {
   max-width: 640px;
   color: rgba(245, 249, 255, .82) !important;
-}
-
-.home-doc-logo {
-  display: block;
-  width: min(220px, 42%);
-  height: auto;
-  margin: 36px 0 0;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, .14);
-  opacity: .9;
 }
 
 .home-doc-intro h1 {
@@ -351,89 +287,6 @@
   vertical-align: top;
 }
 
-.home-roadmap-list {
-  position: relative;
-  margin: 18px 0 0;
-  padding: 0;
-  border-top: 1px solid var(--htd-doc-rule);
-  list-style: none;
-}
-
-/* Linha vertical ligando cada etapa — a progressão básico-a-avançado vira
-   um caminho visível, sem precisar rotular "iniciante/avançado" em lugar
-   nenhum (ver docs-frontend/index.md). */
-.home-roadmap-list::before {
-  content: "";
-  position: absolute;
-  top: 18px;
-  bottom: 18px;
-  left: 23px;
-  width: 1px;
-  background: var(--htd-doc-rule);
-}
-
-.home-roadmap-list > li {
-  position: relative;
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  gap: 18px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--htd-doc-rule);
-}
-
-.home-roadmap-step {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid var(--htd-doc-rule);
-  background: var(--htd-doc-bg);
-  color: var(--htd-doc-link);
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.home-roadmap-list h3 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: baseline;
-  margin: 0;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.home-roadmap-list h3 span {
-  color: var(--htd-doc-muted);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.home-roadmap-list p {
-  margin: 6px 0 10px;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.home-roadmap-list ul {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.home-roadmap-list li li {
-  margin: 4px 0;
-  color: var(--htd-doc-muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
 .home-project-links {
   margin: 0;
   padding: 0;
@@ -478,82 +331,13 @@
   }
 }
 
-.home-page-toc {
-  padding-left: 18px;
-  border-left: 1px solid var(--htd-doc-border);
-}
-
-.home-page-toc ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.home-page-toc li {
-  margin-bottom: 12px;
-}
-
-.home-page-toc li a {
-  padding-bottom: 1px;
-}
-
-.home-page-toc li span {
-  display: block;
-  color: var(--htd-doc-muted);
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.25;
-  text-transform: uppercase;
-}
-
-@media (max-width: 1120px) {
-  .home-doc-layout {
-    grid-template-columns: 230px minmax(0, 1fr);
-  }
-
-  .home-page-toc {
-    display: none;
-  }
-}
-
 @media (max-width: 760px) {
   .home-doc-layout {
-    grid-template-columns: 1fr;
-    gap: 28px;
     padding: 28px 16px 56px;
-  }
-
-  /* No mobile o conteúdo real (hero, propósito, roadmap...) tem que vir
-     antes da navegação — sem isso a home mostrava um bloco gigante de
-     links de nav e só depois o conteúdo, obrigando scroll longo antes
-     de ver qualquer coisa da página em si. */
-  .home-doc-page {
-    order: -1;
-  }
-
-  .home-doc-nav {
-    position: static;
-    max-height: none;
-    padding-bottom: 24px;
-    padding-top: 8px;
-    border-top: 1px solid var(--htd-doc-border);
-  }
-
-  .home-cheatsheet-list {
-    columns: 2;
-    display: block;
-  }
-
-  .home-cheatsheet-list a {
-    break-inside: avoid;
   }
 
   .home-doc-intro {
     padding: 32px 22px;
-  }
-
-  .home-doc-logo {
-    width: min(160px, 50%);
   }
 
   .home-doc-intro h1 {
@@ -566,17 +350,6 @@
 
   .home-index-links {
     grid-template-columns: 1fr;
-  }
-
-  .home-roadmap-list > li {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-}
-
-@media (max-width: 460px) {
-  .home-cheatsheet-list {
-    columns: 1;
   }
 }
 

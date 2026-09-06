@@ -49,17 +49,6 @@ const AREA_ITEMS: AreaItem[] = [
   },
 ];
 
-const EXAMPLES_ITEM: AreaItem = {
-  area: "examples",
-  href: "/examples",
-  icon: (
-    <>
-      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
-      <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
-    </>
-  ),
-};
-
 const CREDITS_ICON: React.ReactNode = (
   <>
     <path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" />
@@ -150,7 +139,6 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
   }, [mobileOpen]);
 
   const docsMenuActive = AREA_ITEMS.some((item) => item.href === activeHref);
-  const examplesActive = activeHref === EXAMPLES_ITEM.href;
   const creditsActive = activeHref === "/creditos";
   const aprendaActive = activeHref === "/aprenda" || activeHref.startsWith("/aprenda/");
 
@@ -204,15 +192,6 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
               })}
             </ul>
           </div>
-
-          <a
-            aria-current={examplesActive ? "page" : undefined}
-            className={`navbar__item navbar__link${examplesActive ? " navbar__link--active" : ""} nexttech-nav-link`}
-            href={EXAMPLES_ITEM.href}
-          >
-            <NavIcon>{EXAMPLES_ITEM.icon}</NavIcon>
-            <span>{t.nav.areas.examples}</span>
-          </a>
         </div>
         <div className="theme-layout-navbar-right navbar__items navbar__items--right">
           <SearchCommand entries={searchEntries} />
@@ -294,16 +273,6 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
             </a>
 
             <MobileDocsGroup activeHref={activeHref} onNavigate={() => setMobileOpen(false)} />
-
-            <a
-              href={EXAMPLES_ITEM.href}
-              aria-current={examplesActive ? "page" : undefined}
-              className={`nexttech-mobile-link${examplesActive ? " nexttech-mobile-link--active" : ""}`}
-              onClick={() => setMobileOpen(false)}
-            >
-              <NavIcon>{EXAMPLES_ITEM.icon}</NavIcon>
-              <span>{t.nav.areas.examples}</span>
-            </a>
 
             <a
               href="/creditos"
