@@ -3,6 +3,7 @@
 import { useLocale } from "./locale-provider";
 import { PtOnlyNotice } from "./pt-only-notice";
 import { StudyTree } from "./aprenda/study-tree";
+import { LearningTree } from "./aprenda/learning-tree";
 import { TRACKS } from "@/content/aprenda/tracks";
 import { getTrackLessons } from "@/content/aprenda/registry";
 
@@ -37,6 +38,9 @@ export function HomeContent() {
             <h2>{home.roadmapHeading}</h2>
             <p>{home.roadmapIntro}</p>
             <PtOnlyNotice translated={false} />
+            <div className="nexttech-learning-tree-wrap">
+              <LearningTree />
+            </div>
             <StudyTree tracksWithLessons={TRACKS_WITH_LESSONS} />
           </section>
 

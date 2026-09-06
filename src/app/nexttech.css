@@ -1426,6 +1426,88 @@ html.nexttech-no-scroll {
   background: var(--htd-doc-rule, var(--ifm-color-emphasis-200, #f0f0f0));
 }
 
+/* LearningTree — visão em árvore (raízes convergindo em Docker), acima do
+   grid de cards do StudyTree na home. overflow-x:auto + min-width evita
+   nós se sobrepondo em telas estreitas, em vez de tentar reflow um layout
+   de coordenadas fixas (mesma solução já usada pra tabela larga). */
+
+.nexttech-learning-tree-wrap {
+  margin: 24px 0 32px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.nexttech-learning-tree {
+  height: 460px;
+  min-width: 640px;
+  position: relative;
+}
+
+.nexttech-learning-tree__lines {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.nexttech-learning-tree__edge {
+  stroke: var(--ifm-color-emphasis-300, #9fb3d1);
+  stroke-width: 1.75;
+}
+
+.nexttech-learning-tree__node {
+  align-items: center;
+  background: var(--ifm-background-surface-color, #f6f9fc);
+  border: 1.5px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 10px;
+  position: absolute;
+  text-decoration: none !important;
+  transform: translate(-50%, -50%);
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  width: 108px;
+  z-index: 1;
+}
+
+.nexttech-learning-tree__node:hover {
+  border-color: var(--nexttech-blue);
+  box-shadow: 0 6px 16px rgba(12, 102, 228, .22);
+  transform: translate(-50%, -50%) translateY(-3px);
+}
+
+.nexttech-learning-tree__node.is-capstone {
+  background: linear-gradient(160deg, var(--htd-active-bg), var(--ifm-background-surface-color, #f6f9fc));
+  border-color: var(--nexttech-blue);
+  width: 118px;
+}
+
+.nexttech-learning-tree__code {
+  color: var(--ifm-color-content);
+  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.nexttech-learning-tree__percent {
+  background: var(--htd-active-bg);
+  border-radius: 999px;
+  color: var(--htd-active-text);
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 1px 8px;
+}
+
+.nexttech-learning-tree__title {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 11px;
+  line-height: 1.25;
+  text-align: center;
+}
+
 /* Árvore de estudo — home e hub /aprenda */
 
 .nexttech-study-tree {

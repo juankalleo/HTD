@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { StudyTree } from "@/components/aprenda/study-tree";
+import { LearningTree } from "@/components/aprenda/learning-tree";
 import { TRACKS } from "@/content/aprenda/tracks";
 import { getTrackLessons } from "@/content/aprenda/registry";
 
@@ -28,6 +29,9 @@ export default function AprendaPage() {
           quiz rápido no final.
         </p>
       </header>
+      <div className="nexttech-learning-tree-wrap">
+        <LearningTree />
+      </div>
       <StudyTree tracksWithLessons={tracksWithLessons} />
     </div>
   );

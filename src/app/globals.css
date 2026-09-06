@@ -163,9 +163,9 @@
 }
 
 .home-doc-layout {
-  max-width: 880px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 48px 24px 72px;
+  padding: 48px 32px 72px;
 }
 
 .home-doc-page {
@@ -225,6 +225,7 @@
 
 .home-doc-section p {
   color: var(--htd-doc-text);
+  max-width: 720px;
 }
 
 .home-doc-section {
