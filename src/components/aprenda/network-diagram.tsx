@@ -13,6 +13,11 @@ export type NetworkNode = {
   y: number;
 };
 
+export type NetworkEdge = {
+  from: string;
+  to: string;
+};
+
 export type NetworkHop = {
   from: string;
   to: string;
@@ -77,19 +82,40 @@ function NodeIcon({ kind }: { kind: NetworkNodeKind }) {
   );
 }
 
+/** Curva suave (mesma ideia do LearningTree) em vez de linha reta — entra/sai
+ * levemente arqueada, então dois nós lado a lado não viram um traço plano. */
+function edgePath(from: NetworkNode, to: NetworkNode): string {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  // Curva mais pronunciada quando os nós estão desalinhados (diagonal);
+  // uma leve barriga mesmo na horizontal, pra não ficar 100% reto.
+  const bow = Math.max(Math.abs(dx), Math.abs(dy)) * 0.18;
+  const midX = (from.x + to.x) / 2;
+  const midY = (from.y + to.y) / 2 - (dx !== 0 ? bow : 0);
+  return `M ${from.x} ${from.y} Q ${midX} ${midY}, ${to.x} ${to.y}`;
+}
+
+function edgeKey(from: string, to: string) {
+  return [from, to].sort().join("::");
+}
+
 /**
- * Diagrama de rede interativo — nós conectados por linhas, com um "pacote"
- * que anima de nó em nó ao clicar em Reproduzir. Posição do pacote é
- * controlada via estado React (left/top em %, com transition CSS) em vez
- * de SMIL — mais fácil sincronizar com a legenda de cada passo e permitir
- * pausar/reiniciar do que orquestrar animateMotion encadeado.
+ * Diagrama de rede interativo. `edges` é a topologia ESTÁTICA — todas as
+ * conexões possíveis, sempre desenhadas (evita nó "flutuando" sem linha
+ * quando ele só não é o alvo do passo atual, ex.: load balancer com 3
+ * servidores mas só 1 ativo por vez). `hops` é a sequência animada; cada
+ * hop precisa corresponder a uma edge (mesmo par from/to, em qualquer
+ * ordem) pra saber qual linha destacar. Se `edges` não for passado, é
+ * derivado dos próprios hops (funciona pra fluxo linear simples).
  */
 export function NetworkDiagram({
   nodes,
+  edges,
   hops,
   height = 260,
 }: {
   nodes: NetworkNode[];
+  edges?: NetworkEdge[];
   hops: NetworkHop[];
   height?: number;
 }) {
@@ -98,6 +124,19 @@ export function NetworkDiagram({
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const nodeById = useMemo(() => new Map(nodes.map((n) => [n.id, n])), [nodes]);
+
+  const resolvedEdges = useMemo<NetworkEdge[]>(() => {
+    if (edges && edges.length) return edges;
+    const seen = new Set<string>();
+    const derived: NetworkEdge[] = [];
+    for (const hop of hops) {
+      const key = edgeKey(hop.from, hop.to);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      derived.push({ from: hop.from, to: hop.to });
+    }
+    return derived;
+  }, [edges, hops]);
 
   useEffect(() => {
     return () => {
@@ -132,25 +171,24 @@ export function NetworkDiagram({
   const packetTarget = currentHop ? nodeById.get(currentHop.to) : nodeById.get(hops[0]?.from);
   const activeFromId = currentHop?.from;
   const activeToId = currentHop?.to;
+  const activeEdgeKey = currentHop ? edgeKey(currentHop.from, currentHop.to) : undefined;
 
   return (
     <div className="nexttech-network-diagram">
       <div className="nexttech-network-diagram__canvas" style={{ height }}>
         <svg className="nexttech-network-diagram__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          {hops.map((hop, i) => {
-            const from = nodeById.get(hop.from);
-            const to = nodeById.get(hop.to);
+          {resolvedEdges.map((edge) => {
+            const from = nodeById.get(edge.from);
+            const to = nodeById.get(edge.to);
             if (!from || !to) return null;
-            const isActive = stepIndex === i;
+            const isActive = activeEdgeKey === edgeKey(edge.from, edge.to);
             return (
-              <line
-                key={`${hop.from}-${hop.to}-${i}`}
-                x1={from.x}
-                y1={from.y}
-                x2={to.x}
-                y2={to.y}
+              <path
+                key={edgeKey(edge.from, edge.to)}
+                d={edgePath(from, to)}
                 className={`nexttech-network-diagram__edge${isActive ? " is-active" : ""}`}
                 vectorEffect="non-scaling-stroke"
+                fill="none"
               />
             );
           })}

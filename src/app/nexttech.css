@@ -1040,7 +1040,11 @@ body {
   z-index: 1;
 }
 
-.theme-layout-footer.footer {
+/* Compensa a sidebar (320px) e a coluna de glossário (276px), que são
+   fixed/fora do fluxo — só existem no layout de docs de 3 colunas. Em
+   qualquer outra página (Aprenda, home, créditos) o footer não deve ter
+   essa margem, senão fica estreito/cortado sem motivo. */
+.theme-layout-main.mainWrapper_Bn9y ~ .theme-layout-footer.footer {
   margin-left: 320px;
   margin-right: 276px;
 }
@@ -1359,23 +1363,20 @@ html.nexttech-no-scroll {
 
 .nexttech-cta-aprenda {
   align-items: center;
-  background: linear-gradient(135deg, #2f8bff 0%, var(--nexttech-blue) 100%);
-  border-radius: 999px;
-  box-shadow: 0 2px 10px rgba(12, 102, 228, .45);
+  background: var(--nexttech-blue);
+  border-radius: 6px;
   color: #fff !important;
   display: inline-flex;
   font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: .01em;
   margin-right: 8px;
   padding: 8px 18px;
-  transition: transform .12s ease, box-shadow .12s ease;
+  transition: background-color .12s ease;
 }
 
 .nexttech-cta-aprenda:hover {
-  box-shadow: 0 4px 16px rgba(12, 102, 228, .55);
-  transform: translateY(-1px);
-  background: linear-gradient(135deg, #2f8bff 0%, var(--nexttech-blue) 100%);
+  background: var(--nexttech-blue-dark);
 }
 
 .nexttech-cta-aprenda--active {
@@ -1439,8 +1440,17 @@ html.nexttech-no-scroll {
 
 .nexttech-learning-tree {
   height: 460px;
-  min-width: 640px;
   position: relative;
+  width: 100%;
+}
+
+/* Só força largura mínima (com scroll) em tela realmente estreita — em
+   qualquer coisa maior, a árvore preenche o espaço disponível, sem cortar
+   nem precisar rolar à toa. */
+@media (max-width: 640px) {
+  .nexttech-learning-tree {
+    min-width: 640px;
+  }
 }
 
 .nexttech-learning-tree__lines {
@@ -2290,8 +2300,8 @@ html.nexttech-no-scroll {
 
 .nexttech-network-diagram__packet {
   background: var(--nexttech-blue);
+  border: 2px solid var(--ifm-background-surface-color, #f6f9fc);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--htd-active-bg), 0 0 10px rgba(12, 102, 228, .6);
   height: 12px;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -2306,7 +2316,7 @@ html.nexttech-no-scroll {
 
 @keyframes nexttech-network-pulse {
   50% {
-    box-shadow: 0 0 0 7px var(--htd-active-bg), 0 0 14px rgba(12, 102, 228, .8);
+    transform: translate(-50%, -50%) scale(1.3);
   }
 }
 

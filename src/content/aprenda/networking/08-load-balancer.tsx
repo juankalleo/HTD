@@ -24,6 +24,11 @@ export default function Licao08LoadBalancer() {
         qual servidor vai atender.
       </p>
 
+      <p>
+        Repare que o load balancer fica conectado aos 3 servidores o tempo todo — a diferença entre uma requisição e
+        outra é só qual dessas 3 conexões recebe o tráfego daquela vez.
+      </p>
+
       <h2>Requisição 1 → Servidor A</h2>
       <NetworkDiagram
         height={260}
@@ -33,6 +38,12 @@ export default function Licao08LoadBalancer() {
           { id: "a", label: "Servidor A", kind: "server", x: 88, y: 18 },
           { id: "b", label: "Servidor B", kind: "server", x: 88, y: 50 },
           { id: "c", label: "Servidor C", kind: "server", x: 88, y: 82 },
+        ]}
+        edges={[
+          { from: "client", to: "lb" },
+          { from: "lb", to: "a" },
+          { from: "lb", to: "b" },
+          { from: "lb", to: "c" },
         ]}
         hops={[
           { from: "client", to: "lb", caption: "1. Requisição chega no load balancer, não direto num servidor." },
@@ -49,6 +60,12 @@ export default function Licao08LoadBalancer() {
           { id: "a", label: "Servidor A", kind: "server", x: 88, y: 18 },
           { id: "b", label: "Servidor B", kind: "server", x: 88, y: 50 },
           { id: "c", label: "Servidor C", kind: "server", x: 88, y: 82 },
+        ]}
+        edges={[
+          { from: "client", to: "lb" },
+          { from: "lb", to: "a" },
+          { from: "lb", to: "b" },
+          { from: "lb", to: "c" },
         ]}
         hops={[
           { from: "client", to: "lb", caption: "1. Uma NOVA requisição chega — o cliente nem percebe a troca." },

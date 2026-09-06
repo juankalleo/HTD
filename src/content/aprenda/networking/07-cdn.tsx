@@ -22,16 +22,26 @@ export default function Licao07Cdn() {
         mundo — o visitante fala com o edge mais próximo, não com a origem.
       </p>
 
+      <p>
+        Os dois cenários abaixo usam a mesma topologia — visitante, edge mais próximo, origem lá longe — só muda
+        até onde a requisição precisa viajar.
+      </p>
+
       <h2>Cenário 1 — Cache HIT (o edge já tem o arquivo)</h2>
       <NetworkDiagram
         height={220}
         nodes={[
-          { id: "client", label: "Visitante (BR)", kind: "client", x: 12, y: 50 },
-          { id: "edge", label: "Edge CDN (São Paulo)", kind: "cdn", x: 88, y: 50 },
+          { id: "client", label: "Visitante (BR)", kind: "client", x: 10, y: 50 },
+          { id: "edge", label: "Edge CDN (São Paulo)", kind: "cdn", x: 50, y: 50 },
+          { id: "origin", label: "Origem (EUA)", kind: "server", x: 90, y: 50 },
+        ]}
+        edges={[
+          { from: "client", to: "edge" },
+          { from: "edge", to: "origin" },
         ]}
         hops={[
           { from: "client", to: "edge", caption: "1. Requisição vai pro edge mais próximo — não pra origem." },
-          { from: "edge", to: "client", caption: "2. Cache HIT: o edge já tinha o arquivo guardado e responde na hora." },
+          { from: "edge", to: "client", caption: "2. Cache HIT: o edge já tinha o arquivo guardado e responde na hora, sem acionar a origem." },
         ]}
       />
 
@@ -42,6 +52,10 @@ export default function Licao07Cdn() {
           { id: "client", label: "Visitante (BR)", kind: "client", x: 10, y: 50 },
           { id: "edge", label: "Edge CDN (São Paulo)", kind: "cdn", x: 50, y: 50 },
           { id: "origin", label: "Origem (EUA)", kind: "server", x: 90, y: 50 },
+        ]}
+        edges={[
+          { from: "client", to: "edge" },
+          { from: "edge", to: "origin" },
         ]}
         hops={[
           { from: "client", to: "edge", caption: "1. Requisição chega no edge." },

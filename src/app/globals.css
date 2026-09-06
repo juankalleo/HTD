@@ -71,8 +71,12 @@
   border-radius: 0.35rem;
 }
 .markdown pre {
+  /* Fundo é sempre escuro, em claro ou escuro (bloco de código não troca de
+     tema) — a cor do texto tinha ficado presa numa variável de tema
+     (--ifm-color-content), que no modo claro vira quase preto: texto
+     invisível num fundo já escuro. Fixo os dois juntos, do mesmo jeito. */
   background: #0d1117;
-  color: var(--ifm-color-content, #e3e3e3);
+  color: #e3e3e3;
   padding: 18px;
   border-radius: 6px;
   overflow-x: auto;
