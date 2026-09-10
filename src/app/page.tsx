@@ -6,9 +6,11 @@ import { getGlobalSearchIndex } from "@/lib/search-index";
 import { getServerLocale } from "@/lib/locale-server";
 
 export const metadata: Metadata = {
-  title: "How to Dev",
+  title: {
+    absolute: "How to Dev - Learn Software Development",
+  },
   description:
-    "Juan Kalleo's personal documentation of the frontend, API, and infrastructure standards used as a project reference.",
+    "How to Dev is a practical software development knowledge base covering frontend, backend, APIs, databases, security, infrastructure and architecture.",
 };
 
 export default async function HomePage() {

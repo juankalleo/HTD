@@ -15,8 +15,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { track, lesson } = await params;
   const lessonModule = getLesson(track, lesson);
-  if (!lessonModule) return { title: "Aprenda | How to Dev" };
-  return { title: `${lessonModule.meta.title} | Aprenda | How to Dev`, description: lessonModule.meta.summary };
+  if (!lessonModule) return { title: "Aprenda" };
+  return { title: `${lessonModule.meta.title} | Aprenda`, description: lessonModule.meta.summary };
 }
 
 export default async function LessonPage({ params }: Props) {

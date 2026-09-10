@@ -2,6 +2,7 @@
 video: z-RuvnMlw34
 videoEn: ZV5yTm4pT8g
 sidebar_label: Segurança
+description: "Guia de segurança frontend do How to Dev cobrindo autenticação, JWT, RBAC, CSRF, XSS, CSP, IDOR, headers HTTP, auditoria e exportações."
 date: "29 de agosto de 2026"
 ---
 

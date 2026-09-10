@@ -155,6 +155,7 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
   const docsMenuActive = AREA_ITEMS.some((item) => item.href === activeHref);
   const creditsActive = activeHref === "/creditos";
   const aprendaActive = activeHref === "/aprenda" || activeHref.startsWith("/aprenda/");
+  const roadmapActive = activeHref === "/developer-roadmap";
 
   return (
     <>
@@ -210,6 +211,14 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
               href="/aprenda"
             >
               Aprenda
+            </a>
+
+            <a
+              aria-current={roadmapActive ? "page" : undefined}
+              className={`navbar__item navbar__link nexttech-cta-aprenda${roadmapActive ? " navbar__link--active nexttech-cta-aprenda--active" : ""}`}
+              href="/developer-roadmap"
+            >
+              {t.nav.roadmap}
             </a>
           </div>
           <div className="theme-layout-navbar-right navbar__items navbar__items--right">
@@ -290,6 +299,15 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
                 onClick={() => setMobileOpen(false)}
               >
                 Aprenda
+              </a>
+
+              <a
+                href="/developer-roadmap"
+                aria-current={roadmapActive ? "page" : undefined}
+                className={`nexttech-mobile-link${roadmapActive ? " nexttech-mobile-link--active" : ""}`}
+                onClick={() => setMobileOpen(false)}
+              >
+                {t.nav.roadmap}
               </a>
 
               <MobileDocsGroup activeHref={activeHref} onNavigate={() => setMobileOpen(false)} />

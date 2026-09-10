@@ -2,6 +2,7 @@
 video: 8BuvfgIEz20
 videoEn: 6KqbPJtA5O8
 sidebar_label: Visão geral
+description: "Guia de backend e API do How to Dev para aprender roteamento, autenticação, autorização, paginação, erros, serializers e contratos HTTP em Rails."
 date: "30 de agosto de 2026"
 ---
 

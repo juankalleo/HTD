@@ -8,7 +8,7 @@ import { getServerLocale } from "@/lib/locale-server";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Créditos | How to Dev",
+  title: "Créditos",
   description: "Canais, livros, documentações e empresas citadas nos materiais do How to Dev.",
 };
 

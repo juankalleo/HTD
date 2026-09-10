@@ -13,8 +13,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { track } = await params;
   const meta = getTrackMeta(track);
-  if (!meta) return { title: "Aprenda | How to Dev" };
-  return { title: `${meta.title} | Aprenda | How to Dev`, description: meta.summary };
+  if (!meta) return { title: "Aprenda" };
+  return { title: `${meta.title} | Aprenda`, description: meta.summary };
 }
 
 export default async function TrackPage({ params }: Props) {

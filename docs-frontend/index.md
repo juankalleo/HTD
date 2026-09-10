@@ -1,6 +1,7 @@
 ---
 video: NhUr8cwDiiM
 videoEn: WaFBiDgqctY
+description: "Padrão frontend do How to Dev para aprender e estruturar aplicações Next.js com rotas, componentes, dados, formulários, arquivos, cache e segurança."
 date: "30 de agosto de 2026"
 ---
 

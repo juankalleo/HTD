@@ -1,6 +1,7 @@
 ---
 video: Gyq-yeot8qM
 videoEn: Y2H3DXDeS3Q
+description: "Como funciona a autenticação no frontend do How to Dev: login, logout, sessão, token JWT no localStorage, AuthGuard, 401 e integração com API Rails."
 date: "29 de agosto de 2026"
 ---
 

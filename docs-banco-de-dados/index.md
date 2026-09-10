@@ -1,5 +1,6 @@
 ---
 sidebar_label: Visão geral
+description: "Guia de banco de dados do How to Dev para aprender modelagem relacional, SQL, migrations, multi-tenancy, auditoria e padrões ActiveRecord."
 date: "30 de agosto de 2026"
 ---
 

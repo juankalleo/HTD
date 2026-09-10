@@ -9,6 +9,7 @@ const AREAS = ["padrao-frontend", "padrao-api", "padrao-banco-de-dados", "padrao
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE_URL}/developer-roadmap`, changeFrequency: "weekly", priority: 0.95 },
     { url: `${SITE_URL}/aprenda`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/creditos`, changeFrequency: "monthly", priority: 0.3 },
   ];

@@ -1,6 +1,7 @@
 ---
 video: NhUr8cwDiiM
 videoEn: WaFBiDgqctY
+description: "How to Dev's frontend development guide for structuring Next.js applications with routing, components, data, forms, files, cache and security."
 date: "August 29, 2026"
 ---
 

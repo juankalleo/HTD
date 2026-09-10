@@ -24,8 +24,8 @@ export function HomeContent() {
                 <a className="home-hero-cta home-hero-cta--primary" href="/aprenda">
                   {home.primaryCta}
                 </a>
-                <a className="home-hero-cta home-hero-cta--secondary" href="/padrao-frontend">
-                  {home.cards["padrao-frontend"].title}
+                <a className="home-hero-cta home-hero-cta--secondary" href="/developer-roadmap">
+                  {home.roadmapCta}
                 </a>
               </div>
             </div>

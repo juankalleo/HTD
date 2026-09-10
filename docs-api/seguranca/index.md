@@ -2,6 +2,7 @@
 video: nMFffjHIlRg
 videoEn: R-4_DbV1Su4
 sidebar_label: Visão geral
+description: "Guia de segurança de API do How to Dev cobrindo autenticação JWT, autorização com CanCanCan, força bruta, bloqueio e CORS em Rails."
 date: "30 de agosto de 2026"
 ---
 

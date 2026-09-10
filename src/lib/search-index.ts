@@ -33,7 +33,11 @@ function flattenEntries(items: SidebarItem[], group: string, out: SearchEntry[])
 
 export function getGlobalSearchIndex(locale: Locale): SearchEntry[] {
   const groupNames = dictionaries[locale].nav.areas;
-  const entries: SearchEntry[] = [];
+  const entries: SearchEntry[] = [
+    { label: "How to Dev", href: "/", group: "How to Dev" },
+    { label: "Developer Roadmap", href: "/developer-roadmap", group: "How to Dev" },
+    { label: "Learn Software Development", href: "/aprenda", group: "How to Dev" },
+  ];
   for (const area of SEARCHABLE_AREAS) {
     const tree = getSidebarTree(area, locale);
     flattenEntries(tree, groupNames[area], entries);

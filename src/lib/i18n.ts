@@ -28,6 +28,7 @@ type Dictionary = {
     currentVersion: string;
     languageName: string;
     docsMenu: string;
+    roadmap: string;
   };
   sidebar: {
     ariaNav: string;
@@ -65,6 +66,7 @@ type Dictionary = {
     title: string;
     tagline: string;
     primaryCta: string;
+    roadmapCta: string;
     secondaryCta: string;
     statsLabel: string;
     statLessons: string;
@@ -119,6 +121,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       currentVersion: "How to Dev v1.1",
       languageName: "EN",
       docsMenu: "Documentation",
+      roadmap: "Roadmap",
     },
     sidebar: {
       ariaNav: "Content navigation",
@@ -162,30 +165,31 @@ export const dictionaries: Record<Locale, Dictionary> = {
     home: {
       title: "How to Dev",
       tagline:
-        "A personal, security-first reference for structuring Next.js and Rails applications — documented with real code, real trade-offs, and nothing hidden. Current release: How to Dev v1.1.",
+        "Learn software development through practical guides on frontend, backend, APIs, databases, security, infrastructure and architecture. Current release: How to Dev v1.1.",
       primaryCta: "Start learning free",
+      roadmapCta: "Learn how to develop software",
       secondaryCta: "See credits",
       statsLabel: "How to Dev data",
       statLessons: "Practical lessons",
       statTracks: "Study tracks",
       statUpdated: "Current release",
-      statUpdatedValue: "HTD v1.1",
+      statUpdatedValue: "How to Dev v1.1",
       purposeHeading: "Purpose",
       purposeBody:
-        "This site documents, for real, the standards I use day to day to structure a project from scratch: folder organization, authentication, forms, tables, report exports, and — above all — security, always with the reasoning behind the decision, not just the \"how\". It isn't a product and there's no team behind it: it's a personal technical reference, published because documenting is the most honest way to check, later, whether a pattern still holds up.",
+        "Learn how to develop modern software through practical guides covering frontend, backend, APIs, databases, security, infrastructure and software architecture. How to Dev is a developer knowledge base for understanding how applications are designed, built, secured, deployed and maintained.",
       whyHeading: "Why this exists",
       whyBodyBefore:
         "It started from a simple question: if a malicious actor got access to this documentation, would it help them attack a real system — or would it show them the system is already protected enough that it isn't worth trying? The",
       whySecurityLink: "Security",
       whyBodyAfter:
         "section, inside the Frontend Standard, was written with that exact bar: complete documentation, hiding no threshold, header, or authorization behavior. The only acceptable \"flaw\" is the system being too well protected.",
-      reasonHeading: "Why HTD exists",
+      reasonHeading: "Why How to Dev exists",
       reasonIntro:
-        "HTD is a public notebook for standards that survived real projects. The goal is not to collect snippets: it is to explain decisions well enough that another developer can reuse the reasoning, not only the code.",
+        "How to Dev connects beginner lessons, production standards and official references into one software development guide. The goal is not to collect snippets: it is to explain decisions well enough that another developer can reuse the reasoning, not only the code.",
       reasonItems: [
         {
           title: "Learning before copying",
-          body: "The Aprenda tracks teach the foundation first, then point to the production standard when the concept is ready to be applied.",
+          body: "The learning tracks teach web fundamentals first, then point to production standards when the concept is ready to be applied.",
         },
         {
           title: "Security as default",
@@ -199,14 +203,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       creatorHeading: "Creator and contributor",
       creatorName: "Juan Kalleo Uchoa Fava",
       creatorRole: "Staff Fullstack Software Engineer · NextTech frontend team",
-      indexHeading: "HTD indexes",
+      indexHeading: "How to Dev indexes",
       indexBody:
-        "Use these entry points to jump straight to a subject: pick a topic, open the reference page, then read the implementation notes and checklist.",
+        "Use these entry points to jump straight to a subject: start with the developer roadmap, pick a topic, then open the reference page, lesson or checklist.",
       controlsHeading: "Security coverage map",
       controlsBody:
-        "A quick way to go from a risk category to the HTD page that actually implements the control — this table reflects HTD's own content, not an external checklist.",
+        "A quick way to go from a risk category to the How to Dev page that actually implements the control — this table reflects How to Dev's own content, not an external checklist.",
       controlTableRisk: "Risk or control",
-      controlTableHtd: "HTD reference",
+      controlTableHtd: "How to Dev reference",
       controlRows: [
         {
           risk: "Access control and IDOR",
@@ -275,6 +279,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "A top-down map of the concepts a developer needs to connect: the first rows are foundations, then the topics branch into UI, backend, data, infrastructure and security.",
       projectLinksHeading: "Project links",
       projectLinks: [
+        { label: "Developer Roadmap", href: "/developer-roadmap" },
+        { label: "Learn software development", href: "/aprenda" },
         { label: "Credits", href: "/creditos" },
         { label: "Frontend Standard", href: "/padrao-frontend" },
         { label: "Security checklist", href: "/padrao-frontend/seguranca" },
@@ -285,7 +291,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       aboutHeading: "About me",
       aboutBody:
-        "I'm Juan Kalleo Uchoa Fava, a Staff Fullstack Software Engineer on NextTech's frontend team, based in Porto Velho, Brazil. Secure software development is the focus that runs through most of what I build — HTD is where that focus turns into documentation, written the way I wish more of it was.",
+        "I'm Juan Kalleo Uchoa Fava, a Staff Fullstack Software Engineer on NextTech's frontend team, based in Porto Velho, Brazil. Secure software development is the focus that runs through most of what I build — How to Dev is where that focus turns into documentation, written the way I wish more of it was.",
       aboutImageAlt: "Photo of Juan Kalleo",
       aboutGithubLabel: "GitHub ↗",
     },
@@ -303,6 +309,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       currentVersion: "How to Dev v1.1",
       languageName: "PT-BR",
       docsMenu: "Documentação",
+      roadmap: "Roadmap",
     },
     sidebar: {
       ariaNav: "Navegação de conteúdo",
@@ -345,30 +352,31 @@ export const dictionaries: Record<Locale, Dictionary> = {
     home: {
       title: "How to Dev",
       tagline:
-        "Referência pessoal e security-first para estruturar aplicações Next.js e Rails — documentada com código real, decisões reais e nada escondido. Versão atual: How to Dev v1.1.",
+        "Aprenda desenvolvimento de software com guias práticos sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura. Versão atual: How to Dev v1.1.",
       primaryCta: "Comece a aprender grátis",
+      roadmapCta: "Aprenda como desenvolver software",
       secondaryCta: "Ver créditos",
       statsLabel: "Dados do How to Dev",
       statLessons: "Lições práticas",
       statTracks: "Trilhas de estudo",
       statUpdated: "Versão atual",
-      statUpdatedValue: "HTD v1.1",
+      statUpdatedValue: "How to Dev v1.1",
       purposeHeading: "Propósito",
       purposeBody:
-        "Este site documenta, de verdade, os padrões de estruturação que uso no dia a dia: organização de pastas, autenticação, formulário, tabela, exportação de relatório e, principalmente, segurança — sempre com o porquê da decisão, não só o \"como fazer\". Não é um produto nem tem equipe por trás: é referência técnica pessoal, publicada porque documentar é a forma mais honesta de revisar, depois, se um padrão ainda faz sentido.",
+        "Aprenda como desenvolver software moderno com guias práticos sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura de software. How to Dev é uma base de conhecimento para entender como aplicações são desenhadas, construídas, protegidas, publicadas e mantidas.",
       whyHeading: "Por que existe",
       whyBodyBefore:
         "Nasceu de uma pergunta simples: se alguém mal-intencionado tivesse acesso a essa documentação, ela ajudaria a atacar um sistema real — ou mostraria que o sistema já é protegido o bastante pra não valer a pena tentar? A seção de",
       whySecurityLink: "Segurança",
       whyBodyAfter:
         ", dentro do Padrão Frontend, foi escrita com essa régua: documentação completa, sem esconder threshold, header ou comportamento de autorização. A única \"falha\" aceitável é o sistema estar protegido demais.",
-      reasonHeading: "Por que o HTD existe",
+      reasonHeading: "Por que o How to Dev existe",
       reasonIntro:
-        "O HTD é um caderno público de padrões que nasceram em projeto real. A ideia não é juntar snippets soltos: é explicar decisão com contexto suficiente para outro dev reaproveitar o raciocínio, não só o código.",
+        "How to Dev conecta aulas para iniciantes, padrões de produção e referências oficiais em um guia de desenvolvimento de software. A ideia não é juntar snippets soltos: é explicar decisão com contexto suficiente para outro dev reaproveitar o raciocínio, não só o código.",
       reasonItems: [
         {
           title: "Aprender antes de copiar",
-          body: "As trilhas do Aprenda ensinam a base primeiro e só depois apontam para o padrão de produção, quando o conceito já faz sentido.",
+          body: "As trilhas de aprendizado ensinam fundamentos da web primeiro e só depois apontam para o padrão de produção, quando o conceito já faz sentido.",
         },
         {
           title: "Segurança como padrão",
@@ -382,14 +390,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
       creatorHeading: "Criador e contribuidor",
       creatorName: "Juan Kalleo Uchoa Fava",
       creatorRole: "Staff Fullstack Software Engineer · time de frontend da NextTech",
-      indexHeading: "Índices HTD",
+      indexHeading: "Índices do How to Dev",
       indexBody:
-        "Use estes pontos de entrada pra ir direto ao assunto: escolha o tema, abra a página de referência e leia as notas de implementação e o checklist.",
+        "Use estes pontos de entrada pra ir direto ao assunto: comece pelo roadmap de desenvolvimento, escolha o tema e abra a referência, aula ou checklist.",
       controlsHeading: "Mapa de cobertura de segurança",
       controlsBody:
-        "Um jeito rápido de sair da categoria de risco e cair direto na página HTD que implementa o controle — esta tabela reflete o conteúdo do próprio HTD, não um checklist externo.",
+        "Um jeito rápido de sair da categoria de risco e cair direto na página do How to Dev que implementa o controle — esta tabela reflete o conteúdo do próprio How to Dev, não um checklist externo.",
       controlTableRisk: "Risco ou controle",
-      controlTableHtd: "Referência HTD",
+      controlTableHtd: "Referência How to Dev",
       controlRows: [
         {
           risk: "Controle de acesso e IDOR",
@@ -458,6 +466,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Um mapa de cima para baixo com os conceitos que um dev precisa conectar: primeiro a base, depois os assuntos se ramificam em interface, backend, dados, infraestrutura e segurança.",
       projectLinksHeading: "Links do projeto",
       projectLinks: [
+        { label: "Developer Roadmap", href: "/developer-roadmap" },
+        { label: "Aprenda desenvolvimento de software", href: "/aprenda" },
         { label: "Créditos", href: "/creditos" },
         { label: "Padrão Frontend", href: "/padrao-frontend" },
         { label: "Checklist de segurança", href: "/padrao-frontend/seguranca" },
@@ -468,7 +478,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       aboutHeading: "Sobre mim",
       aboutBody:
-        "Sou Juan Kalleo Uchoa Fava, Staff Fullstack Software Engineer no time de frontend da NextTech, baseado em Porto Velho, Brasil. Desenvolvimento seguro de software é o foco que atravessa a maior parte do que eu construo — o HTD é onde esse foco vira documentação, escrita do jeito que eu gostaria que mais gente escrevesse.",
+        "Sou Juan Kalleo Uchoa Fava, Staff Fullstack Software Engineer no time de frontend da NextTech, baseado em Porto Velho, Brasil. Desenvolvimento seguro de software é o foco que atravessa a maior parte do que eu construo — How to Dev é onde esse foco vira documentação, escrita do jeito que eu gostaria que mais gente escrevesse.",
       aboutImageAlt: "Foto de Juan Kalleo",
       aboutGithubLabel: "GitHub ↗",
     },

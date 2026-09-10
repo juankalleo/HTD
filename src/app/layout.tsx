@@ -7,7 +7,7 @@ import { getServerLocale } from "@/lib/locale-server";
 
 const SITE_URL = "https://howtodev.site";
 const SITE_DESCRIPTION =
-  "How to Dev (HTD) — Juan Kalleo's personal, security-first reference for structuring Next.js and Rails applications, with real code and nothing hidden.";
+  "How to Dev is a practical software development knowledge base for learning frontend, backend, APIs, databases, security, infrastructure and architecture.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -16,7 +16,11 @@ export const metadata: Metadata = {
     template: "%s | How to Dev",
   },
   description: SITE_DESCRIPTION,
-  keywords: ["How to Dev", "HTD", "Juan Kalleo", "Next.js", "Rails", "frontend standard", "web security"],
+  keywords: ["How to Dev", "HowToDev", "software development", "developer roadmap", "web development", "API security"],
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
   authors: [{ name: "Juan Kalleo", url: "https://github.com/juankalleo" }],
   alternates: { canonical: "/" },
   openGraph: {
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
 
 // Dados estruturados (schema.org) — não é pra Google "mostrar bonito" só,
 // é o que motor de busca com IA (AI Overviews, Perplexity, etc.) usa pra
-// entender com confiança quem/o que é "How to Dev"/"HTD" antes de citar
+// entender com confiança quem/o que é "How to Dev" antes de citar
 // a página numa resposta. Sem isso, o site é só texto solto pra eles.
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
@@ -46,10 +50,10 @@ const STRUCTURED_DATA = {
       "@type": "WebSite",
       "@id": "https://howtodev.site/#website",
       name: "How to Dev",
-      alternateName: "HTD",
-      url: "https://howtodev.site",
+      alternateName: ["HowToDev", "howtodev.site"],
+      url: "https://howtodev.site/",
       description:
-        "Personal, security-first reference for structuring Next.js and Rails applications, maintained by Juan Kalleo.",
+        "Practical software development knowledge base covering frontend, backend, APIs, databases, security, infrastructure and architecture.",
       inLanguage: ["en", "pt-BR"],
       author: { "@id": "https://howtodev.site/#person" },
     },

@@ -5,9 +5,9 @@ import { TRACKS } from "@/content/aprenda/tracks";
 import { getTrackLessons } from "@/content/aprenda/registry";
 
 export const metadata: Metadata = {
-  title: "Aprenda | How to Dev",
+  title: "Learn Software Development",
   description:
-    "Git, JavaScript, TypeScript, redes, Frontend (Tailwind e Next.js), SQL, Ruby on Rails e Docker do zero — exemplos de código, exercícios e quiz, do básico ao avançado.",
+    "Learn software development from the fundamentals through Git, JavaScript, TypeScript, networking, frontend, SQL, Ruby on Rails and Docker with practical lessons.",
 };
 
 export default function AprendaPage() {
@@ -21,12 +21,12 @@ export default function AprendaPage() {
   return (
     <div className="nexttech-aprenda-hub">
       <header className="nexttech-aprenda-hub__header">
-        <p className="nexttech-aprenda-hub__eyebrow">Aprenda</p>
-        <h1>Do básico ao avançado, com exemplos de verdade</h1>
+        <p className="nexttech-aprenda-hub__eyebrow">Learn software development</p>
+        <h1>From web fundamentals to production software</h1>
         <p>
-          {totalLessons} {totalLessons === 1 ? "lição" : "lições"} em {totalTracks} trilhas — Git, JavaScript,
-          TypeScript, Redes, Frontend, SQL, Ruby on Rails e Docker. Cada aula tem exemplo de código, exercício e um
-          quiz rápido no final.
+          {totalLessons} {totalLessons === 1 ? "lesson" : "lessons"} across {totalTracks} study tracks: Git,
+          JavaScript, TypeScript, Networking, Frontend, SQL, Ruby on Rails and Docker. Each lesson connects a practical
+          example to the larger developer roadmap.
         </p>
       </header>
       <div className="nexttech-learning-tree-wrap">

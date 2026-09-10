@@ -1,5 +1,6 @@
 ---
 sidebar_label: Visão geral
+description: "Guia de infraestrutura do How to Dev para aprender Linux, rede, HTTP, Docker, Nginx, proxy reverso, CDN, CI/CD, deploy e operação."
 date: "30 de agosto de 2026"
 ---
 

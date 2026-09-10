@@ -2,6 +2,7 @@
 video: SW_YjocL_Lk
 videoEn: wVNQwrALp1A
 sidebar_label: Autenticação
+description: "Autenticação JWT em API Rails com Devise e devise-jwt: emissão do token, header Authorization, jti, revogação, 401 e testes autenticados."
 date: "30 de agosto de 2026"
 ---
 

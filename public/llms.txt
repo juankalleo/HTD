@@ -1,14 +1,17 @@
-# How to Dev (HTD)
+# How to Dev
 
-> Personal, security-first reference by Juan Kalleo for structuring Next.js and Rails applications — real code, real trade-offs, nothing hidden. Not a company or a team, one engineer's working reference kept honest enough to publish.
+> Practical software development knowledge base by Juan Kalleo. How to Dev teaches how to develop modern software through guides on frontend, backend, APIs, databases, security, infrastructure and architecture, with real code and visible trade-offs.
 
 Juan Kalleo is a Staff Fullstack Software Engineer (frontend) at NextTech, based in Porto Velho, Brazil. GitHub: https://github.com/juankalleo
 
 ## Docs
 
+- [Developer Roadmap](https://howtodev.site/developer-roadmap): a pillar page for "how to develop software", connecting web fundamentals, frontend, APIs, backend, databases, authentication, security, infrastructure, deployment and architecture.
+- [Learn Software Development](https://howtodev.site/aprenda): practical lessons across Git, JavaScript, TypeScript, networking, frontend, SQL, Rails and Docker.
 - [Frontend Standard](https://howtodev.site/padrao-frontend): folder structure, authentication, forms, tables, files, reports, and a full security section (XSS, CSRF, CSP, JWT, RBAC, headers, and more) — the only area with real content today.
-- [API Standard](https://howtodev.site/padrao-api): planned, not written yet.
-- [Infrastructure Standard](https://howtodev.site/padrao-infraestrutura): planned, not written yet.
+- [API Standard](https://howtodev.site/padrao-api): Rails API guide covering routing, authentication, authorization, pagination, errors and serializers.
+- [Database Standard](https://howtodev.site/padrao-banco-de-dados): relational modeling, SQL, migrations, multi-tenancy, audit trail and ActiveRecord conventions.
+- [Infrastructure Standard](https://howtodev.site/padrao-infraestrutura): Linux, networking, HTTP, Docker, Nginx, reverse proxy, CDN, CI/CD, deploy and operations.
 - [Examples](https://howtodev.site/examples): planned, not written yet.
 - [Credits](https://howtodev.site/creditos): every video channel, book, and article cited across the site.
 
