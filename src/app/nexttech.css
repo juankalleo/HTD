@@ -1451,9 +1451,9 @@ html.nexttech-no-scroll {
   border-color: rgba(255, 255, 255, .42);
 }
 
-/* LearningTree — roadmap horizontal, acima do grid de cards do StudyTree
-   na home. overflow-x:auto + min-width evita nós se sobrepondo em telas
-   estreitas, em vez de tentar reflow um layout de coordenadas fixas. */
+/* LearningTree — roadmap horizontal da home/hub. overflow-x:auto + min-width
+   evita nós se sobrepondo em telas estreitas, em vez de tentar reflow um
+   layout de coordenadas fixas. */
 
 .nexttech-learning-tree-wrap {
   margin: 28px 0 40px;
@@ -1490,14 +1490,14 @@ html.nexttech-no-scroll {
   box-shadow: 0 8px 20px rgba(15, 23, 42, .08);
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  min-height: 92px;
+  gap: 5px;
+  min-height: 126px;
   padding: 14px 12px;
   position: absolute;
   text-decoration: none !important;
   transform: translate(-50%, -50%);
   transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
-  width: 132px;
+  width: 146px;
   z-index: 1;
 }
 
@@ -1510,14 +1510,117 @@ html.nexttech-no-scroll {
 .nexttech-learning-tree__node.is-capstone {
   background: linear-gradient(160deg, var(--htd-active-bg), var(--ifm-background-surface-color, #f6f9fc));
   border-color: var(--nexttech-blue);
-  width: 150px;
+  width: 166px;
+}
+
+.nexttech-learning-tree__icon {
+  display: block;
+  flex: 0 0 auto;
+  height: 42px;
+  width: 42px;
+}
+
+.nexttech-learning-tree__icon text {
+  dominant-baseline: middle;
+  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.nexttech-learning-tree__icon--git rect {
+  fill: #f05033;
+}
+
+.nexttech-learning-tree__icon--git circle {
+  fill: #fff;
+}
+
+.nexttech-learning-tree__icon--git path {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.nexttech-learning-tree__icon--javascript rect {
+  fill: #f7df1e;
+}
+
+.nexttech-learning-tree__icon--javascript text {
+  fill: #232323;
+}
+
+.nexttech-learning-tree__icon--typescript rect {
+  fill: #3178c6;
+}
+
+.nexttech-learning-tree__icon--typescript text {
+  fill: #fff;
+}
+
+.nexttech-learning-tree__icon--sql ellipse {
+  fill: #38bdf8;
+  stroke: #0369a1;
+  stroke-width: 2;
+}
+
+.nexttech-learning-tree__icon--sql path {
+  fill: rgba(56, 189, 248, .18);
+  stroke: #0284c7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.nexttech-learning-tree__icon--frontend circle {
+  fill: #111827;
+}
+
+.nexttech-learning-tree__icon--frontend path {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.nexttech-learning-tree__icon--rails path {
+  fill: #cc0000;
+}
+
+.nexttech-learning-tree__icon--rails text {
+  fill: #fff;
+  font-size: 18px;
+}
+
+.nexttech-learning-tree__icon--docker rect,
+.nexttech-learning-tree__icon--docker path {
+  fill: #2496ed;
+}
+
+.nexttech-learning-tree__icon--docker path:last-child {
+  fill: none;
+  stroke: #2496ed;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.nexttech-learning-tree__icon--networking circle,
+.nexttech-learning-tree__icon--networking path {
+  fill: none;
+  stroke: #2563eb;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.7;
 }
 
 .nexttech-learning-tree__code {
   color: var(--ifm-color-content);
   font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 900;
+  line-height: 1;
 }
 
 .nexttech-learning-tree__percent {

@@ -2,15 +2,12 @@
 
 import { useLocale } from "./locale-provider";
 import { PtOnlyNotice } from "./pt-only-notice";
-import { StudyTree } from "./aprenda/study-tree";
 import { LearningTree } from "./aprenda/learning-tree";
 import { TRACKS } from "@/content/aprenda/tracks";
 import { getTrackLessons } from "@/content/aprenda/registry";
 
-const TRACKS_WITH_LESSONS = TRACKS.map((track) => ({
-  track,
-  lessons: getTrackLessons(track.slug).map((lessonModule) => lessonModule.meta),
-}));
+const TOTAL_TRACKS = TRACKS.length;
+const TOTAL_LESSONS = TRACKS.reduce((total, track) => total + getTrackLessons(track.slug).length, 0);
 
 export function HomeContent() {
   const { t } = useLocale();
@@ -21,17 +18,36 @@ export function HomeContent() {
       <div className="home-doc-layout">
         <article className="home-doc-page">
           <section className="home-doc-intro" id="introduction">
-            <span className="home-hero-eyebrow">{home.bannerText}</span>
-            <h1>{home.title}</h1>
-            <p className="home-hero-lede">{home.purposeBody}</p>
-            <div className="home-hero-actions">
-              <a className="home-hero-cta home-hero-cta--primary" href="/aprenda">
-                {home.primaryCta}
-              </a>
-              <a className="home-hero-cta home-hero-cta--secondary" href="/padrao-frontend">
-                {home.cards["padrao-frontend"].title}
-              </a>
+            <div className="home-hero-copy">
+              <h1>{home.title}</h1>
+              <p className="home-hero-lede">{home.purposeBody}</p>
+              <div className="home-hero-actions">
+                <a className="home-hero-cta home-hero-cta--primary" href="/aprenda">
+                  {home.primaryCta}
+                </a>
+                <a className="home-hero-cta home-hero-cta--secondary" href="/padrao-frontend">
+                  {home.cards["padrao-frontend"].title}
+                </a>
+              </div>
             </div>
+            <aside className="home-hero-data" aria-label={home.statsLabel}>
+              <div className="home-hero-data__item home-hero-data__item--strong">
+                <strong>{TOTAL_LESSONS}</strong>
+                <span>{home.statLessons}</span>
+              </div>
+              <div className="home-hero-data__item">
+                <strong>{TOTAL_TRACKS}</strong>
+                <span>{home.statTracks}</span>
+              </div>
+              <div className="home-hero-data__item">
+                <strong>{home.statReferenceValue}</strong>
+                <span>{home.statReference}</span>
+              </div>
+              <div className="home-hero-data__item">
+                <strong>{home.statUpdatedValue}</strong>
+                <span>{home.statUpdated}</span>
+              </div>
+            </aside>
           </section>
 
           <section className="home-doc-section home-doc-section--roadmap" id="roadmap">
@@ -41,7 +57,37 @@ export function HomeContent() {
             <div className="nexttech-learning-tree-wrap">
               <LearningTree />
             </div>
-            <StudyTree tracksWithLessons={TRACKS_WITH_LESSONS} />
+          </section>
+
+          <section className="home-doc-section home-reason" id="motivo">
+            <div className="home-section-heading">
+              <h2>{home.reasonHeading}</h2>
+              <p>{home.reasonIntro}</p>
+            </div>
+            <div className="home-reason-grid">
+              {home.reasonItems.map((item) => (
+                <section className="home-reason-item" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </section>
+              ))}
+            </div>
+          </section>
+
+          <section className="home-doc-section home-creator" id="criador">
+            <h2>{home.creatorHeading}</h2>
+            <div className="home-creator-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="home-creator-photo" src="/img/icon/avatar_kalleo.png" alt={home.aboutImageAlt} />
+              <div className="home-creator-main">
+                <strong>{home.creatorName}</strong>
+                <span>{home.creatorRole}</span>
+                <p>{home.aboutBody}</p>
+                <a className="home-about-github" href="https://github.com/juankalleo" rel="noreferrer" target="_blank">
+                  {home.aboutGithubLabel}
+                </a>
+              </div>
+            </div>
           </section>
 
           <section className="home-doc-section" id="indexes">
@@ -97,24 +143,6 @@ export function HomeContent() {
                 </li>
               ))}
             </ul>
-          </section>
-
-          <section className="home-doc-section home-about" id="about">
-            <h2>{home.aboutHeading}</h2>
-            <div className="home-about-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="home-about-photo" src="/img/icon/avatar_kalleo.png" alt={home.aboutImageAlt} />
-              <div className="home-about-text">
-                <p>{home.aboutBody}</p>
-                <p>
-                  {home.whyBodyBefore}{" "}
-                  <a href="/padrao-frontend/seguranca">{home.whySecurityLink}</a> {home.whyBodyAfter}
-                </p>
-                <a className="home-about-github" href="https://github.com/juankalleo" rel="noreferrer" target="_blank">
-                  {home.aboutGithubLabel}
-                </a>
-              </div>
-            </div>
           </section>
         </article>
       </div>

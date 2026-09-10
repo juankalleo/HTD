@@ -67,12 +67,25 @@ type Dictionary = {
     bannerText: string;
     primaryCta: string;
     secondaryCta: string;
+    statsLabel: string;
+    statLessons: string;
+    statTracks: string;
+    statReference: string;
+    statReferenceValue: string;
+    statUpdated: string;
+    statUpdatedValue: string;
     purposeHeading: string;
     purposeBody: string;
     whyHeading: string;
     whyBodyBefore: string;
     whySecurityLink: string;
     whyBodyAfter: string;
+    reasonHeading: string;
+    reasonIntro: string;
+    reasonItems: { title: string; body: string }[];
+    creatorHeading: string;
+    creatorName: string;
+    creatorRole: string;
     indexHeading: string;
     indexBody: string;
     controlsHeading: string;
@@ -156,6 +169,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
       bannerText: "Frontend Standard available",
       primaryCta: "Start learning free",
       secondaryCta: "See credits",
+      statsLabel: "How to Dev data",
+      statLessons: "Practical lessons",
+      statTracks: "Study tracks",
+      statReference: "Reference",
+      statReferenceValue: "Security-first",
+      statUpdated: "Current release",
+      statUpdatedValue: "HTD v1.0",
       purposeHeading: "Purpose",
       purposeBody:
         "This site documents, for real, the standards I use day to day to structure a project from scratch: folder organization, authentication, forms, tables, report exports, and — above all — security, always with the reasoning behind the decision, not just the \"how\". It isn't a product and there's no team behind it: it's a personal technical reference, published because documenting is the most honest way to check, later, whether a pattern still holds up.",
@@ -165,6 +185,26 @@ export const dictionaries: Record<Locale, Dictionary> = {
       whySecurityLink: "Security",
       whyBodyAfter:
         "section, inside the Frontend Standard, was written with that exact bar: complete documentation, hiding no threshold, header, or authorization behavior. The only acceptable \"flaw\" is the system being too well protected.",
+      reasonHeading: "Why HTD exists",
+      reasonIntro:
+        "HTD is a public notebook for standards that survived real projects. The goal is not to collect snippets: it is to explain decisions well enough that another developer can reuse the reasoning, not only the code.",
+      reasonItems: [
+        {
+          title: "Learning before copying",
+          body: "The Aprenda tracks teach the foundation first, then point to the production standard when the concept is ready to be applied.",
+        },
+        {
+          title: "Security as default",
+          body: "Authentication, authorization, input handling and generated files are explained with the risk in view, so the pattern is easier to audit later.",
+        },
+        {
+          title: "Reference with context",
+          body: "Each documentation page keeps the implementation notes, trade-offs and links close to the subject instead of hiding them in a separate checklist.",
+        },
+      ],
+      creatorHeading: "Creator and contributor",
+      creatorName: "Juan Kalleo Uchoa Fava",
+      creatorRole: "Staff Fullstack Software Engineer · NextTech frontend team",
       indexHeading: "HTD indexes",
       indexBody:
         "Use these entry points to jump straight to a subject: pick a topic, open the reference page, then read the implementation notes and checklist.",
@@ -251,7 +291,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       aboutHeading: "About me",
       aboutBody:
-        "I'm Juan Kalleo, a Staff Fullstack Software Engineer on NextTech's frontend team, based in Porto Velho, Brazil. Secure software development is the focus that runs through most of what I build — HTD is where that focus turns into documentation, written the way I wish more of it was.",
+        "I'm Juan Kalleo Uchoa Fava, a Staff Fullstack Software Engineer on NextTech's frontend team, based in Porto Velho, Brazil. Secure software development is the focus that runs through most of what I build — HTD is where that focus turns into documentation, written the way I wish more of it was.",
       aboutImageAlt: "Photo of Juan Kalleo",
       aboutGithubLabel: "GitHub ↗",
     },
@@ -315,6 +355,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
       bannerText: "Padrão Frontend disponível",
       primaryCta: "Comece a aprender grátis",
       secondaryCta: "Ver créditos",
+      statsLabel: "Dados do How to Dev",
+      statLessons: "Lições práticas",
+      statTracks: "Trilhas de estudo",
+      statReference: "Referência",
+      statReferenceValue: "Security-first",
+      statUpdated: "Versão atual",
+      statUpdatedValue: "HTD v1.0",
       purposeHeading: "Propósito",
       purposeBody:
         "Este site documenta, de verdade, os padrões de estruturação que uso no dia a dia: organização de pastas, autenticação, formulário, tabela, exportação de relatório e, principalmente, segurança — sempre com o porquê da decisão, não só o \"como fazer\". Não é um produto nem tem equipe por trás: é referência técnica pessoal, publicada porque documentar é a forma mais honesta de revisar, depois, se um padrão ainda faz sentido.",
@@ -324,6 +371,26 @@ export const dictionaries: Record<Locale, Dictionary> = {
       whySecurityLink: "Segurança",
       whyBodyAfter:
         ", dentro do Padrão Frontend, foi escrita com essa régua: documentação completa, sem esconder threshold, header ou comportamento de autorização. A única \"falha\" aceitável é o sistema estar protegido demais.",
+      reasonHeading: "Por que o HTD existe",
+      reasonIntro:
+        "O HTD é um caderno público de padrões que nasceram em projeto real. A ideia não é juntar snippets soltos: é explicar decisão com contexto suficiente para outro dev reaproveitar o raciocínio, não só o código.",
+      reasonItems: [
+        {
+          title: "Aprender antes de copiar",
+          body: "As trilhas do Aprenda ensinam a base primeiro e só depois apontam para o padrão de produção, quando o conceito já faz sentido.",
+        },
+        {
+          title: "Segurança como padrão",
+          body: "Autenticação, autorização, entrada de dados e arquivos gerados são explicados olhando o risco, para o padrão continuar auditável depois.",
+        },
+        {
+          title: "Referência com contexto",
+          body: "Cada página de documentação mantém notas de implementação, decisões e links perto do assunto, sem esconder tudo em checklist separado.",
+        },
+      ],
+      creatorHeading: "Criador e contribuidor",
+      creatorName: "Juan Kalleo Uchoa Fava",
+      creatorRole: "Staff Fullstack Software Engineer · time de frontend da NextTech",
       indexHeading: "Índices HTD",
       indexBody:
         "Use estes pontos de entrada pra ir direto ao assunto: escolha o tema, abra a página de referência e leia as notas de implementação e o checklist.",
@@ -410,7 +477,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       aboutHeading: "Sobre mim",
       aboutBody:
-        "Sou o Juan Kalleo, Staff Fullstack Software Engineer no time de frontend da NextTech, baseado em Porto Velho, Brasil. Desenvolvimento seguro de software é o foco que atravessa a maior parte do que eu construo — o HTD é onde esse foco vira documentação, escrita do jeito que eu gostaria que mais gente escrevesse.",
+        "Sou Juan Kalleo Uchoa Fava, Staff Fullstack Software Engineer no time de frontend da NextTech, baseado em Porto Velho, Brasil. Desenvolvimento seguro de software é o foco que atravessa a maior parte do que eu construo — o HTD é onde esse foco vira documentação, escrita do jeito que eu gostaria que mais gente escrevesse.",
       aboutImageAlt: "Foto de Juan Kalleo",
       aboutGithubLabel: "GitHub ↗",
     },
