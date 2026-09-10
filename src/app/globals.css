@@ -20,7 +20,7 @@
   font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
   font-weight: 800;
   line-height: 1.25;
-  scroll-margin-top: 80px;
+  scroll-margin-top: calc(var(--nexttech-chrome-height, 96px) + 16px);
 }
 .markdown h1 {
   font-size: 30px;
@@ -152,9 +152,10 @@
 }
 
 .home-main {
-  min-height: calc(100vh - var(--ifm-navbar-height, 64px));
   background: var(--htd-doc-bg);
   color: var(--htd-doc-text);
+  min-height: 100vh;
+  padding-top: var(--nexttech-chrome-height, 96px);
 }
 
 .home-main a {
@@ -531,7 +532,7 @@
 .credits-main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: calc(var(--ifm-navbar-height, 64px) + 42px) 24px 80px;
+  padding: calc(var(--nexttech-chrome-height, 96px) + 42px) 24px 80px;
   background: var(--htd-doc-bg);
   color: var(--htd-doc-text);
 }
@@ -629,7 +630,7 @@
 
 @media (max-width: 760px) {
   .credits-main {
-    padding: calc(var(--ifm-navbar-height, 64px) + 28px) 16px 64px;
+    padding: calc(var(--nexttech-chrome-height, 96px) + 28px) 16px 64px;
   }
 
   .credits-hero h1 {

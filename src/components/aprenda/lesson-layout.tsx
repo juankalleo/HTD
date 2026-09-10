@@ -59,7 +59,6 @@ export function LessonLayout({
       </Link>
       <span className="nexttech-lesson-chapters__eyebrow">Trilha</span>
       <div className="nexttech-lesson-chapters__track">{track.title}</div>
-      <p className="nexttech-lesson-chapters__summary">{track.summary}</p>
       <div className="nexttech-lesson-chapters__progress">
         <div className="nexttech-lesson-chapters__bar">
           <div className="nexttech-lesson-chapters__bar-fill" style={{ width: `${percent}%` }} />

@@ -73,6 +73,20 @@ function NavIcon({ children }: { children: React.ReactNode }) {
   );
 }
 
+function BrandMark() {
+  return (
+    <span className="nexttech-brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <circle cx="8" cy="8" r="2" />
+        <circle cx="16" cy="8" r="2" />
+        <circle cx="8" cy="16" r="2" />
+        <circle cx="16" cy="16" r="2" />
+        <path d="M10 8h4M8 10v4M16 10v4M10 16h4" />
+      </svg>
+    </span>
+  );
+}
+
 /**
  * Grupo expansível "Documentação" do menu mobile — substitui os 4 links de
  * área que antes ficavam soltos no topo do drawer. Mesmo padrão de toggle
@@ -143,177 +157,184 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
   const aprendaActive = activeHref === "/aprenda" || activeHref.startsWith("/aprenda/");
 
   return (
-    <nav aria-label="Main" className={`theme-layout-navbar navbar navbar--fixed-top${mobileOpen ? " navbar-sidebar--show" : ""}`}>
-      <div className="navbar__inner">
-        <div className="theme-layout-navbar-left navbar__items">
-          <button
-            aria-label="Toggle navigation bar"
-            aria-expanded={mobileOpen}
-            className="navbar__toggle clean-btn"
-            type="button"
-            onClick={() => setMobileOpen((v) => !v)}
-          >
-            <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
-              <path stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2" d="M4 7h22M4 15h22M4 23h22" />
-            </svg>
-          </button>
-          <a className="navbar__brand nexttech-brand" href="/">
-            <b className="navbar__title text--truncate">How to Dev</b>
-          </a>
-
-          <div
-            className={`navbar__item dropdown dropdown--hoverable nexttech-static-select nexttech-docs-menu${docsMenuActive ? " nexttech-docs-menu--active" : ""}`}
-          >
-            <a className="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="#">
-              {t.nav.docsMenu}
-            </a>
-            <ul className="dropdown__menu">
-              {AREA_ITEMS.map((item) => {
-                const active = activeHref === item.href;
-                return (
-                  <li key={item.href}>
-                    <a
-                      className={`dropdown__link nexttech-docs-menu-link${active ? " dropdown__link--active" : ""}`}
-                      href={item.href}
-                    >
-                      <NavIcon>{item.icon}</NavIcon>
-                      <span>{t.nav.areas[item.area]}</span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <a
-            aria-current={aprendaActive ? "page" : undefined}
-            className={`navbar__item navbar__link nexttech-cta-aprenda${aprendaActive ? " navbar__link--active nexttech-cta-aprenda--active" : ""}`}
-            href="/aprenda"
-          >
-            Aprenda
-          </a>
-        </div>
-        <div className="theme-layout-navbar-right navbar__items navbar__items--right">
-          <SearchCommand entries={searchEntries} />
-
-          <div className="navbar__item dropdown dropdown--hoverable dropdown--right nexttech-static-select">
-            <a href="#" aria-haspopup="true" aria-expanded="false" role="button" className="navbar__link">
-              <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" className="iconLanguage_wzn9">
-                <path
-                  fill="currentColor"
-                  d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"
-                />
-              </svg>
-              {t.nav.languageName}
-            </a>
-            <ul className="dropdown__menu">
-              <li>
-                <button
-                  type="button"
-                  className={`dropdown__link${locale === "en" ? " dropdown__link--active" : ""}`}
-                  style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
-                  onClick={() => setLocale("en")}
-                >
-                  EN
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  lang="pt-BR"
-                  className={`dropdown__link${locale === "pt" ? " dropdown__link--active" : ""}`}
-                  style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
-                  onClick={() => setLocale("pt")}
-                >
-                  PT-BR
-                </button>
-              </li>
-            </ul>
-          </div>
-          <ThemeToggle />
-
-          <a
-            aria-current={creditsActive ? "page" : undefined}
-            className={`navbar__item navbar__link${creditsActive ? " navbar__link--active" : ""} nexttech-nav-link`}
-            href="/creditos"
-          >
-            <NavIcon>{CREDITS_ICON}</NavIcon>
-            <span>{t.nav.credits}</span>
-          </a>
-        </div>
+    <>
+      <div className="nexttech-version-strip" aria-label={t.nav.currentVersion}>
+        <span>{t.nav.currentVersion}</span>
       </div>
+      <nav aria-label="Main" className={`theme-layout-navbar navbar navbar--fixed-top${mobileOpen ? " navbar-sidebar--show" : ""}`}>
+        <div className="navbar__inner">
+          <div className="theme-layout-navbar-left navbar__items">
+            <button
+              aria-label="Toggle navigation bar"
+              aria-expanded={mobileOpen}
+              className="navbar__toggle clean-btn"
+              type="button"
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+                <path stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2" d="M4 7h22M4 15h22M4 23h22" />
+              </svg>
+            </button>
+            <a className="navbar__brand nexttech-brand" href="/">
+              <BrandMark />
+              <b className="navbar__title text--truncate">How to Dev</b>
+            </a>
 
-      <div role="presentation" className="navbar-sidebar__backdrop" onClick={() => setMobileOpen(false)} />
+            <div
+              className={`navbar__item dropdown dropdown--hoverable nexttech-static-select nexttech-docs-menu${docsMenuActive ? " nexttech-docs-menu--active" : ""}`}
+            >
+              <a className="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="#">
+                {t.nav.docsMenu}
+              </a>
+              <ul className="dropdown__menu">
+                {AREA_ITEMS.map((item) => {
+                  const active = activeHref === item.href;
+                  return (
+                    <li key={item.href}>
+                      <a
+                        className={`dropdown__link nexttech-docs-menu-link${active ? " dropdown__link--active" : ""}`}
+                        href={item.href}
+                      >
+                        <NavIcon>{item.icon}</NavIcon>
+                        <span>{t.nav.areas[item.area]}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
 
-      <div className="navbar-sidebar">
-        <div className="navbar-sidebar__brand">
-          <a className="navbar__brand nexttech-brand" href="/" onClick={() => setMobileOpen(false)}>
-            <b className="navbar__title text--truncate">How to Dev</b>
-          </a>
-          <button
-            type="button"
-            aria-label="Close navigation bar"
-            className="clean-btn navbar-sidebar__close"
-            onClick={() => setMobileOpen(false)}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round">
-              <path d="M5 5l14 14M19 5L5 19" />
-            </svg>
-          </button>
-        </div>
-        <div className="navbar-sidebar__items">
-          <div className="navbar-sidebar__item nexttech-mobile-menu">
             <a
-              href="/aprenda"
               aria-current={aprendaActive ? "page" : undefined}
-              className={`nexttech-mobile-link nexttech-cta-aprenda-mobile${aprendaActive ? " nexttech-mobile-link--active" : ""}`}
-              onClick={() => setMobileOpen(false)}
+              className={`navbar__item navbar__link nexttech-cta-aprenda${aprendaActive ? " navbar__link--active nexttech-cta-aprenda--active" : ""}`}
+              href="/aprenda"
             >
               Aprenda
             </a>
+          </div>
+          <div className="theme-layout-navbar-right navbar__items navbar__items--right">
+            <SearchCommand entries={searchEntries} />
 
-            <MobileDocsGroup activeHref={activeHref} onNavigate={() => setMobileOpen(false)} />
+            <div className="navbar__item dropdown dropdown--hoverable dropdown--right nexttech-static-select">
+              <a href="#" aria-haspopup="true" aria-expanded="false" role="button" className="navbar__link">
+                <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" className="iconLanguage_wzn9">
+                  <path
+                    fill="currentColor"
+                    d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"
+                  />
+                </svg>
+                {t.nav.languageName}
+              </a>
+              <ul className="dropdown__menu">
+                <li>
+                  <button
+                    type="button"
+                    className={`dropdown__link${locale === "en" ? " dropdown__link--active" : ""}`}
+                    style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
+                    onClick={() => setLocale("en")}
+                  >
+                    EN
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    lang="pt-BR"
+                    className={`dropdown__link${locale === "pt" ? " dropdown__link--active" : ""}`}
+                    style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
+                    onClick={() => setLocale("pt")}
+                  >
+                    PT-BR
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <ThemeToggle />
 
             <a
-              href="/creditos"
               aria-current={creditsActive ? "page" : undefined}
-              className={`nexttech-mobile-link${creditsActive ? " nexttech-mobile-link--active" : ""}`}
-              onClick={() => setMobileOpen(false)}
+              className={`navbar__item navbar__link${creditsActive ? " navbar__link--active" : ""} nexttech-nav-link`}
+              href="/creditos"
             >
               <NavIcon>{CREDITS_ICON}</NavIcon>
               <span>{t.nav.credits}</span>
             </a>
+          </div>
+        </div>
 
-            <div className="nexttech-mobile-divider" />
+        <div role="presentation" className="navbar-sidebar__backdrop" onClick={() => setMobileOpen(false)} />
 
-            <div className="nexttech-mobile-row">
-              <span className="nexttech-mobile-row-label">Theme</span>
-              <ThemeToggle />
-            </div>
+        <div className="navbar-sidebar">
+          <div className="navbar-sidebar__brand">
+            <a className="navbar__brand nexttech-brand" href="/" onClick={() => setMobileOpen(false)}>
+              <BrandMark />
+              <b className="navbar__title text--truncate">How to Dev</b>
+            </a>
+            <button
+              type="button"
+              aria-label="Close navigation bar"
+              className="clean-btn navbar-sidebar__close"
+              onClick={() => setMobileOpen(false)}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round">
+                <path d="M5 5l14 14M19 5L5 19" />
+              </svg>
+            </button>
+          </div>
+          <div className="navbar-sidebar__items">
+            <div className="navbar-sidebar__item nexttech-mobile-menu">
+              <a
+                href="/aprenda"
+                aria-current={aprendaActive ? "page" : undefined}
+                className={`nexttech-mobile-link nexttech-cta-aprenda-mobile${aprendaActive ? " nexttech-mobile-link--active" : ""}`}
+                onClick={() => setMobileOpen(false)}
+              >
+                Aprenda
+              </a>
 
-            <div className="nexttech-mobile-row">
-              <span className="nexttech-mobile-row-label">Language</span>
-              <div className="nexttech-mobile-lang">
-                <button
-                  type="button"
-                  className={`nexttech-mobile-lang-btn${locale === "en" ? " nexttech-mobile-lang-btn--active" : ""}`}
-                  onClick={() => setLocale("en")}
-                >
-                  EN
-                </button>
-                <button
-                  type="button"
-                  lang="pt-BR"
-                  className={`nexttech-mobile-lang-btn${locale === "pt" ? " nexttech-mobile-lang-btn--active" : ""}`}
-                  onClick={() => setLocale("pt")}
-                >
-                  PT-BR
-                </button>
+              <MobileDocsGroup activeHref={activeHref} onNavigate={() => setMobileOpen(false)} />
+
+              <a
+                href="/creditos"
+                aria-current={creditsActive ? "page" : undefined}
+                className={`nexttech-mobile-link${creditsActive ? " nexttech-mobile-link--active" : ""}`}
+                onClick={() => setMobileOpen(false)}
+              >
+                <NavIcon>{CREDITS_ICON}</NavIcon>
+                <span>{t.nav.credits}</span>
+              </a>
+
+              <div className="nexttech-mobile-divider" />
+
+              <div className="nexttech-mobile-row">
+                <span className="nexttech-mobile-row-label">Theme</span>
+                <ThemeToggle />
+              </div>
+
+              <div className="nexttech-mobile-row">
+                <span className="nexttech-mobile-row-label">Language</span>
+                <div className="nexttech-mobile-lang">
+                  <button
+                    type="button"
+                    className={`nexttech-mobile-lang-btn${locale === "en" ? " nexttech-mobile-lang-btn--active" : ""}`}
+                    onClick={() => setLocale("en")}
+                  >
+                    EN
+                  </button>
+                  <button
+                    type="button"
+                    lang="pt-BR"
+                    className={`nexttech-mobile-lang-btn${locale === "pt" ? " nexttech-mobile-lang-btn--active" : ""}`}
+                    onClick={() => setLocale("pt")}
+                  >
+                    PT-BR
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

@@ -25,6 +25,7 @@ type Dictionary = {
   nav: {
     areas: Record<AreaKey, string>;
     credits: string;
+    currentVersion: string;
     languageName: string;
     docsMenu: string;
   };
@@ -119,6 +120,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         examples: "Examples",
       },
       credits: "Credits",
+      currentVersion: "How to Dev v1.0",
       languageName: "EN",
       docsMenu: "Documentation",
     },
@@ -306,6 +308,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         examples: "Exemplos",
       },
       credits: "Créditos",
+      currentVersion: "How to Dev v1.0",
       languageName: "PT-BR",
       docsMenu: "Documentação",
     },

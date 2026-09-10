@@ -24,7 +24,7 @@ export function ThemeToggle() {
       className="clean-btn nexttech-theme-toggle"
       title={t.theme.toggleTitle}
       aria-label={t.theme.toggleAria}
-      style={{ color: "#fff", display: "flex", alignItems: "center", padding: "0 8px" }}
+      style={{ display: "flex", alignItems: "center", padding: "0 8px" }}
     >
       <svg viewBox="0 0 24 24" width={24} height={24} aria-hidden="true" className="toggleIcon_ShiV lightToggleIcon_kUVe">
         <path
