@@ -161,14 +161,6 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
             <b className="navbar__title text--truncate">How to Dev</b>
           </a>
 
-          <a
-            aria-current={aprendaActive ? "page" : undefined}
-            className={`navbar__item nexttech-cta-aprenda${aprendaActive ? " nexttech-cta-aprenda--active" : ""}`}
-            href="/aprenda"
-          >
-            Aprenda
-          </a>
-
           <div
             className={`navbar__item dropdown dropdown--hoverable nexttech-static-select nexttech-docs-menu${docsMenuActive ? " nexttech-docs-menu--active" : ""}`}
           >
@@ -192,6 +184,14 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
               })}
             </ul>
           </div>
+
+          <a
+            aria-current={aprendaActive ? "page" : undefined}
+            className={`navbar__item navbar__link nexttech-cta-aprenda${aprendaActive ? " navbar__link--active nexttech-cta-aprenda--active" : ""}`}
+            href="/aprenda"
+          >
+            Aprenda
+          </a>
         </div>
         <div className="theme-layout-navbar-right navbar__items navbar__items--right">
           <SearchCommand entries={searchEntries} />

@@ -138,7 +138,7 @@
   --htd-doc-muted: #616161;
   --htd-doc-border: #e0e0e0;
   --htd-doc-rule: #eeeeee;
-  --htd-doc-link: #4051b5;
+  --htd-doc-link: #1d4ed8;
 }
 
 [data-theme="dark"] .home-main,
@@ -167,7 +167,7 @@
 }
 
 .home-doc-layout {
-  max-width: 1180px;
+  max-width: min(1420px, calc(100vw - 48px));
   margin: 0 auto;
   padding: 48px 32px 72px;
 }
@@ -182,7 +182,7 @@
   padding: 48px 32px;
   overflow: hidden;
   border-radius: 20px;
-  background: radial-gradient(120% 140% at 12% 0%, #163467 0%, #0a1d3f 55%, #081530 100%);
+  background: linear-gradient(135deg, #2b3038 0%, #20252d 58%, #151920 100%);
   color: #f5f9ff;
 }
 
@@ -191,9 +191,9 @@
   margin-bottom: 18px;
   padding: 5px 14px;
   border-radius: 999px;
-  background: rgba(88, 155, 255, .16);
-  border: 1px solid rgba(120, 175, 255, .35);
-  color: #a9c9ff;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: #dbe5f1;
   font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
   font-size: 12.5px;
   font-weight: 800;
@@ -338,6 +338,7 @@
 
 @media (max-width: 760px) {
   .home-doc-layout {
+    max-width: none;
     padding: 28px 16px 56px;
   }
 

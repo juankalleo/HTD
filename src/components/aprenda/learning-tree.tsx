@@ -16,19 +16,19 @@ type TreeNode = {
 /**
  * Layout desenhado à mão (não é um algoritmo de grafo genérico) — só 8 nós
  * fixos, então posicionar por coordenada é mais simples e mais previsível
- * visualmente do que um layout automático. Conta a história: 4 raízes
- * (fundamentos, sem pré-requisito) convergindo em Docker (o "projeto final"
- * que junta frontend + backend + rede).
+ * visualmente do que um layout automático. Conta a história da esquerda para
+ * a direita: fundamentos entram primeiro, depois frontend/backend/rede, e
+ * Docker fecha como integração final.
  */
 const NODES: TreeNode[] = [
-  { slug: "git", code: "Git", x: 8, y: 8 },
-  { slug: "javascript", code: "JS", x: 34, y: 8 },
-  { slug: "sql", code: "SQL", x: 62, y: 8 },
-  { slug: "networking", code: "Net", x: 90, y: 8 },
-  { slug: "typescript", code: "TS", x: 34, y: 40 },
-  { slug: "frontend", code: "FE", x: 34, y: 68 },
-  { slug: "rails", code: "RoR", x: 62, y: 68 },
-  { slug: "docker", code: "🐳", x: 62, y: 92 },
+  { slug: "git", code: "Git", x: 8, y: 22 },
+  { slug: "javascript", code: "JS", x: 8, y: 53 },
+  { slug: "sql", code: "SQL", x: 8, y: 84 },
+  { slug: "typescript", code: "TS", x: 28, y: 53 },
+  { slug: "frontend", code: "FE", x: 49, y: 40 },
+  { slug: "rails", code: "RoR", x: 49, y: 72 },
+  { slug: "networking", code: "Net", x: 68, y: 84 },
+  { slug: "docker", code: "Docker", x: 90, y: 56 },
 ];
 
 const EDGES: [TrackSlug, TrackSlug][] = [
@@ -45,10 +45,10 @@ function nodeById(slug: TrackSlug) {
   return NODES.find((n) => n.slug === slug)!;
 }
 
-/** Curva suave estilo "flowchart" — entra/sai vertical de cada nó. */
+/** Curva suave estilo "flowchart" — avança horizontalmente entre os nós. */
 function edgePath(from: TreeNode, to: TreeNode): string {
-  const midY = (from.y + to.y) / 2;
-  return `M ${from.x} ${from.y} C ${from.x} ${midY}, ${to.x} ${midY}, ${to.x} ${to.y}`;
+  const midX = (from.x + to.x) / 2;
+  return `M ${from.x} ${from.y} C ${midX} ${from.y}, ${midX} ${to.y}, ${to.x} ${to.y}`;
 }
 
 export function LearningTree() {
