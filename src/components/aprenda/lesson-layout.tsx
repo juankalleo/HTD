@@ -29,6 +29,7 @@ export function LessonLayout({
   const [percent, setPercent] = useState(0);
 
   const currentIndex = lessons.findIndex((lesson) => lesson.slug === currentSlug);
+  const currentLesson = lessons[currentIndex];
   const previous = currentIndex > 0 ? lessons[currentIndex - 1] : undefined;
   const next = currentIndex >= 0 && currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : undefined;
 
@@ -53,7 +54,12 @@ export function LessonLayout({
 
   const chapterList = (
     <nav className="nexttech-lesson-chapters" aria-label={`Capítulos de ${track.title}`}>
+      <Link href="/aprenda" className="nexttech-lesson-chapters__back">
+        ← Aprenda
+      </Link>
+      <span className="nexttech-lesson-chapters__eyebrow">Trilha</span>
       <div className="nexttech-lesson-chapters__track">{track.title}</div>
+      <p className="nexttech-lesson-chapters__summary">{track.summary}</p>
       <div className="nexttech-lesson-chapters__progress">
         <div className="nexttech-lesson-chapters__bar">
           <div className="nexttech-lesson-chapters__bar-fill" style={{ width: `${percent}%` }} />
@@ -72,7 +78,10 @@ export function LessonLayout({
                 onClick={() => setMobileOpen(false)}
               >
                 <span className="nexttech-lesson-chapters__index">{done ? "✓" : i + 1}</span>
-                <span>{lesson.title}</span>
+                <span className="nexttech-lesson-chapters__item-text">
+                  <span>{lesson.title}</span>
+                  <small>{lesson.estimatedMinutes} min</small>
+                </span>
               </Link>
             </li>
           );
@@ -94,7 +103,13 @@ export function LessonLayout({
           <p className="nexttech-lesson-breadcrumb">
             <Link href="/aprenda">Aprenda</Link> / <Link href={`/aprenda/${track.slug}`}>{track.title}</Link>
           </p>
-          <h1>{lessons[currentIndex]?.title}</h1>
+          <div className="nexttech-lesson-meta">
+            <span>Aula {currentIndex + 1} de {lessons.length}</span>
+            {currentLesson && <span>{currentLesson.estimatedMinutes} min</span>}
+            <span>{percent}% da trilha</span>
+          </div>
+          <h1>{currentLesson?.title}</h1>
+          {currentLesson?.summary && <p className="nexttech-lesson-summary">{currentLesson.summary}</p>}
         </header>
 
         {children}

@@ -1405,8 +1405,17 @@ html.nexttech-no-scroll {
 }
 
 .nexttech-aprenda-wrapper {
+  background:
+    linear-gradient(90deg, rgba(37, 99, 235, .035) 0, rgba(37, 99, 235, 0) 38%),
+    var(--ifm-background-color);
   margin-top: var(--ifm-navbar-height, 64px);
   min-height: calc(100vh - var(--ifm-navbar-height, 64px));
+}
+
+[data-theme="dark"] .nexttech-aprenda-wrapper {
+  background:
+    linear-gradient(90deg, rgba(37, 99, 235, .08) 0, rgba(37, 99, 235, 0) 34%),
+    #141516;
 }
 
 .home-hero-actions {
@@ -1789,10 +1798,10 @@ html.nexttech-no-scroll {
 }
 
 .nexttech-lesson-chapters__bar {
-  background: var(--ifm-color-emphasis-200, #eef1f6);
+  background: var(--ifm-color-emphasis-200, #e8edf4);
   border-radius: 999px;
   flex: 1;
-  height: 6px;
+  height: 7px;
   max-width: 220px;
   overflow: hidden;
 }
@@ -1805,32 +1814,35 @@ html.nexttech-no-scroll {
 
 .nexttech-lesson-chapters__progress span {
   color: var(--ifm-color-content-secondary, var(--ifm-color-content));
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .nexttech-lesson-chapters__index {
   align-items: center;
-  background: var(--ifm-color-emphasis-200, #eef1f6);
-  border-radius: 50%;
+  background: var(--ifm-color-emphasis-200, #e8edf4);
+  border-radius: 8px;
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
   display: inline-flex;
   flex: 0 0 auto;
   font-size: 12px;
   font-weight: 800;
-  height: 22px;
+  height: 28px;
   justify-content: center;
-  width: 22px;
+  width: 30px;
 }
 
 /* Lição /aprenda/[track]/[lesson] */
 
 .nexttech-lesson-layout {
+  align-items: start;
   display: grid;
-  gap: 0;
-  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 52px;
+  grid-template-columns: 320px minmax(0, 920px);
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1320px;
+  padding: 42px 32px 86px;
 }
 
 .nexttech-lesson-toggle {
@@ -1839,40 +1851,92 @@ html.nexttech-no-scroll {
 }
 
 .nexttech-lesson-chapters-panel {
-  border-right: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
-  padding: 32px 20px;
+  align-self: start;
+  background: color-mix(in srgb, var(--ifm-background-surface-color, #fff) 94%, transparent);
+  border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, .08);
+  max-height: calc(100vh - var(--ifm-navbar-height, 68px) - 48px);
+  overflow-y: auto;
+  padding: 18px;
+  position: sticky;
+  top: calc(var(--ifm-navbar-height, 68px) + 24px);
+}
+
+[data-theme="dark"] .nexttech-lesson-chapters-panel {
+  background: #1a1c1f;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .28);
+}
+
+.nexttech-lesson-chapters__back {
+  align-items: center;
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content)) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  text-decoration: none !important;
+  text-transform: uppercase;
+}
+
+.nexttech-lesson-chapters__back:hover {
+  color: var(--nexttech-blue) !important;
+}
+
+.nexttech-lesson-chapters__eyebrow {
+  color: var(--nexttech-blue);
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+  margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 .nexttech-lesson-chapters__track {
   color: var(--ifm-color-content);
-  font-size: 15px;
-  font-weight: 800;
+  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.nexttech-lesson-chapters__summary {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 10px 0 0;
 }
 
 .nexttech-lesson-chapters ol {
   list-style: none;
-  margin: 18px 0 0;
+  margin: 22px 0 0;
   padding: 0;
 }
 
 .nexttech-lesson-chapters__link {
   align-items: center;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
   color: var(--ifm-color-content) !important;
-  display: flex;
-  gap: 10px;
-  font-size: 14px;
-  margin-bottom: 2px;
-  padding: 8px 10px;
+  display: grid;
+  gap: 11px;
+  grid-template-columns: 30px minmax(0, 1fr);
+  margin-bottom: 5px;
+  padding: 9px;
   text-decoration: none !important;
+  transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
 }
 
 .nexttech-lesson-chapters__link:hover {
   background: var(--htd-hover-bg);
+  border-color: var(--ifm-color-emphasis-300, #d8e6f7);
+  transform: translateX(2px);
 }
 
 .nexttech-lesson-chapters__link.is-active {
   background: var(--htd-active-bg);
+  border-color: color-mix(in srgb, var(--nexttech-blue) 36%, transparent);
   color: var(--htd-active-text) !important;
   font-weight: 700;
 }
@@ -1882,26 +1946,116 @@ html.nexttech-no-scroll {
   color: #fff;
 }
 
+.nexttech-lesson-chapters__item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.nexttech-lesson-chapters__item-text span {
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.nexttech-lesson-chapters__item-text small {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.nexttech-lesson-chapters__link.is-active .nexttech-lesson-chapters__item-text small {
+  color: var(--htd-active-text);
+}
+
 .nexttech-lesson-content {
-  padding: 32px 40px 64px;
+  min-width: 0;
+  padding: 16px 0 0;
 }
 
 .nexttech-lesson-breadcrumb {
   color: var(--ifm-color-content-secondary, var(--ifm-color-content));
   font-size: 13px;
-  margin: 0 0 8px;
+  font-weight: 700;
+  margin: 0 0 16px;
 }
 
 .nexttech-lesson-breadcrumb a {
   color: var(--nexttech-blue);
+  text-decoration: none;
+}
+
+.nexttech-lesson-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.nexttech-lesson-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.nexttech-lesson-meta span {
+  background: var(--htd-active-bg);
+  border: 1px solid color-mix(in srgb, var(--nexttech-blue) 22%, transparent);
+  border-radius: 999px;
+  color: var(--htd-active-text);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 7px 10px;
 }
 
 .nexttech-lesson-header h1 {
   color: var(--ifm-color-content);
   font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 28px;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1.02;
+  margin: 0;
+  max-width: 860px;
+}
+
+.nexttech-lesson-summary {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 18px 0 0;
+  max-width: 760px;
+}
+
+.nexttech-lesson-body {
+  max-width: 860px;
+  padding-top: 34px;
+}
+
+.nexttech-lesson-body.markdown {
+  font-size: 17px;
+  line-height: 1.78;
+}
+
+.nexttech-lesson-body.markdown > * + * {
+  margin-top: 1.25rem;
+}
+
+.nexttech-lesson-body.markdown p {
+  color: var(--ifm-color-content);
+}
+
+.nexttech-lesson-body.markdown h2 {
+  border-bottom: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  font-size: 25px;
+  letter-spacing: 0;
+  margin-top: 2.35rem;
+  padding-bottom: .55rem;
+}
+
+.nexttech-lesson-body.markdown h3 {
+  font-size: 20px;
+  margin-top: 2rem;
 }
 
 .nexttech-lesson-footer {
@@ -1910,21 +2064,26 @@ html.nexttech-no-scroll {
   display: flex;
   gap: 12px;
   justify-content: space-between;
-  margin-top: 40px;
-  padding-top: 24px;
+  margin-top: 52px;
+  max-width: 860px;
+  padding-top: 28px;
 }
 
 .nexttech-lesson-nav-btn {
   border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--ifm-color-content) !important;
-  font-weight: 700;
-  padding: 10px 16px;
+  font-weight: 800;
+  line-height: 1.25;
+  padding: 12px 16px;
   text-decoration: none !important;
+  transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
 }
 
 .nexttech-lesson-nav-btn:hover {
+  background: var(--htd-hover-bg);
   border-color: var(--nexttech-blue);
+  transform: translateY(-1px);
 }
 
 .nexttech-lesson-nav-btn--next {
@@ -1936,23 +2095,31 @@ html.nexttech-no-scroll {
 
 .nexttech-lesson-nav-btn--next:hover {
   background: var(--nexttech-blue-dark);
+  transform: translateY(-1px);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .nexttech-lesson-layout {
     display: block;
+    max-width: none;
+    padding: 0 16px 64px;
   }
 
   .nexttech-lesson-toggle {
     display: inline-flex;
+    margin: 18px 0 0;
   }
 
   .nexttech-lesson-chapters-panel {
     background: var(--ifm-background-surface-color, #fff);
+    border: 0;
+    border-radius: 0;
     border-right: 0;
+    box-shadow: 18px 0 42px rgba(15, 23, 42, .22);
     height: 100vh;
     left: 0;
-    max-width: 86vw;
+    max-height: none;
+    max-width: min(86vw, 420px);
     opacity: 0;
     overflow-y: auto;
     padding: 20px;
@@ -1961,7 +2128,7 @@ html.nexttech-no-scroll {
     transform: translateX(-100%);
     transition: transform .18s ease, opacity .18s ease;
     visibility: hidden;
-    width: 86vw;
+    width: min(86vw, 420px);
     z-index: 210;
   }
 
@@ -1972,7 +2139,37 @@ html.nexttech-no-scroll {
   }
 
   .nexttech-lesson-content {
-    padding: 20px 18px 56px;
+    padding: 28px 0 0;
+  }
+
+  .nexttech-lesson-header h1 {
+    font-size: 34px;
+    line-height: 1.08;
+  }
+
+  .nexttech-lesson-summary {
+    font-size: 16px;
+  }
+
+  .nexttech-lesson-body {
+    max-width: none;
+    padding-top: 28px;
+  }
+
+  .nexttech-lesson-body.markdown {
+    font-size: 16px;
+  }
+
+  .nexttech-lesson-footer {
+    align-items: stretch;
+    flex-direction: column;
+    max-width: none;
+  }
+
+  .nexttech-lesson-nav-btn,
+  .nexttech-lesson-nav-btn--next {
+    margin-left: 0;
+    text-align: center;
   }
 }
 
@@ -1980,22 +2177,22 @@ html.nexttech-no-scroll {
 
 .nexttech-callout {
   align-items: flex-start;
-  background: var(--htd-hover-bg);
-  border-left: 4px solid var(--nexttech-blue);
-  border-radius: 8px;
+  background: color-mix(in srgb, var(--ifm-background-surface-color, #fff) 82%, var(--htd-active-bg));
+  border: 1px solid color-mix(in srgb, var(--nexttech-blue) 22%, var(--ifm-color-emphasis-300, #d8e6f7));
+  border-radius: 12px;
   display: flex;
-  gap: 12px;
-  margin: 24px 0;
-  padding: 16px 18px;
+  gap: 14px;
+  margin: 30px 0;
+  padding: 18px 20px;
 }
 
 .nexttech-callout-icon {
   background: var(--nexttech-blue);
-  border-radius: 50%;
+  border-radius: 4px;
   flex: 0 0 auto;
-  height: 8px;
-  margin-top: 7px;
-  width: 8px;
+  height: 18px;
+  margin-top: 3px;
+  width: 5px;
 }
 
 .nexttech-callout-body strong {
@@ -2007,6 +2204,7 @@ html.nexttech-no-scroll {
 .nexttech-callout-body p {
   color: var(--ifm-color-content-secondary, var(--ifm-color-content));
   font-size: 14px;
+  line-height: 1.55;
   margin: 0 0 8px;
 }
 
@@ -2019,27 +2217,30 @@ html.nexttech-no-scroll {
 /* CodeExample — bloco de código das lições (highlight.js direto no client) */
 
 .nexttech-code-example {
-  background: #101722;
-  border: 1px solid rgba(148, 163, 184, .24);
-  border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
-  margin: 1.1rem 0 1.45rem;
+  background: #0f141b;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 12px;
+  box-shadow: 0 18px 36px rgba(15, 23, 42, .16), inset 0 1px 0 rgba(255, 255, 255, .04);
+  margin: 1.5rem 0 1.8rem;
   overflow: hidden;
 }
 
 .nexttech-code-example__header {
   align-items: center;
-  background: #202631;
+  background: #1d232d;
   border-bottom: 1px solid rgba(148, 163, 184, .22);
   color: #cbd5e1;
   display: flex;
   gap: 10px;
-  padding: 8px 14px;
+  min-height: 42px;
+  padding: 8px 12px 8px 16px;
 }
 
 .nexttech-code-example__label {
-  font-size: 12.5px;
-  font-weight: 700;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .nexttech-code-example__tabs {
@@ -2051,42 +2252,42 @@ html.nexttech-no-scroll {
 .nexttech-code-example__tab {
   background: transparent;
   border: 0;
-  border-radius: 4px;
+  border-radius: 7px;
   color: #94a3b8;
   cursor: pointer;
   font-size: 12.5px;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 5px 10px;
 }
 
 .nexttech-code-example__tab.is-active {
-  background: #1d2633;
+  background: #2a3342;
   color: #e5edf7;
 }
 
 .nexttech-code-example__copy {
-  background: #1d2633;
-  border: 1px solid #334155;
-  border-radius: 4px;
+  background: #242d3a;
+  border: 1px solid #3b4656;
+  border-radius: 8px;
   color: #e5edf7;
   cursor: pointer;
   font-size: 12px;
-  font-weight: 700;
-  padding: 4px 10px;
+  font-weight: 800;
+  padding: 6px 10px;
 }
 
 .nexttech-code-example__copy:hover {
-  background: #273449;
+  background: #303b4d;
 }
 
 .nexttech-code-example__pre {
   color: #e5e7eb;
   font-family: var(--ifm-font-family-monospace);
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 13.5px;
+  line-height: 1.72;
   margin: 0;
   overflow-x: auto;
-  padding: 16px 18px;
+  padding: 22px 20px;
 }
 
 .nexttech-code-example__result {
@@ -2097,45 +2298,68 @@ html.nexttech-no-scroll {
 /* Quiz */
 
 .nexttech-quiz {
-  background: var(--ifm-background-surface-color, #f6f9fc);
+  background: var(--ifm-background-surface-color, #fff);
   border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
-  border-radius: 10px;
-  margin: 28px 0;
-  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 16px 34px rgba(15, 23, 42, .08);
+  margin: 34px 0;
+  padding: 24px;
+}
+
+[data-theme="dark"] .nexttech-quiz {
+  background: #1a1c1f;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .24);
 }
 
 .nexttech-quiz__title {
   color: var(--ifm-color-content);
-  font-size: 16px;
-  margin: 0 0 16px;
+  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  margin: 0 0 20px;
 }
 
 .nexttech-quiz__question {
   border: 0;
-  margin: 0 0 18px;
+  margin: 0 0 22px;
   padding: 0;
 }
 
 .nexttech-quiz__question legend {
   color: var(--ifm-color-content);
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.45;
+  margin-bottom: 10px;
   padding: 0;
 }
 
 .nexttech-quiz__option {
   align-items: center;
   border: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
-  border-radius: 8px;
+  border-radius: 10px;
+  color: var(--ifm-color-content);
   cursor: pointer;
   display: flex;
-  gap: 10px;
-  margin-bottom: 6px;
-  padding: 9px 12px;
+  gap: 12px;
+  line-height: 1.45;
+  margin-bottom: 8px;
+  padding: 12px 14px;
+  transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.nexttech-quiz__option:hover {
+  background: var(--htd-hover-bg);
+}
+
+.nexttech-quiz__option input {
+  accent-color: var(--nexttech-blue);
+  flex: 0 0 auto;
 }
 
 .nexttech-quiz__option:has(input:checked) {
   border-color: var(--nexttech-blue);
+  box-shadow: 0 0 0 3px var(--htd-active-bg);
 }
 
 .nexttech-quiz__option.is-correct {
@@ -2151,11 +2375,11 @@ html.nexttech-no-scroll {
 .nexttech-quiz__submit {
   background: var(--nexttech-blue);
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #fff;
   cursor: pointer;
-  font-weight: 700;
-  padding: 10px 18px;
+  font-weight: 800;
+  padding: 12px 18px;
 }
 
 .nexttech-quiz__submit:disabled {
@@ -2176,15 +2400,18 @@ html.nexttech-no-scroll {
 /* Exercise */
 
 .nexttech-exercise {
-  border: 1px dashed var(--ifm-color-emphasis-300, #d8e6f7);
-  border-radius: 10px;
-  margin: 28px 0;
-  padding: 20px;
+  background: color-mix(in srgb, var(--ifm-background-surface-color, #fff) 92%, var(--htd-hover-bg));
+  border: 1px dashed color-mix(in srgb, var(--nexttech-blue) 34%, var(--ifm-color-emphasis-300, #d8e6f7));
+  border-radius: 14px;
+  margin: 32px 0;
+  padding: 22px;
 }
 
 .nexttech-exercise__title {
   color: var(--ifm-color-content);
-  font-size: 16px;
+  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-size: 20px;
+  font-weight: 900;
   margin: 0 0 10px;
 }
 
@@ -2196,11 +2423,11 @@ html.nexttech-no-scroll {
 .nexttech-exercise__reveal {
   background: transparent;
   border: 1px solid var(--nexttech-blue);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--nexttech-blue);
   cursor: pointer;
-  font-weight: 700;
-  padding: 8px 16px;
+  font-weight: 800;
+  padding: 10px 16px;
 }
 
 .nexttech-exercise__reveal:hover {
