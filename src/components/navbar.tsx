@@ -77,11 +77,11 @@ function BrandMark() {
   return (
     <span className="nexttech-brand-mark" aria-hidden="true">
       <svg viewBox="0 0 24 24" focusable="false">
-        <circle cx="8" cy="8" r="2" />
-        <circle cx="16" cy="8" r="2" />
-        <circle cx="8" cy="16" r="2" />
-        <circle cx="16" cy="16" r="2" />
-        <path d="M10 8h4M8 10v4M16 10v4M10 16h4" />
+        <circle cx="7.5" cy="7.5" r="1.8" />
+        <circle cx="16.5" cy="7.5" r="1.8" />
+        <circle cx="12" cy="12" r="1.8" />
+        <circle cx="7.5" cy="16.5" r="1.8" />
+        <circle cx="16.5" cy="16.5" r="1.8" />
       </svg>
     </span>
   );

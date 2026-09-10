@@ -62,17 +62,13 @@ type Dictionary = {
   };
   ptOnlyNotice: string;
   home: {
-    eyebrow: string;
     title: string;
     tagline: string;
-    bannerText: string;
     primaryCta: string;
     secondaryCta: string;
     statsLabel: string;
     statLessons: string;
     statTracks: string;
-    statReference: string;
-    statReferenceValue: string;
     statUpdated: string;
     statUpdatedValue: string;
     purposeHeading: string;
@@ -120,7 +116,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         examples: "Examples",
       },
       credits: "Credits",
-      currentVersion: "How to Dev v1.0",
+      currentVersion: "How to Dev v1.1",
       languageName: "EN",
       docsMenu: "Documentation",
     },
@@ -164,20 +160,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
     ptOnlyNotice:
       "This page hasn't been translated to English yet — showing the original Portuguese content.",
     home: {
-      eyebrow: "v1.0 · Frontend Standard available",
       title: "How to Dev",
       tagline:
-        "A personal, security-first reference for structuring Next.js and Rails applications — documented with real code, real trade-offs, and nothing hidden. Current release: How to Dev v1.0.",
-      bannerText: "Frontend Standard available",
+        "A personal, security-first reference for structuring Next.js and Rails applications — documented with real code, real trade-offs, and nothing hidden. Current release: How to Dev v1.1.",
       primaryCta: "Start learning free",
       secondaryCta: "See credits",
       statsLabel: "How to Dev data",
       statLessons: "Practical lessons",
       statTracks: "Study tracks",
-      statReference: "Reference",
-      statReferenceValue: "Security-first",
       statUpdated: "Current release",
-      statUpdatedValue: "HTD v1.0",
+      statUpdatedValue: "HTD v1.1",
       purposeHeading: "Purpose",
       purposeBody:
         "This site documents, for real, the standards I use day to day to structure a project from scratch: folder organization, authentication, forms, tables, report exports, and — above all — security, always with the reasoning behind the decision, not just the \"how\". It isn't a product and there's no team behind it: it's a personal technical reference, published because documenting is the most honest way to check, later, whether a pattern still holds up.",
@@ -278,9 +270,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       statusReady: "Available",
       statusWip: "In progress",
       roadmapEyebrow: "Learning map",
-      roadmapHeading: "Study roadmap",
+      roadmapHeading: "Developer learning map",
       roadmapIntro:
-        "Goes from the basics to the more advanced parts of the standard, in the order I'd actually recommend reading them — each step links straight into a real, hands-on lesson.",
+        "A top-down map of the concepts a developer needs to connect: the first rows are foundations, then the topics branch into UI, backend, data, infrastructure and security.",
       projectLinksHeading: "Project links",
       projectLinks: [
         { label: "Credits", href: "/creditos" },
@@ -308,7 +300,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
         examples: "Exemplos",
       },
       credits: "Créditos",
-      currentVersion: "How to Dev v1.0",
+      currentVersion: "How to Dev v1.1",
       languageName: "PT-BR",
       docsMenu: "Documentação",
     },
@@ -351,20 +343,16 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     ptOnlyNotice: "",
     home: {
-      eyebrow: "v1.0 · Padrão Frontend disponível",
       title: "How to Dev",
       tagline:
-        "Referência pessoal e security-first para estruturar aplicações Next.js e Rails — documentada com código real, decisões reais e nada escondido. Versão atual: How to Dev v1.0.",
-      bannerText: "Padrão Frontend disponível",
+        "Referência pessoal e security-first para estruturar aplicações Next.js e Rails — documentada com código real, decisões reais e nada escondido. Versão atual: How to Dev v1.1.",
       primaryCta: "Comece a aprender grátis",
       secondaryCta: "Ver créditos",
       statsLabel: "Dados do How to Dev",
       statLessons: "Lições práticas",
       statTracks: "Trilhas de estudo",
-      statReference: "Referência",
-      statReferenceValue: "Security-first",
       statUpdated: "Versão atual",
-      statUpdatedValue: "HTD v1.0",
+      statUpdatedValue: "HTD v1.1",
       purposeHeading: "Propósito",
       purposeBody:
         "Este site documenta, de verdade, os padrões de estruturação que uso no dia a dia: organização de pastas, autenticação, formulário, tabela, exportação de relatório e, principalmente, segurança — sempre com o porquê da decisão, não só o \"como fazer\". Não é um produto nem tem equipe por trás: é referência técnica pessoal, publicada porque documentar é a forma mais honesta de revisar, depois, se um padrão ainda faz sentido.",
@@ -465,9 +453,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       statusReady: "Disponível",
       statusWip: "Em construção",
       roadmapEyebrow: "Mapa de aprendizado",
-      roadmapHeading: "Roadmap de estudo",
+      roadmapHeading: "Mapa de aprendizado dev",
       roadmapIntro:
-        "Vai do básico até as partes mais avançadas, na ordem que eu de fato recomendaria estudar — cada etapa linka direto pra uma lição prática, de verdade, não só um texto.",
+        "Um mapa de cima para baixo com os conceitos que um dev precisa conectar: primeiro a base, depois os assuntos se ramificam em interface, backend, dados, infraestrutura e segurança.",
       projectLinksHeading: "Links do projeto",
       projectLinks: [
         { label: "Créditos", href: "/creditos" },

@@ -5,11 +5,12 @@ import Link from "next/link";
 import { getLastVisitedLesson, getTrackPercent, isLessonCompleted } from "@/lib/aprenda-progress";
 import type { LessonMeta } from "@/content/aprenda/types";
 import type { TrackMeta } from "@/content/aprenda/tracks";
+import { TrackIcon } from "./track-icon";
 
 export type TrackWithLessons = { track: TrackMeta; lessons: LessonMeta[] };
 
 /**
- * "Árvore de estudo" — as 3 trilhas lado a lado com os capítulos de cada
+ * "Árvore de estudo" — as trilhas lado a lado com os capítulos de cada
  * uma, usada tanto na home quanto no hub /aprenda. Progresso só existe no
  * localStorage do visitante, então percentuais/checks/"continuar de onde
  * parei" só aparecem depois do mount (client), pra não dar mismatch com o
@@ -55,12 +56,16 @@ export function StudyTree({
           const doneSet = completed[track.slug] ?? new Set<string>();
           const visible = lessons.slice(0, maxChaptersShown);
           const remaining = lessons.length - visible.length;
-          const entryHref = lessons[0] ? `/aprenda/${track.slug}/${lessons[0].slug}` : `/aprenda/${track.slug}`;
+          const entryHref = `/aprenda/${track.slug}`;
           return (
             <div key={track.slug} className="nexttech-study-tree__track">
               <div className="nexttech-study-tree__track-header">
-                <strong>{track.title}</strong>
-                <span>{percent}%</span>
+                <TrackIcon slug={track.slug} label={track.title} className="nexttech-study-tree__icon" />
+                <div className="nexttech-study-tree__track-title">
+                  <strong>{track.title}</strong>
+                  <small>{lessons.length} lições</small>
+                </div>
+                <span className="nexttech-study-tree__percent">{percent}%</span>
               </div>
               <p className="nexttech-study-tree__track-summary">{track.summary}</p>
               {lessons.length === 0 ? (

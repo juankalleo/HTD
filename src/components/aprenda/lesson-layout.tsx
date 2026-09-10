@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getTrackPercent, isLessonCompleted, setLastVisited } from "@/lib/aprenda-progress";
 import type { LessonMeta } from "@/content/aprenda/types";
 import type { TrackMeta } from "@/content/aprenda/tracks";
+import { TrackIcon } from "./track-icon";
 
 /**
  * Chrome comum de uma lição: lista de capítulos do track (com progresso),
@@ -57,8 +58,13 @@ export function LessonLayout({
       <Link href="/aprenda" className="nexttech-lesson-chapters__back">
         ← Aprenda
       </Link>
-      <span className="nexttech-lesson-chapters__eyebrow">Trilha</span>
-      <div className="nexttech-lesson-chapters__track">{track.title}</div>
+      <div className="nexttech-lesson-chapters__track-row">
+        <TrackIcon slug={track.slug} label={track.title} className="nexttech-lesson-chapters__icon" />
+        <div>
+          <span className="nexttech-lesson-chapters__eyebrow">Trilha</span>
+          <div className="nexttech-lesson-chapters__track">{track.title}</div>
+        </div>
+      </div>
       <div className="nexttech-lesson-chapters__progress">
         <div className="nexttech-lesson-chapters__bar">
           <div className="nexttech-lesson-chapters__bar-fill" style={{ width: `${percent}%` }} />

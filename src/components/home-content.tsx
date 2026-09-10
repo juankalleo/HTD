@@ -1,8 +1,7 @@
 "use client";
 
 import { useLocale } from "./locale-provider";
-import { PtOnlyNotice } from "./pt-only-notice";
-import { LearningTree } from "./aprenda/learning-tree";
+import { HomeConceptRoadmap } from "./home-concept-roadmap";
 import { TRACKS } from "@/content/aprenda/tracks";
 import { getTrackLessons } from "@/content/aprenda/registry";
 
@@ -10,7 +9,7 @@ const TOTAL_TRACKS = TRACKS.length;
 const TOTAL_LESSONS = TRACKS.reduce((total, track) => total + getTrackLessons(track.slug).length, 0);
 
 export function HomeContent() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
   const home = t.home;
 
   return (
@@ -40,10 +39,6 @@ export function HomeContent() {
                 <span>{home.statTracks}</span>
               </div>
               <div className="home-hero-data__item">
-                <strong>{home.statReferenceValue}</strong>
-                <span>{home.statReference}</span>
-              </div>
-              <div className="home-hero-data__item">
                 <strong>{home.statUpdatedValue}</strong>
                 <span>{home.statUpdated}</span>
               </div>
@@ -53,10 +48,7 @@ export function HomeContent() {
           <section className="home-doc-section home-doc-section--roadmap" id="roadmap">
             <h2>{home.roadmapHeading}</h2>
             <p>{home.roadmapIntro}</p>
-            <PtOnlyNotice translated={false} />
-            <div className="nexttech-learning-tree-wrap">
-              <LearningTree />
-            </div>
+            <HomeConceptRoadmap locale={locale} />
           </section>
 
           <section className="home-doc-section home-reason" id="motivo">
