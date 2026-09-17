@@ -4,49 +4,49 @@ import { siteUrl } from "@/lib/seo";
 
 const data: TopicHubData = {
   path: "/database",
-  eyebrow: "Software development hub",
-  title: "Database Development",
+  eyebrow: "Hub de desenvolvimento",
+  title: "Banco de Dados",
   description:
-    "Learn database development with practical material on SQL, relational modeling, migrations, indexes, multi-tenancy, audit trails and transaction boundaries.",
-  primaryLink: { label: "Open the database standard", href: "/padrao-banco-de-dados" },
-  secondaryLink: { label: "Study SQL", href: "/aprenda/sql" },
+    "Aprenda banco de dados com material prático sobre SQL, modelagem relacional, migrations, índices, multi-tenancy, auditoria e limites de transação.",
+  primaryLink: { label: "Abrir padrão banco de dados", href: "/padrao-banco-de-dados" },
+  secondaryLink: { label: "Estudar SQL", href: "/aprenda/sql" },
   sections: [
     {
-      title: "SQL and relational modeling",
-      body: "Understand tables, primary keys, foreign keys, joins, filters and constraints before adding application-level abstractions.",
+      title: "SQL e modelagem relacional",
+      body: "Entenda tabelas, chaves primárias, chaves estrangeiras, joins, filtros e constraints antes de adicionar abstrações da aplicação.",
       links: [
-        { label: "SQL learning track", href: "/aprenda/sql" },
-        { label: "Database Standard", href: "/padrao-banco-de-dados" },
-        { label: "Base modeling", href: "/padrao-banco-de-dados/conceitos-tecnicos/modelagem-base" },
+        { label: "Trilha de SQL", href: "/aprenda/sql" },
+        { label: "Padrão Banco de Dados", href: "/padrao-banco-de-dados" },
+        { label: "Modelagem base", href: "/padrao-banco-de-dados/conceitos-tecnicos/modelagem-base" },
       ],
     },
     {
-      title: "Schema evolution",
-      body: "Migrations, naming, indexes, enums, reference tables and tenant boundaries decide how safely the product can change over time.",
+      title: "Evolução do schema",
+      body: "Migrations, nomenclatura, índices, enums, tabelas de referência e limites de tenant definem quão seguro é evoluir o produto ao longo do tempo.",
       links: [
         { label: "Migrations", href: "/padrao-banco-de-dados/conceitos-tecnicos/migrations" },
-        { label: "Reference tables vs enums", href: "/padrao-banco-de-dados/conceitos-tecnicos/tabela-de-referencia-vs-enum" },
+        { label: "Tabela de referência vs enum", href: "/padrao-banco-de-dados/conceitos-tecnicos/tabela-de-referencia-vs-enum" },
         { label: "Multi-tenancy", href: "/padrao-banco-de-dados/conceitos-tecnicos/multi-tenancy" },
       ],
     },
     {
-      title: "Data integrity and backend APIs",
-      body: "Database design connects directly to API contracts, authorization and concurrency risks such as lost updates.",
+      title: "Integridade de dados e APIs",
+      body: "O desenho do banco se conecta diretamente a contratos de API, autorização e riscos de concorrência como lost update.",
       links: [
-        { label: "API development", href: "/api" },
+        { label: "Desenvolvimento de API", href: "/api" },
         { label: "Lost update", href: "/padrao-frontend/conceitos-tecnicos/lost-update" },
-        { label: "Security hub", href: "/security" },
+        { label: "Hub de segurança", href: "/security" },
       ],
     },
   ],
   references: [
-    { label: "PostgreSQL Documentation", href: "https://www.postgresql.org/docs/" },
+    { label: "Documentação do PostgreSQL", href: "https://www.postgresql.org/docs/" },
     { label: "Rails Active Record", href: "https://guides.rubyonrails.org/active_record_basics.html" },
   ],
 };
 
 export const metadata: Metadata = {
-  title: "Database Development",
+  title: "Banco de Dados",
   description: data.description,
   alternates: { canonical: siteUrl(data.path) },
   openGraph: { title: data.title, description: data.description, url: siteUrl(data.path) },

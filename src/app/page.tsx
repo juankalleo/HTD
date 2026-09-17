@@ -8,15 +8,15 @@ import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "How to Dev - Learn Software Development",
+    absolute: "How to Dev - Aprenda Desenvolvimento de Software",
   },
   description:
-    "How to Dev is a practical software development knowledge base covering frontend, backend, APIs, databases, security, infrastructure and architecture.",
+    "How to Dev é uma base prática de conhecimento sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura.",
   alternates: { canonical: siteUrl("/") },
   openGraph: {
-    title: "How to Dev - Learn Software Development",
+    title: "How to Dev - Aprenda Desenvolvimento de Software",
     description:
-      "How to Dev is a practical software development knowledge base covering frontend, backend, APIs, databases, security, infrastructure and architecture.",
+      "How to Dev é uma base prática de conhecimento sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura.",
     url: siteUrl("/"),
   },
 };

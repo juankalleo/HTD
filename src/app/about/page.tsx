@@ -4,37 +4,37 @@ import { siteUrl } from "@/lib/seo";
 
 const data: TopicHubData = {
   path: "/about",
-  eyebrow: "About",
-  title: "About How to Dev",
+  eyebrow: "Sobre",
+  title: "Sobre o How to Dev",
   description:
-    "How to Dev is a practical software development knowledge base for learning frontend, backend, APIs, databases, security, infrastructure and architecture.",
-  primaryLink: { label: "Start learning", href: "/aprenda" },
-  secondaryLink: { label: "Open frontend standard", href: "/padrao-frontend" },
+    "How to Dev é uma base prática de conhecimento sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura.",
+  primaryLink: { label: "Começar a aprender", href: "/aprenda" },
+  secondaryLink: { label: "Abrir padrão frontend", href: "/padrao-frontend" },
   sections: [
     {
-      title: "What How to Dev is",
-      body: "How to Dev connects lessons, production standards and references so developers can learn how modern software is designed, built, secured, deployed and maintained.",
+      title: "O que é o How to Dev",
+      body: "How to Dev conecta aulas, padrões de produção e referências para ajudar desenvolvedores a entender como software moderno é desenhado, construído, protegido, publicado e mantido.",
       links: [
-        { label: "Learn Software Development", href: "/aprenda" },
-        { label: "Frontend development", href: "/frontend" },
+        { label: "Aprenda desenvolvimento de software", href: "/aprenda" },
+        { label: "Desenvolvimento frontend", href: "/frontend" },
       ],
     },
     {
-      title: "Main topic hubs",
-      body: "The site is organized around durable software development topics instead of isolated pages, helping search engines and readers understand the same structure.",
+      title: "Principais hubs",
+      body: "O site é organizado em assuntos duráveis de desenvolvimento de software, não em páginas soltas, para leitores e buscadores entenderem a mesma estrutura.",
       links: [
-        { label: "API development", href: "/api" },
-        { label: "Database development", href: "/database" },
-        { label: "Infrastructure and deployment", href: "/infrastructure" },
+        { label: "Desenvolvimento de API", href: "/api" },
+        { label: "Banco de dados", href: "/database" },
+        { label: "Infraestrutura e deploy", href: "/infrastructure" },
       ],
     },
     {
-      title: "Security-first writing",
-      body: "The documentation favors visible explanations, real internal links and official references instead of hidden text, keyword repetition or duplicated indexable domains.",
+      title: "Escrita com segurança primeiro",
+      body: "A documentação prioriza explicações visíveis, links internos reais e referências oficiais em vez de texto escondido, repetição de palavra-chave ou domínios duplicados.",
       links: [
-        { label: "Software security", href: "/security" },
-        { label: "JWT Authentication", href: "/padrao-frontend/seguranca/jwt" },
-        { label: "Credits", href: "/creditos" },
+        { label: "Segurança de software", href: "/security" },
+        { label: "Autenticação JWT", href: "/padrao-frontend/seguranca/jwt" },
+        { label: "Créditos", href: "/creditos" },
       ],
     },
   ],
@@ -45,7 +45,7 @@ const data: TopicHubData = {
 };
 
 export const metadata: Metadata = {
-  title: "About How to Dev",
+  title: "Sobre o How to Dev",
   description: data.description,
   alternates: { canonical: siteUrl(data.path) },
   openGraph: { title: data.title, description: data.description, url: siteUrl(data.path) },

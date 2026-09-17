@@ -33,16 +33,28 @@ function flattenEntries(items: SidebarItem[], group: string, out: SearchEntry[])
 
 export function getGlobalSearchIndex(locale: Locale): SearchEntry[] {
   const groupNames = dictionaries[locale].nav.areas;
-  const entries: SearchEntry[] = [
-    { label: "How to Dev", href: "/", group: "How to Dev" },
-    { label: "Learn Software Development", href: "/aprenda", group: "How to Dev" },
-    { label: "Frontend Development", href: "/frontend", group: "How to Dev" },
-    { label: "API Development", href: "/api", group: "How to Dev" },
-    { label: "Database Development", href: "/database", group: "How to Dev" },
-    { label: "Software Security", href: "/security", group: "How to Dev" },
-    { label: "Infrastructure and Deployment", href: "/infrastructure", group: "How to Dev" },
-    { label: "About How to Dev", href: "/about", group: "How to Dev" },
-  ];
+  const entries: SearchEntry[] =
+    locale === "pt"
+      ? [
+          { label: "How to Dev", href: "/", group: "How to Dev" },
+          { label: "Aprenda desenvolvimento de software", href: "/aprenda", group: "How to Dev" },
+          { label: "Desenvolvimento frontend", href: "/frontend", group: "How to Dev" },
+          { label: "Desenvolvimento de API", href: "/api", group: "How to Dev" },
+          { label: "Banco de dados", href: "/database", group: "How to Dev" },
+          { label: "Segurança de software", href: "/security", group: "How to Dev" },
+          { label: "Infraestrutura e deploy", href: "/infrastructure", group: "How to Dev" },
+          { label: "Sobre o How to Dev", href: "/about", group: "How to Dev" },
+        ]
+      : [
+          { label: "How to Dev", href: "/", group: "How to Dev" },
+          { label: "Learn Software Development", href: "/aprenda", group: "How to Dev" },
+          { label: "Frontend Development", href: "/frontend", group: "How to Dev" },
+          { label: "API Development", href: "/api", group: "How to Dev" },
+          { label: "Database Development", href: "/database", group: "How to Dev" },
+          { label: "Software Security", href: "/security", group: "How to Dev" },
+          { label: "Infrastructure and Deployment", href: "/infrastructure", group: "How to Dev" },
+          { label: "About How to Dev", href: "/about", group: "How to Dev" },
+        ];
   for (const area of SEARCHABLE_AREAS) {
     const tree = getSidebarTree(area, locale);
     flattenEntries(tree, groupNames[area], entries);

@@ -4,38 +4,38 @@ import { siteUrl } from "@/lib/seo";
 
 const data: TopicHubData = {
   path: "/frontend",
-  eyebrow: "Software development hub",
-  title: "Frontend Development",
+  eyebrow: "Hub de desenvolvimento",
+  title: "Desenvolvimento Frontend",
   description:
-    "Learn frontend development with practical guides on HTML, CSS, JavaScript, TypeScript, Next.js, forms, authentication, security and UI architecture.",
-  primaryLink: { label: "Open the frontend standard", href: "/padrao-frontend" },
-  secondaryLink: { label: "Start the frontend track", href: "/aprenda/frontend" },
+    "Aprenda frontend com guias práticos sobre HTML, CSS, JavaScript, TypeScript, Next.js, formulários, autenticação, segurança e arquitetura de UI.",
+  primaryLink: { label: "Abrir padrão frontend", href: "/padrao-frontend" },
+  secondaryLink: { label: "Começar trilha frontend", href: "/aprenda/frontend" },
   sections: [
     {
-      title: "Frontend foundations",
-      body: "Start with semantic interfaces, responsive CSS, JavaScript behavior and TypeScript contracts before adding framework complexity.",
+      title: "Fundamentos de frontend",
+      body: "Comece por interfaces semânticas, CSS responsivo, comportamento em JavaScript e contratos em TypeScript antes de adicionar complexidade de framework.",
       links: [
-        { label: "Frontend learning track", href: "/aprenda/frontend" },
-        { label: "JavaScript from zero", href: "/aprenda/javascript" },
-        { label: "TypeScript from zero", href: "/aprenda/typescript" },
+        { label: "Trilha de frontend", href: "/aprenda/frontend" },
+        { label: "JavaScript do zero", href: "/aprenda/javascript" },
+        { label: "TypeScript do zero", href: "/aprenda/typescript" },
       ],
     },
     {
-      title: "Production frontend architecture",
-      body: "Use the frontend standard to organize routes, components, forms, tables, cache, reports and design decisions in maintainable systems.",
+      title: "Arquitetura frontend em produção",
+      body: "Use o padrão frontend para organizar rotas, componentes, formulários, tabelas, cache, relatórios e decisões de design em sistemas manuteníveis.",
       links: [
-        { label: "Frontend Standard", href: "/padrao-frontend" },
-        { label: "Accessibility", href: "/padrao-frontend/conceitos-tecnicos/acessibilidade" },
+        { label: "Padrão Frontend", href: "/padrao-frontend" },
+        { label: "Acessibilidade", href: "/padrao-frontend/conceitos-tecnicos/acessibilidade" },
         { label: "Next.js App Router", href: "/aprenda/frontend/05-nextjs-app-router" },
       ],
     },
     {
-      title: "Frontend security",
-      body: "Treat authentication, token storage, XSS, CSRF, CSP, IDOR and file export as part of the frontend design, not as a later checklist.",
+      title: "Segurança no frontend",
+      body: "Trate autenticação, armazenamento de token, XSS, CSRF, CSP, IDOR e exportação de arquivos como parte do desenho do frontend, não como checklist posterior.",
       links: [
-        { label: "Frontend security", href: "/padrao-frontend/seguranca" },
-        { label: "JWT Authentication", href: "/padrao-frontend/seguranca/jwt" },
-        { label: "CSRF protection", href: "/padrao-frontend/seguranca/csrf" },
+        { label: "Segurança frontend", href: "/padrao-frontend/seguranca" },
+        { label: "Autenticação JWT", href: "/padrao-frontend/seguranca/jwt" },
+        { label: "Proteção contra CSRF", href: "/padrao-frontend/seguranca/csrf" },
       ],
     },
   ],
@@ -46,7 +46,7 @@ const data: TopicHubData = {
 };
 
 export const metadata: Metadata = {
-  title: "Frontend Development",
+  title: "Desenvolvimento Frontend",
   description: data.description,
   alternates: { canonical: siteUrl(data.path) },
   openGraph: { title: data.title, description: data.description, url: siteUrl(data.path) },

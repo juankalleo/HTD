@@ -4,38 +4,38 @@ import { siteUrl } from "@/lib/seo";
 
 const data: TopicHubData = {
   path: "/api",
-  eyebrow: "Software development hub",
-  title: "API Development",
+  eyebrow: "Hub de desenvolvimento",
+  title: "Desenvolvimento de API",
   description:
-    "Learn API development through HTTP contracts, backend routing, authentication, authorization, pagination, errors, serializers and practical Rails examples.",
-  primaryLink: { label: "Open the API standard", href: "/padrao-api" },
-  secondaryLink: { label: "Study backend with Rails", href: "/aprenda/rails" },
+    "Aprenda desenvolvimento de API por contratos HTTP, rotas backend, autenticação, autorização, paginação, erros, serializers e exemplos práticos em Rails.",
+  primaryLink: { label: "Abrir padrão API", href: "/padrao-api" },
+  secondaryLink: { label: "Estudar backend com Rails", href: "/aprenda/rails" },
   sections: [
     {
-      title: "HTTP and API contracts",
-      body: "A good API makes requests, responses, status codes, versioning and errors predictable for frontend, backend and external clients.",
+      title: "HTTP e contratos de API",
+      body: "Uma boa API torna requisições, respostas, códigos de status, versionamento e erros previsíveis para frontend, backend e clientes externos.",
       links: [
-        { label: "API Standard", href: "/padrao-api" },
-        { label: "Routing and versioning", href: "/padrao-api/roteamento-e-versionamento" },
-        { label: "Response envelope", href: "/padrao-api/conceitos-tecnicos/envelope-de-resposta" },
+        { label: "Padrão API", href: "/padrao-api" },
+        { label: "Roteamento e versionamento", href: "/padrao-api/roteamento-e-versionamento" },
+        { label: "Envelope de resposta", href: "/padrao-api/conceitos-tecnicos/envelope-de-resposta" },
       ],
     },
     {
-      title: "Backend implementation",
-      body: "Learn how controllers, routes, models, serializers and service objects turn API contracts into reliable backend behavior.",
+      title: "Implementação backend",
+      body: "Aprenda como controllers, rotas, models, serializers e service objects transformam contratos de API em comportamento backend confiável.",
       links: [
-        { label: "Ruby on Rails track", href: "/aprenda/rails" },
-        { label: "Controllers and REST routes", href: "/aprenda/rails/05-controllers-e-rotas-rest" },
+        { label: "Trilha Ruby on Rails", href: "/aprenda/rails" },
+        { label: "Controllers e rotas REST", href: "/aprenda/rails/05-controllers-e-rotas-rest" },
         { label: "Service objects", href: "/aprenda/rails/07-service-objects" },
       ],
     },
     {
-      title: "API security",
-      body: "Authentication, authorization, rate limiting, CORS, audit logs and secure error handling shape whether an API can safely serve real users.",
+      title: "Segurança de API",
+      body: "Autenticação, autorização, rate limiting, CORS, logs de auditoria e tratamento seguro de erros definem se uma API pode atender usuários reais com segurança.",
       links: [
-        { label: "API security", href: "/padrao-api/seguranca" },
-        { label: "Authentication and JWT", href: "/padrao-frontend/seguranca/jwt" },
-        { label: "Security hub", href: "/security" },
+        { label: "Segurança de API", href: "/padrao-api/seguranca" },
+        { label: "Autenticação e JWT", href: "/padrao-frontend/seguranca/jwt" },
+        { label: "Hub de segurança", href: "/security" },
       ],
     },
   ],
@@ -46,7 +46,7 @@ const data: TopicHubData = {
 };
 
 export const metadata: Metadata = {
-  title: "API Development",
+  title: "Desenvolvimento de API",
   description: data.description,
   alternates: { canonical: siteUrl(data.path) },
   openGraph: { title: data.title, description: data.description, url: siteUrl(data.path) },

@@ -71,12 +71,12 @@ export function HomeContent() {
             <h2>{home.indexHeading}</h2>
             <p>{home.indexBody}</p>
             <div className="home-index-links">
-              <a href="/frontend">Frontend development</a>
-              <a href="/api">API development</a>
-              <a href="/database">Database development</a>
-              <a href="/security">Software security</a>
-              <a href="/infrastructure">Infrastructure and deployment</a>
-              <a href="/about">About How to Dev</a>
+              <a href="/frontend">Desenvolvimento frontend</a>
+              <a href="/api">Desenvolvimento de API</a>
+              <a href="/database">Banco de dados</a>
+              <a href="/security">Segurança de software</a>
+              <a href="/infrastructure">Infraestrutura e deploy</a>
+              <a href="/about">Sobre o How to Dev</a>
               <a href="/padrao-frontend">{home.cards["padrao-frontend"].title}</a>
               <a href="/padrao-api">{home.cards["padrao-api"].title}</a>
               <a href="/padrao-banco-de-dados">{home.cards["padrao-banco-de-dados"].title}</a>

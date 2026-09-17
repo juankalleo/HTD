@@ -83,7 +83,7 @@ export function Toc({
           <div className="nexttech-glossary-label">{t.toc.videoLabel}</div>
           <div className="nexttech-video__stack">
             {videoEn && (
-              <VideoCard videoId={videoEn} lang="(English)" watchLabel={t.toc.watchOnYoutube} thumbAlt={t.toc.videoThumbAlt} />
+              <VideoCard videoId={videoEn} lang="Inglês" watchLabel={t.toc.watchOnYoutube} thumbAlt={t.toc.videoThumbAlt} />
             )}
             {video && (
               <VideoCard videoId={video} lang="PT-BR" watchLabel={t.toc.watchOnYoutube} thumbAlt={t.toc.videoThumbAlt} />

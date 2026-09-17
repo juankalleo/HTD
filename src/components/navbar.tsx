@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { ThemeToggle } from "./theme-toggle";
 import { SearchCommand } from "./search-command";
 import { useLocale } from "./locale-provider";
@@ -66,6 +66,27 @@ const CREDITS_ICON: React.ReactNode = (
     <path d="M8 4v13a3 3 0 0 0 3 3M9 8h6M9 12h5" />
   </>
 );
+
+function subscribeToScroll(callback: () => void) {
+  window.addEventListener("scroll", callback, { passive: true });
+  window.addEventListener("resize", callback);
+  return () => {
+    window.removeEventListener("scroll", callback);
+    window.removeEventListener("resize", callback);
+  };
+}
+
+function getScrolledSnapshot() {
+  return window.scrollY > 12;
+}
+
+function getServerScrolledSnapshot() {
+  return false;
+}
+
+function useNavbarScrolled() {
+  return useSyncExternalStore(subscribeToScroll, getScrolledSnapshot, getServerScrolledSnapshot);
+}
 
 function NavIcon({ children }: { children: React.ReactNode }) {
   return (
@@ -219,6 +240,7 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
   const { locale, setLocale } = useLocale();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<MegaId | null>(null);
+  const scrolled = useNavbarScrolled();
 
   const docsMenuActive = AREA_ITEMS.some((item) => item.href === activeHref);
   const creditsActive = activeHref === "/creditos";
@@ -235,8 +257,8 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
     {
       title: "Explorar",
       links: [
-        { label: "Frontend", href: "/frontend", description: "Interfaces, formularios, rotas e seguranca." },
-        { label: "API", href: "/api", description: "Contratos HTTP, auth, paginacao e erros." },
+        { label: "Frontend", href: "/frontend", description: "Interfaces, formulários, rotas e segurança." },
+        { label: "API", href: "/api", description: "Contratos HTTP, autenticação, paginação e erros." },
         { label: "Banco de dados", href: "/database", description: "Modelagem, SQL, migrations e auditoria." },
       ],
     },
@@ -293,7 +315,7 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
       title: "Idioma",
       links: [
         { label: "Português (BR)", onClick: () => setLocale("pt"), description: locale === "pt" ? "Selecionado" : "Trocar idioma", active: locale === "pt" },
-        { label: "English", onClick: () => setLocale("en"), description: locale === "en" ? "Selected" : "Change language", active: locale === "en" },
+        { label: "Inglês", onClick: () => setLocale("en"), description: locale === "en" ? "Selecionado" : "Trocar idioma", active: locale === "en" },
         { label: "GitHub", href: "https://github.com/juankalleo" },
       ],
     },
@@ -302,8 +324,8 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
   return (
     <>
       <nav
-        aria-label="Main"
-        className={`theme-layout-navbar navbar navbar--fixed-top${activeMega ? " nexttech-mega-is-open" : ""}${mobileOpen ? " navbar-sidebar--show" : ""}`}
+        aria-label="Principal"
+        className={`theme-layout-navbar navbar navbar--fixed-top${scrolled ? " nexttech-navbar-scrolled" : ""}${activeMega ? " nexttech-mega-is-open" : ""}${mobileOpen ? " navbar-sidebar--show" : ""}`}
         onMouseLeave={() => setActiveMega(null)}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -314,7 +336,7 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
         <div className="navbar__inner">
           <div className="theme-layout-navbar-left navbar__items">
             <button
-              aria-label="Toggle navigation bar"
+              aria-label="Abrir menu de navegação"
               aria-expanded={mobileOpen}
               className="navbar__toggle clean-btn"
               type="button"
@@ -351,7 +373,7 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
             </a>
             <button
               type="button"
-              aria-label="Close navigation bar"
+              aria-label="Fechar menu de navegação"
               className="clean-btn navbar-sidebar__close"
               onClick={() => setMobileOpen(false)}
             >

@@ -6,14 +6,14 @@ import { getTrackLessons } from "@/content/aprenda/registry";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Learn Software Development",
+  title: "Aprenda Desenvolvimento de Software",
   description:
-    "Learn software development from the fundamentals through Git, JavaScript, TypeScript, networking, frontend, SQL, Ruby on Rails and Docker with practical lessons.",
+    "Aprenda desenvolvimento de software dos fundamentos ate Git, JavaScript, TypeScript, redes, frontend, SQL, Ruby on Rails e Docker com licoes praticas.",
   alternates: { canonical: siteUrl("/aprenda") },
   openGraph: {
-    title: "Learn Software Development",
+    title: "Aprenda Desenvolvimento de Software",
     description:
-      "Learn software development from the fundamentals through Git, JavaScript, TypeScript, networking, frontend, SQL, Ruby on Rails and Docker with practical lessons.",
+      "Aprenda desenvolvimento de software dos fundamentos ate Git, JavaScript, TypeScript, redes, frontend, SQL, Ruby on Rails e Docker com licoes praticas.",
     url: siteUrl("/aprenda"),
   },
 };
@@ -29,12 +29,12 @@ export default function AprendaPage() {
   return (
     <div className="nexttech-aprenda-hub">
       <header className="nexttech-aprenda-hub__header">
-        <p className="nexttech-aprenda-hub__eyebrow">Learn software development</p>
-        <h1>From web fundamentals to production software</h1>
+        <p className="nexttech-aprenda-hub__eyebrow">Aprenda desenvolvimento de software</p>
+        <h1>Dos fundamentos da web ao software em produção</h1>
         <p>
-          {totalLessons} {totalLessons === 1 ? "lesson" : "lessons"} across {totalTracks} study tracks: Git,
-          JavaScript, TypeScript, Networking, Frontend, SQL, Ruby on Rails and Docker. Each lesson connects a practical
-          example to the larger How to Dev reference system.
+          {totalLessons} {totalLessons === 1 ? "lição" : "lições"} em {totalTracks} trilhas de estudo: Git,
+          JavaScript, TypeScript, redes, frontend, SQL, Ruby on Rails e Docker. Cada lição conecta um exemplo prático ao
+          sistema de referência do How to Dev.
         </p>
       </header>
       <div className="nexttech-learning-tree-wrap">

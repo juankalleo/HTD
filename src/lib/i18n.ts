@@ -391,7 +391,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       creatorHeading: "Criador e contribuidor",
       creatorName: "Juan Kalleo Uchoa Fava",
-      creatorRole: "Staff Fullstack Software Engineer · time de frontend da NextTech",
+      creatorRole: "Engenheiro de Software Fullstack Staff · time de frontend da NextTech",
       indexHeading: "Índices do How to Dev",
       indexBody:
         "Use estes pontos de entrada pra ir direto ao assunto: comece pelas trilhas de aprendizado, escolha o tema e abra a referência, aula ou checklist.",

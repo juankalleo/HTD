@@ -35,7 +35,7 @@ export async function TopicHubPage({ data }: { data: TopicHubData }) {
         description: data.description,
         url: canonical,
         isPartOf: { "@id": siteUrl("/#website") },
-        inLanguage: "en",
+        inLanguage: locale === "pt" ? "pt-BR" : "en",
       },
       {
         "@type": "BreadcrumbList",
@@ -62,29 +62,29 @@ export async function TopicHubPage({ data }: { data: TopicHubData }) {
     <>
       <Navbar activeHref={data.path} searchEntries={searchEntries} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <main className="developer-roadmap-main">
-        <section className="developer-roadmap-hero">
-          <p className="developer-roadmap-eyebrow">{data.eyebrow}</p>
+      <main className="topic-hub-main">
+        <section className="topic-hub-hero">
+          <p className="topic-hub-eyebrow">{data.eyebrow}</p>
           <h1>{data.title}</h1>
           <p>{data.description}</p>
-          <div className="developer-roadmap-actions">
+          <div className="topic-hub-actions">
             <a href={data.primaryLink.href}>{data.primaryLink.label}</a>
             <a href={data.secondaryLink.href}>{data.secondaryLink.label}</a>
           </div>
         </section>
 
-        <section className="developer-roadmap-section" id="guides">
-          <div className="developer-roadmap-section__heading">
-            <h2>{data.title} guides</h2>
-            <p>Use this hub to move from the topic overview into the strongest How to Dev pages for that subject.</p>
+        <section className="topic-hub-section" id="guides">
+          <div className="topic-hub-section__heading">
+            <h2>Guias de {data.title}</h2>
+            <p>Use este hub para sair da visão geral do assunto e abrir as páginas mais fortes do How to Dev sobre o tema.</p>
           </div>
-          <div className="developer-roadmap-grid">
+          <div className="topic-hub-list">
             {data.sections.map((section, index) => (
-              <article className="developer-roadmap-step" key={section.title}>
-                <div className="developer-roadmap-step__marker">
+              <article className="topic-hub-item" key={section.title}>
+                <div className="topic-hub-item__marker">
                   <span>{String(index + 1).padStart(2, "0")}</span>
                 </div>
-                <div className="developer-roadmap-step__body">
+                <div className="topic-hub-item__body">
                   <h2>{section.title}</h2>
                   <p>{section.body}</p>
                   <ul>
@@ -101,12 +101,12 @@ export async function TopicHubPage({ data }: { data: TopicHubData }) {
         </section>
 
         {data.references?.length ? (
-          <section className="developer-roadmap-section developer-roadmap-section--compact">
-            <div className="developer-roadmap-section__heading">
-              <h2>References</h2>
-              <p>Official material and durable references connected to this topic.</p>
+          <section className="topic-hub-section topic-hub-section--compact">
+            <div className="topic-hub-section__heading">
+              <h2>Referências</h2>
+              <p>Materiais oficiais e referências duráveis conectadas a este assunto.</p>
             </div>
-            <div className="developer-roadmap-reference-list">
+            <div className="topic-hub-reference-list">
               {data.references.map((reference) => (
                 <a href={reference.href} key={reference.href} rel="noreferrer" target="_blank">
                   {reference.label}

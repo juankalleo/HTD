@@ -4,38 +4,38 @@ import { siteUrl } from "@/lib/seo";
 
 const data: TopicHubData = {
   path: "/security",
-  eyebrow: "Software development hub",
-  title: "Software Security",
+  eyebrow: "Hub de desenvolvimento",
+  title: "Segurança de Software",
   description:
-    "Learn software security through practical guides on authentication, JWT, sessions, CSRF, XSS, CSP, RBAC, IDOR, API security and audit logs.",
-  primaryLink: { label: "Open the security guide", href: "/padrao-frontend/seguranca" },
-  secondaryLink: { label: "Review JWT authentication", href: "/padrao-frontend/seguranca/jwt" },
+    "Aprenda segurança de software com guias práticos sobre autenticação, JWT, sessões, CSRF, XSS, CSP, RBAC, IDOR, segurança de API e logs de auditoria.",
+  primaryLink: { label: "Abrir guia de segurança", href: "/padrao-frontend/seguranca" },
+  secondaryLink: { label: "Revisar autenticação JWT", href: "/padrao-frontend/seguranca/jwt" },
   sections: [
     {
-      title: "Authentication and tokens",
-      body: "Authentication decides who the user is, how credentials are verified and how access and refresh tokens should be issued, stored and revoked.",
+      title: "Autenticação e tokens",
+      body: "Autenticação define quem é o usuário, como credenciais são verificadas e como tokens de acesso e refresh devem ser emitidos, armazenados e revogados.",
       links: [
-        { label: "Authentication", href: "/padrao-frontend/seguranca/autenticacao" },
-        { label: "JWT Authentication", href: "/padrao-frontend/seguranca/jwt" },
-        { label: "API security", href: "/padrao-api/seguranca" },
+        { label: "Autenticação", href: "/padrao-frontend/seguranca/autenticacao" },
+        { label: "Autenticação JWT", href: "/padrao-frontend/seguranca/jwt" },
+        { label: "Segurança de API", href: "/padrao-api/seguranca" },
       ],
     },
     {
-      title: "Browser and frontend risks",
-      body: "Frontend security includes the browser threat model: XSS, CSRF, CSP, secure headers, file handling and sensitive data in the client.",
+      title: "Riscos no navegador e frontend",
+      body: "Segurança frontend inclui o modelo de ameaça do navegador: XSS, CSRF, CSP, headers seguros, arquivos e dados sensíveis no cliente.",
       links: [
         { label: "XSS", href: "/padrao-frontend/seguranca/xss" },
         { label: "CSRF", href: "/padrao-frontend/seguranca/csrf" },
-        { label: "HTTP security headers", href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http" },
+        { label: "Headers HTTP de segurança", href: "/padrao-frontend/seguranca/cabecalhos-de-seguranca-http" },
       ],
     },
     {
-      title: "Authorization and auditability",
-      body: "Authorization, RBAC, IDOR prevention, logs and export controls make access decisions visible and testable in production systems.",
+      title: "Autorização e auditabilidade",
+      body: "Autorização, RBAC, prevenção de IDOR, logs e controles de exportação tornam decisões de acesso visíveis e testáveis em sistemas de produção.",
       links: [
         { label: "RBAC", href: "/padrao-frontend/seguranca/administracao-rbac" },
-        { label: "IDOR and authorization", href: "/padrao-frontend/seguranca/idor-e-autorizacao" },
-        { label: "Audit logs", href: "/padrao-frontend/seguranca/logs-de-auditoria" },
+        { label: "IDOR e autorização", href: "/padrao-frontend/seguranca/idor-e-autorizacao" },
+        { label: "Logs de auditoria", href: "/padrao-frontend/seguranca/logs-de-auditoria" },
       ],
     },
   ],
@@ -46,7 +46,7 @@ const data: TopicHubData = {
 };
 
 export const metadata: Metadata = {
-  title: "Software Security",
+  title: "Segurança de Software",
   description: data.description,
   alternates: { canonical: siteUrl(data.path) },
   openGraph: { title: data.title, description: data.description, url: siteUrl(data.path) },

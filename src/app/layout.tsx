@@ -7,7 +7,7 @@ import { getServerLocale } from "@/lib/locale-server";
 import { SITE_URL } from "@/lib/seo";
 
 const SITE_DESCRIPTION =
-  "How to Dev is a practical software development knowledge base for learning frontend, backend, APIs, databases, security, infrastructure and architecture.";
+  "How to Dev é uma base prática de conhecimento para aprender frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | How to Dev",
   },
   description: SITE_DESCRIPTION,
-  keywords: ["How to Dev", "HowToDev", "software development", "web development", "API security"],
+  keywords: ["How to Dev", "HowToDev", "desenvolvimento de software", "desenvolvimento web", "segurança de API"],
   icons: {
     icon: "/icon.png",
     apple: "/apple-icon.png",
@@ -51,7 +51,7 @@ const STRUCTURED_DATA = {
       alternateName: ["HowToDev", "howtodev.site"],
       url: "https://howtodev.site/",
       description:
-        "Practical software development knowledge base covering frontend, backend, APIs, databases, security, infrastructure and architecture.",
+        "Base prática de conhecimento sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura.",
       inLanguage: ["en", "pt-BR"],
       author: { "@id": "https://howtodev.site/#person" },
     },
@@ -59,7 +59,7 @@ const STRUCTURED_DATA = {
       "@type": "Person",
       "@id": "https://howtodev.site/#person",
       name: "Juan Kalleo",
-      jobTitle: "Staff Fullstack Software Engineer",
+      jobTitle: "Engenheiro de Software Fullstack Staff",
       url: "https://howtodev.site",
       sameAs: ["https://github.com/juankalleo"],
     },
