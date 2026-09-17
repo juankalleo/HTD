@@ -1,59 +1,115 @@
-# Welcome to How to Dev
+# How to Dev
 
-[![Personal Project](https://img.shields.io/badge/project-personal-48A646.svg)](https://github.com/juankalleo)
+[![Projeto pessoal](https://img.shields.io/badge/projeto-pessoal-2563eb.svg)](https://github.com/juankalleo)
 [![Next.js 16](https://img.shields.io/badge/next.js-16-black.svg)](https://nextjs.org)
+[![pnpm](https://img.shields.io/badge/pnpm-10.17.1-f69220.svg)](https://pnpm.io)
 
-Welcome to the repository for **How to Dev** https://howtodev.site, a personal documentation project maintained by **Juan Kalleo**. It focuses on writing down, in real detail, the structuring standards used as a reference when building a frontend/API/infrastructure project from scratch — not a company project, not a team effort, just one engineer's working reference kept honest enough to publish.
+**How to Dev** é uma base de conhecimento pessoal para catalogar, organizar e mensurar conteúdos que já estudei e apliquei em desenvolvimento de software.
 
-To read the content, use the site itself once deployed. This repository is the source: markdown files under `docs-<area>/` are the working source and are rendered live by the Next.js app in `src/`.
+O projeto reúne guias práticos sobre frontend, APIs, bancos de dados, segurança, infraestrutura, arquitetura e trilhas de estudo. A ideia é funcionar como um segundo cérebro: uma documentação pública, navegável e pesquisável sobre decisões técnicas, padrões de implementação e exemplos de aplicação.
 
-:triangular_flag_on_post: Every page documents the real thing — real thresholds, real code, real trade-offs — not a sanitized summary. See [Why this exists](#why-this-exists) below for the reasoning.
+## Prévia
 
-## Structure
+### Tela inicial
 
-| Area | Route | Status |
+![Tela inicial do How to Dev](public/img/readme/home.png)
+
+### Mapa de aprendizado
+
+![Mapa de aprendizado dev](public/img/readme/mapa-aprendizado.png)
+
+### Páginas de documentação
+
+![Página de documentação com sidebar, glossário e vídeo](public/img/readme/documentacao.png)
+
+## O Que Tem No Projeto
+
+| Área | Rota | Objetivo |
 | --- | --- | --- |
-| Frontend Standard | `/padrao-frontend` | Available |
-| API Standard | `/padrao-api` | In progress |
-| Infrastructure Standard | `/padrao-infraestrutura` | In progress |
-| Examples | `/examples` | In progress |
+| Aprenda | `/aprenda` | Trilhas práticas para estudar fundamentos e tecnologias. |
+| Padrão Frontend | `/padrao-frontend` | Estrutura, componentes, segurança, cache, tabelas, relatórios e tecnologias frontend. |
+| Padrão API | `/padrao-api` | Contratos HTTP, roteamento, versionamento, erros, paginação e segurança de API. |
+| Padrão Banco de Dados | `/padrao-banco-de-dados` | Modelagem, migrations, multi-tenancy, auditoria e convenções de schema. |
+| Padrão Infraestrutura | `/padrao-infraestrutura` | Linux, rede, Docker, Nginx, deploy, CI/CD e operação. |
+| Exemplos | `/examples` | Catálogo de exemplos e fluxos práticos. |
+| Créditos | `/creditos` | Fontes, livros, canais e documentações usados como referência. |
 
-Each area is a `docs-<area>/` folder of `.md` files at the project root, read at runtime (see `src/lib/docs.ts`) — dropping a new `.md` file in the folder creates the route, no build or per-article `page.tsx` required.
+## Estrutura
 
-The site interface (navbar, sidebar, homepage) is in English by default, with a working PT-BR switcher in the top navbar. The ~90 real content pages under the Frontend Standard are currently written in Portuguese only; English translation of content is a separate, ongoing effort.
+```txt
+src/
+  app/                  Rotas, layout global, estilos e metadados
+  components/           Navbar, sidebar, markdown, busca, aulas e blocos visuais
+  content/aprenda/      Trilhas e lições práticas
+  lib/                  Leitura dos docs, SEO, busca, idioma e progresso local
 
-## Why this exists
+docs-frontend/          Conteúdo do Padrão Frontend
+docs-api/               Conteúdo do Padrão API
+docs-banco-de-dados/    Conteúdo do Padrão Banco de Dados
+docs-infraestrutura/    Conteúdo do Padrão Infraestrutura
+docs-examples/          Conteúdo de exemplos
 
-It started from a simple question: if a malicious actor got access to this documentation, would it help them attack a real system — or would it show them the system is already protected enough that it isn't worth trying? The [Security section](docs-frontend/seguranca/index.md), inside the Frontend Standard, was written with that exact bar: complete documentation, hiding no threshold, header, or authorization behavior. The only acceptable "flaw" is the system being too well protected. See [`docs-frontend/seguranca/PROTECAO-DA-WIKI.md`](docs-frontend/seguranca/PROTECAO-DA-WIKI.md) for how that principle applies to this site itself.
+public/img/readme/      Capturas usadas neste README
+```
 
-## About
+Os arquivos Markdown em `docs-<area>/` viram páginas automaticamente pelo roteamento dinâmico do Next.js. A árvore lateral, a busca global e o sitemap usam essa mesma fonte de conteúdo.
 
-Maintained by [Juan Kalleo](https://github.com/juankalleo). No team, no roadmap owned by anyone else — decisions here are personal calls, documented with the reasoning behind them so they can be revisited later.
+## Stack
 
-## Running Locally
+- Next.js 16
+- React
+- TypeScript
+- pnpm
+- Tailwind CSS
+- React Markdown
+- rehype-highlight
+- cmdk para busca global
+- Playwright para validações visuais pontuais
+
+## Rodando Localmente
 
 ```sh
 corepack pnpm install
 corepack pnpm run dev
 ```
 
+Depois abra:
+
+```txt
+http://localhost:3000
+```
+
+Build de produção:
+
 ```sh
 corepack pnpm run build
 corepack pnpm run start
 ```
 
-## SEO
+## Idioma E Conteúdo
 
-The site is public and indexable on purpose — it doubles as a portfolio piece, so being findable on Google matters. `sitemap.xml` is generated from the real content tree (`src/app/sitemap.ts`), `robots.txt` allows crawling, and every page ships Open Graph/Twitter metadata plus a generated social preview image (`src/app/opengraph-image.tsx`).
+A interface principal usa PT-BR por padrão e mantém alternância para inglês. O conteúdo técnico principal ainda nasce em português, porque este projeto documenta diretamente o que foi estudado, aplicado e revisado no meu próprio fluxo.
 
-## Security
+## SEO E Indexação
 
-This site used to sit behind HTTP Basic Auth; that was removed on purpose once the goal became a public, indexable portfolio — see [`docs-frontend/seguranca/PROTECAO-DA-WIKI.md`](docs-frontend/seguranca/PROTECAO-DA-WIKI.md) for the reasoning. Baseline HTTP headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) still apply to every route regardless.
+O site é público e indexável. Ele inclui:
 
-## Contributions
+- `sitemap.xml` gerado a partir das rotas reais
+- metadados por página
+- Open Graph/Twitter metadata
+- imagem social gerada em `src/app/opengraph-image.tsx`
+- dados estruturados para site, pessoa, artigo e breadcrumbs
 
-This is a personal reference, not an actively maintained open project — there's no issue tracker or contribution guide to follow. That said, the repository is public and the reasoning behind every decision is written down on purpose, so feel free to read, fork, or adapt anything here.
+## Segurança
 
-## License
+O How to Dev já foi protegido por HTTP Basic Auth, mas essa proteção foi removida quando o objetivo passou a ser uma base pública e indexável. Ainda assim, headers básicos como `X-Frame-Options`, `X-Content-Type-Options` e `Referrer-Policy` continuam aplicados.
 
-Personal content, no reuse license set.
+A seção de segurança existe com uma régua clara: documentar o suficiente para explicar o funcionamento real sem esconder decisões importantes. A proteção esperada vem de arquitetura, autorização, validação e limites bem definidos, não de obscuridade.
+
+## Manutenção
+
+Este é um projeto pessoal mantido por [Juan Kalleo](https://github.com/juankalleo). Não é um projeto aberto com roadmap de comunidade, mas o repositório é público para leitura, estudo, referência e adaptação.
+
+## Licença
+
+Conteúdo pessoal. Nenhuma licença de reutilização foi definida.
