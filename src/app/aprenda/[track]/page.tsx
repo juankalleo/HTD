@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { TrackOverview } from "@/components/aprenda/track-overview";
 import { getTrackLessons } from "@/content/aprenda/registry";
 import { getTrackMeta, TRACKS } from "@/content/aprenda/tracks";
+import { siteUrl } from "@/lib/seo";
 
 type Props = { params: Promise<{ track: string }> };
 
@@ -14,7 +15,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { track } = await params;
   const meta = getTrackMeta(track);
   if (!meta) return { title: "Aprenda" };
-  return { title: `${meta.title} | Aprenda`, description: meta.summary };
+  const canonical = siteUrl(`/aprenda/${track}`);
+  return {
+    title: `${meta.title} | Aprenda`,
+    description: meta.summary,
+    alternates: { canonical },
+    openGraph: { title: `${meta.title} | Aprenda`, description: meta.summary, url: canonical },
+  };
 }
 
 export default async function TrackPage({ params }: Props) {

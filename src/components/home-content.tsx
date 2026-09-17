@@ -2,11 +2,6 @@
 
 import { useLocale } from "./locale-provider";
 import { HomeConceptRoadmap } from "./home-concept-roadmap";
-import { TRACKS } from "@/content/aprenda/tracks";
-import { getTrackLessons } from "@/content/aprenda/registry";
-
-const TOTAL_TRACKS = TRACKS.length;
-const TOTAL_LESSONS = TRACKS.reduce((total, track) => total + getTrackLessons(track.slug).length, 0);
 
 export function HomeContent() {
   const { locale, t } = useLocale();
@@ -20,29 +15,19 @@ export function HomeContent() {
             <div className="home-hero-copy">
               <h1>{home.title}</h1>
               <p className="home-hero-lede">{home.purposeBody}</p>
+              <p className="home-hero-author">
+                {locale === "pt" ? "Eu, " : "By "}
+                <a href="#criador">{home.creatorName}</a>
+              </p>
               <div className="home-hero-actions">
                 <a className="home-hero-cta home-hero-cta--primary" href="/aprenda">
                   {home.primaryCta}
                 </a>
-                <a className="home-hero-cta home-hero-cta--secondary" href="/developer-roadmap">
-                  {home.roadmapCta}
+                <a className="home-hero-cta home-hero-cta--secondary" href="/padrao-frontend">
+                  {home.cards["padrao-frontend"].title}
                 </a>
               </div>
             </div>
-            <aside className="home-hero-data" aria-label={home.statsLabel}>
-              <div className="home-hero-data__item home-hero-data__item--strong">
-                <strong>{TOTAL_LESSONS}</strong>
-                <span>{home.statLessons}</span>
-              </div>
-              <div className="home-hero-data__item">
-                <strong>{TOTAL_TRACKS}</strong>
-                <span>{home.statTracks}</span>
-              </div>
-              <div className="home-hero-data__item">
-                <strong>{home.statUpdatedValue}</strong>
-                <span>{home.statUpdated}</span>
-              </div>
-            </aside>
           </section>
 
           <section className="home-doc-section home-doc-section--roadmap" id="roadmap">
@@ -86,6 +71,12 @@ export function HomeContent() {
             <h2>{home.indexHeading}</h2>
             <p>{home.indexBody}</p>
             <div className="home-index-links">
+              <a href="/frontend">Frontend development</a>
+              <a href="/api">API development</a>
+              <a href="/database">Database development</a>
+              <a href="/security">Software security</a>
+              <a href="/infrastructure">Infrastructure and deployment</a>
+              <a href="/about">About How to Dev</a>
               <a href="/padrao-frontend">{home.cards["padrao-frontend"].title}</a>
               <a href="/padrao-api">{home.cards["padrao-api"].title}</a>
               <a href="/padrao-banco-de-dados">{home.cards["padrao-banco-de-dados"].title}</a>

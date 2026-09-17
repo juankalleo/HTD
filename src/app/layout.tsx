@@ -4,8 +4,8 @@ import "./nexttech.css";
 import { AntiFlickerScript } from "@/components/anti-flicker-script";
 import { LocaleProvider } from "@/components/locale-provider";
 import { getServerLocale } from "@/lib/locale-server";
+import { SITE_URL } from "@/lib/seo";
 
-const SITE_URL = "https://howtodev.site";
 const SITE_DESCRIPTION =
   "How to Dev is a practical software development knowledge base for learning frontend, backend, APIs, databases, security, infrastructure and architecture.";
 
@@ -16,17 +16,15 @@ export const metadata: Metadata = {
     template: "%s | How to Dev",
   },
   description: SITE_DESCRIPTION,
-  keywords: ["How to Dev", "HowToDev", "software development", "developer roadmap", "web development", "API security"],
+  keywords: ["How to Dev", "HowToDev", "software development", "web development", "API security"],
   icons: {
     icon: "/icon.png",
     apple: "/apple-icon.png",
   },
   authors: [{ name: "Juan Kalleo", url: "https://github.com/juankalleo" }],
-  alternates: { canonical: "/" },
   openGraph: {
     title: "How to Dev",
     description: SITE_DESCRIPTION,
-    url: SITE_URL,
     siteName: "How to Dev",
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     type: "website",

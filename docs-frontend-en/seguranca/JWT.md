@@ -97,7 +97,7 @@ revocation and strict frontend security controls.
 - [Cookies HttpOnly & Secure](/padrao-frontend/seguranca/cookies-httponly-secure)
 - [API authentication](/padrao-api/seguranca/autenticacao)
 - [RBAC](/padrao-frontend/seguranca/administracao-rbac)
-- [Developer Roadmap](/developer-roadmap)
+- [Learn Software Development](/aprenda)
 
 ## References
 

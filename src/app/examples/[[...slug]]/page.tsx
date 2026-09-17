@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AreaDoc } from "@/components/area-doc";
 import { getDoc, getAreaConfig } from "@/lib/docs";
 import { getServerLocale } from "@/lib/locale-server";
+import { siteUrl } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +15,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cfg = getAreaConfig("examples");
   const doc = getDoc("examples", s, locale);
   if (!doc) return { title: cfg.area };
-  return { title: `${doc.title} | ${cfg.area}`, description: doc.description };
+  const canonical = siteUrl(`/examples${s.length ? `/${s.join("/")}` : ""}`);
+  const title = s.length ? `${doc.title} | ${cfg.area}` : doc.title;
+  return {
+    title,
+    description: doc.description,
+    alternates: { canonical },
+    openGraph: { title, description: doc.description, url: canonical },
+  };
 }
 
 export default async function Page({ params }: Props) {

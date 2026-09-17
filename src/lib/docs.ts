@@ -399,7 +399,7 @@ function buildTree(
           label: indexFile
             ? labelFor(indexFile.path, path.join(childRel, path.basename(indexFile.path)), humanize(d.name))
             : humanize(d.name),
-          href: childHref,
+          href: indexFile ? childHref : undefined,
           children: children.length ? children : undefined,
         };
       },

@@ -3,11 +3,19 @@ import { StudyTree } from "@/components/aprenda/study-tree";
 import { LearningTree } from "@/components/aprenda/learning-tree";
 import { TRACKS } from "@/content/aprenda/tracks";
 import { getTrackLessons } from "@/content/aprenda/registry";
+import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Learn Software Development",
   description:
     "Learn software development from the fundamentals through Git, JavaScript, TypeScript, networking, frontend, SQL, Ruby on Rails and Docker with practical lessons.",
+  alternates: { canonical: siteUrl("/aprenda") },
+  openGraph: {
+    title: "Learn Software Development",
+    description:
+      "Learn software development from the fundamentals through Git, JavaScript, TypeScript, networking, frontend, SQL, Ruby on Rails and Docker with practical lessons.",
+    url: siteUrl("/aprenda"),
+  },
 };
 
 export default function AprendaPage() {
@@ -26,7 +34,7 @@ export default function AprendaPage() {
         <p>
           {totalLessons} {totalLessons === 1 ? "lesson" : "lessons"} across {totalTracks} study tracks: Git,
           JavaScript, TypeScript, Networking, Frontend, SQL, Ruby on Rails and Docker. Each lesson connects a practical
-          example to the larger developer roadmap.
+          example to the larger How to Dev reference system.
         </p>
       </header>
       <div className="nexttech-learning-tree-wrap">

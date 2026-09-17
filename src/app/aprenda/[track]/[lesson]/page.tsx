@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { LessonLayout } from "@/components/aprenda/lesson-layout";
 import { getLesson, getTrackLessons } from "@/content/aprenda/registry";
 import { getTrackMeta, TRACKS } from "@/content/aprenda/tracks";
+import { siteUrl } from "@/lib/seo";
 
 type Props = { params: Promise<{ track: string; lesson: string }> };
 
@@ -16,7 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { track, lesson } = await params;
   const lessonModule = getLesson(track, lesson);
   if (!lessonModule) return { title: "Aprenda" };
-  return { title: `${lessonModule.meta.title} | Aprenda`, description: lessonModule.meta.summary };
+  const canonical = siteUrl(`/aprenda/${track}/${lesson}`);
+  return {
+    title: `${lessonModule.meta.title} | Aprenda`,
+    description: lessonModule.meta.summary,
+    alternates: { canonical },
+    openGraph: { title: `${lessonModule.meta.title} | Aprenda`, description: lessonModule.meta.summary, url: canonical },
+  };
 }
 
 export default async function LessonPage({ params }: Props) {

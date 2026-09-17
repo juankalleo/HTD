@@ -6,8 +6,13 @@ Juan Kalleo is a Staff Fullstack Software Engineer (frontend) at NextTech, based
 
 ## Docs
 
-- [Developer Roadmap](https://howtodev.site/developer-roadmap): a pillar page for "how to develop software", connecting web fundamentals, frontend, APIs, backend, databases, authentication, security, infrastructure, deployment and architecture.
+- [Frontend Development](https://howtodev.site/frontend): frontend hub for HTML, CSS, JavaScript, TypeScript, Next.js, UI architecture and frontend security.
+- [API Development](https://howtodev.site/api): backend API hub for HTTP contracts, routing, authentication, authorization, pagination, errors and Rails examples.
+- [Database Development](https://howtodev.site/database): database hub for SQL, relational modeling, migrations, indexes, multi-tenancy, audit trails and transactions.
+- [Software Security](https://howtodev.site/security): security hub for authentication, JWT, CSRF, XSS, CSP, RBAC, IDOR, API security and audit logs.
+- [Infrastructure and Deployment](https://howtodev.site/infrastructure): infrastructure hub for networking, HTTP, Docker, Nginx, reverse proxies, CDNs, CI/CD, logs and operations.
 - [Learn Software Development](https://howtodev.site/aprenda): practical lessons across Git, JavaScript, TypeScript, networking, frontend, SQL, Rails and Docker.
+- [About How to Dev](https://howtodev.site/about): explains the site, author, topic architecture and security-first editorial model.
 - [Frontend Standard](https://howtodev.site/padrao-frontend): folder structure, authentication, forms, tables, files, reports, and a full security section (XSS, CSRF, CSP, JWT, RBAC, headers, and more) — the only area with real content today.
 - [API Standard](https://howtodev.site/padrao-api): Rails API guide covering routing, authentication, authorization, pagination, errors and serializers.
 - [Database Standard](https://howtodev.site/padrao-banco-de-dados): relational modeling, SQL, migrations, multi-tenancy, audit trail and ActiveRecord conventions.

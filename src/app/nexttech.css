@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --nexttech-navbar-height: 68px;
+  --ifm-font-family-base: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --htd-display-font: "Instrument Sans", var(--ifm-font-family-base);
+  --nexttech-navbar-height: 72px;
   --ifm-navbar-height: var(--nexttech-navbar-height);
-  --nexttech-version-strip-height: 28px;
+  --nexttech-version-strip-height: 0px;
   --nexttech-chrome-height: calc(var(--nexttech-version-strip-height) + var(--nexttech-navbar-height));
   --nexttech-text: #102033;
   --nexttech-muted: #294060;
@@ -13,13 +15,13 @@
   --nexttech-active: #dfeaf7;
   --nexttech-blue: #2563eb;
   --nexttech-blue-dark: #1d4ed8;
-  --nexttech-topbar-bg: #ffffff;
-  --nexttech-topbar-bg-end: #ffffff;
-  --nexttech-topbar-text: #111827;
-  --nexttech-topbar-muted: #6b7280;
-  --nexttech-topbar-border: #e5e7eb;
-  --nexttech-topbar-hover: #f4f4f5;
-  --nexttech-topbar-shadow: 0 1px 0 rgba(15, 23, 42, .04);
+  --nexttech-topbar-bg: rgba(255, 255, 255, .9);
+  --nexttech-topbar-bg-end: rgba(255, 255, 255, .94);
+  --nexttech-topbar-text: #16181d;
+  --nexttech-topbar-muted: #68717f;
+  --nexttech-topbar-border: rgba(22, 24, 29, .11);
+  --nexttech-topbar-hover: rgba(22, 24, 29, .06);
+  --nexttech-topbar-shadow: 0 20px 50px rgba(15, 23, 42, .08);
   --nexttech-sidebar-bg: #2b3038;
   --nexttech-sidebar-bg-deep: #20252d;
   --nexttech-sidebar-bg-soft: #383f49;
@@ -48,13 +50,13 @@
 }
 
 [data-theme="dark"] {
-  --nexttech-topbar-bg: #252a32;
-  --nexttech-topbar-bg-end: #252a32;
-  --nexttech-topbar-text: #f8fafc;
-  --nexttech-topbar-muted: #cbd5e1;
-  --nexttech-topbar-border: rgba(255, 255, 255, .08);
-  --nexttech-topbar-hover: rgba(255, 255, 255, .09);
-  --nexttech-topbar-shadow: 0 1px 0 rgba(15, 23, 42, .18), 0 10px 22px -16px rgba(0, 0, 0, .7);
+  --nexttech-topbar-bg: rgba(248, 250, 252, .92);
+  --nexttech-topbar-bg-end: rgba(255, 255, 255, .94);
+  --nexttech-topbar-text: #15171c;
+  --nexttech-topbar-muted: #5d6674;
+  --nexttech-topbar-border: rgba(15, 23, 42, .14);
+  --nexttech-topbar-hover: rgba(15, 23, 42, .07);
+  --nexttech-topbar-shadow: 0 22px 48px rgba(0, 0, 0, .22);
   --htd-hover-bg: rgba(58, 137, 255, .16);
   --htd-active-bg: rgba(58, 137, 255, .26);
   --htd-active-text: #9dbdff;
@@ -71,7 +73,7 @@ body {
 }
 
 .title_jMzy {
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-weight: 900;
   letter-spacing: -.01em;
 }
@@ -102,21 +104,29 @@ body {
 }
 
 .theme-layout-navbar.navbar {
-  background: var(--nexttech-topbar-bg);
-  border-bottom: 1px solid var(--nexttech-topbar-border);
-  box-shadow: var(--nexttech-topbar-shadow);
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
   height: var(--nexttech-navbar-height);
   left: 0;
   position: fixed;
   right: 0;
-  top: var(--nexttech-version-strip-height);
+  top: 0;
   z-index: 200;
 }
 
 .theme-layout-navbar .navbar__inner {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   height: 100%;
-  max-width: none;
-  padding: 0 24px;
+  margin: 0 auto;
+  max-width: min(1040px, calc(100vw - 64px));
+  min-height: var(--nexttech-navbar-height);
+  padding: 0;
+  position: relative;
+  z-index: 203;
 }
 
 .theme-layout-navbar .navbar__toggle {
@@ -130,18 +140,18 @@ body {
   box-shadow: none !important;
   display: inline-flex;
   gap: 10px;
-  margin-right: 40px;
+  margin-right: 0;
   min-height: 36px;
-  min-width: 174px;
+  min-width: 150px;
   padding: 0;
 }
 
 .nexttech-brand-mark {
   align-items: center;
-  background: var(--nexttech-topbar-text);
-  border: 1px solid var(--nexttech-topbar-text);
-  border-radius: 8px;
-  color: var(--nexttech-topbar-bg);
+  background: #171a20;
+  border: 1px solid rgba(23, 26, 32, .88);
+  border-radius: 50%;
+  color: #ffffff;
   display: inline-flex;
   flex: 0 0 auto;
   height: 32px;
@@ -168,15 +178,25 @@ body {
 }
 
 .theme-layout-navbar-left.navbar__items {
+  flex: 1 1 0;
   gap: 10px;
+  position: relative;
+  z-index: 6;
+}
+
+.theme-layout-navbar-right.navbar__items {
+  flex: 1 1 0;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 6;
 }
 
 .nexttech-brand .navbar__title {
   color: var(--nexttech-topbar-text) !important;
   display: inline-block;
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
-  font-size: 18px;
-  font-weight: 900;
+  font-family: var(--htd-display-font);
+  font-size: 17px;
+  font-weight: 800;
   letter-spacing: 0;
   line-height: 1;
   text-transform: none;
@@ -187,7 +207,16 @@ body {
   color: var(--nexttech-topbar-muted) !important;
   display: inline-flex !important;
   gap: 9px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.nexttech-mega-nav.navbar__items {
+  flex: 0 0 auto;
+  gap: 30px;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
 }
 
 .nexttech-nav-icon {
@@ -214,14 +243,79 @@ body {
   font-weight: 600;
 }
 
-.nexttech-static-select > .navbar__link {
+.nexttech-mega {
+  position: static;
+}
+
+.nexttech-static-select > .navbar__link,
+.nexttech-mega-trigger {
+  appearance: none;
+  background: transparent;
+  border: 0;
   color: var(--nexttech-topbar-muted) !important;
-  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 650;
+  padding: 0;
+  position: relative;
+  z-index: 7;
+}
+
+.nexttech-mega-trigger::before {
+  background: currentColor;
+  border-radius: 999px;
+  bottom: -11px;
+  content: "";
+  height: 2px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleX(.35);
+  transform-origin: center;
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+.theme-layout-navbar .nexttech-mega > .nexttech-mega-trigger::after {
+  display: none;
 }
 
 .theme-layout-navbar .navbar__link:hover,
 .theme-layout-navbar .navbar__link--active {
   color: var(--nexttech-topbar-text) !important;
+}
+
+.theme-layout-navbar .navbar__link:hover,
+.nexttech-mega-trigger:hover,
+.nexttech-mega--open .nexttech-mega-trigger,
+.nexttech-mega:focus-within .nexttech-mega-trigger,
+.nexttech-mega--active .nexttech-mega-trigger {
+  background: transparent;
+  color: var(--nexttech-topbar-text) !important;
+  text-decoration: none;
+}
+
+.nexttech-mega:hover .nexttech-mega-trigger::before,
+.nexttech-mega--open .nexttech-mega-trigger::before,
+.nexttech-mega:focus-within .nexttech-mega-trigger::before,
+.nexttech-mega--active .nexttech-mega-trigger::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-brand .navbar__title,
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-mega-trigger,
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-nav-link,
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-static-select > .navbar__link,
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-theme-toggle,
+.theme-layout-navbar.nexttech-mega-is-open .iconLanguage_wzn9 {
+  color: rgba(255, 255, 255, .78) !important;
+}
+
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-mega--open .nexttech-mega-trigger,
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-mega:focus-within .nexttech-mega-trigger,
+.theme-layout-navbar.nexttech-mega-is-open .nexttech-brand .navbar__title:hover {
+  color: #ffffff !important;
 }
 
 .theme-layout-navbar .dropdown > .navbar__link::after {
@@ -265,25 +359,169 @@ body {
   display: block;
 }
 
-.nexttech-static-select .dropdown__menu {
-  min-width: 88px;
+.nexttech-static-select:not(.nexttech-mega) .dropdown__menu {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, .96);
+  border: 1px solid rgba(15, 23, 42, .11);
+  border-radius: 10px;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, .18);
+  margin-top: 12px;
+  min-width: 130px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.nexttech-static-select:not(.nexttech-mega) .dropdown__link {
+  border-radius: 12px;
+  color: #20242c;
+  font-size: 14px;
+  font-weight: 650;
+  padding: 10px 12px;
+}
+
+.nexttech-static-select:not(.nexttech-mega) .dropdown__link:hover,
+.nexttech-static-select:not(.nexttech-mega) .dropdown__link--active {
+  background: rgba(15, 23, 42, .07);
+  color: #111318;
+  text-decoration: none;
+}
+
+.nexttech-mega-panel.dropdown__menu {
+  backdrop-filter: blur(20px);
+  background: linear-gradient(180deg, rgba(18, 23, 24, .94), rgba(18, 23, 24, .78));
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .32);
+  color: #ffffff;
+  display: block;
+  left: 0;
+  margin: 0;
+  min-width: 0;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateY(-12px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 1;
+}
+
+.nexttech-mega--open .nexttech-mega-panel,
+.nexttech-mega:focus-within .nexttech-mega-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.nexttech-mega-panel__inner {
+  display: grid;
+  gap: 92px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, .85fr);
+  margin: 0 auto;
+  max-width: min(1040px, calc(100vw - 64px));
+  min-height: 328px;
+  padding: 92px 0 54px;
+}
+
+.nexttech-mega-column h2 {
+  color: rgba(255, 255, 255, .52);
+  font-family: var(--htd-display-font);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0;
+  margin: 0 0 16px;
+}
+
+.nexttech-mega-column ul {
+  display: grid;
+  gap: 11px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nexttech-mega-column a,
+.nexttech-mega-action {
+  align-items: flex-start;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #ffffff;
+  display: flex;
+  font: inherit;
+  gap: 12px;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+}
+
+.nexttech-mega-column a:hover,
+.nexttech-mega-action:hover,
+.nexttech-mega-link--active {
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nexttech-mega-column a:hover strong,
+.nexttech-mega-action:hover strong,
+.nexttech-mega-link--active strong {
+  color: #ffffff;
+  text-shadow: 0 0 18px rgba(255, 255, 255, .18);
+}
+
+.nexttech-mega-link--active small {
+  color: rgba(255, 255, 255, .78);
+}
+
+.nexttech-mega-column strong {
+  color: inherit;
+  display: block;
+  font-family: var(--htd-display-font);
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.nexttech-mega-column small {
+  color: rgba(255, 255, 255, .54);
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-top: 5px;
+  max-width: 280px;
+}
+
+.nexttech-mega-column .nexttech-nav-icon {
+  color: rgba(255, 255, 255, .7);
+  height: 19px;
+  margin-top: 6px;
+  width: 19px;
 }
 
 .nexttech-topbar-search {
   align-items: center;
   appearance: none;
-  background: #f8fafc;
+  background: rgba(255, 255, 255, .74);
   border: 1px solid var(--nexttech-topbar-border);
-  border-radius: 4px;
+  border-radius: 999px;
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
-  gap: 8px;
-  height: 32px;
-  margin-right: 12px;
+  gap: 0;
+  height: 36px;
+  margin-right: 8px;
   padding: 0 10px;
   transition: background-color .15s ease, border-color .15s ease;
-  width: min(280px, 22vw);
+  width: 38px;
 }
 
 .nexttech-topbar-search:hover,
@@ -300,6 +538,7 @@ body {
 }
 
 .nexttech-topbar-search__label {
+  display: none;
   color: var(--nexttech-topbar-muted);
   flex: 1;
   font: 600 13px/1.2 var(--ifm-font-family-base);
@@ -307,9 +546,10 @@ body {
 }
 
 .nexttech-topbar-search__kbd {
+  display: none;
   background: #ffffff;
   border: 1px solid var(--nexttech-topbar-border);
-  border-radius: 4px;
+  border-radius: 999px;
   color: var(--nexttech-topbar-muted);
   flex: 0 0 auto;
   font: 700 11px/1.6 var(--ifm-font-family-base);
@@ -317,22 +557,27 @@ body {
 }
 
 [data-theme="dark"] .nexttech-topbar-search {
-  background: rgba(255, 255, 255, .07);
-  border-color: rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .64);
+  border-color: rgba(15, 23, 42, .12);
 }
 
 [data-theme="dark"] .nexttech-topbar-search:hover,
 [data-theme="dark"] .nexttech-topbar-search:focus-visible {
-  background: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .86);
+  border-color: rgba(15, 23, 42, .24);
 }
 
 [data-theme="dark"] .nexttech-topbar-search__kbd {
-  background: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .9);
+  border-color: rgba(15, 23, 42, .14);
 }
 
 @media (max-width: 996px) {
+  .theme-layout-navbar.navbar-sidebar--show > .navbar__inner {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .nexttech-topbar-search {
     display: none;
   }
@@ -1152,7 +1397,7 @@ body {
   border-radius: 4px;
   color: #fff;
   display: flex;
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 13px;
   font-weight: 900;
   gap: 8px;
@@ -1200,7 +1445,7 @@ body {
   display: inline-block;
   margin-top: 8px;
   color: var(--nexttech-blue);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 13px;
   font-weight: 700;
 }
@@ -1218,7 +1463,7 @@ body {
   border-radius: 999px;
   background: var(--htd-hover-bg);
   color: var(--htd-active-text);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.03em;
@@ -1239,6 +1484,26 @@ body {
   font-size: 20px;
   font-weight: 800;
   letter-spacing: 0;
+}
+
+.nexttech-footer-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  justify-content: center;
+  margin: 0 auto 14px;
+  max-width: 920px;
+}
+
+.nexttech-footer-links a {
+  color: rgb(229 231 235);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.nexttech-footer-links a:hover {
+  color: #fff;
 }
 
 @media (max-width: 996px) {
@@ -1342,6 +1607,9 @@ body {
   }
 
   .theme-layout-navbar-left .nexttech-nav-link,
+  .theme-layout-navbar-left .nexttech-static-select,
+  .theme-layout-navbar-left .nexttech-cta-aprenda,
+  .theme-layout-navbar .nexttech-mega-nav,
   .theme-layout-navbar .navbar__items--right {
     display: none !important;
   }
@@ -1368,8 +1636,27 @@ html.nexttech-no-scroll {
   overflow: hidden;
 }
 
+.navbar-sidebar {
+  --ifm-font-color-base: #171a1f;
+  --ifm-color-content-secondary: #66717f;
+  --nexttech-hover: rgba(15, 23, 42, .06);
+  --nexttech-active: rgba(37, 99, 235, .11);
+  background: #f8fafc !important;
+  color: #171a1f;
+  width: min(340px, 86vw);
+}
+
 .navbar-sidebar__brand {
+  align-items: center;
+  border-bottom: 1px solid rgba(15, 23, 42, .09);
+  display: flex;
+  height: 96px;
   justify-content: space-between;
+  padding: 0 28px;
+}
+
+.navbar-sidebar__brand .nexttech-brand {
+  padding: 0;
 }
 
 .navbar-sidebar__close {
@@ -1411,7 +1698,7 @@ html.nexttech-no-scroll {
 
 .nexttech-mobile-divider {
   margin: 10px 2px;
-  border-top: 1px solid var(--nexttech-border);
+  border-top: 1px solid rgba(15, 23, 42, .12);
 }
 
 .nexttech-mobile-row {
@@ -1510,33 +1797,40 @@ html.nexttech-no-scroll {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 8px 0 28px;
+  margin: 28px 0 0;
 }
 
 .home-hero-cta {
-  border-radius: 8px;
+  align-items: center;
+  border: 1px solid var(--htd-doc-border);
+  border-radius: 999px;
+  color: var(--htd-doc-text) !important;
+  display: inline-flex;
+  font-size: 14px;
   font-weight: 700;
-  padding: 12px 22px;
+  min-height: 40px;
+  padding: 0 16px;
   text-decoration: none !important;
 }
 
 .home-hero-cta--primary {
-  background: var(--nexttech-blue);
+  background: #171a1f;
+  border-color: #171a1f;
   color: #fff !important;
 }
 
 .home-hero-cta--primary:hover {
-  background: var(--nexttech-blue-dark);
+  background: #000;
 }
 
 .home-hero-cta--secondary {
-  border: 1px solid rgba(255, 255, 255, .26);
-  color: #f8fafc !important;
+  background: rgba(255, 255, 255, .66);
+  color: #171a1f !important;
 }
 
 .home-hero-cta--secondary:hover {
-  background: rgba(255, 255, 255, .08);
-  border-color: rgba(255, 255, 255, .42);
+  background: #fff;
+  border-color: rgba(23, 26, 31, .22);
 }
 
 .nexttech-tech-icon {
@@ -1654,7 +1948,7 @@ html.nexttech-no-scroll {
 
 .nexttech-learning-tree__code {
   color: var(--ifm-color-content);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 17px;
   font-weight: 900;
   line-height: 1;
@@ -1847,7 +2141,7 @@ html.nexttech-no-scroll {
 
 .nexttech-aprenda-hub__header h1 {
   color: var(--ifm-color-content);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 32px;
   font-weight: 900;
   margin: 6px 0 14px;
@@ -1859,7 +2153,7 @@ html.nexttech-no-scroll {
   line-height: 1.7;
 }
 
-/* Developer roadmap — página pilar para /developer-roadmap. */
+/* Topic hubs — estrutura editorial dos hubs de assunto. */
 
 .developer-roadmap-main {
   background: var(--ifm-background-color);
@@ -1901,7 +2195,7 @@ html.nexttech-no-scroll {
 
 .developer-roadmap-hero h1 {
   color: var(--ifm-color-content);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: clamp(38px, 6vw, 68px);
   font-weight: 900;
   letter-spacing: 0;
@@ -1979,7 +2273,7 @@ html.nexttech-no-scroll {
 
 .developer-roadmap-overview strong {
   color: var(--ifm-color-content);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 24px;
   font-weight: 900;
 }
@@ -2037,7 +2331,7 @@ html.nexttech-no-scroll {
 
 .developer-roadmap-section__heading h2 {
   color: var(--ifm-color-content);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 30px;
   font-weight: 900;
   letter-spacing: 0;
@@ -2897,7 +3191,7 @@ html.nexttech-no-scroll {
 
 .nexttech-quiz__title {
   color: var(--ifm-color-content);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 22px;
   font-weight: 900;
   margin: 0 0 20px;
@@ -2993,7 +3287,7 @@ html.nexttech-no-scroll {
 
 .nexttech-exercise__title {
   color: var(--ifm-color-content);
-  font-family: "Nunito", var(--ifm-font-family-base), sans-serif;
+  font-family: var(--htd-display-font);
   font-size: 20px;
   font-weight: 900;
   margin: 0 0 10px;

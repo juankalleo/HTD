@@ -1,6 +1,6 @@
 export type Locale = "en" | "pt";
 
-export const DEFAULT_LOCALE: Locale = "en";
+export const DEFAULT_LOCALE: Locale = "pt";
 export const LOCALE_STORAGE_KEY = "htd-locale";
 
 export type AreaKey =
@@ -28,7 +28,7 @@ type Dictionary = {
     currentVersion: string;
     languageName: string;
     docsMenu: string;
-    roadmap: string;
+    menu: string;
   };
   sidebar: {
     ariaNav: string;
@@ -66,7 +66,6 @@ type Dictionary = {
     title: string;
     tagline: string;
     primaryCta: string;
-    roadmapCta: string;
     secondaryCta: string;
     statsLabel: string;
     statLessons: string;
@@ -121,7 +120,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       currentVersion: "How to Dev v1.1",
       languageName: "EN",
       docsMenu: "Documentation",
-      roadmap: "Roadmap",
+      menu: "Menu",
     },
     sidebar: {
       ariaNav: "Content navigation",
@@ -167,7 +166,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       tagline:
         "Learn software development through practical guides on frontend, backend, APIs, databases, security, infrastructure and architecture. Current release: How to Dev v1.1.",
       primaryCta: "Start learning free",
-      roadmapCta: "Learn how to develop software",
       secondaryCta: "See credits",
       statsLabel: "How to Dev data",
       statLessons: "Practical lessons",
@@ -176,7 +174,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       statUpdatedValue: "How to Dev v1.1",
       purposeHeading: "Purpose",
       purposeBody:
-        "Learn how to develop modern software through practical guides covering frontend, backend, APIs, databases, security, infrastructure and software architecture. How to Dev is a developer knowledge base for understanding how applications are designed, built, secured, deployed and maintained.",
+        "I built How to Dev to catalog, organize and measure content I have studied and applied. It is my second brain: documentation of what I know, with practical examples and short lessons in the Learn section.",
       whyHeading: "Why this exists",
       whyBodyBefore:
         "It started from a simple question: if a malicious actor got access to this documentation, would it help them attack a real system — or would it show them the system is already protected enough that it isn't worth trying? The",
@@ -205,7 +203,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       creatorRole: "Staff Fullstack Software Engineer · NextTech frontend team",
       indexHeading: "How to Dev indexes",
       indexBody:
-        "Use these entry points to jump straight to a subject: start with the developer roadmap, pick a topic, then open the reference page, lesson or checklist.",
+        "Use these entry points to jump straight to a subject: start with the learning tracks, pick a topic, then open the reference page, lesson or checklist.",
       controlsHeading: "Security coverage map",
       controlsBody:
         "A quick way to go from a risk category to the How to Dev page that actually implements the control — this table reflects How to Dev's own content, not an external checklist.",
@@ -279,8 +277,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "A top-down map of the concepts a developer needs to connect: the first rows are foundations, then the topics branch into UI, backend, data, infrastructure and security.",
       projectLinksHeading: "Project links",
       projectLinks: [
-        { label: "Developer Roadmap", href: "/developer-roadmap" },
         { label: "Learn software development", href: "/aprenda" },
+        { label: "Frontend development", href: "/frontend" },
+        { label: "API development", href: "/api" },
+        { label: "Database development", href: "/database" },
+        { label: "Software security", href: "/security" },
+        { label: "Infrastructure and deployment", href: "/infrastructure" },
+        { label: "About How to Dev", href: "/about" },
         { label: "Credits", href: "/creditos" },
         { label: "Frontend Standard", href: "/padrao-frontend" },
         { label: "Security checklist", href: "/padrao-frontend/seguranca" },
@@ -309,7 +312,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       currentVersion: "How to Dev v1.1",
       languageName: "PT-BR",
       docsMenu: "Documentação",
-      roadmap: "Roadmap",
+      menu: "Menu",
     },
     sidebar: {
       ariaNav: "Navegação de conteúdo",
@@ -354,7 +357,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
       tagline:
         "Aprenda desenvolvimento de software com guias práticos sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura. Versão atual: How to Dev v1.1.",
       primaryCta: "Comece a aprender grátis",
-      roadmapCta: "Aprenda como desenvolver software",
       secondaryCta: "Ver créditos",
       statsLabel: "Dados do How to Dev",
       statLessons: "Lições práticas",
@@ -363,7 +365,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       statUpdatedValue: "How to Dev v1.1",
       purposeHeading: "Propósito",
       purposeBody:
-        "Aprenda como desenvolver software moderno com guias práticos sobre frontend, backend, APIs, bancos de dados, segurança, infraestrutura e arquitetura de software. How to Dev é uma base de conhecimento para entender como aplicações são desenhadas, construídas, protegidas, publicadas e mantidas.",
+        "Desenvolvi o How to Dev para catalogar, organizar e mensurar conteúdos que já estudei e apliquei. É meu segundo cérebro: documentação do que sei, com exemplos práticos e mini aulas na seção Aprenda.",
       whyHeading: "Por que existe",
       whyBodyBefore:
         "Nasceu de uma pergunta simples: se alguém mal-intencionado tivesse acesso a essa documentação, ela ajudaria a atacar um sistema real — ou mostraria que o sistema já é protegido o bastante pra não valer a pena tentar? A seção de",
@@ -392,7 +394,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       creatorRole: "Staff Fullstack Software Engineer · time de frontend da NextTech",
       indexHeading: "Índices do How to Dev",
       indexBody:
-        "Use estes pontos de entrada pra ir direto ao assunto: comece pelo roadmap de desenvolvimento, escolha o tema e abra a referência, aula ou checklist.",
+        "Use estes pontos de entrada pra ir direto ao assunto: comece pelas trilhas de aprendizado, escolha o tema e abra a referência, aula ou checklist.",
       controlsHeading: "Mapa de cobertura de segurança",
       controlsBody:
         "Um jeito rápido de sair da categoria de risco e cair direto na página do How to Dev que implementa o controle — esta tabela reflete o conteúdo do próprio How to Dev, não um checklist externo.",
@@ -466,8 +468,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
         "Um mapa de cima para baixo com os conceitos que um dev precisa conectar: primeiro a base, depois os assuntos se ramificam em interface, backend, dados, infraestrutura e segurança.",
       projectLinksHeading: "Links do projeto",
       projectLinks: [
-        { label: "Developer Roadmap", href: "/developer-roadmap" },
         { label: "Aprenda desenvolvimento de software", href: "/aprenda" },
+        { label: "Desenvolvimento frontend", href: "/frontend" },
+        { label: "Desenvolvimento de API", href: "/api" },
+        { label: "Banco de dados", href: "/database" },
+        { label: "Segurança de software", href: "/security" },
+        { label: "Infraestrutura e deploy", href: "/infrastructure" },
+        { label: "Sobre o How to Dev", href: "/about" },
         { label: "Créditos", href: "/creditos" },
         { label: "Padrão Frontend", href: "/padrao-frontend" },
         { label: "Checklist de segurança", href: "/padrao-frontend/seguranca" },
@@ -478,7 +485,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ],
       aboutHeading: "Sobre mim",
       aboutBody:
-        "Sou Juan Kalleo Uchoa Fava, Staff Fullstack Software Engineer no time de frontend da NextTech, baseado em Porto Velho, Brasil. Desenvolvimento seguro de software é o foco que atravessa a maior parte do que eu construo — How to Dev é onde esse foco vira documentação, escrita do jeito que eu gostaria que mais gente escrevesse.",
+        "Sou Juan Kalleo Uchoa Fava. Desenvolvi este site com o objetivo de catalogar, organizar e mensurar conteúdos que já estudei e apliquei. Na seção Aprenda, transformo a documentação em exemplos práticos e mini aulas sobre conceitos que considero a base da programação. Considero o How to Dev como um segundo cérebro: um lugar onde documento o que sei.",
       aboutImageAlt: "Foto de Juan Kalleo",
       aboutGithubLabel: "GitHub ↗",
     },

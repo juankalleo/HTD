@@ -2,6 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   agentRules: false,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "howtodev.vercel.app" }],
+        destination: "https://howtodev.site/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

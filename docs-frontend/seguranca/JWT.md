@@ -125,7 +125,7 @@ controles fortes no frontend.
 - [Cookies HttpOnly & Secure](/padrao-frontend/seguranca/cookies-httponly-secure)
 - [Autenticação na API](/padrao-api/seguranca/autenticacao)
 - [Administração e RBAC](/padrao-frontend/seguranca/administracao-rbac)
-- [Developer Roadmap](/developer-roadmap)
+- [Aprenda desenvolvimento de software](/aprenda)
 
 ## Referências
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 import { SearchCommand } from "./search-command";
 import { useLocale } from "./locale-provider";
@@ -8,6 +8,9 @@ import type { AreaKey } from "@/lib/i18n";
 import type { SearchEntry } from "@/lib/search-index";
 
 type AreaItem = { area: AreaKey; href: string; icon: React.ReactNode };
+type MegaLink = { label: string; href?: string; onClick?: () => void; icon?: React.ReactNode; description?: string; active?: boolean };
+type MegaColumn = { title: string; links: MegaLink[] };
+type MegaId = "explorar" | "padroes" | "aprender" | "sistema";
 
 const AREA_ITEMS: AreaItem[] = [
   {
@@ -48,6 +51,14 @@ const AREA_ITEMS: AreaItem[] = [
     ),
   },
 ];
+
+const AREA_LABELS_PT: Record<AreaKey, string> = {
+  "padrao-frontend": "Padrão Frontend",
+  "padrao-api": "Padrão API",
+  "padrao-banco-de-dados": "Padrão Banco de Dados",
+  "padrao-infraestrutura": "Padrão Infraestrutura",
+  examples: "Exemplos",
+};
 
 const CREDITS_ICON: React.ReactNode = (
   <>
@@ -93,7 +104,6 @@ function BrandMark() {
  * (useState + chevron) que `SidebarNode` já usa em sidebar.tsx.
  */
 function MobileDocsGroup({ activeHref, onNavigate }: { activeHref: string; onNavigate: () => void }) {
-  const { t } = useLocale();
   const [open, setOpen] = useState(true);
 
   return (
@@ -104,7 +114,7 @@ function MobileDocsGroup({ activeHref, onNavigate }: { activeHref: string; onNav
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
-        <span>{t.nav.docsMenu}</span>
+        <span>Documentação</span>
         <span
           className={`nexttech-mobile-group-chevron${open ? " nexttech-mobile-group-chevron--open" : ""}`}
           aria-hidden="true"
@@ -125,7 +135,7 @@ function MobileDocsGroup({ activeHref, onNavigate }: { activeHref: string; onNav
                 onClick={onNavigate}
               >
                 <NavIcon>{item.icon}</NavIcon>
-                <span>{t.nav.areas[item.area]}</span>
+                <span>{AREA_LABELS_PT[item.area]}</span>
               </a>
             );
           })}
@@ -135,34 +145,172 @@ function MobileDocsGroup({ activeHref, onNavigate }: { activeHref: string; onNav
   );
 }
 
-export function Navbar({ activeHref, searchEntries }: { activeHref: string; searchEntries: SearchEntry[] }) {
-  const { locale, setLocale, t } = useLocale();
-  const [mobileOpen, setMobileOpen] = useState(false);
+function MegaMenu({
+  id,
+  label,
+  active,
+  open,
+  onOpen,
+  columns,
+}: {
+  id: MegaId;
+  label: string;
+  active?: boolean;
+  open: boolean;
+  onOpen: (id: MegaId) => void;
+  columns: MegaColumn[];
+}) {
+  return (
+    <div
+      className={`navbar__item nexttech-mega${open ? " nexttech-mega--open" : ""}${active ? " nexttech-mega--active" : ""}`}
+      onMouseEnter={() => onOpen(id)}
+      onFocusCapture={() => onOpen(id)}
+    >
+      <button
+        type="button"
+        className="navbar__link nexttech-mega-trigger"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => onOpen(id)}
+      >
+        {label}
+      </button>
+      <div className="dropdown__menu nexttech-mega-panel">
+        <div className="nexttech-mega-panel__inner">
+          {columns.map((column) => (
+            <section className="nexttech-mega-column" key={column.title}>
+              <h2>{column.title}</h2>
+              <ul>
+                {column.links.map((link) => (
+                  <li key={`${column.title}-${link.href ?? link.label}-${link.label}`}>
+                    {link.href ? (
+                      <a href={link.href} className={link.active ? "nexttech-mega-link--active" : undefined}>
+                        {link.icon && <NavIcon>{link.icon}</NavIcon>}
+                        <span>
+                          <strong>{link.label}</strong>
+                          {link.description && <small>{link.description}</small>}
+                        </span>
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        className={`nexttech-mega-action${link.active ? " nexttech-mega-link--active" : ""}`}
+                        onClick={link.onClick}
+                      >
+                        {link.icon && <NavIcon>{link.icon}</NavIcon>}
+                        <span>
+                          <strong>{link.label}</strong>
+                          {link.description && <small>{link.description}</small>}
+                        </span>
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-  useEffect(() => {
-    if (!mobileOpen) return;
-    document.documentElement.classList.add("nexttech-no-scroll");
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setMobileOpen(false);
-    }
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.documentElement.classList.remove("nexttech-no-scroll");
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [mobileOpen]);
+export function Navbar({ activeHref, searchEntries }: { activeHref: string; searchEntries: SearchEntry[] }) {
+  const { locale, setLocale } = useLocale();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMega, setActiveMega] = useState<MegaId | null>(null);
 
   const docsMenuActive = AREA_ITEMS.some((item) => item.href === activeHref);
   const creditsActive = activeHref === "/creditos";
   const aprendaActive = activeHref === "/aprenda" || activeHref.startsWith("/aprenda/");
-  const roadmapActive = activeHref === "/developer-roadmap";
+  const examplesActive = activeHref === "/examples" || activeHref.startsWith("/examples/");
+  const companyActive = activeHref === "/about" || creditsActive;
+  const hubActive = ["/frontend", "/api", "/database", "/security", "/infrastructure"].includes(activeHref);
+  const standardLinks: MegaLink[] = AREA_ITEMS.map((item) => ({
+    label: AREA_LABELS_PT[item.area],
+    href: item.href,
+    icon: item.icon,
+  }));
+  const exploreColumns: MegaColumn[] = [
+    {
+      title: "Explorar",
+      links: [
+        { label: "Frontend", href: "/frontend", description: "Interfaces, formularios, rotas e seguranca." },
+        { label: "API", href: "/api", description: "Contratos HTTP, auth, paginacao e erros." },
+        { label: "Banco de dados", href: "/database", description: "Modelagem, SQL, migrations e auditoria." },
+      ],
+    },
+    {
+      title: "Atalhos",
+      links: [
+        { label: "Segurança", href: "/security" },
+        { label: "Infraestrutura", href: "/infrastructure" },
+        { label: AREA_LABELS_PT.examples, href: "/examples" },
+      ],
+    },
+  ];
+  const standardsColumns: MegaColumn[] = [
+    {
+      title: "Documentação",
+      links: standardLinks,
+    },
+    {
+      title: "Referências",
+      links: [
+        { label: "Checklist de segurança", href: "/padrao-frontend/seguranca" },
+        { label: "Relatórios", href: "/padrao-frontend/relatorios" },
+        { label: "Layout frontend", href: "/padrao-frontend/layout" },
+      ],
+    },
+  ];
+  const learnColumns: MegaColumn[] = [
+    {
+      title: "Aprender",
+      links: [
+        { label: "Todas as trilhas", href: "/aprenda", description: "Aulas práticas: 66" },
+        { label: "Trilha de frontend", href: "/aprenda/frontend" },
+        { label: "Trilha de TypeScript", href: "/aprenda/typescript" },
+      ],
+    },
+    {
+      title: "Fundamentos",
+      links: [
+        { label: "Git", href: "/aprenda/git" },
+        { label: "Redes", href: "/aprenda/networking" },
+        { label: "SQL", href: "/aprenda/sql" },
+      ],
+    },
+  ];
+  const companyColumns: MegaColumn[] = [
+    {
+      title: "Sistema",
+      links: [
+        { label: "Sobre o How to Dev", href: "/about" },
+        { label: "Créditos", href: "/creditos", icon: CREDITS_ICON },
+      ],
+    },
+    {
+      title: "Idioma",
+      links: [
+        { label: "Português (BR)", onClick: () => setLocale("pt"), description: locale === "pt" ? "Selecionado" : "Trocar idioma", active: locale === "pt" },
+        { label: "English", onClick: () => setLocale("en"), description: locale === "en" ? "Selected" : "Change language", active: locale === "en" },
+        { label: "GitHub", href: "https://github.com/juankalleo" },
+      ],
+    },
+  ];
 
   return (
     <>
-      <div className="nexttech-version-strip" aria-label={t.nav.currentVersion}>
-        <span>{t.nav.currentVersion}</span>
-      </div>
-      <nav aria-label="Main" className={`theme-layout-navbar navbar navbar--fixed-top${mobileOpen ? " navbar-sidebar--show" : ""}`}>
+      <nav
+        aria-label="Main"
+        className={`theme-layout-navbar navbar navbar--fixed-top${activeMega ? " nexttech-mega-is-open" : ""}${mobileOpen ? " navbar-sidebar--show" : ""}`}
+        onMouseLeave={() => setActiveMega(null)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) {
+            setActiveMega(null);
+          }
+        }}
+      >
         <div className="navbar__inner">
           <div className="theme-layout-navbar-left navbar__items">
             <button
@@ -180,94 +328,16 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
               <BrandMark />
               <b className="navbar__title text--truncate">How to Dev</b>
             </a>
-
-            <div
-              className={`navbar__item dropdown dropdown--hoverable nexttech-static-select nexttech-docs-menu${docsMenuActive ? " nexttech-docs-menu--active" : ""}`}
-            >
-              <a className="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="#">
-                {t.nav.docsMenu}
-              </a>
-              <ul className="dropdown__menu">
-                {AREA_ITEMS.map((item) => {
-                  const active = activeHref === item.href;
-                  return (
-                    <li key={item.href}>
-                      <a
-                        className={`dropdown__link nexttech-docs-menu-link${active ? " dropdown__link--active" : ""}`}
-                        href={item.href}
-                      >
-                        <NavIcon>{item.icon}</NavIcon>
-                        <span>{t.nav.areas[item.area]}</span>
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            <a
-              aria-current={aprendaActive ? "page" : undefined}
-              className={`navbar__item navbar__link nexttech-cta-aprenda${aprendaActive ? " navbar__link--active nexttech-cta-aprenda--active" : ""}`}
-              href="/aprenda"
-            >
-              Aprenda
-            </a>
-
-            <a
-              aria-current={roadmapActive ? "page" : undefined}
-              className={`navbar__item navbar__link nexttech-cta-aprenda${roadmapActive ? " navbar__link--active nexttech-cta-aprenda--active" : ""}`}
-              href="/developer-roadmap"
-            >
-              {t.nav.roadmap}
-            </a>
+          </div>
+          <div className="nexttech-mega-nav navbar__items">
+            <MegaMenu id="explorar" label="Explorar" active={hubActive || examplesActive} open={activeMega === "explorar"} onOpen={setActiveMega} columns={exploreColumns} />
+            <MegaMenu id="padroes" label="Padrões" active={docsMenuActive} open={activeMega === "padroes"} onOpen={setActiveMega} columns={standardsColumns} />
+            <MegaMenu id="aprender" label="Aprender" active={aprendaActive} open={activeMega === "aprender"} onOpen={setActiveMega} columns={learnColumns} />
+            <MegaMenu id="sistema" label="Sistema" active={companyActive} open={activeMega === "sistema"} onOpen={setActiveMega} columns={companyColumns} />
           </div>
           <div className="theme-layout-navbar-right navbar__items navbar__items--right">
             <SearchCommand entries={searchEntries} />
-
-            <div className="navbar__item dropdown dropdown--hoverable dropdown--right nexttech-static-select">
-              <a href="#" aria-haspopup="true" aria-expanded="false" role="button" className="navbar__link">
-                <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" className="iconLanguage_wzn9">
-                  <path
-                    fill="currentColor"
-                    d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"
-                  />
-                </svg>
-                {t.nav.languageName}
-              </a>
-              <ul className="dropdown__menu">
-                <li>
-                  <button
-                    type="button"
-                    className={`dropdown__link${locale === "en" ? " dropdown__link--active" : ""}`}
-                    style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
-                    onClick={() => setLocale("en")}
-                  >
-                    EN
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    lang="pt-BR"
-                    className={`dropdown__link${locale === "pt" ? " dropdown__link--active" : ""}`}
-                    style={{ background: "none", border: 0, width: "100%", textAlign: "left", cursor: "pointer", font: "inherit" }}
-                    onClick={() => setLocale("pt")}
-                  >
-                    PT-BR
-                  </button>
-                </li>
-              </ul>
-            </div>
             <ThemeToggle />
-
-            <a
-              aria-current={creditsActive ? "page" : undefined}
-              className={`navbar__item navbar__link${creditsActive ? " navbar__link--active" : ""} nexttech-nav-link`}
-              href="/creditos"
-            >
-              <NavIcon>{CREDITS_ICON}</NavIcon>
-              <span>{t.nav.credits}</span>
-            </a>
           </div>
         </div>
 
@@ -302,12 +372,12 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
               </a>
 
               <a
-                href="/developer-roadmap"
-                aria-current={roadmapActive ? "page" : undefined}
-                className={`nexttech-mobile-link${roadmapActive ? " nexttech-mobile-link--active" : ""}`}
+                href="/examples"
+                aria-current={examplesActive ? "page" : undefined}
+                className={`nexttech-mobile-link${examplesActive ? " nexttech-mobile-link--active" : ""}`}
                 onClick={() => setMobileOpen(false)}
               >
-                {t.nav.roadmap}
+                {AREA_LABELS_PT.examples}
               </a>
 
               <MobileDocsGroup activeHref={activeHref} onNavigate={() => setMobileOpen(false)} />
@@ -319,18 +389,18 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
                 onClick={() => setMobileOpen(false)}
               >
                 <NavIcon>{CREDITS_ICON}</NavIcon>
-                <span>{t.nav.credits}</span>
+                <span>Créditos</span>
               </a>
 
               <div className="nexttech-mobile-divider" />
 
               <div className="nexttech-mobile-row">
-                <span className="nexttech-mobile-row-label">Theme</span>
+                <span className="nexttech-mobile-row-label">Tema</span>
                 <ThemeToggle />
               </div>
 
               <div className="nexttech-mobile-row">
-                <span className="nexttech-mobile-row-label">Language</span>
+                <span className="nexttech-mobile-row-label">Idioma</span>
                 <div className="nexttech-mobile-lang">
                   <button
                     type="button"

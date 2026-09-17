@@ -4,12 +4,19 @@ import { Navbar } from "@/components/navbar";
 import { getCreditsData } from "@/lib/credits";
 import { getGlobalSearchIndex } from "@/lib/search-index";
 import { getServerLocale } from "@/lib/locale-server";
+import { siteUrl } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Créditos",
   description: "Canais, livros, documentações e empresas citadas nos materiais do How to Dev.",
+  alternates: { canonical: siteUrl("/creditos") },
+  openGraph: {
+    title: "Créditos",
+    description: "Canais, livros, documentações e empresas citadas nos materiais do How to Dev.",
+    url: siteUrl("/creditos"),
+  },
 };
 
 function isExternalUrl(url: string) {
