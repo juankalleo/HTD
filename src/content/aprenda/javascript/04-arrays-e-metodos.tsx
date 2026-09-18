@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Arrays e seus métodos",
   summary: "map, filter e reduce — os três métodos que substituem quase todo loop manual sobre array.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao04ArraysEMetodos() {
@@ -104,16 +105,16 @@ const capitalizados = nomes.map(
         questions={[
           {
             question: "Qual método usar pra manter só os itens de um array que passam num teste?",
-            options: ["map", "filter", "reduce", "forEach"],
-            correctIndex: 1,
+            options: ["map", "reduce", "forEach", "filter"],
+            correctIndex: 3,
           },
           {
             question: "O que o segundo argumento de reduce (o '0' no exemplo) representa?",
             options: [
-              "O índice inicial do array",
-              "O valor inicial do acumulador",
-              "O tamanho máximo do resultado",
-              "Não faz nada, é opcional e ignorado",
+              "O índice a partir do qual o array começa a ser percorrido",
+              "O valor inicial do acumulador, usado antes de processar o primeiro item",
+              "O número máximo de itens que reduce vai processar no array",
+              "Um valor opcional que reduce ignora completamente durante a execução",
             ],
             correctIndex: 1,
           },

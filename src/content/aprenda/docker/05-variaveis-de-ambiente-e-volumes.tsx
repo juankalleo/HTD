@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Variáveis de ambiente e volumes",
   summary: "Segredo nunca vai dentro da imagem; dado nunca vive só dentro do container.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao05VariaveisDeAmbienteEVolumes() {
@@ -93,22 +94,22 @@ sobrescreva node_modules, deixe o que já existe dentro do container".`}
           {
             question: "Por que segredo (chave de API, senha de banco) nunca vai dentro da imagem Docker?",
             options: [
-              "É só uma convenção estética",
               "A mesma imagem roda em vários ambientes diferentes, e segredo commitado na imagem vaza pra qualquer lugar que a imagem chegue",
-              "Docker não permite tecnicamente",
-              "Só importa em produção, não em desenvolvimento",
+              "Porque o Docker criptografa automaticamente apenas variáveis passadas por fora da imagem, nunca as internas",
+              "Porque imagens com segredo embutido demoram mais pra fazer build do que imagens sem",
+              "Porque o registry rejeita o push de qualquer imagem que contenha uma string parecida com senha",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "O que acontece com dado escrito no sistema de arquivos de um container, sem volume, quando ele é removido?",
             options: [
-              "Fica salvo automaticamente",
+              "Fica salvo automaticamente na imagem original, disponível pro próximo container",
+              "É movido para um volume anônimo criado pelo Docker no momento da remoção",
               "É perdido — some junto com o container",
-              "Vira uma nova imagem",
-              "É enviado pro Docker Hub",
+              "É sincronizado com o registry de onde a imagem original foi baixada",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

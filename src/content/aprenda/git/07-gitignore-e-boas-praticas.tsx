@@ -2,6 +2,7 @@ import { LessonBody } from "@/components/aprenda/lesson-body";
 import { CodeExample } from "@/components/aprenda/code-example";
 import { Exercise } from "@/components/aprenda/exercise";
 import { Quiz } from "@/components/aprenda/quiz";
+import { Callout } from "@/components/aprenda/callout";
 import type { LessonMeta } from "@/content/aprenda/types";
 
 export const meta: LessonMeta = {
@@ -9,6 +10,7 @@ export const meta: LessonMeta = {
   title: ".gitignore e boas práticas de commit",
   summary: "O que NUNCA deve entrar no repositório, e como escrever uma mensagem de commit que ajuda no futuro.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao07GitignoreEBoasPraticas() {
@@ -40,6 +42,15 @@ build/
         Nesse caso a credencial precisa ser trocada/revogada, não só "escondida" — o git não apaga história
         retroativamente sem reescrever ela inteira (uma operação arriscada, fora do escopo desta lição).
       </p>
+
+      <Callout
+        title="Reescrever histórico é aprofundado no intermediário"
+        href="/aprenda/git/08-rebase-interativo"
+        linkLabel="Ver aula completa →"
+      >
+        A aula de rebase interativo mostra como (e quando) reescrever commits com segurança — e por que fazer isso
+        num histórico já compartilhado é justamente a "operação arriscada" citada acima.
+      </Callout>
 
       <h2>Mensagem de commit — pra quem vai ler daqui a 6 meses</h2>
       <CodeExample
@@ -93,22 +104,22 @@ commit que contém o segredo é o que realmente protege.`}
           {
             question: "Adicionar .env ao .gitignore DEPOIS dele já ter sido commitado uma vez resolve o problema?",
             options: [
-              "Sim, completamente",
-              "Não — o segredo continua no histórico antigo; a credencial precisa ser trocada/revogada, não só escondida daqui pra frente",
-              "Só resolve se for o commit mais recente",
-              "gitignore sempre limpa o histórico automaticamente",
+              "Não — o segredo continua exposto no histórico antigo; a credencial precisa ser trocada ou revogada, não apenas escondida dali em diante",
+              "Sim, porque o .gitignore reescreve automaticamente todos os commits anteriores",
+              "Sim, mas só funciona se o commit tiver sido feito há mais de 24 horas",
+              "Parcialmente — remove do histórico local, mas continua exposto apenas no GitHub",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Por que preferir vários commits pequenos a um commit gigante no final do dia?",
             options: [
-              "Não faz diferença nenhuma",
-              "Facilita reverter só a parte problemática, sem levar junto outras mudanças não relacionadas",
-              "Commits pequenos são obrigatórios pelo GitHub",
-              "Reduz o tamanho do repositório",
+              "Porque o GitHub limita o tamanho máximo de um único commit",
+              "Porque commits pequenos automaticamente geram mensagens de commit melhores",
+              "Porque facilita reverter só a parte problemática depois, sem levar junto outras mudanças não relacionadas",
+              "Porque reduz o espaço ocupado pelo repositório no disco",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

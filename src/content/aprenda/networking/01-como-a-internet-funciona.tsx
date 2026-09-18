@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Como a internet funciona",
   summary: "O modelo cliente-servidor — a ideia mais básica por trás de literalmente todo site que você já visitou.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao01ComoAInternetFunciona() {
@@ -60,22 +61,22 @@ export default function Licao01ComoAInternetFunciona() {
           {
             question: "No modelo cliente-servidor, quem inicia a comunicação?",
             options: [
-              "O servidor, mandando dado sem ser solicitado",
-              "O cliente, mandando uma requisição — o servidor responde a ela",
-              "Os dois ao mesmo tempo, sempre",
-              "Depende do site, não tem um padrão",
+              "O servidor, que monitora a rede e envia dados assim que percebe um cliente disponível",
+              "Os dois lados abrem a conexão ao mesmo tempo, de forma simultânea e coordenada",
+              "O cliente, mandando uma requisição — o servidor apenas responde a ela",
+              "O DNS, que aciona o servidor antes de repassar o endereço ao cliente",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "O que faz a internet funcionar de forma unificada, sem uma empresa dona dela?",
             options: [
-              "Um único servidor central que controla tudo",
               "Todos os computadores conectados seguem os mesmos protocolos (regras combinadas) de comunicação",
-              "Não existe unificação real, cada site é isolado",
-              "A internet é controlada por um consórcio de governos",
+              "Um conjunto de servidores raiz nos Estados Unidos aprova cada nova conexão feita à rede",
+              "Cada provedor de internet mantém sua própria versão isolada dos protocolos, sem depender dos outros",
+              "Um consórcio de grandes empresas de tecnologia decide as regras e atualiza os protocolos periodicamente",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

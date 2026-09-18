@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Projeto guiado: containerizar a app Rails + Next.js",
   summary: "Junta as trilhas: a API de Pedidos (Rails) e a tela de Tarefas (Next.js) rodando juntas via compose.",
   estimatedMinutes: 24,
+  level: "fundamentos",
 };
 
 export default function Licao08ProjetoGuiadoContainerizar() {
@@ -127,20 +128,20 @@ precisam de localhost:3001.`}
           {
             question: "Por que NEXT_PUBLIC_API_URL usa localhost:3001 em vez do nome do serviço 'api'?",
             options: [
-              "Não tem motivo, poderia ser qualquer um dos dois",
+              "Porque variáveis com prefixo NEXT_PUBLIC são resolvidas antes do compose criar a rede interna",
+              "Porque o nome 'api' já está reservado internamente pelo Docker Compose para outro uso",
+              "Porque portas acima de 3000 exigem o uso explícito de localhost em vez de nome de serviço",
               "Porque quem faz essa chamada é o navegador do usuário, que está fora da rede interna do Docker",
-              "localhost sempre funciona melhor que nome de serviço",
-              "Porque NEXT_PUBLIC sempre precisa de localhost",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Um fetch feito DENTRO de um Server Component do Next.js (não no navegador) deveria usar qual endereço pra falar com a API no mesmo compose?",
             options: [
-              "Sempre localhost, como o navegador",
+              "O IP público do servidor de produção, mesmo em ambiente de desenvolvimento local",
               "O nome do serviço da API (ex.: http://api:3000) e a porta interna do container, pela rede do compose",
-              "O IP público do servidor de produção",
-              "Não é possível fazer essa chamada",
+              "Sempre localhost com a porta publicada, exatamente como faria o navegador",
+              "Um endereço fixo configurado manualmente no arquivo hosts do container do Next.js",
             ],
             correctIndex: 1,
           },

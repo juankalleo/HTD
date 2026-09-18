@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Primeiro repositório: init, add, commit",
   summary: "O ciclo que se repete o tempo todo: mudar arquivo, adicionar à staging area, commitar.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao02PrimeiroRepositorio() {
@@ -87,22 +88,22 @@ git commit -m "Atualiza a e b"
           {
             question: "Pra que serve a staging area (git add), em vez de commit direto?",
             options: [
-              "Não serve pra nada, é uma etapa burocrática",
-              "Permite escolher exatamente quais mudanças entram no próximo commit, mesmo com vários arquivos modificados",
-              "É obrigatório esperar 1 minuto entre add e commit",
-              "Só existe pra arquivos grandes",
+              "Serve para validar automaticamente se o código tem erros de sintaxe antes do commit",
+              "Permite escolher exatamente quais mudanças entram no próximo commit, mesmo com vários arquivos modificados ao mesmo tempo",
+              "Serve para comprimir os arquivos antes de enviá-los para o repositório remoto",
+              "Cria automaticamente uma branch nova para cada arquivo adicionado com git add",
             ],
             correctIndex: 1,
           },
           {
             question: "O que a pasta .git guarda?",
             options: [
-              "Uma cópia de backup na nuvem",
-              "Todo o histórico de versionamento do repositório — apagá-la apaga o histórico (o código em si continua)",
-              "Só as configurações do editor",
-              "Nada importante, pode ser apagada sem problema",
+              "Apenas as configurações do editor de código usado no projeto",
+              "Uma cópia de backup do projeto hospedada automaticamente na nuvem",
+              "Só a lista de arquivos que estão listados no .gitignore no momento",
+              "Todo o histórico de versionamento do repositório — apagar essa pasta apaga o histórico, embora o código em si continue existindo",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

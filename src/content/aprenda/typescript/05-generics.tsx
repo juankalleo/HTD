@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Generics",
   summary: "Escrever uma função/tipo que funciona com qualquer tipo, sem perder a checagem — o <T> que aparece por toda API tipada.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao05Generics() {
@@ -102,22 +103,22 @@ ultimoItem(["a", "b", "c"]);  // string`}
           {
             question: "O que <T> representa numa função genérica?",
             options: [
-              "Um valor booleano especial",
               "Um parâmetro de tipo — um espaço reservado que só vira um tipo concreto quando a função é chamada",
-              "Uma palavra reservada sem função",
-              "Só funciona com números",
+              "Uma anotação que transforma a função automaticamente em um método de classe",
+              "Um alias para o tipo any, usado quando não se quer tipar o parâmetro",
+              "Um marcador que só existe para documentação, sem nenhum efeito sobre a checagem de tipos",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "O que <T extends { nome: string }> garante?",
             options: [
-              "T precisa ser exatamente { nome: string }, nada mais",
+              "T precisa ser exatamente igual a { nome: string }, sem nenhum campo além desse",
+              "T vira automaticamente uma string, ignorando qualquer outro campo do objeto original",
+              "T só aceita interfaces, nunca um type alias, por causa da palavra extends",
               "T pode ser qualquer tipo, desde que tenha pelo menos um campo nome do tipo string",
-              "É só decorativo, sem efeito real",
-              "T vira automaticamente uma string",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

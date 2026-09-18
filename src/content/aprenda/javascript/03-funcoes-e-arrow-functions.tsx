@@ -1,6 +1,7 @@
 import { LessonBody } from "@/components/aprenda/lesson-body";
 import { CodeExample } from "@/components/aprenda/code-example";
 import { Exercise } from "@/components/aprenda/exercise";
+import { Callout } from "@/components/aprenda/callout";
 import { Quiz } from "@/components/aprenda/quiz";
 import type { LessonMeta } from "@/content/aprenda/types";
 
@@ -9,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Funções e arrow functions",
   summary: "Declaração vs. expressão, arrow function e a diferença real de comportamento do 'this'.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao03FuncoesEArrowFunctions() {
@@ -90,6 +92,15 @@ ehPar(4); // true
 ehPar(7); // false`}
       />
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/javascript/10-this-call-apply-bind"
+        linkLabel="Ver aula completa →"
+      >
+        Essa lição só mostrou o efeito prático do "this" em arrow function. A aula completa cobre this em função
+        normal, call/apply/bind e o erro clássico de perder o this num callback de método de objeto.
+      </Callout>
+
       <Quiz
         track="javascript"
         lessonSlug={meta.slug}
@@ -97,22 +108,22 @@ ehPar(7); // false`}
           {
             question: "Qual a diferença de comportamento entre arrow function e função normal?",
             options: [
-              "Não tem diferença nenhuma, é só sintaxe",
+              "Arrow function sempre executa de forma assíncrona, enquanto a função normal é sempre síncrona",
+              "Função normal não pode ser usada como callback dentro de setTimeout ou outro método",
               "Arrow function não tem 'this' próprio — usa o 'this' de onde foi escrita, em vez de depender de como é chamada",
-              "Arrow function é sempre mais rápida",
-              "Arrow function não pode receber parâmetros",
+              "Arrow function não consegue acessar variáveis declaradas fora do seu próprio corpo",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "O que ...numeros faz em function somarTodos(...numeros)?",
             options: [
-              "É um erro de sintaxe",
-              "Junta todos os argumentos passados num array só, dentro da função",
-              "Só aceita exatamente 3 argumentos",
-              "Converte os argumentos pra string",
+              "Junta todos os argumentos passados numa chamada em um único array, dentro da função",
+              "Limita a função a aceitar no máximo três argumentos por chamada",
+              "Converte automaticamente cada argumento recebido para o tipo string",
+              "Faz a função esperar os argumentos chegarem de forma assíncrona",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

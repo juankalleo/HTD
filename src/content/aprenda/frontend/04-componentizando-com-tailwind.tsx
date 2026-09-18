@@ -11,6 +11,7 @@ export const meta: LessonMeta = {
   title: "Componentizando com Tailwind",
   summary: "O que fazer quando a mesma pilha de classes se repete em vários lugares — cva e clsx na prática.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao04ComponentizandoComTailwind() {
@@ -121,20 +122,20 @@ export default function App() {
           {
             question: "Quando o mesmo conjunto de classes Tailwind se repete em vários lugares, o que fazer?",
             options: [
-              "Criar uma classe CSS customizada pra substituir as utilitárias",
-              "Extrair um componente React que encapsula essas classes",
-              "Copiar e colar sempre que precisar",
-              "Usar !important pra forçar o estilo",
+              "Criar uma classe CSS customizada com @apply para substituir as utilitárias repetidas",
+              "Copiar e colar o mesmo bloco de classes em cada lugar que precisar do mesmo visual",
+              "Usar !important em cada elemento para garantir que o estilo não seja sobrescrito",
+              "Extrair um componente React que encapsula essas classes em um só lugar",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Pra que serve o cva (class-variance-authority)?",
             options: [
-              "Substituir o Tailwind inteiro",
-              "Definir variantes tipadas de um componente sem concatenar strings na mão",
-              "Fazer requisições HTTP",
-              "Gerenciar estado global",
+              "Fazer requisições HTTP para buscar as classes de estilo de uma API externa",
+              "Definir variantes tipadas de um componente, sem concatenar strings de classe manualmente",
+              "Gerenciar o estado global da aplicação junto com as variantes visuais",
+              "Substituir o Tailwind inteiro por um sistema próprio de tokens de design",
             ],
             correctIndex: 1,
           },

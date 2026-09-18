@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Objetos e destructuring",
   summary: "Spread, destructuring e por que 'copiar' um objeto com = não copia nada.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao05ObjetosEDestructuring() {
@@ -100,22 +101,22 @@ produtoComDesconto.preco; // 72`}
           {
             question: "O que const copia = original faz com um objeto?",
             options: [
-              "Cria uma cópia independente do conteúdo",
-              "Cria uma segunda variável apontando pro MESMO objeto — mudar uma muda a outra",
-              "Gera um erro",
-              "Congela o objeto original",
+              "Cria uma segunda variável apontando pro mesmo objeto na memória — mudar uma muda a outra",
+              "Cria uma cópia totalmente independente do conteúdo do objeto original",
+              "Gera um erro de sintaxe, porque objetos não podem ser atribuídos a outra variável",
+              "Congela o objeto original, impedindo qualquer alteração futura nele",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Por que { ...produto, preco: 72 } é diferente de produto.preco = 72?",
             options: [
-              "Não tem diferença nenhuma",
-              "O spread cria um objeto novo (o original fica intacto); a atribuição direta muda o objeto original",
-              "Spread só funciona com array",
-              "Spread é mais lento sempre",
+              "Não existe diferença real de comportamento entre as duas formas de escrever",
+              "O spread só funciona em array, nunca em objeto comum como produto",
+              "O spread cria um objeto novo, deixando o original intacto; a atribuição direta muda o objeto original",
+              "A atribuição direta sempre executa mais rápido que usar spread num objeto",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

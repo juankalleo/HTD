@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Resolvendo conflitos de merge",
   summary: "O que acontece quando duas pessoas mudam a MESMA linha — e como resolver sem entrar em pânico.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao05ResolvendoConflitos() {
@@ -82,22 +83,22 @@ git commit                         # finaliza o merge com os conflitos resolvido
           {
             question: "Quando um conflito de merge acontece?",
             options: [
-              "Toda vez que duas branches são mescladas",
-              "Quando duas branches mudam a mesma linha de um arquivo de jeitos diferentes, e o git não sabe qual manter",
-              "Só quando o repositório é muito grande",
-              "Nunca acontece se você usar git pull sempre",
+              "Toda vez que duas branches diferentes são mescladas uma na outra",
+              "Somente quando o repositório tem mais de um colaborador trabalhando ao mesmo tempo",
+              "Quando duas branches mudam a mesma linha de um arquivo de jeitos diferentes, e o git não consegue decidir sozinho qual versão manter",
+              "Sempre que um arquivo binário, como uma imagem, é modificado em uma das branches",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "O que fica entre <<<<<<< HEAD e ======= num arquivo com conflito?",
             options: [
-              "A versão que veio de fora (da outra branch)",
-              "A versão da sua branch atual, antes do merge",
-              "Um erro de sintaxe do git",
-              "Nada, essa parte é sempre vazia",
+              "A versão da sua branch atual, ou seja, o estado do arquivo antes do merge ser iniciado",
+              "A versão que veio da outra branch, a que está sendo trazida pelo merge",
+              "Uma sugestão automática do git para resolver o conflito sem intervenção manual",
+              "O conteúdo do arquivo tal como estava no commit mais antigo em comum entre as branches",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

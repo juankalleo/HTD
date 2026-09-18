@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Rotas, layouts e pastas privadas/públicas",
   summary: "layout.tsx, grupos de rota (auth)/(dashboard), e como separar telas públicas de autenticadas.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao06RotasLayoutsEGrupos() {
@@ -82,24 +83,34 @@ export default function Licao06RotasLayoutsEGrupos() {
         documentada no Padrão Frontend.
       </Callout>
 
+      <Callout title="Isso é aprofundado no intermediário" href="/aprenda/frontend/16-middleware-e-protecao-de-rotas" linkLabel="Ver aula completa →">
+        Organizar rotas em grupos separa a estrutura visual de pública/autenticada, mas não protege nada sozinho — a
+        aula sobre middleware mostra como checar sessão antes de renderizar uma página autenticada.
+      </Callout>
+
       <Quiz
         track="frontend"
         lessonSlug={meta.slug}
         questions={[
           {
             question: "Uma pasta chamada (auth) na URL vira...",
-            options: ["/auth/login", "/login — o nome do grupo não aparece na URL", "Erro de build", "/(auth)/login"],
+            options: [
+              "/auth/login, porque o nome entre parênteses vira um segmento normal da URL",
+              "/login — o nome do grupo entre parênteses não aparece na URL final",
+              "Um erro de build, porque parênteses não são permitidos em nomes de pasta",
+              "/(auth)/login, mantendo os parênteses como parte do caminho",
+            ],
             correctIndex: 1,
           },
           {
             question: "Por que usar layout.tsx em vez de repetir a sidebar em cada page.tsx?",
             options: [
-              "Não tem diferença nenhuma",
-              "O layout não remonta ao navegar entre rotas filhas, então a sidebar não pisca",
-              "layout.tsx é mais rápido de escrever, só isso",
-              "page.tsx não pode conter componentes visuais",
+              "Porque page.tsx tem um limite de linhas de código e não comporta a sidebar",
+              "Porque layout.tsx é a única forma de aplicar Tailwind dentro de uma rota",
+              "Porque repetir componentes em várias pages aumenta o tamanho do banco de dados",
+              "Porque o layout não remonta ao navegar entre rotas filhas, então a sidebar não pisca",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

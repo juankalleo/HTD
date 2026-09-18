@@ -11,6 +11,7 @@ export const meta: LessonMeta = {
   title: "Load balancer — distribuindo tráfego entre servidores",
   summary: "Quando um servidor não aguenta mais sozinho, a resposta raramente é 'um servidor maior'.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao08LoadBalancer() {
@@ -131,22 +132,22 @@ consiga ler.`}
           {
             question: "Qual a diferença entre escalar verticalmente e horizontalmente?",
             options: [
-              "São sinônimos",
+              "Vertical = adicionar mais servidores; horizontal = trocar por um servidor mais potente",
               "Vertical = um servidor mais potente; horizontal = vários servidores idênticos dividindo o trabalho, coordenados por um load balancer",
-              "Vertical é sempre mais barato",
-              "Horizontal só funciona com banco de dados",
+              "Vertical e horizontal são duas formas de configurar o mesmo servidor, sem custo adicional",
+              "Vertical = escalar o banco de dados; horizontal = escalar apenas o proxy reverso",
             ],
             correctIndex: 1,
           },
           {
             question: "Por que um load balancer precisa de health check?",
             options: [
-              "Só para gerar relatório",
+              "Pra decidir qual servidor deve receber o certificado TLS a cada renovação",
+              "Pra medir quantas requisições cada servidor recebeu no último mês, para fins de cobrança",
+              "Pra confirmar que o DNS do domínio está apontando para o IP correto do load balancer",
               "Pra parar de mandar tráfego automaticamente pra um servidor que parou de responder, evitando que usuários caiam num servidor morto",
-              "Health check é opcional e raramente usado",
-              "Serve só pra medir velocidade da rede",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Dockerfile: anatomia",
   summary: "Cada instrução do Dockerfile é um passo de montagem da imagem, executado em ordem, uma vez.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao02DockerfileAnatomia() {
@@ -83,22 +84,22 @@ CMD ["rails", "server", "-b", "0.0.0.0"]`}
           {
             question: "Qual a diferença entre RUN e CMD?",
             options: [
-              "São sinônimos, tanto faz qual usar",
+              "RUN só pode ser usado com imagens Alpine, e CMD funciona em qualquer imagem base",
+              "CMD executa durante o build da imagem, e RUN só roda quando o container é iniciado",
               "RUN executa durante o build da imagem; CMD executa quando o container inicia",
-              "CMD só existe em imagens Node",
-              "RUN só pode aparecer uma vez por Dockerfile, CMD várias",
+              "RUN e CMD fazem a mesma coisa, mas RUN aceita mais de um argumento por linha",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "O que EXPOSE 3000 faz sozinho, sem o -p na hora de rodar o container?",
             options: [
-              "Abre a porta 3000 pro mundo externo automaticamente",
+              "Abre a porta 3000 automaticamente pra internet, dispensando o uso do -p no docker run",
+              "Reserva a porta 3000 no host, impedindo qualquer outro container de usá-la",
+              "Força o container a escutar exclusivamente na porta 3000, ignorando outras portas do Dockerfile",
               "Só documenta qual porta o container escuta — não publica a porta pra fora sozinho",
-              "Impede o container de iniciar",
-              "É o mesmo que CMD",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Tipos básicos e inferência",
   summary: "string, number, boolean, array, e por que você não precisa anotar tipo em quase nada.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao02TiposBasicosEInferencia() {
@@ -81,22 +82,22 @@ if (typeof dadoSeguro === "string") {
           {
             question: "Por que a maioria do código TypeScript não anota tipo em toda variável?",
             options: [
-              "Porque anotar é opcional e ninguém faz isso nunca",
+              "Porque anotação de tipo só é aceita em arquivos de configuração do projeto",
               "Porque o TypeScript infere o tipo automaticamente a partir do valor inicial, na maioria dos casos",
-              "Porque só funciona sem anotação",
-              "Porque anotação de tipo é só para funções",
+              "Porque anotar tipo manualmente é um recurso exclusivo de versões experimentais do TypeScript",
+              "Porque o compilador remove qualquer anotação de tipo redundante antes de gerar o JavaScript final",
             ],
             correctIndex: 1,
           },
           {
             question: "Qual a diferença entre any e unknown?",
             options: [
-              "São idênticos",
+              "any obriga confirmar o tipo antes de usar; unknown desliga toda checagem de tipo automaticamente",
+              "any só pode ser usado em arrays; unknown só pode ser usado em objetos com propriedades",
+              "any e unknown são só dois nomes diferentes para o mesmo comportamento dentro do compilador",
               "any desliga toda checagem; unknown obriga confirmar o tipo (ex.: com typeof) antes de usar o valor",
-              "unknown só existe em versões antigas do TS",
-              "any é mais seguro que unknown",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

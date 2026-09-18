@@ -1,6 +1,7 @@
 import { LessonBody } from "@/components/aprenda/lesson-body";
 import { CodeExample } from "@/components/aprenda/code-example";
 import { Exercise } from "@/components/aprenda/exercise";
+import { Callout } from "@/components/aprenda/callout";
 import { Quiz } from "@/components/aprenda/quiz";
 import type { LessonMeta } from "@/content/aprenda/types";
 
@@ -9,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Assíncrono: callbacks, promises, async/await",
   summary: "Por que buscar dado de uma API não trava a página — e como o código foi evoluindo pra lidar com isso.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao07AssincronoPromisesAsyncAwait() {
@@ -103,6 +105,16 @@ const [usuario2, produtos2] = await Promise.all([
 }`}
       />
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/javascript/13-event-loop-microtasks-e-macrotasks"
+        linkLabel="Ver aula completa →"
+      >
+        Essa lição mostrou como usar Promise e async/await, mas não o que acontece por baixo. A aula completa explica
+        call stack, fila de callbacks e fila de microtasks — por que uma Promise resolvida sempre roda antes de um
+        setTimeout(fn, 0).
+      </Callout>
+
       <Quiz
         track="javascript"
         lessonSlug={meta.slug}
@@ -110,22 +122,22 @@ const [usuario2, produtos2] = await Promise.all([
           {
             question: "async/await é uma tecnologia diferente de Promise?",
             options: [
-              "Sim, são mecanismos completamente separados",
+              "Sim, são dois mecanismos completamente separados de lidar com assincronismo",
+              "async/await substituiu Promise por completo, que não existe mais na linguagem",
               "Não — é a mesma Promise, só com uma sintaxe que lê como código síncrono",
-              "async/await substituiu Promise, que não existe mais",
-              "Promise só funciona no navegador, async/await só no servidor",
+              "Promise só funciona no navegador; async/await só funciona no servidor",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Por que usar Promise.all em vez de dois await sequenciais, quando as buscas são independentes?",
             options: [
-              "Não tem diferença nenhuma",
-              "Promise.all dispara as duas requisições ao mesmo tempo, sendo mais rápido do que esperar uma terminar pra começar a outra",
-              "Promise.all é a única forma de tratar erro",
-              "await sequencial não funciona com fetch",
+              "Promise.all dispara as duas requisições ao mesmo tempo, o que é mais rápido do que esperar uma terminar pra começar a outra",
+              "Promise.all é a única forma de capturar erro dentro de uma função assíncrona",
+              "await sequencial não é compatível com a função fetch do navegador",
+              "Não existe diferença real de tempo entre as duas formas de escrever o código",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

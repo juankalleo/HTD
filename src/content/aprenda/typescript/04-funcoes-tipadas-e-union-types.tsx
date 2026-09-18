@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Funções tipadas e union types",
   summary: "Tipar parâmetro e retorno de função, e o 'narrowing' que o TS faz sozinho dentro de um if.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao04FuncoesTipadasEUnionTypes() {
@@ -104,20 +105,20 @@ function tratar(resultado: Resultado) {
           {
             question: "O que é 'narrowing' em TypeScript?",
             options: [
-              "Reduzir o tamanho do arquivo compilado",
+              "Uma técnica para reduzir o número de propriedades permitidas numa interface existente",
+              "Um aviso de compilação que aparece quando duas interfaces têm nomes parecidos",
+              "O processo de converter um union type em any para simplificar a checagem de tipos",
               "O TS refinar/estreitar o tipo de uma variável dentro de um bloco (ex.: if com typeof), sem anotação extra",
-              "Um erro de compilação",
-              "Uma função nativa do TypeScript",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Num type Resultado = { sucesso: true; dado: string } | { sucesso: false; erro: string }, qual o papel do campo sucesso?",
             options: [
-              "Nenhum, é só um campo qualquer",
+              "Ele determina em qual ordem os campos aparecem quando o objeto é convertido em JSON",
               "É o 'discriminante' — permite o TS saber, dentro de cada if, qual dos dois formatos está sendo usado",
-              "Ele precisa ser sempre true",
-              "Só serve pra debug",
+              "Ele força o TypeScript a aceitar os dois formatos ao mesmo tempo dentro do mesmo objeto",
+              "Ele é apenas um nome convencional, sem nenhum efeito sobre a checagem de tipos do TS",
             ],
             correctIndex: 1,
           },

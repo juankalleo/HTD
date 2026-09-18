@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "DNS — traduzindo nomes em endereços",
   summary: "Ninguém decora IP — o DNS é a 'agenda de contatos' que traduz howtodev.site pra um número.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao03Dns() {
@@ -71,22 +72,22 @@ que o usuário digita, só o que ela aponta por trás.`}
           {
             question: "Em que momento do carregamento de um site o DNS entra em ação?",
             options: [
-              "Depois que a página já apareceu na tela",
               "Antes de qualquer requisição HTTP — o navegador precisa saber o IP antes de conseguir se conectar ao servidor",
-              "Só quando o site usa HTTPS",
-              "DNS não tem relação com carregar um site",
+              "Só depois que o servidor já enviou o HTML completo de volta ao navegador",
+              "Apenas quando a conexão HTTPS falha e o navegador tenta uma alternativa",
+              "Em paralelo com o carregamento das imagens, depois que a página já está visível",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Por que uma mudança de DNS não reflete instantaneamente pra todo mundo?",
             options: [
-              "É um bug do sistema",
+              "Os registros CNAME demoram naturalmente mais para propagar do que registros do tipo A",
+              "Cada provedor de internet precisa aprovar manualmente qualquer alteração de domínio",
               "A resposta fica em cache em vários níveis (navegador, SO, provedor), cada um expirando conforme o TTL configurado",
-              "DNS não suporta atualização",
-              "Só afeta usuários fora do país do servidor",
+              "O novo IP só entra em vigor após o certificado TLS do domínio ser reemitido",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

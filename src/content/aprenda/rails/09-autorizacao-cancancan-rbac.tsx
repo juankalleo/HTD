@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Autorização (CanCanCan) e RBAC",
   summary: "Autenticação prova quem você é; autorização decide o que você pode fazer — são coisas diferentes.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao09AutorizacaoCancancanRbac() {
@@ -103,22 +104,22 @@ end`}
           {
             question: "Qual a diferença entre autenticação e autorização?",
             options: [
-              "São a mesma coisa com nomes diferentes",
-              "Autenticação prova quem o usuário é; autorização decide o que ele pode fazer",
-              "Autorização vem sempre antes da autenticação",
-              "Autenticação só existe em API, autorização só em app com view",
+              "Autenticação prova quem o usuário é; autorização decide o que esse usuário pode fazer",
+              "Autenticação decide o que o usuário pode fazer; autorização prova quem ele é",
+              "Autorização é feita pelo Devise; autenticação é feita pelo CanCanCan",
+              "As duas resolvem exatamente o mesmo problema, só que em camadas diferentes da aplicação",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "O que a condição usuario_id: usuario.id numa regra can :update, Pedido garante?",
             options: [
-              "Nada, é só documentação",
-              "Que o usuário só pode atualizar pedidos que pertencem a ele mesmo, não qualquer pedido",
-              "Que só admin pode atualizar pedido",
-              "Que o pedido precisa ter status 'pendente'",
+              "Que apenas o administrador consegue passar por essa verificação de permissão",
+              "Que o pedido precisa estar com status 'pendente' para ser atualizado",
+              "Que o usuário só pode atualizar os pedidos que pertencem a ele mesmo, não qualquer pedido do sistema",
+              "Que o Rails valida automaticamente a presença do campo usuario_id antes de salvar",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

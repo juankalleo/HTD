@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Projeto guiado: modelando e consultando um schema de e-commerce",
   summary: "4 tabelas relacionadas, do CREATE TABLE a uma consulta de relatório com JOIN + agregação.",
   estimatedMinutes: 24,
+  level: "fundamentos",
 };
 
 export default function Licao08ProjetoGuiadoSchemaEcommerce() {
@@ -130,22 +131,22 @@ HAVING SUM(itens_pedido.quantidade * itens_pedido.preco_unitario) > 1000;`}
           {
             question: "Por que itens_pedido guarda preco_unitario, em vez de sempre consultar produtos.preco?",
             options: [
-              "É redundante sem motivo, um erro de design",
+              "É um erro de design manter esse dado duplicado, já que produtos.preco já resolveria o problema sozinho",
               "O preço do produto muda com o tempo; o valor pago num pedido já feito não deve mudar retroativamente",
-              "Só pra facilitar consultas mais rápidas",
-              "produtos.preco não pode ser consultado via JOIN",
+              "Só pra evitar escrever um JOIN a mais na hora de montar o relatório de vendas",
+              "produtos.preco é uma coluna que não pode ser lida a partir de itens_pedido usando JOIN",
             ],
             correctIndex: 1,
           },
           {
             question: "Como a consulta de 'produtos nunca vendidos' usa LEFT JOIN + WHERE ... IS NULL?",
             options: [
-              "Não faz sentido, deveria usar INNER JOIN",
+              "Não faz sentido combinar os dois — bastaria um INNER JOIN sozinho pra achar produtos sem venda",
+              "IS NULL só funciona em colunas de texto, então essa consulta só serviria pra nomes de produto",
+              "LEFT JOIN e INNER JOIN retornam exatamente o mesmo resultado nesse caso específico",
               "LEFT JOIN traz todo produto mesmo sem venda; WHERE IS NULL filtra só os que não combinaram com nenhuma linha de itens_pedido",
-              "IS NULL só funciona em colunas de texto",
-              "LEFT JOIN e INNER JOIN dão o mesmo resultado aqui",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

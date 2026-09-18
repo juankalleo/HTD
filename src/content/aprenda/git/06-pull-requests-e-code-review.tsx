@@ -8,6 +8,7 @@ export const meta: LessonMeta = {
   title: "Pull requests e code review",
   summary: "O mecanismo que transforma 'juntar código' numa conversa, em vez de um merge silencioso.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao06PullRequestsECodeReview() {
@@ -66,22 +67,22 @@ Usuários estavam conseguindo cadastrar com e-mail inválido (bug #142).
           {
             question: "Um Pull Request é um comando do git?",
             options: [
-              "Sim, é 'git pull-request'",
-              "Não — é um recurso do GitHub/GitLab, uma tela pra revisar e discutir antes de juntar uma branch na outra",
-              "É sinônimo de git merge",
-              "Só existe no GitLab",
+              "Sim — é o comando 'git pull-request', usado para sincronizar branches remotas",
+              "Não — é um recurso do GitHub/GitLab, uma funcionalidade pra revisar e discutir mudanças antes de juntar uma branch na outra",
+              "Sim, mas só está disponível a partir das versões mais recentes do git",
+              "Não, é apenas outro nome usado para o comando git merge",
             ],
             correctIndex: 1,
           },
           {
             question: "Por que travar main pra só aceitar mudança via PR aprovado?",
             options: [
-              "Só burocracia, sem benefício real",
-              "Cria um ponto de checagem (revisão + CI) antes do código afetar todo mundo que trabalha em cima de main",
-              "É mais rápido que commit direto",
-              "GitHub exige isso obrigatoriamente",
+              "Porque é mais rápido do que fazer commit e push diretamente na branch main",
+              "Porque o GitHub exige essa configuração em todo repositório criado na plataforma",
+              "Porque reduz o tamanho do repositório ao evitar commits diretos",
+              "Porque cria um ponto de checagem — revisão humana e CI — antes do código afetar todo mundo que trabalha em cima de main",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

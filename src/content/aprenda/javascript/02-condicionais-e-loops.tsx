@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Condicionais e loops",
   summary: "if/else, switch, os 3 tipos de loop mais comuns e por que for...of substituiu o for clássico na maioria dos casos.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao02CondicionaisELoops() {
@@ -96,22 +97,22 @@ for (const n of numeros) soma2 += n;`}
           {
             question: "Qual a diferença entre for...of e for...in?",
             options: [
-              "Não tem diferença, são sinônimos",
+              "for...in percorre os valores de um array; for...of é usado só para percorrer objetos comuns",
               "for...of percorre valores (bom pra array); for...in percorre chaves (bom pra objeto)",
-              "for...in é mais rápido sempre",
-              "for...of só funciona com número",
+              "Os dois têm exatamente o mesmo comportamento, a escolha entre eles é só estilo",
+              "for...of exige declarar um índice numérico manualmente, diferente de for...in",
             ],
             correctIndex: 1,
           },
           {
             question: "O que usuario?.nome || \"Visitante\" faz se usuario for null?",
             options: [
-              "Quebra o programa com erro",
-              "Retorna 'Visitante', sem tentar acessar .nome de um valor null",
-              "Retorna undefined",
-              "Retorna null",
+              "Quebra o programa com um erro, porque não é possível acessar propriedade de um valor null",
+              "Retorna undefined, porque o optional chaining sempre resulta em undefined quando o valor é null",
+              "Retorna null, porque o operador || não considera null como um valor vazio",
+              "Retorna 'Visitante', porque o optional chaining evita o erro de acessar .nome em null, e o || completa com o valor padrão",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

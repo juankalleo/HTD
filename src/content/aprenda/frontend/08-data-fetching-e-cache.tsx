@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Data fetching e cache",
   summary: "Buscar dado direto no componente de servidor, e por que TanStack Query entra no client depois disso.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao08DataFetchingECache() {
@@ -74,6 +75,11 @@ function useLikePost() {
         Convenções de query key, invalidação e mutation do padrão estão documentadas no Padrão Frontend.
       </Callout>
 
+      <Callout title="Isso é aprofundado no intermediário" href="/aprenda/frontend/19-tabelas-de-dados-avancadas" linkLabel="Ver aula completa →">
+        Buscar e listar dados é só o começo — quando a lista cresce, paginação, ordenação e filtro com debounce viram
+        parte do fetching. Isso é coberto a fundo na aula de tabelas de dados avançadas.
+      </Callout>
+
       <Quiz
         track="frontend"
         lessonSlug={meta.slug}
@@ -81,20 +87,20 @@ function useLikePost() {
           {
             question: "Pra carga inicial de uma página, qual é a forma mais direta de buscar dado no App Router?",
             options: [
-              "useEffect + fetch dentro de um Client Component",
+              "useEffect combinado com fetch dentro de um Client Component",
+              "Sempre por meio do TanStack Query, mesmo na primeira renderização",
+              "Não é possível buscar dado antes da primeira renderização da página",
               "await fetch(...) direto dentro do Server Component da página",
-              "Sempre via TanStack Query",
-              "Não dá pra buscar dado na página inicial",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Quando faz sentido usar TanStack Query em vez de só um fetch no servidor?",
             options: [
-              "Nunca, é redundante",
-              "Quando a busca/atualização acontece por uma ação do usuário depois que a página já carregou",
-              "Só em projetos muito grandes",
-              "TanStack Query substitui o servidor inteiro",
+              "Apenas em projetos que não podem usar nenhum Server Component",
+              "Quando a busca ou atualização acontece por uma ação do usuário depois que a página já carregou",
+              "Quando o servidor não tem permissão de acessar a internet",
+              "TanStack Query substitui o servidor, então serve para qualquer busca",
             ],
             correctIndex: 1,
           },

@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Interfaces e type aliases",
   summary: "Dar nome ao formato de um objeto — e por que isso substitui comentário explicando 'o que essa função espera'.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao03InterfacesETypeAliases() {
@@ -93,22 +94,22 @@ interface Produto {
           {
             question: "O que email?: string significa numa interface?",
             options: [
-              "O campo é obrigatório e do tipo string",
+              "O campo aceita qualquer tipo de valor, não só string, por causa do ponto de interrogação",
+              "O campo é obrigatório, mas só pode receber string vazia como valor padrão",
               "O campo é opcional — o objeto pode ou não ter essa propriedade",
-              "É um erro de sintaxe",
-              "O campo só aceita o valor '?'",
+              "O campo é obrigatório em tempo de compilação, mas opcional durante a execução do código",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Por que type Status = 'pendente' | 'pago' | 'cancelado' não pode ser escrito como interface?",
             options: [
-              "interface é sempre mais poderosa que type",
               "interface só descreve formato de objeto; um union de valores literais precisa de type",
-              "Não tem diferença, os dois funcionam igual",
-              "Union só existe em versões novas do TypeScript",
+              "Porque interface não aceita string como tipo de nenhuma propriedade dentro dela",
+              "Porque union types com mais de duas opções só funcionam dentro de enum, não de type",
+              "Porque interface exige que todo valor seja declarado com uma classe correspondente",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Variáveis, tipos e operadores",
   summary: "let, const, os tipos primitivos e por que === substituiu == na maioria do código moderno.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao01VariaveisTiposEOperadores() {
@@ -89,22 +90,22 @@ const idade = 28;
           {
             question: "O que === verifica que == não verifica?",
             options: [
-              "Nada, são idênticos",
-              "=== compara tipo e valor sem converter; == converte os tipos antes de comparar",
-              "=== é mais rápido, só isso",
-              "== só funciona com número",
+              "Compara o valor e o tipo ao mesmo tempo, sem fazer nenhuma conversão antes — == converte os tipos primeiro",
+              "Só compara o tipo das duas variáveis, ignorando o valor guardado nelas",
+              "Converte os dois valores pro mesmo tipo antes de comparar, ao contrário de ==",
+              "Compara apenas se os dois valores são números, funcionando diferente pra string",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Por que const é a escolha padrão em vez de let?",
             options: [
-              "const é mais rápido de executar",
+              "let não existe em navegadores mais antigos, então const garante compatibilidade",
+              "const impede qualquer alteração no conteúdo do valor, inclusive itens dentro de arrays e objetos",
               "Sinaliza que a variável não vai ser reatribuída, deixando o código mais previsível — use let só quando for reatribuir de verdade",
-              "let não existe em navegadores antigos",
-              "Não tem diferença nenhuma",
+              "const faz o JavaScript executar aquele trecho de código mais rápido do que com let",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

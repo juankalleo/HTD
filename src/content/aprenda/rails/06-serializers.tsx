@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Serializers",
   summary: "render json: @model devolve TODAS as colunas — serializer decide exatamente o que sai.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao06Serializers() {
@@ -91,6 +92,15 @@ end`}
         resposta — está documentada no Padrão API.
       </Callout>
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/rails/13-serializers-avancados"
+        linkLabel="Ver aula completa →"
+      >
+        Serializer condicional por contexto (um campo que só admin vê) e como evitar N+1 escondido dentro de uma
+        associação aninhada — a lição 13 cobre os dois.
+      </Callout>
+
       <Quiz
         track="rails"
         lessonSlug={meta.slug}
@@ -98,22 +108,22 @@ end`}
           {
             question: "Qual o principal risco de usar render json: @model direto, sem serializer?",
             options: [
-              "É mais lento que usar serializer",
-              "Expõe todas as colunas da tabela, incluindo dados que nunca deveriam sair na API",
-              "Não funciona em produção",
-              "Não tem risco nenhum, é só mais verboso",
+              "Deixa a resposta mais lenta, porque o Rails precisa converter o objeto duas vezes",
+              "Expõe todas as colunas da tabela, incluindo dados que nunca deveriam sair pela API",
+              "Impede que a resposta seja armazenada em cache pelo navegador do cliente",
+              "Faz o Rails ignorar silenciosamente as associações declaradas no model",
             ],
             correctIndex: 1,
           },
           {
             question: "O atributo em_estoque do exemplo, calculado a partir de estoque > 0, precisa existir como coluna na tabela?",
             options: [
-              "Sim, sempre",
-              "Não — serializer pode calcular um atributo na hora, sem existir como coluna",
-              "Só se for boolean",
-              "Só em versões antigas do Rails",
+              "Sim, porque todo atributo listado num serializer precisa corresponder a uma coluna real",
+              "Só se o tipo do atributo calculado for numérico, não booleano",
+              "Só quando o model também define um método com esse mesmo nome",
+              "Não — o serializer pode calcular um atributo na hora, sem que ele exista como coluna na tabela",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

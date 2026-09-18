@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Projeto guiado: lista de tarefas em JS puro",
   summary: "Junta DOM, eventos, array e async num único mini-app — sem framework nenhum.",
   estimatedMinutes: 22,
+  level: "fundamentos",
 };
 
 export default function Licao08ProjetoGuiadoListaDeTarefas() {
@@ -135,20 +136,20 @@ function renderizar() {
           {
             question: "Por que renderizar() fica separada das funções que mudam o array tarefas?",
             options: [
-              "Não tem motivo, poderia estar tudo junto",
+              "Não tem motivo real, o código funcionaria igual se estivesse tudo numa função só",
+              "renderizar() precisa obrigatoriamente rodar antes de qualquer outra função do programa",
+              "É a única forma de o JavaScript conseguir acessar elementos do DOM",
               "Separa a lógica de dado (o que mudou) da lógica de tela (como desenhar) — o mesmo princípio que frameworks formalizam",
-              "É mais rápido separar sempre",
-              "renderizar() precisa rodar antes das outras funções",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Pra que serve evento.preventDefault() no submit do formulário?",
             options: [
-              "Cancela a tarefa sendo criada",
+              "Cancela a criação da tarefa que estava sendo adicionada no formulário",
               "Impede o comportamento padrão do navegador de recarregar a página ao enviar um formulário",
-              "Impede o evento de disparar",
-              "Só funciona em formulários com um campo",
+              "Impede que o evento de submit seja disparado pelo navegador",
+              "Só tem efeito em formulários que possuem mais de um campo de input",
             ],
             correctIndex: 1,
           },

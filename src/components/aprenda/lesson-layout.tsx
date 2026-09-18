@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getTrackPercent, isLessonCompleted, setLastVisited } from "@/lib/aprenda-progress";
-import type { LessonMeta } from "@/content/aprenda/types";
+import { LEVEL_LABELS, type LessonMeta } from "@/content/aprenda/types";
 import type { TrackMeta } from "@/content/aprenda/tracks";
 import { TrackIcon } from "./track-icon";
 
@@ -75,8 +75,12 @@ export function LessonLayout({
         {lessons.map((lesson, i) => {
           const active = lesson.slug === currentSlug;
           const done = completedSlugs.has(lesson.slug);
+          const isFirstOfLevel = i === 0 || lessons[i - 1].level !== lesson.level;
           return (
             <li key={lesson.slug}>
+              {isFirstOfLevel && (
+                <span className="nexttech-lesson-chapters__level-heading">{LEVEL_LABELS[lesson.level]}</span>
+              )}
               <Link
                 href={`/aprenda/${track.slug}/${lesson.slug}`}
                 className={`nexttech-lesson-chapters__link${active ? " is-active" : ""}${done ? " is-done" : ""}`}
@@ -109,6 +113,11 @@ export function LessonLayout({
             <Link href="/aprenda">Aprenda</Link> / <Link href={`/aprenda/${track.slug}`}>{track.title}</Link>
           </p>
           <div className="nexttech-lesson-meta">
+            {currentLesson && (
+              <span className={`nexttech-lesson-level nexttech-lesson-level--${currentLesson.level}`}>
+                {LEVEL_LABELS[currentLesson.level]}
+              </span>
+            )}
             <span>Aula {currentIndex + 1} de {lessons.length}</span>
             {currentLesson && <span>{currentLesson.estimatedMinutes} min</span>}
             <span>{percent}% da trilha</span>

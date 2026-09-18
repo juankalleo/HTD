@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "DOM e eventos",
   summary: "Como o JavaScript enxerga e modifica uma página HTML — antes de qualquer framework fazer isso pra você.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao06DomEEventos() {
@@ -94,22 +95,22 @@ botao.addEventListener("click", () => {
           {
             question: "O que é o DOM?",
             options: [
-              "Uma biblioteca externa que precisa ser instalada",
+              "Uma biblioteca externa que precisa ser instalada antes de manipular a página",
               "A representação da página HTML como uma árvore de objetos que o JavaScript consegue ler e modificar",
-              "Um tipo de banco de dados",
-              "Um framework, alternativa ao React",
+              "Um tipo de banco de dados usado para guardar informação da página",
+              "Um framework de interface, alternativa ao React e ao Vue",
             ],
             correctIndex: 1,
           },
           {
             question: "O que addEventListener('click', fn) faz?",
             options: [
-              "Executa fn imediatamente, uma vez",
+              "Executa fn imediatamente, uma única vez, assim que a linha é lida",
+              "Remove o elemento da página assim que ele recebe o primeiro clique",
+              "Funciona apenas em elementos <button>, nenhum outro tipo de elemento",
               "Registra fn pra ser chamada toda vez que aquele elemento for clicado",
-              "Remove o elemento da página",
-              "Só funciona com botões, nenhum outro elemento",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

@@ -11,6 +11,7 @@ export const meta: LessonMeta = {
   title: "Responsividade e variantes",
   summary: "Prefixos de estado (hover, focus) e de breakpoint (sm, md, lg) — a mesma sintaxe pros dois casos.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao03ResponsividadeEVariantes() {
@@ -90,22 +91,22 @@ export default function Licao03ResponsividadeEVariantes() {
           {
             question: "O que significa 'mobile-first' no Tailwind?",
             options: [
-              "Só funciona em celular",
-              "Uma classe sem prefixo de tamanho vale pra qualquer tela; o prefixo entra a partir daquele breakpoint",
-              "Os breakpoints são maiores no celular",
-              "Desktop precisa de mais classes que mobile",
+              "Uma classe sem prefixo de tamanho vale para qualquer tela, e o prefixo passa a valer a partir daquele breakpoint",
+              "Os componentes só recebem estilo depois que o layout mobile termina de carregar",
+              "Cada breakpoint maior precisa repetir todas as classes já definidas para telas menores",
+              "O Tailwind aplica automaticamente um layout diferente para telas sensíveis ao toque",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "O que `md:hover:bg-blue-700` faz?",
             options: [
-              "Aplica hover:bg-blue-700 sempre, ignorando o tamanho da tela",
-              "Aplica o hover azul só a partir do breakpoint md",
-              "É inválido, não dá pra combinar dois prefixos",
-              "Só funciona no modo escuro",
+              "Aplica bg-blue-700 sempre que a tela estiver no modo escuro, ignorando o hover",
+              "Combina os prefixos na ordem errada, então o navegador ignora a classe inteira",
+              "Aplica o hover azul só a partir do breakpoint md — abaixo disso o hover não tem esse efeito",
+              "Faz o botão mudar de cor ao carregar a página, sem precisar de hover nenhum",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

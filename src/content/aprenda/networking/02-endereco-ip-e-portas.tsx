@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Endereço IP e portas",
   summary: "O endereço de um computador na rede, e como várias aplicações compartilham o mesmo endereço.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao02EnderecoIpEPortas() {
@@ -89,20 +90,20 @@ não é onde o servidor de desenvolvimento está escutando.`}
           {
             question: "Qual o papel da porta, já que o dispositivo já tem um IP?",
             options: [
-              "Não tem função real, é só decorativo",
+              "Identifica fisicamente qual cabo de rede está transportando aquele pacote específico",
+              "Substitui o IP quando o dispositivo está numa rede local, sem acesso à internet",
+              "Define a velocidade máxima de transferência permitida para aquela conexão",
               "Diferencia qual aplicação, dentro do mesmo IP, deve receber aquela conexão específica",
-              "É outro nome pro mesmo IP",
-              "Só existe em servidores, nunca em computador pessoal",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Por que http://site.com/produtos funciona sem porta na URL?",
             options: [
-              "HTTP não usa porta",
+              "O servidor detecta automaticamente qual porta o navegador prefere usar naquele momento",
               "O navegador assume a porta padrão (80 para HTTP, 443 para HTTPS) quando nenhuma é especificada",
-              "A porta é sempre 3000",
-              "site.com já contém a porta escondida",
+              "O DNS já inclui a porta correta dentro do próprio registro do domínio",
+              "Toda URL sem porta explícita é redirecionada primeiro para a porta 8080",
             ],
             correctIndex: 1,
           },

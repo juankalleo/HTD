@@ -1,6 +1,7 @@
 import { LessonBody } from "@/components/aprenda/lesson-body";
 import { CodeExample } from "@/components/aprenda/code-example";
 import { Exercise } from "@/components/aprenda/exercise";
+import { Callout } from "@/components/aprenda/callout";
 import { Quiz } from "@/components/aprenda/quiz";
 import type { LessonMeta } from "@/content/aprenda/types";
 
@@ -9,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Rede entre containers",
   summary: "localhost dentro de um container não é a mesma coisa que localhost na sua máquina.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao06RedeEntreContainers() {
@@ -50,6 +52,16 @@ export default function Licao06RedeEntreContainers() {
         porque os dois estão na mesma rede que o Compose criou.
       </p>
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/docker/09-redes-customizadas-e-dns-interno"
+        linkLabel="Ver aula completa →"
+      >
+        Essa rede automática do compose é só um tipo de rede (bridge customizada). Tipos de rede (bridge, host,
+        none), criar uma rede manualmente com <code>docker network create</code> e conectar containers de
+        composes/projetos diferentes são cobertos na aula de redes do intermediário.
+      </Callout>
+
       <h2>Publicando porta pro mundo externo</h2>
       <p>
         Isso é diferente de "publicar" uma porta. <code>ports: ["3000:3000"]</code> expõe a porta do container pra{" "}
@@ -89,22 +101,22 @@ nem worker nem redis se enquadram nisso.`}
           {
             question: "Por que 'localhost' não funciona pra um container falar com outro container?",
             options: [
-              "localhost é bloqueado pelo Docker por segurança",
+              "Porque containers na mesma rede do compose não têm permissão de usar o protocolo TCP entre si",
               "localhost dentro de um container aponta pro próprio container, não pros outros",
-              "Só funciona se os dois estiverem na mesma máquina física",
-              "É um bug conhecido do Docker",
+              "Porque 'localhost' só é resolvido corretamente quando os containers compartilham o mesmo volume",
+              "Porque o driver de rede padrão do Docker desativa 'localhost' quando há mais de um serviço no compose",
             ],
             correctIndex: 1,
           },
           {
             question: "Por que o serviço de banco de dados geralmente NÃO tem 'ports:' no compose?",
             options: [
-              "Porque banco de dados nunca precisa de porta",
-              "Porque só quem precisa ser acessado de fora do ambiente Docker precisa publicar porta — o banco só fala com a API, pela rede interna",
-              "É proibido pelo Docker",
-              "Porque banco de dados não usa TCP",
+              "Porque bancos de dados não se comunicam usando o protocolo TCP",
+              "Porque expor a porta do banco deixaria a rede interna do compose mais lenta",
+              "Porque toda imagem oficial de banco já vem com as portas bloqueadas por padrão",
+              "Porque só quem precisa ser acessado de fora do ambiente Docker precisa publicar porta — o banco só fala com a API pela rede interna",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

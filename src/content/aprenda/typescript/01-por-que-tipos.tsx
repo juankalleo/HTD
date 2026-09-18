@@ -8,6 +8,7 @@ export const meta: LessonMeta = {
   title: "Por que tipos (JS vs TS)",
   summary: "TypeScript não é uma linguagem nova — é JavaScript mais uma camada de checagem que roda antes de executar.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao01PorQueTipos() {
@@ -65,22 +66,22 @@ calcularDesconto(100, "10");
           {
             question: "O que acontece com os tipos do TypeScript quando o código chega no navegador?",
             options: [
-              "Continuam lá, o navegador os interpreta",
               "São completamente apagados durante a compilação — o navegador só recebe JavaScript puro",
-              "Viram comentários",
-              "O navegador precisa de uma extensão especial",
+              "Ficam presentes como comentários que o navegador ignora silenciosamente durante a execução",
+              "São convertidos em validações que continuam rodando no navegador durante a execução do app",
+              "Permanecem no arquivo final, mas o navegador só os lê se o modo estrito estiver ativado",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Qual a principal vantagem de calcularDesconto(preco: number, ...) sobre a versão sem tipo?",
             options: [
-              "O código roda mais rápido",
+              "O editor passa a formatar automaticamente os parâmetros da função para o tipo number certo",
+              "A função passa a rodar mais rápido porque o número de argumentos fica fixo",
               "Passar um tipo errado (ex.: string em vez de number) já é sinalizado no editor, antes de rodar",
-              "Não tem vantagem real",
-              "Só funciona com essa vantagem em produção",
+              "O JavaScript gerado passa a converter sozinho qualquer valor recebido para number",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

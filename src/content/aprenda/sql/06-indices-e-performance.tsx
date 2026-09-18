@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Índices e performance",
   summary: "Por que uma consulta fica lenta com 10 milhões de linhas — e o que um índice realmente faz.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao06IndicesEPerformance() {
@@ -71,6 +72,15 @@ SELECT * FROM usuarios WHERE email = 'ana@exemplo.com';`}
         Dados.
       </Callout>
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/sql/15-explain-e-otimizacao-de-queries"
+        linkLabel="Ver aula completa →"
+      >
+        Aqui você só viu "Index Scan" vs. "Seq Scan"; a aula intermediária ensina a ler um EXPLAIN ANALYZE inteiro,
+        incluindo quando o planner decide ignorar um índice que existe.
+      </Callout>
+
       <Quiz
         track="sql"
         lessonSlug={meta.slug}
@@ -78,20 +88,20 @@ SELECT * FROM usuarios WHERE email = 'ana@exemplo.com';`}
           {
             question: "O que um índice evita?",
             options: [
-              "Evita que a tabela tenha dado duplicado",
-              "Evita um full table scan (varrer linha por linha) ao buscar por uma coluna indexada, tornando a busca muito mais rápida",
-              "Evita a necessidade de WHERE",
-              "Evita que o banco precise de chave primária",
+              "Evita que a tabela tenha dado duplicado, funcionando como uma constraint de unicidade",
+              "Evita a necessidade de usar WHERE nas consultas, já que o índice filtra sozinho",
+              "Evita que a tabela precise ter uma chave primária definida",
+              "Evita um full table scan ao buscar por uma coluna indexada, tornando a busca muito mais rápida que varrer linha por linha",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Qual o 'preço' de se ter muitos índices numa tabela?",
             options: [
-              "Não tem preço nenhum, só benefício",
-              "INSERT/UPDATE ficam um pouco mais lentos, já que cada índice também precisa ser atualizado a cada mudança",
-              "SELECT fica mais lento",
-              "A tabela para de aceitar novas colunas",
+              "SELECT fica mais lento, porque o banco precisa verificar todos os índices antes de responder",
+              "INSERT e UPDATE ficam um pouco mais lentos, porque cada índice também precisa ser atualizado a cada mudança na tabela",
+              "A tabela passa a aceitar menos colunas do que teria sem os índices",
+              "Só ocupa mais espaço em disco, sem nenhum efeito na velocidade de leitura ou escrita",
             ],
             correctIndex: 1,
           },

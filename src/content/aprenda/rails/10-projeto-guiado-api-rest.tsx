@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Projeto guiado: API REST completa",
   summary: "Um recurso Pedido do scaffold ao endpoint autenticado, autorizado e serializado — as 9 lições juntas.",
   estimatedMinutes: 26,
+  level: "fundamentos",
 };
 
 export default function Licao10ProjetoGuiadoApiRest() {
@@ -184,21 +185,21 @@ CanCan::AccessDenied é levantado e, tratado em ApplicationController, vira
             question: "Na ordem do controller final, o que roda primeiro: autenticação, autorização ou a regra de negócio (service)?",
             options: [
               "Regra de negócio, depois autenticação, depois autorização",
-              "Autenticação, depois autorização, depois regra de negócio",
-              "A ordem não importa",
-              "Autorização sempre antes de autenticação",
+              "Autenticação, depois autorização, depois a regra de negócio (o service)",
+              "Autorização, depois regra de negócio, depois autenticação",
+              "As três rodam ao mesmo tempo, em paralelo, dentro do controller",
             ],
             correctIndex: 1,
           },
           {
             question: "Por que a rota finalizar usa member { post :finalizar } em vez de resources sozinho?",
             options: [
-              "resources nunca aceita rota extra",
-              "'Finalizar um pedido específico' não é uma das 7 actions REST padrão, então precisa ser declarada à parte",
-              "member é obrigatório em toda rota Rails",
-              "Só funciona com GET, nunca POST",
+              "Porque resources não aceita nenhuma rota adicional além das sete padrão",
+              "Porque member só funciona quando combinado com o verbo GET, nunca com POST",
+              "Porque toda rota que altera estado do banco precisa ser declarada fora de resources",
+              "Porque 'finalizar um pedido específico' não é uma das sete actions REST padrão, então precisa ser declarada à parte",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Autenticação com Devise",
   summary: "Devise resolve senha/sessão/token — entender o que ele gera é melhor do que tratá-lo como caixa-preta.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao08AutenticacaoComDevise() {
@@ -78,6 +79,15 @@ end`}
         documentada no Padrão API.
       </Callout>
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/rails/18-seguranca-de-api"
+        linkLabel="Ver aula completa →"
+      >
+        Autenticação sozinha não impede um atacante de tentar milhares de senhas contra o login — CORS e bloqueio de
+        força bruta entram na lição 18.
+      </Callout>
+
       <Quiz
         track="rails"
         lessonSlug={meta.slug}
@@ -85,20 +95,20 @@ end`}
           {
             question: "O que a coluna encrypted_password realmente guarda?",
             options: [
-              "A senha em texto puro, criptografada de forma reversível",
+              "A senha em texto puro, protegida apenas pelas permissões de acesso ao banco de dados",
+              "Um token JWT gerado a partir da senha, válido até o usuário fazer logout",
+              "A senha criptografada de forma reversível, que pode ser decodificada com a chave secreta da aplicação",
               "O resultado de um hash (bcrypt) da senha — nunca a senha original, nem de forma reversível",
-              "Um token JWT",
-              "Nada — é só um placeholder",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Por que autenticação via JWT é considerada 'stateless'?",
             options: [
-              "Porque não precisa de banco de dados",
+              "Porque não depende de banco de dados para validar o usuário em nenhum momento",
               "Porque o servidor não guarda sessão em memória — o próprio token carrega a identidade do usuário",
-              "Porque é mais rápido que qualquer outro método",
-              "Não é stateless, é só um nome",
+              "Porque o token nunca expira, então o usuário não precisa fazer login de novo",
+              "Porque o JWT é armazenado exclusivamente em cookies, nunca em header HTTP",
             ],
             correctIndex: 1,
           },

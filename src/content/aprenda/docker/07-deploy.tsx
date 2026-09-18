@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Deploy: do compose local a um ambiente real",
   summary: "A mesma imagem que roda no seu notebook é a que sobe em produção — esse é o ponto todo.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao07Deploy() {
@@ -81,6 +82,16 @@ docker run --env-file .env.production registry.exemplo.com/minha-api:latest`}
         responder.
       </p>
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/docker/11-healthcheck-e-restart-policy"
+        linkLabel="Ver aula completa →"
+      >
+        Esse healthcheck resolve só metade do problema. Restart policy (o que o Docker faz quando o container cai) e
+        <code>depends_on</code> com <code>condition: service_healthy</code> (esperar o outro serviço ficar pronto, não
+        só iniciado) são cobertos na aula de healthcheck e restart do intermediário.
+      </Callout>
+
       <Callout href="/padrao-infraestrutura">
         O fluxo de CI/CD completo do padrão — de commit a deploy em produção, incluindo os checks antes do build —
         está documentado no Padrão Infraestrutura.
@@ -93,22 +104,22 @@ docker run --env-file .env.production registry.exemplo.com/minha-api:latest`}
           {
             question: "Qual o principal ganho de a mesma imagem rodar local e em produção?",
             options: [
-              "A imagem fica menor",
+              "Garante que o build vai ficar automaticamente menor a cada novo deploy realizado",
+              "Permite que o servidor de produção use uma versão diferente de sistema operacional sem risco",
               "Elimina a divergência de ambiente entre 'minha máquina' e produção — o que foi testado é literalmente o que sobe",
-              "Não precisa mais de variável de ambiente",
-              "É só uma questão de convenção, sem ganho real",
+              "Reduz o número de variáveis de ambiente que precisam ser configuradas no servidor",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Pra que serve um healthcheck no compose/produção?",
             options: [
-              "Acelera o build",
               "Permite que o orquestrador detecte um container travado (rodando mas não respondendo) e reinicie automaticamente",
-              "Substitui a necessidade de logs",
-              "É só usado em desenvolvimento",
+              "Reduz o tempo de build da imagem ao pular etapas de verificação desnecessárias",
+              "Substitui a necessidade de configurar variáveis de ambiente separadas por serviço",
+              "Garante que o container nunca vai consumir mais memória do que o limite configurado",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

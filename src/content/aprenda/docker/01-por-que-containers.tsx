@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Por que containers",
   summary: "\"Na minha máquina funciona\" é o problema; container empacota o ambiente inteiro, não só o código.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao01PorQueContainers() {
@@ -72,20 +73,20 @@ a3f9e2b1c8d4e5f6...`}
           {
             question: "Qual a principal diferença entre container e máquina virtual?",
             options: [
-              "Não tem diferença nenhuma",
               "Container compartilha o kernel do host e isola só o processo; VM simula um computador inteiro com kernel próprio",
-              "VM é sempre mais rápida",
-              "Container só funciona no Linux",
+              "VM compartilha o kernel do host pra reduzir consumo de memória, e container sempre roda com seu próprio kernel isolado",
+              "Container e VM usam exatamente a mesma técnica de virtualização, mudando apenas o nome comercial da ferramenta",
+              "A diferença está no sistema de arquivos: VM usa disco físico e container só existe em memória RAM",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Qual a relação entre imagem e container?",
             options: [
-              "São sinônimos",
+              "Imagem e container são a mesma coisa depois do build, só muda o nome usado no terminal",
               "Imagem é o molde somente leitura; container é uma instância em execução dessa imagem",
-              "Container vira imagem depois de rodar",
-              "Uma imagem só pode gerar um container",
+              "Container é o arquivo salvo em disco, e a imagem é gerada automaticamente toda vez que ele inicia",
+              "Uma imagem só existe de verdade depois que o primeiro container criado a partir dela é removido",
             ],
             correctIndex: 1,
           },

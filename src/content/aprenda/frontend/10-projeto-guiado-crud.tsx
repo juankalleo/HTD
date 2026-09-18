@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Projeto guiado: tela CRUD do zero",
   summary: "Junta as 9 lições anteriores numa única tela: listar, criar e validar tarefas.",
   estimatedMinutes: 25,
+  level: "fundamentos",
 };
 
 export default function Licao10ProjetoGuiadoCrud() {
@@ -156,22 +157,22 @@ function TarefaItem({ tarefa }: { tarefa: { id: string; titulo: string; feita: b
           {
             question: "Por que só o formulário (NovaTarefaForm) precisa de \"use client\" nesta tela?",
             options: [
-              "Porque formulários sempre precisam, por regra fixa",
+              "Porque formulários sempre precisam da diretiva, por regra fixa do Next.js",
               "Porque é o único pedaço que usa estado de interação (useForm, onClick) — o resto só busca e exibe dado",
-              "Porque page.tsx nunca pode ter formulário",
-              "Não tem motivo técnico, é só convenção",
+              "Porque page.tsx nunca pode declarar um formulário dentro dele",
+              "Porque só componentes dentro de pastas com parênteses podem ser Server Components",
             ],
             correctIndex: 1,
           },
           {
             question: "O que router.refresh() faz que window.location.reload() não faz?",
             options: [
-              "É mais lento",
+              "É sempre mais lento, porque revalida o cache do navegador inteiro",
+              "São funcionalmente idênticos — apenas dois nomes para o mesmo comportamento",
+              "Só funciona em ambiente de produção, nunca durante o desenvolvimento local",
               "Reexecuta só os Server Components da rota atual, sem descartar o estado client já carregado",
-              "Nada, são idênticos",
-              "Só funciona em produção",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "TCP vs UDP",
   summary: "Os dois jeitos de transportar dado pela rede — um garante entrega, o outro prioriza velocidade.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao05TcpVsUdp() {
@@ -76,22 +77,22 @@ Site, e-mail, arquivo             Chamada de vídeo, jogo, streaming ao vivo`}
           {
             question: "Por que uma chamada de vídeo usa UDP em vez de TCP?",
             options: [
-              "UDP é mais seguro",
+              "TCP exige uma conexão criptografada, o que adicionaria uma etapa extra desnecessária à chamada",
+              "UDP consegue transmitir mais dados por segundo porque comprime o vídeo automaticamente",
               "Um pacote de vídeo perdido/atrasado é pior esperar reenvio do que simplesmente pular — velocidade importa mais que garantia total de entrega",
-              "TCP não funciona com vídeo",
-              "Não tem motivo técnico real",
+              "TCP não consegue lidar com conexões que envolvem áudio e vídeo ao mesmo tempo",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "O que o handshake de 3 passos do TCP (SYN, SYN-ACK, ACK) garante antes de qualquer dado real trafegar?",
             options: [
-              "Nada, é só formalidade",
               "Que os dois lados confirmaram que estão prontos pra trocar dado, antes de qualquer byte de conteúdo ser enviado",
-              "Que a conexão será criptografada automaticamente",
-              "Que o servidor tem espaço em disco suficiente",
+              "Que a conexão será automaticamente criptografada com TLS assim que os dados começarem a fluir",
+              "Que o servidor reservou memória suficiente para armazenar toda a resposta antes de enviá-la",
+              "Que o IP do cliente foi validado junto ao servidor DNS antes da conexão abrir",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

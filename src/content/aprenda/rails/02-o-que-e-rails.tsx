@@ -8,6 +8,7 @@ export const meta: LessonMeta = {
   title: "O que é Rails, convenção sobre configuração",
   summary: "Por que Rails decide tanta coisa por você — e por que isso é o ponto, não um problema.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao02OQueERails() {
@@ -63,17 +64,17 @@ db/
           {
             question: "O que significa 'convenção sobre configuração'?",
             options: [
-              "Rails não tem nenhuma configuração",
-              "Rails já decide padrões (nome de tabela, estrutura de pasta) pra você não ter que configurar isso manualmente",
-              "Configuração é sempre mais importante que convenção",
-              "É um princípio exclusivo do Rails, nenhum outro framework usa",
+              "Framework que exige configurar manualmente cada nome de tabela e caminho de arquivo antes de usar",
+              "Rails já assume padrões prontos (nome de tabela, estrutura de pasta) para você não precisar configurar isso manualmente",
+              "Princípio que prioriza arquivos de configuração YAML no lugar de código Ruby sempre que possível",
+              "Regra que impede qualquer configuração customizada depois que o projeto é criado",
             ],
             correctIndex: 1,
           },
           {
             question: "Dado um model Pedido, qual o nome convencional da tabela no banco?",
-            options: ["Pedido", "pedido", "pedidos", "PedidosTable"],
-            correctIndex: 2,
+            options: ["pedido (singular, snake_case)", "Pedido (singular, PascalCase, igual à classe)", "pedidos_tabela (plural com sufixo redundante)", "pedidos (plural, snake_case)"],
+            correctIndex: 3,
           },
         ]}
       />

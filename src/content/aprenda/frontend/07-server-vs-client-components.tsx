@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Componentes de servidor vs. cliente",
   summary: "Por padrão tudo roda no servidor — \"use client\" é a exceção, não a regra.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao07ServerVsClientComponents() {
@@ -98,22 +99,22 @@ nenhuma API de navegador envolvida, continua Server Component.`}
           {
             question: "No App Router, qual é o padrão quando nenhuma diretiva é escrita?",
             options: [
-              "Client Component",
-              "Server Component",
-              "Depende do nome do arquivo",
-              "Depende de estar dentro de app/ ou não",
+              "Server Component — roda no servidor e não envia JavaScript próprio ao navegador",
+              "Client Component — roda no navegador do usuário por padrão",
+              "Depende do nome do arquivo, como page.tsx ou layout.tsx",
+              "Depende de o componente estar dentro de uma pasta com parênteses",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Quando um componente PRECISA de \"use client\"?",
             options: [
-              "Sempre que ele importa outro componente",
-              "Quando usa useState/useEffect/eventos de interação — coisas que só existem no navegador",
-              "Sempre que renderiza uma lista",
-              "Nunca — a diretiva é só estética",
+              "Sempre que ele importa outro componente de dentro da mesma pasta",
+              "Sempre que ele renderiza uma lista com .map(), mesmo sem interação",
+              "Quando usa useState, useEffect ou eventos de interação — coisas que só existem no navegador",
+              "Nunca — a diretiva é só uma convenção estética sem efeito real",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

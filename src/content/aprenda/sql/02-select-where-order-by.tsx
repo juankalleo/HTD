@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "SELECT, WHERE, ORDER BY",
   summary: "A consulta mais comum de todas: escolher colunas, filtrar linhas, definir a ordem.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao02SelectWhereOrderBy() {
@@ -89,20 +90,20 @@ LIMIT 5;`}
           {
             question: "Qual a ordem correta das cláusulas numa consulta SELECT?",
             options: [
-              "ORDER BY, WHERE, SELECT, FROM",
-              "SELECT ... FROM ... WHERE ... ORDER BY ... LIMIT",
-              "LIMIT vem sempre antes de WHERE",
-              "Não importa a ordem, o SQL reorganiza sozinho",
+              "SELECT ... WHERE ... FROM ... LIMIT ... ORDER BY, porque o filtro sempre precisa vir antes de declarar a tabela",
+              "FROM ... SELECT ... ORDER BY ... WHERE ... LIMIT, já que o banco decide a tabela antes de saber quais colunas mostrar",
+              "SELECT ... FROM ... ORDER BY ... WHERE ... LIMIT, porque ordenar precisa acontecer antes de filtrar as linhas",
+              "SELECT ... FROM ... WHERE ... ORDER BY ... LIMIT — primeiro filtra as linhas, depois ordena o resultado, só então corta a quantidade",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "O que WHERE nome LIKE '%teclado%' encontra?",
             options: [
-              "Só linhas onde nome é exatamente 'teclado'",
-              "Linhas onde a palavra 'teclado' aparece em qualquer posição do campo nome",
-              "Só linhas que começam com 'teclado'",
-              "Um erro de sintaxe",
+              "Só linhas onde o campo nome é exatamente igual à palavra 'teclado', sem nenhum caractere a mais",
+              "Linhas onde a sequência 'teclado' aparece em qualquer posição do campo nome — no início, no meio ou no fim",
+              "Só linhas onde o campo nome começa com a palavra 'teclado', ignorando o restante do texto",
+              "Só linhas onde 'teclado' aparece como uma palavra isolada, separada por espaços do restante do texto",
             ],
             correctIndex: 1,
           },

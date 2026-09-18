@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Service objects",
   summary: "Quando uma ação envolve mais de um model, ela não pertence nem ao controller nem a um model só.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao07ServiceObjects() {
@@ -100,6 +101,15 @@ end`}
         O padrão de retorno de service (sucesso/erro tipado, não só true/false) está documentado no Padrão API.
       </Callout>
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/rails/16-service-result-pattern"
+        linkLabel="Ver aula completa →"
+      >
+        Por que levantar exception pra um fluxo esperado (tipo "e-mail já cadastrado") é um anti-padrão, e como um
+        objeto de resultado com sucesso?/erros resolve isso — a lição 16 aprofunda.
+      </Callout>
+
       <Quiz
         track="rails"
         lessonSlug={meta.slug}
@@ -107,22 +117,22 @@ end`}
           {
             question: "Quando faz sentido extrair um service object?",
             options: [
-              "Em toda action, sem exceção",
-              "Quando a ação orquestra mais de uma entidade/tabela e não pertence claramente a um model só",
-              "Nunca — tudo deveria ficar no controller",
-              "Só quando o controller tem menos de 5 linhas",
+              "Quando uma action recebe mais de três parâmetros diferentes no corpo da requisição",
+              "Quando o controller precisa validar formato de e-mail ou CPF antes de salvar",
+              "Quando a ação orquestra mais de uma entidade/tabela e não pertence claramente a um único model",
+              "Quando o model já tem validações demais e precisa ser dividido em dois arquivos",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Por que envolver as operações em ActiveRecord::Base.transaction?",
             options: [
-              "Deixa o código mais rápido",
-              "Se uma etapa falhar no meio, desfaz todas as anteriores, evitando estado inconsistente no banco",
-              "É só uma boa prática estética, sem efeito real",
-              "Transaction é obrigatório em qualquer método Ruby",
+              "Porque, se uma etapa falhar no meio, a transação desfaz todas as anteriores, evitando estado inconsistente no banco",
+              "Porque transaction faz o Rails rodar as operações em paralelo, uma em cada thread",
+              "Porque sem transaction o Rails não permite mais de uma escrita no mesmo método",
+              "Porque transaction grava um log de auditoria automático de cada mudança feita",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

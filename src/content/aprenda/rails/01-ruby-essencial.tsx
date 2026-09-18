@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Ruby essencial",
   summary: "Só o suficiente de sintaxe Ruby pra ler Rails com confiança — não é um curso de Ruby inteiro.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao01RubyEssencial() {
@@ -104,22 +105,22 @@ end`}
           {
             question: "O que o @ antes de um nome de variável significa em Ruby?",
             options: [
-              "Variável global",
-              "Atributo de instância (equivalente a this.algo em outras linguagens)",
-              "Constante",
-              "Não significa nada, é decorativo",
+              "Atributo de instância — pertence a um objeto específico, não é compartilhado entre outras instâncias da mesma classe",
+              "Atributo de classe, compartilhado entre todas as instâncias dela (o que em Ruby seria escrito com @@)",
+              "Variável global, acessível em qualquer parte do programa sem precisar declarar de novo",
+              "Constante, cujo valor não pode ser reatribuído depois de definida",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Qual a diferença entre sort e sort! numa lista?",
             options: [
-              "Não tem diferença nenhuma",
-              "sort retorna uma nova lista ordenada; sort! reordena a lista original no lugar",
-              "sort! é só mais rápido",
-              "sort só funciona com número, sort! com qualquer tipo",
+              "sort! sempre levanta uma exceção quando a lista já está ordenada, enquanto sort nunca levanta exceção nenhuma",
+              "sort funciona apenas com listas de números, enquanto sort! funciona com qualquer tipo de elemento",
+              "sort retorna uma nova lista ordenada sem alterar a original; sort! reordena a lista original no próprio lugar",
+              "Não existe diferença de comportamento entre os dois, apenas uma convenção de nome sem efeito real",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

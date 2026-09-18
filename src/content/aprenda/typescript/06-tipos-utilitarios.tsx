@@ -1,6 +1,7 @@
 import { LessonBody } from "@/components/aprenda/lesson-body";
 import { CodeExample } from "@/components/aprenda/code-example";
 import { Exercise } from "@/components/aprenda/exercise";
+import { Callout } from "@/components/aprenda/callout";
 import { Quiz } from "@/components/aprenda/quiz";
 import type { LessonMeta } from "@/content/aprenda/types";
 
@@ -9,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Tipos utilitários (Partial, Pick, Omit)",
   summary: "Derivar um tipo novo a partir de outro que já existe, em vez de reescrever o formato do zero.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao06TiposUtilitarios() {
@@ -87,6 +89,15 @@ const corPorStatus: Record<Status, string> = {
 // { nome: string; preco: number }`}
       />
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/typescript/08-tipos-condicionais-e-mapeados"
+        linkLabel="Ver aula completa →"
+      >
+        Partial, Pick, Omit e Record não são mágica do compilador — são implementados com mapped types e conditional
+        types, que você aprende a escrever do zero na aula de tipos condicionais e mapeados.
+      </Callout>
+
       <Quiz
         track="typescript"
         lessonSlug={meta.slug}
@@ -94,22 +105,22 @@ const corPorStatus: Record<Status, string> = {
           {
             question: "O que Partial<Usuario> faz?",
             options: [
-              "Remove todos os campos",
+              "Cria uma versão de Usuario em que todos os campos passam a ser somente leitura",
               "Torna todos os campos de Usuario opcionais, útil pra um formulário de edição parcial",
-              "Deixa Usuario com metade dos campos, escolhidos ao acaso",
-              "Cria uma cópia idêntica de Usuario",
+              "Remove todos os campos opcionais de Usuario, deixando só os obrigatórios",
+              "Duplica Usuario em dois tipos idênticos, um para leitura e outro para escrita",
             ],
             correctIndex: 1,
           },
           {
             question: "Por que usar Omit<Usuario, 'id'> em vez de reescrever a interface sem o campo id?",
             options: [
-              "Não tem diferença nenhuma",
+              "Porque Omit roda em tempo de execução e reescrever a interface só funciona em tempo de compilação",
+              "Porque reescrever a interface manualmente gera um erro de sintaxe no TypeScript",
               "Se Usuario ganhar um campo novo depois, o tipo derivado acompanha automaticamente, sem precisar editar em dois lugares",
-              "Omit é mais rápido de compilar",
-              "Reescrever manualmente também funciona igual, é só estilo",
+              "Porque Omit é a única forma de remover um campo obrigatório de uma interface",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

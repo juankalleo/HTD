@@ -8,6 +8,7 @@ export const meta: LessonMeta = {
   title: "O que é um banco relacional",
   summary: "Tabelas, linhas, colunas — e por que 'relacional' se refere às relações ENTRE tabelas, não dentro de uma só.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao01BancoRelacional() {
@@ -61,22 +62,22 @@ export default function Licao01BancoRelacional() {
           {
             question: "O que 'relacional' significa num banco de dados relacional?",
             options: [
-              "Que os dados têm relação romântica entre si",
-              "Que tabelas diferentes se relacionam através de referências (como usuario_id), em vez de duplicar dado",
-              "Que só existe uma tabela por banco",
-              "Que o banco só funciona com números",
+              "Que tabelas diferentes se relacionam entre si através de referências, como usuario_id apontando pra uma linha de outra tabela, evitando duplicar o mesmo dado",
+              "Que as tabelas se conectam automaticamente sempre que duas colunas têm o mesmo nome, sem precisar declarar nenhuma referência",
+              "Que cada tabela guarda uma cópia completa do dado das outras tabelas, pra consultas ficarem mais rápidas",
+              "Que o banco relaciona apenas números entre si, e por isso texto precisa ser convertido antes de ser salvo",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Por que a tabela pedidos guarda usuario_id em vez do nome e e-mail do usuário repetidos?",
             options: [
-              "Por limitação técnica do banco",
-              "Evita duplicar dado — se o e-mail mudar, muda em um lugar só (na tabela usuarios), sem inconsistência",
-              "Não tem motivo real, é só convenção",
-              "usuario_id ocupa mais espaço que nome e e-mail juntos",
+              "Porque nome e e-mail ocupam mais espaço em disco do que um número, e isso é sempre a prioridade no design de tabelas",
+              "Porque o banco de dados não permite guardar o mesmo texto em mais de uma tabela ao mesmo tempo",
+              "Porque evita duplicar o mesmo dado em várias linhas — se o e-mail do usuário mudar, ele muda em um lugar só, na tabela usuarios",
+              "Porque usuario_id é a única forma de fazer uma consulta com ORDER BY funcionar corretamente",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

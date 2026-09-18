@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Projeto guiado: tipando uma API",
   summary: "Junta interface, union, generics e utilitários numa função real de busca de dado.",
   estimatedMinutes: 20,
+  level: "fundamentos",
 };
 
 export default function Licao07ProjetoGuiadoTipandoUmaApi() {
@@ -114,6 +115,15 @@ atualizarPedido("1", { status: "pago" });`}
         usa do lado do Rails — vale ver os dois lado a lado.
       </Callout>
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/typescript/13-zod-validacao-em-runtime"
+        linkLabel="Ver aula completa →"
+      >
+        Repare que buscarApi confia cegamente no que vem de res.json() — o TypeScript não valida nada em runtime. A
+        aula sobre Zod mostra como checar esse dado de verdade antes de tratá-lo como um Pedido.
+      </Callout>
+
       <Quiz
         track="typescript"
         lessonSlug={meta.slug}
@@ -121,20 +131,20 @@ atualizarPedido("1", { status: "pago" });`}
           {
             question: "Por que buscarApi é genérica (buscarApi<T>) em vez de tipada só pra Pedido?",
             options: [
-              "Não tem motivo, poderia ser só pra Pedido",
+              "Porque funções async no TypeScript são obrigadas a declarar um parâmetro de tipo",
+              "Porque isso faz a função rodar de forma síncrona em vez de retornar uma Promise",
               "Uma única função funciona pra qualquer endpoint/formato de dado, sem duplicar a lógica de fetch pra cada tipo",
-              "Genéricos são obrigatórios em toda função async",
-              "É mais rápido em runtime",
+              "Porque sem o <T> o fetch não teria permissão para acessar URLs externas",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Por que Partial<Omit<Pedido, 'id'>> faz sentido pra uma função de atualização?",
             options: [
-              "Não faz sentido, deveria exigir o Pedido completo",
+              "Porque Partial e Omit precisam sempre ser usados juntos, nunca isoladamente",
               "Omit tira o id (não muda numa atualização); Partial deixa o resto opcional, já que uma atualização parcial não manda todos os campos",
-              "Partial e Omit fazem a mesma coisa, é redundante",
-              "Só funciona se Pedido não tiver union type",
+              "Porque isso transforma Pedido inteiro em opcional, incluindo o próprio id removido",
+              "Porque Partial sozinho já removeria o id automaticamente, tornando o Omit redundante",
             ],
             correctIndex: 1,
           },

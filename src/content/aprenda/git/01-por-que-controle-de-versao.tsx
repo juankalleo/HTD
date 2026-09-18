@@ -8,6 +8,7 @@ export const meta: LessonMeta = {
   title: "Por que controle de versão",
   summary: "O problema que git resolve: histórico, colaboração e a possibilidade real de desfazer qualquer coisa.",
   estimatedMinutes: 10,
+  level: "fundamentos",
 };
 
 export default function Licao01PorQueControleDeVersao() {
@@ -56,22 +57,22 @@ Rastrear "quem mudou o quê" → cada linha de código tem um autor e um motivo 
           {
             question: "Qual a relação entre git e GitHub?",
             options: [
-              "São a mesma ferramenta, nomes diferentes",
-              "Git é a ferramenta de versionamento que roda local; GitHub é um serviço que hospeda uma cópia remota do repositório git",
-              "GitHub substituiu completamente o git",
-              "Git só funciona dentro do GitHub",
+              "GitHub é a ferramenta de versionamento que roda local, e o git é o serviço que hospeda a cópia remota",
+              "Git e GitHub são a mesma ferramenta, só muda o nome comercial dependendo do sistema operacional",
+              "Git é a ferramenta de versionamento que roda local, na sua máquina; GitHub é um serviço que hospeda uma cópia remota do repositório git",
+              "Git é um plugin que só funciona instalado dentro do GitHub Desktop, sem uso via linha de comando",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Qual problema do 'projeto-final-v2-CORRIGIDO' o git resolve?",
             options: [
-              "Nenhum, é só estética de nome de pasta",
-              "Histórico real de mudanças com autor/data, capacidade de reverter qualquer ponto, e colaboração sem sobrescrever o trabalho alheio",
-              "Só resolve o tamanho do arquivo",
-              "Git não resolve esse problema",
+              "Histórico real de mudanças com autor e data, a possibilidade de reverter para qualquer ponto anterior, e colaboração sem sobrescrever o trabalho de outra pessoa",
+              "Apenas a organização visual das pastas do projeto, sem guardar histórico de mudanças de fato",
+              "Redução do tamanho total dos arquivos do projeto, já que o git comprime tudo automaticamente",
+              "Sincronização automática de nomes de pasta entre os computadores de todos os membros do time",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

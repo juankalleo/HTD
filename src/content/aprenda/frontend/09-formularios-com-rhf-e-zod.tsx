@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Formulários com React Hook Form + Zod",
   summary: "Um formulário de verdade tem validação, mensagem de erro e estado de envio — não só um onSubmit.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao09FormulariosComRhfEZod() {
@@ -102,6 +103,11 @@ export function LoginForm() {
         documentado no Padrão Frontend.
       </Callout>
 
+      <Callout title="Isso é aprofundado no intermediário" href="/aprenda/frontend/18-upload-de-arquivos-e-imagens" linkLabel="Ver aula completa →">
+        register e schema resolvem campos de texto, mas um input de arquivo tem particularidades próprias — preview
+        antes de enviar e montagem de FormData — que a aula de upload cobre em detalhe.
+      </Callout>
+
       <Quiz
         track="frontend"
         lessonSlug={meta.slug}
@@ -109,22 +115,22 @@ export function LoginForm() {
           {
             question: "O que z.infer<typeof schema> resolve?",
             options: [
-              "Faz a requisição HTTP",
+              "Executa a requisição HTTP de envio do formulário automaticamente",
+              "Renderiza os campos do formulário com base no schema Zod",
               "Gera o tipo TypeScript direto do schema Zod, sem duplicar a definição",
-              "Renderiza o formulário",
-              "Só funciona em runtime, não em build",
+              "Só funciona em tempo de execução, nunca durante o build do TypeScript",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Pra que serve register(\"campo\") do React Hook Form?",
             options: [
-              "Envia o formulário",
               "Conecta o input ao estado do formulário sem precisar de value/onChange manuais",
-              "Valida o campo sozinho, sem Zod",
-              "Só funciona em Server Components",
+              "Envia o formulário assim que o campo perde o foco",
+              "Valida o campo sozinho, sem precisar de um schema Zod",
+              "Só funciona dentro de Server Components, nunca em Client Components",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

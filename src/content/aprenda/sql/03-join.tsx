@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "JOIN — juntando tabelas",
   summary: "Como buscar dado que está espalhado em duas tabelas relacionadas, numa consulta só.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao03Join() {
@@ -95,22 +96,22 @@ LEFT JOIN pedidos ON pedidos.usuario_id = usuarios.id;
           {
             question: "Qual a diferença entre INNER JOIN e LEFT JOIN?",
             options: [
-              "Não tem diferença, são sinônimos",
-              "INNER JOIN só traz linhas que combinam nos dois lados; LEFT JOIN mantém todas as linhas do lado esquerdo, mesmo sem combinação (mostrando NULL)",
-              "LEFT JOIN é sempre mais rápido",
-              "INNER JOIN só funciona com 2 tabelas, LEFT JOIN com 3+",
+              "INNER JOIN retorna as tabelas na ordem em que aparecem no FROM; LEFT JOIN inverte essa ordem automaticamente",
+              "LEFT JOIN só mostra as colunas da tabela da esquerda; INNER JOIN mostra as colunas das duas tabelas",
+              "INNER JOIN só traz linhas que combinam nos dois lados; LEFT JOIN mantém todas as linhas do lado esquerdo mesmo sem combinação, preenchendo com NULL",
+              "Não existe diferença de resultado, só de desempenho — LEFT JOIN é uma forma mais rápida de escrever INNER JOIN",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Pra que serve a cláusula ON num JOIN?",
             options: [
-              "Define qual tabela vem primeiro",
-              "Define a regra de combinação — quais colunas devem ser iguais pra juntar as linhas das duas tabelas",
-              "Ordena o resultado",
-              "Filtra por data",
+              "Define a regra de combinação — quais colunas das duas tabelas precisam ser iguais pra as linhas serem juntadas",
+              "Filtra o resultado final do JOIN, do mesmo jeito que WHERE faria depois",
+              "Define o apelido (alias) que cada tabela vai usar dentro da consulta",
+              "Define qual das duas tabelas vai aparecer primeiro no resultado",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

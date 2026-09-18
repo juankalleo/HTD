@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "HTTP e HTTPS",
   summary: "O protocolo que toda requisição de site usa — método, status code, header, e o \"S\" que criptografa tudo isso.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao04HttpEHttps() {
@@ -34,8 +35,18 @@ Content-Length: 4213
       />
       <p>
         Todo <code>fetch()</code>, todo carregamento de página, é essa troca de texto — método, cabeçalhos, e um
-        corpo opcional — por trás de qualquer biblioteca que abstrai isso.
+        corpo opcional — por trás de qualquer biblioteca que abstrai isso. Repare no header <code>Cookie</code> no
+        exemplo acima — é assim que o navegador informa ao servidor qual sessão de login pertence a essa requisição.
       </p>
+
+      <Callout
+        title="Cabeçalhos como cookie, cache e CORS são aprofundados no intermediário"
+        href="/aprenda/networking/11-cabecalhos-http-essenciais"
+        linkLabel="Ver aula completa →"
+      >
+        Essa lição só mostra o <code>Cookie</code> passando na requisição — a aula de cabeçalhos HTTP essenciais
+        explica como uma sessão de login funciona de verdade, além de cache e CORS.
+      </Callout>
 
       <h2>Os métodos HTTP mais comuns</h2>
       <CodeExample
@@ -80,6 +91,10 @@ DELETE  → remover`}
         real de <code>howtodev.site</code>, não com um impostor interceptando a conexão.
       </p>
 
+      <Callout title="Isso é aprofundado no intermediário" href="/aprenda/networking/09-tls-handshake-e-certificados" linkLabel="Ver aula completa →">
+        O handshake TLS e como certificados funcionam na prática são cobertos na aula de TLS do intermediário.
+      </Callout>
+
       <Callout href="/padrao-frontend/seguranca/cabecalhos-de-seguranca-http">
         Headers de segurança HTTP adicionais (HSTS, CSP, X-Frame-Options) que reforçam o HTTPS estão documentados no
         Padrão Frontend.
@@ -92,22 +107,22 @@ DELETE  → remover`}
           {
             question: "Um status 404 indica erro de quem?",
             options: [
-              "Do servidor, sempre",
+              "Do servidor — ele processou o pedido mas falhou ao gerar a resposta esperada",
               "Do cliente — ele pediu um recurso que não existe (categoria 4xx = erro do cliente)",
-              "Da rede, não do cliente nem do servidor",
-              "404 não é um erro, é sucesso",
+              "Da rede — a requisição se perdeu no caminho antes de chegar ao servidor",
+              "Do DNS — o domínio não foi resolvido corretamente para nenhum IP",
             ],
             correctIndex: 1,
           },
           {
             question: "O que o TLS (o 'S' de HTTPS) realmente faz?",
             options: [
-              "É um protocolo completamente diferente do HTTP",
+              "Troca o protocolo HTTP por um formato binário mais compacto, reduzindo o tamanho da resposta",
+              "Move o processamento da página do servidor para o navegador, deixando o carregamento mais rápido",
+              "Substitui a necessidade de resolver DNS antes de abrir a conexão com o servidor",
               "Criptografa a comunicação HTTP normal entre navegador e servidor, impedindo que quem está no meio leia ou altere o conteúdo",
-              "Só torna o site mais rápido",
-              "Substitui a necessidade de DNS",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

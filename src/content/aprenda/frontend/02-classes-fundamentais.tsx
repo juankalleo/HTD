@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Classes fundamentais",
   summary: "Espaçamento, cor, tipografia e o par flex/grid — o vocabulário que resolve 90% das telas.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao02ClassesFundamentais() {
@@ -92,18 +93,18 @@ export default function Licao02ClassesFundamentais() {
         questions={[
           {
             question: "Qual classe aplica padding só nos eixos horizontal e vertical, com valores diferentes?",
-            options: ["p-4", "px-6 py-2", "mt-8", "gap-4"],
+            options: ["p-4, que aplica o mesmo valor nos 4 lados", "px-6 py-2, com um valor pra cada eixo", "mt-8, que aplica só margin-top", "gap-4, que espaça itens de um flex/grid"],
             correctIndex: 1,
           },
           {
             question: "Quando usar grid em vez de flex?",
             options: [
-              "Nunca — flex resolve tudo",
-              "Quando o layout é uma malha de linhas e colunas, tipo cards ou dashboard",
-              "Só em telas grandes",
-              "Grid é sempre mais rápido que flex",
+              "Quando os itens precisam ficar sempre alinhados em uma única linha ou coluna",
+              "Quando o layout depende só de breakpoints, sem necessidade de alinhamento",
+              "Quando cada item da lista precisa ter uma largura calculada dinamicamente pelo navegador",
+              "Quando o layout é uma malha de linhas e colunas, como cards ou um dashboard",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

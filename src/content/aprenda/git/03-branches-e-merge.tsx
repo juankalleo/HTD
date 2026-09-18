@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Branches e merge",
   summary: "Trabalhar numa linha do tempo separada sem afetar o main, e depois juntar tudo de volta.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao03BranchesEMerge() {
@@ -89,22 +90,22 @@ git switch -c feature/checkout`}
           {
             question: "Por que trabalhar numa branch separada em vez de commitar direto em main?",
             options: [
-              "É só uma convenção sem efeito real",
-              "Permite experimentar e errar sem afetar a versão estável (main) até decidir juntar de volta",
-              "Branches são mais rápidas de commitar",
-              "main não aceita commit nenhum diretamente",
+              "Permite experimentar e até errar sem afetar a versão estável de main, até você decidir juntar as mudanças de volta",
+              "main só aceita um número limitado de commits por dia, então branches evitam esse limite",
+              "Branches são processadas mais rápido pelo git porque usam menos espaço em disco",
+              "É a única forma de o git registrar o autor de cada commit corretamente",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "O que significa um merge 'fast-forward'?",
             options: [
-              "O merge falhou",
-              "main não tinha commits novos desde a criação da branch, então o ponteiro de main só 'avança' até onde a branch já estava",
-              "É um tipo de merge mais lento",
-              "Só acontece em repositórios muito grandes",
+              "É quando o git resolve automaticamente qualquer conflito de merge sem pedir confirmação a quem está commitando",
+              "É quando o git cria dois commits de merge simultâneos para sincronizar o histórico das branches",
+              "main não tinha nenhum commit novo desde a criação da branch, então o ponteiro de main apenas 'avança' até onde a branch já estava",
+              "É o tipo de merge usado quando duas branches têm arquivos com nomes idênticos",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

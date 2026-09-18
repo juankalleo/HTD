@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Controllers e rotas REST",
   summary: "resources gera 7 rotas de uma vez — entender as 7 evita reinventar rota fora do padrão REST.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao05ControllersERotasRest() {
@@ -124,22 +125,22 @@ end`}
           {
             question: "Por que new/edit não aparecem num controller gerado com --api?",
             options: [
-              "É um bug do gerador",
-              "Elas existem só pra renderizar formulário HTML, que uma API não tem",
-              "API não suporta essas actions por limitação técnica",
-              "new/edit sempre existem, independente de --api",
+              "Elas existem apenas para renderizar formulário HTML, algo que uma API não devolve como resposta",
+              "Porque o modo --api limita o scaffold a gerar só as rotas que usam o verbo GET",
+              "Porque new e edit exigem autenticação configurada, e o modo --api desativa autenticação por padrão",
+              "Porque essas duas rotas são reservadas internamente pelo Rails para uso exclusivo do console",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Pra que serve before_action :set_produto, only: [:show, :update, :destroy]?",
             options: [
-              "Valida os dados do formulário",
-              "Roda Produto.find antes dessas 3 actions, evitando repetir a mesma linha em cada uma",
-              "Só funciona em produção",
-              "Cria automaticamente as rotas REST",
+              "Valida os dados enviados no corpo da requisição antes de qualquer action ser executada",
+              "Garante que apenas usuários autenticados consigam acessar essas três actions específicas",
+              "Roda a busca do registro (Produto.find) antes dessas três actions, evitando repetir a mesma linha em cada uma",
+              "Cria automaticamente as sete rotas REST associadas ao recurso Produto",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

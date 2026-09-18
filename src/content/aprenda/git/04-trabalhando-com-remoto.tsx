@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Trabalhando com remoto (push/pull/clone)",
   summary: "Como o repositório local conversa com uma cópia hospedada no GitHub.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao04TrabalhandoComRemoto() {
@@ -86,20 +87,20 @@ versão desatualizada e ter mais conflito de merge depois.`}
           {
             question: "O que git pull realmente faz por baixo dos panos?",
             options: [
-              "Só um git fetch, sem mais nada",
-              "git fetch (baixa as mudanças) seguido de git merge (junta na sua branch local) — dois passos num comando",
-              "Apaga suas mudanças locais e substitui pelo remoto",
-              "É idêntico a git clone",
+              "Apenas um git fetch, baixando as mudanças sem aplicá-las na branch local",
+              "Apaga todas as mudanças locais não commitadas e substitui pela versão do remoto",
+              "É idêntico a git clone, mas reaproveitando a pasta .git já existente",
+              "git fetch (baixa as mudanças do remoto) seguido de git merge (junta essas mudanças na sua branch local) — dois passos disfarçados de um só",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "O que git clone configura automaticamente?",
             options: [
-              "Nada, precisa configurar tudo manualmente depois",
-              "O remoto 'origin' apontando pro repositório que foi clonado, além de baixar todo o histórico",
-              "Só a branch main, sem histórico",
-              "Um novo repositório vazio",
+              "Apenas a branch main, sem trazer o histórico de commits anteriores",
+              "O remoto chamado 'origin' apontando para o repositório clonado, além de baixar todo o histórico e todas as branches",
+              "Um arquivo .gitignore padrão com as configurações mais comuns do projeto",
+              "As credenciais de acesso salvas permanentemente, sem precisar autenticar de novo",
             ],
             correctIndex: 1,
           },

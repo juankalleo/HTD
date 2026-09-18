@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Next.js: o que é, App Router na prática",
   summary: "De 'React com mais passos' pra um framework com roteamento, servidor e build embutidos.",
   estimatedMinutes: 15,
+  level: "fundamentos",
 };
 
 export default function Licao05NextjsAppRouter() {
@@ -75,22 +76,22 @@ export default async function ProdutoPage({ params }: Props) {
           {
             question: "O que faz uma pasta dentro de app/ virar uma rota de verdade?",
             options: [
-              "O nome da pasta",
+              "O nome da pasta precisa estar em letras minúsculas e sem acentos",
+              "Ela precisa estar registrada manualmente em um arquivo de rotas central",
               "A presença de um arquivo page.tsx dentro dela",
-              "Ela precisa estar registrada num arquivo de rotas separado",
-              "Toda pasta já é uma rota automaticamente",
+              "Toda pasta dentro de app/ já vira rota automaticamente, sem exceção",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Por que os exemplos desta lição em diante não têm editor ao vivo?",
             options: [
-              "Por preguiça de configurar",
-              "App Router/Server Components dependem de um servidor Node real, que não roda num editor client-side",
-              "Next.js não suporta live preview em nenhum lugar",
-              "É só uma limitação temporária, sem motivo técnico",
+              "Porque App Router e Server Components dependem de um servidor Node real, que não roda num editor client-side",
+              "Porque o Next.js ainda não tem suporte nenhum a ferramentas de preview interativo",
+              "Porque manter um editor ao vivo consumiria orçamento de hospedagem do site",
+              "Porque essas lições são só teóricas e não trazem exemplo de código nenhum",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

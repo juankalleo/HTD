@@ -11,6 +11,7 @@ export const meta: LessonMeta = {
   title: "Proxy reverso — o que é e como funciona (nginx)",
   summary: "O servidor que fica na frente do seu servidor de verdade — e por que quase todo site em produção tem um.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao06ProxyReversoNginx() {
@@ -102,20 +103,20 @@ exige reconfigurar TLS de novo.`}
           {
             question: "No modelo de proxy reverso, com quem o navegador do cliente realmente conversa?",
             options: [
-              "Diretamente com o processo da aplicação (Next.js/Rails)",
+              "Diretamente com o processo da aplicação (Next.js/Rails), sem nenhum intermediário",
+              "Com o servidor DNS primeiro, e só depois com a aplicação de verdade",
+              "Com a CDN mais próxima, que decide se repassa a requisição para o proxy",
               "Só com o proxy reverso (nginx) — ele que repassa internamente pra aplicação",
-              "Com os dois ao mesmo tempo, sempre",
-              "Isso depende do navegador usado",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Pra que serve o header X-Real-IP configurado no proxy_pass?",
             options: [
-              "Não serve pra nada, é opcional",
+              "Criptografa o IP do cliente para que a aplicação nunca tenha acesso a ele",
               "Preserva o IP real de quem fez a requisição original, já que sem ele a aplicação veria tudo vindo do próprio nginx",
-              "Criptografa a requisição",
-              "Define a porta da aplicação",
+              "Define qual servidor de origem deve receber a requisição, no lugar do round-robin",
+              "Informa ao navegador qual IP o servidor de aplicação está usando internamente",
             ],
             correctIndex: 1,
           },

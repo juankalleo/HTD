@@ -1,6 +1,7 @@
 import { LessonBody } from "@/components/aprenda/lesson-body";
 import { CodeExample } from "@/components/aprenda/code-example";
 import { Exercise } from "@/components/aprenda/exercise";
+import { Callout } from "@/components/aprenda/callout";
 import { Quiz } from "@/components/aprenda/quiz";
 import type { LessonMeta } from "@/content/aprenda/types";
 
@@ -9,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Imagens, camadas e cache de build",
   summary: "Cada instrução do Dockerfile vira uma camada — a ordem delas decide se seu build demora 2s ou 2min.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao03ImagensCamadasECache() {
@@ -73,6 +75,16 @@ RUN bundle install
 COPY . .`}
       />
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/docker/10-multi-stage-builds"
+        linkLabel="Ver aula completa →"
+      >
+        Cache resolve a velocidade do build, mas não o tamanho da imagem final — ela ainda carrega compilador,
+        devDependencies e tudo que só serviu pra montar o app. Reduzir isso com <code>FROM ... AS builder</code> (build
+        em múltiplos estágios) é o assunto da aula de multi-stage builds do intermediário.
+      </Callout>
+
       <Quiz
         track="docker"
         lessonSlug={meta.slug}
@@ -80,22 +92,22 @@ COPY . .`}
           {
             question: "O que acontece quando uma camada do Dockerfile é invalidada?",
             options: [
-              "Só ela reroda, o resto do cache continua valendo",
+              "Só as camadas de RUN são invalidadas, COPY nunca precisa rerodar depois disso",
               "Ela e TODAS as instruções seguintes rerodam, mesmo que não tenham relação com a mudança",
-              "O build inteiro falha",
-              "Nada, cache nunca é invalidado",
+              "Apenas ela é invalidada, e o restante do build continua usando o cache normalmente",
+              "O Docker recalcula só as camadas de rede, mantendo todo o resto do build em cache",
             ],
             correctIndex: 1,
           },
           {
             question: "Por que copiar só package.json/lockfile antes do install, e o resto do código depois, melhora o cache?",
             options: [
-              "Não faz diferença nenhuma",
               "Porque mudar código (sem mudar dependência) não invalida mais a camada de install, que é a mais lenta",
-              "Porque reduz o tamanho da imagem final",
-              "Porque é obrigatório pelo Docker",
+              "Porque isso reduz o número total de camadas geradas pelo Dockerfile durante o build",
+              "Porque o Docker só consegue ler arquivos de configuração antes de qualquer outro arquivo do projeto",
+              "Porque isso faz o pnpm instalar as dependências em paralelo em vez de sequencialmente",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

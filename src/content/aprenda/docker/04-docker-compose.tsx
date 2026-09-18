@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "docker-compose: orquestrando múltiplos serviços",
   summary: "Uma app real não é 1 container — é API + banco + cache, tudo precisando subir junto.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao04DockerCompose() {
@@ -121,22 +122,22 @@ volumes:
           {
             question: "No compose, por que DATABASE_URL usa 'db' como host em vez de 'localhost'?",
             options: [
-              "'db' é obrigatório, um nome fixo do Docker",
+              "Porque 'localhost' é uma palavra reservada que o Compose substitui automaticamente por 'db'",
+              "Porque bancos de dados Postgres exigem um hostname diferente de 'localhost' pra aceitar conexões",
+              "Porque o Compose só permite usar 'localhost' quando existe apenas um serviço no arquivo",
               "Porque 'db' é o nome do serviço no compose, e serviços se enxergam pelo nome na mesma rede",
-              "É só um apelido qualquer, poderia ser qualquer string",
-              "localhost também funcionaria igual",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "Pra que serve a chave volumes no compose?",
             options: [
-              "Definir a porta do serviço",
+              "Definir quantos containers de cada serviço o Compose deve manter rodando ao mesmo tempo",
+              "Limitar quanta memória RAM cada serviço pode consumir durante a execução",
               "Fazer o dado (ex.: do banco) sobreviver a um docker compose down, em vez de ser apagado",
-              "Instalar dependências",
-              "Definir a rede entre containers",
+              "Configurar em qual rede interna do Compose cada serviço vai ser registrado",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

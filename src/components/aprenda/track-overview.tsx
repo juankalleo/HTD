@@ -3,9 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getTrackPercent, isLessonCompleted } from "@/lib/aprenda-progress";
-import type { LessonMeta } from "@/content/aprenda/types";
+import { LEVEL_LABELS, type LessonLevel, type LessonMeta } from "@/content/aprenda/types";
 import type { TrackMeta } from "@/content/aprenda/tracks";
 import { TrackIcon } from "./track-icon";
+
+const LEVEL_ORDER: LessonLevel[] = ["fundamentos", "intermediario"];
+
+const LEVEL_DESCRIPTIONS: Record<LessonLevel, string> = {
+  fundamentos: "O suficiente pra usar na prática sem se machucar.",
+  intermediario: "O que fundamentos deixou em aberto — produção, performance, casos reais.",
+};
 
 export function TrackOverview({ track, lessons }: { track: TrackMeta; lessons: LessonMeta[] }) {
   const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(new Set());
@@ -57,26 +64,42 @@ export function TrackOverview({ track, lessons }: { track: TrackMeta; lessons: L
       {lessons.length === 0 ? (
         <p className="nexttech-track-overview__empty">As lições dessa trilha ainda estão sendo escritas.</p>
       ) : (
-        <ol className="nexttech-track-overview__list">
-          {lessons.map((lesson, i) => {
-            const done = completedSlugs.has(lesson.slug);
-            return (
-              <li key={lesson.slug}>
-                <Link
-                  href={`/aprenda/${track.slug}/${lesson.slug}`}
-                  className={`nexttech-track-overview__item${done ? " is-done" : ""}`}
-                >
-                  <span className="nexttech-lesson-chapters__index">{done ? "✓" : i + 1}</span>
-                  <span className="nexttech-track-overview__item-text">
-                    <strong>{lesson.title}</strong>
-                    <small>{lesson.summary}</small>
-                  </span>
-                  <span className="nexttech-track-overview__minutes">{lesson.estimatedMinutes} min</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ol>
+        LEVEL_ORDER.map((level) => {
+          const levelLessons = lessons.filter((lesson) => lesson.level === level);
+          if (levelLessons.length === 0) return null;
+          const levelMinutes = levelLessons.reduce((acc, lesson) => acc + lesson.estimatedMinutes, 0);
+          return (
+            <section key={level} className="nexttech-track-overview__level">
+              <header className="nexttech-track-overview__level-header">
+                <h2>{LEVEL_LABELS[level]}</h2>
+                <p>{LEVEL_DESCRIPTIONS[level]}</p>
+                <span>
+                  {levelLessons.length} lições · {levelMinutes} min
+                </span>
+              </header>
+              <ol className="nexttech-track-overview__list">
+                {levelLessons.map((lesson, i) => {
+                  const done = completedSlugs.has(lesson.slug);
+                  return (
+                    <li key={lesson.slug}>
+                      <Link
+                        href={`/aprenda/${track.slug}/${lesson.slug}`}
+                        className={`nexttech-track-overview__item${done ? " is-done" : ""}`}
+                      >
+                        <span className="nexttech-lesson-chapters__index">{done ? "✓" : i + 1}</span>
+                        <span className="nexttech-track-overview__item-text">
+                          <strong>{lesson.title}</strong>
+                          <small>{lesson.summary}</small>
+                        </span>
+                        <span className="nexttech-track-overview__minutes">{lesson.estimatedMinutes} min</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ol>
+            </section>
+          );
+        })
       )}
     </div>
   );

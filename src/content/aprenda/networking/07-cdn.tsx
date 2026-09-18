@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "CDN — conteúdo mais perto do usuário",
   summary: "Por que um site global não serve tudo de um único servidor — e o que muda entre cache hit e cache miss.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao07Cdn() {
@@ -107,22 +108,22 @@ segurança, sem risco de servir uma versão desatualizada.`}
           {
             question: "Qual o principal ganho de uma CDN pra um visitante longe do servidor de origem?",
             options: [
-              "Nenhum, a distância não importa pra rede",
               "O visitante fala com um edge geograficamente mais próximo em vez da origem, reduzindo a distância (e o tempo) da viagem",
-              "CDN só serve pra economizar dinheiro do dono do site",
-              "CDN substitui completamente a necessidade de um servidor de origem",
+              "A CDN criptografa o tráfego de forma mais forte do que o servidor de origem conseguiria sozinho",
+              "A CDN reescreve o HTML da página para reduzir o número de requisições necessárias",
+              "A CDN garante que o servidor de origem nunca fique sobrecarregado, mesmo sem cache",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "O que acontece num cache MISS num edge de CDN?",
             options: [
-              "O visitante recebe um erro",
+              "O visitante é redirecionado automaticamente para o servidor de origem, sem passar pelo edge",
+              "O edge descarta a requisição e espera o próximo visitante tentar novamente mais tarde",
               "O edge busca o conteúdo na origem, guarda uma cópia em cache, e entrega — o próximo visitante daquela região recebe um HIT",
-              "A requisição é descartada silenciosamente",
-              "MISS significa que o site está fora do ar",
+              "O edge devolve a última versão em cache, mesmo que ela esteja desatualizada há semanas",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

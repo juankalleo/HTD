@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "INSERT, UPDATE, DELETE",
   summary: "Os três comandos que mudam dado — e por que UPDATE/DELETE sem WHERE é o erro mais caro do SQL.",
   estimatedMinutes: 14,
+  level: "fundamentos",
 };
 
 export default function Licao05InsertUpdateDelete() {
@@ -86,22 +87,22 @@ WHERE id = 42;`}
           {
             question: "O que UPDATE produtos SET preco = 0; (sem WHERE) faz?",
             options: [
-              "Nada acontece, é inválido sem WHERE",
-              "Zera o preço de TODOS os produtos da tabela, não só um",
-              "Pede confirmação antes de aplicar",
-              "Só afeta o primeiro produto encontrado",
+              "Zera o preço de TODOS os produtos da tabela, não só de um produto específico",
+              "Não faz nada, porque UPDATE exige uma cláusula WHERE pra ser executado",
+              "Pede uma confirmação no terminal antes de aplicar a mudança em massa",
+              "Afeta só a primeira linha da tabela, na ordem em que os dados foram inseridos",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
           {
             question: "Qual prática ajuda a evitar um DELETE/UPDATE destrutivo em produção?",
             options: [
-              "Nunca usar WHERE",
-              "Rodar um SELECT com o mesmo WHERE antes, pra conferir quais/quantas linhas seriam afetadas",
-              "Sempre rodar em horário de pico",
-              "Usar DELETE em vez de UPDATE sempre",
+              "Sempre rodar o comando duas vezes seguidas, pra garantir que a segunda execução corrija a primeira",
+              "Evitar usar transações, já que elas deixam o DELETE/UPDATE mais lento em produção",
+              "Rodar um SELECT com o mesmo WHERE antes, pra conferir quais e quantas linhas seriam afetadas antes de aplicar o DELETE/UPDATE",
+              "Usar sempre DELETE no lugar de UPDATE, porque DELETE é mais fácil de reverter depois",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
         ]}
       />

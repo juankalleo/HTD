@@ -10,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Models e migrations",
   summary: "Migration muda o schema do banco de forma versionada; model é onde validação e associação moram.",
   estimatedMinutes: 18,
+  level: "fundamentos",
 };
 
 export default function Licao04ModelsEMigrations() {
@@ -118,20 +119,20 @@ end`}
           {
             question: "Pra que serve a tabela de controle que o Rails mantém das migrations já rodadas?",
             options: [
-              "Não existe tabela de controle nenhuma",
-              "Garante que cada migration rode uma única vez, e na ordem certa, em qualquer ambiente",
-              "Só serve pra debug",
-              "Armazena backup do banco inteiro",
+              "Guarda uma cópia completa dos dados de todas as tabelas antes de cada migration rodar",
+              "Serve para o Rails escolher automaticamente qual ambiente (desenvolvimento, teste ou produção) usar",
+              "Armazena o histórico de queries SQL executadas manualmente fora do fluxo de migrations",
+              "Garante que cada migration rode uma única vez, e sempre na ordem certa, em qualquer ambiente do projeto",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
           {
             question: "O que has_many/belongs_to fazem entre dois models?",
             options: [
-              "Nada, são só comentários",
-              "Declaram a relação entre as tabelas, habilitando acesso tipo categoria.produtos sem escrever JOIN manual",
-              "Criam a tabela automaticamente sem migration",
-              "Substituem a necessidade de validação",
+              "Criam automaticamente a coluna de chave estrangeira no banco de dados, sem precisar rodar uma migration",
+              "Declaram a relação entre as tabelas, habilitando acesso direto tipo categoria.produtos sem escrever JOIN manual",
+              "Validam que o registro relacionado existe antes de qualquer operação de salvar, sem precisar de configuração extra",
+              "Impedem por padrão que o registro relacionado seja destruído enquanto ainda existirem referências a ele",
             ],
             correctIndex: 1,
           },

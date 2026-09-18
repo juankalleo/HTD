@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Agregações: COUNT, GROUP BY, HAVING",
   summary: "Transformar várias linhas num resumo — \"quantos pedidos por usuário\", \"faturamento por mês\".",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao04Agregacoes() {
@@ -96,22 +97,22 @@ HAVING COUNT(*) > 3;`}
           {
             question: "Qual a diferença entre WHERE e HAVING?",
             options: [
-              "São idênticos, tanto faz qual usar",
-              "WHERE filtra linhas antes de agrupar (não pode usar agregação); HAVING filtra grupos depois de agrupar (pode usar agregação como COUNT/SUM)",
-              "HAVING só funciona sem GROUP BY",
-              "WHERE é mais rápido sempre",
+              "WHERE filtra depois do GROUP BY e pode usar COUNT/SUM; HAVING filtra antes e não pode usar agregação",
+              "WHERE filtra linhas antes de agrupar e não pode usar agregação; HAVING filtra grupos depois de agrupar e pode usar agregação como COUNT/SUM",
+              "São a mesma cláusula, HAVING é só o nome usado em versões mais antigas do SQL",
+              "HAVING só pode ser usado junto com ORDER BY, enquanto WHERE funciona sozinho",
             ],
             correctIndex: 1,
           },
           {
             question: "Sem GROUP BY, o que SELECT COUNT(*) FROM pedidos retorna?",
             options: [
-              "Uma lista de todos os pedidos",
-              "Um único número — a contagem total de todas as linhas da tabela",
-              "Erro de sintaxe",
-              "A contagem por usuário automaticamente",
+              "Uma lista com todas as linhas da tabela, cada uma com um número de contagem ao lado",
+              "Um erro, porque toda função de agregação exige um GROUP BY explícito pra funcionar",
+              "Um número para cada coluna da tabela, contando quantos valores não nulos ela tem",
+              "Um único número — a contagem total de todas as linhas da tabela, sem separar por grupo",
             ],
-            correctIndex: 1,
+            correctIndex: 3,
           },
         ]}
       />

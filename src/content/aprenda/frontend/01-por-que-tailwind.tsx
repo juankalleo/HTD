@@ -11,6 +11,7 @@ export const meta: LessonMeta = {
   title: "Por que Tailwind",
   summary: "Utility-first na prática, comparado com CSS tradicional.",
   estimatedMinutes: 12,
+  level: "fundamentos",
 };
 
 export default function Licao01PorQueTailwind() {
@@ -98,22 +99,22 @@ export default function Licao01PorQueTailwind() {
           {
             question: "O que caracteriza uma abordagem 'utility-first'?",
             options: [
-              "Escrever uma classe CSS nova pra cada componente",
-              "Compor o visual com classes utilitárias pequenas e de propósito único",
-              "Usar só CSS-in-JS",
-              "Evitar classes CSS completamente",
+              "Escrever uma classe CSS nova e exclusiva para cada componente da interface",
+              "Depender inteiramente de CSS-in-JS para gerar os estilos em tempo de execução",
+              "Compor o visual com classes utilitárias pequenas e de propósito único, direto no JSX",
+              "Herdar estilos de uma folha de estilos global organizada por componente",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Qual problema comum o utility-first ajuda a evitar?",
             options: [
-              "Sites lentos",
-              "CSS que cresce sem controle porque ninguém sabe se uma classe antiga ainda é usada",
-              "Falta de responsividade",
-              "Erros de JavaScript",
+              "CSS que cresce sem controle porque ninguém sabe se uma classe antiga ainda está em uso",
+              "Duplicação de dependências no bundle final por causa de múltiplos frameworks de estilo",
+              "Falta de suporte a tema escuro em projetos que usam apenas CSS tradicional",
+              "Lentidão de build causada pelo processamento de arquivos CSS muito grandes",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

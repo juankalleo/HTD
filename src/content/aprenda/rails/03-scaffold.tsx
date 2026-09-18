@@ -9,6 +9,7 @@ export const meta: LessonMeta = {
   title: "Scaffold: gerando um recurso e entendendo cada arquivo",
   summary: "Um comando gera model, migration, controller e rotas — entender o que cada arquivo faz é o objetivo.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao03Scaffold() {
@@ -125,22 +126,22 @@ app/controllers/categorias_controller.rb → mesmas actions, trocando Produto po
           {
             question: "O que faz produto_params (strong parameters) no controller gerado?",
             options: [
-              "Valida o formato do JSON",
-              "Exige que os dados venham aninhados sob uma chave e permite explicitamente só os campos esperados",
-              "Converte o JSON em texto",
-              "Faz cache da requisição",
+              "Valida se os valores enviados respeitam as regras definidas em validates no model",
+              "Converte automaticamente os tipos de dado recebidos, como transformar string em decimal",
+              "Exige que os dados venham aninhados sob uma chave específica e permite explicitamente só os campos esperados",
+              "Garante que a requisição só seja aceita se vier acompanhada de um token de autenticação válido",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "Por que app/models/produto.rb começa vazio, sem métodos?",
             options: [
-              "É um bug do gerador",
-              "Herdar de ApplicationRecord já dá acesso a todo CRUD básico automaticamente",
-              "Rails não suporta lógica em model",
-              "Porque a lógica sempre fica só no controller",
+              "Porque herdar de ApplicationRecord já dá acesso a todo o CRUD básico automaticamente, sem precisar escrever nada a mais",
+              "Porque a lógica de negócio de um recurso deveria morar sempre no controller, nunca dentro do model",
+              "Porque toda validação em Rails é escrita na migration como constraint do banco, não dentro do model",
+              "Porque o scaffold só preenche o model depois que a primeira requisição HTTP for feita ao controller",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />

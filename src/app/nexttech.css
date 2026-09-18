@@ -2662,9 +2662,43 @@ html.nexttech-no-scroll {
   margin-top: 24px;
 }
 
+.nexttech-track-overview__level {
+  margin-top: 34px;
+}
+
+.nexttech-track-overview__level-header {
+  align-items: baseline;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300, #d8e6f7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  padding-bottom: 10px;
+}
+
+.nexttech-track-overview__level-header h2 {
+  color: var(--ifm-color-content);
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.nexttech-track-overview__level-header p {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  flex: 1 1 220px;
+  font-size: 13.5px;
+  margin: 0;
+}
+
+.nexttech-track-overview__level-header > span {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .nexttech-track-overview__list {
   list-style: none;
-  margin: 30px 0 0;
+  margin: 18px 0 0;
   padding: 0;
 }
 
@@ -2842,6 +2876,21 @@ html.nexttech-no-scroll {
   line-height: 1.35;
 }
 
+.nexttech-lesson-chapters__level-heading {
+  color: var(--ifm-color-content-secondary, var(--ifm-color-content));
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  margin: 16px 0 6px;
+  padding: 0 2px;
+  text-transform: uppercase;
+}
+
+.nexttech-lesson-chapters ol li:first-child .nexttech-lesson-chapters__level-heading {
+  margin-top: 4px;
+}
+
 .nexttech-lesson-chapters ol {
   border-top: 1px solid var(--ifm-color-emphasis-200, #eeeeee);
   list-style: none;
@@ -2957,6 +3006,26 @@ html.nexttech-no-scroll {
   font-weight: 700;
   line-height: 1;
   padding: 6px 9px;
+}
+
+.nexttech-lesson-level--fundamentos {
+  background: rgba(37, 99, 235, .1) !important;
+  border-color: rgba(37, 99, 235, .35) !important;
+  color: var(--nexttech-blue-dark) !important;
+}
+
+.nexttech-lesson-level--intermediario {
+  background: rgba(217, 119, 6, .12) !important;
+  border-color: rgba(217, 119, 6, .4) !important;
+  color: #b45309 !important;
+}
+
+[data-theme="dark"] .nexttech-lesson-level--fundamentos {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] .nexttech-lesson-level--intermediario {
+  color: #fbbf24 !important;
 }
 
 .nexttech-lesson-header h1 {

@@ -1,6 +1,7 @@
 import { LessonBody } from "@/components/aprenda/lesson-body";
 import { CodeExample } from "@/components/aprenda/code-example";
 import { Exercise } from "@/components/aprenda/exercise";
+import { Callout } from "@/components/aprenda/callout";
 import { Quiz } from "@/components/aprenda/quiz";
 import type { LessonMeta } from "@/content/aprenda/types";
 
@@ -9,6 +10,7 @@ export const meta: LessonMeta = {
   title: "Chaves primárias/estrangeiras e normalização",
   summary: "O mecanismo que garante que uma referência entre tabelas nunca aponte pro vazio.",
   estimatedMinutes: 16,
+  level: "fundamentos",
 };
 
 export default function Licao07ChavesENormalizacao() {
@@ -92,6 +94,15 @@ usuário de verdade. Em dados sensíveis/financeiros, RESTRICT (ou soft
 delete, fora do escopo desta lição) costuma ser mais seguro que CASCADE.`}
       />
 
+      <Callout
+        title="Isso é aprofundado no intermediário"
+        href="/aprenda/sql/14-modelagem-e-multi-tenancy"
+        linkLabel="Ver aula completa →"
+      >
+        Aqui a normalização foi tratada como regra geral; a aula intermediária mostra quando desnormalizar de
+        propósito e como isso se conecta com estratégias de multi-tenancy.
+      </Callout>
+
       <Quiz
         track="sql"
         lessonSlug={meta.slug}
@@ -99,22 +110,22 @@ delete, fora do escopo desta lição) costuma ser mais seguro que CASCADE.`}
           {
             question: "O que uma FOREIGN KEY garante?",
             options: [
-              "Que a coluna nunca fica vazia",
-              "Que o valor referenciado (ex.: usuario_id) corresponde a uma linha que realmente existe na tabela referenciada",
-              "Que a tabela nunca pode ser deletada",
-              "Que a consulta roda mais rápido",
+              "Que a coluna referenciada nunca pode ficar vazia (NULL), impedindo qualquer valor ausente",
+              "Que a tabela que contém a chave estrangeira nunca pode ser removida do banco",
+              "Que o valor referenciado (como usuario_id) corresponde a uma linha que realmente existe na tabela referenciada",
+              "Que as consultas que usam essa coluna rodam automaticamente mais rápido",
             ],
-            correctIndex: 1,
+            correctIndex: 2,
           },
           {
             question: "O que normalização busca evitar?",
             options: [
-              "Evitar usar JOIN",
-              "Evitar duplicar o mesmo dado em várias linhas, o que causaria inconsistência quando esse dado precisasse mudar",
-              "Evitar ter mais de uma tabela",
-              "Evitar índices",
+              "Duplicar o mesmo dado em várias linhas, o que causaria inconsistência sempre que esse dado precisasse mudar",
+              "A necessidade de usar JOIN nas consultas, já que tudo fica numa tabela só",
+              "Ter mais de uma tabela no mesmo banco de dados",
+              "A criação de índices nas tabelas relacionadas",
             ],
-            correctIndex: 1,
+            correctIndex: 0,
           },
         ]}
       />
