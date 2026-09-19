@@ -8,6 +8,7 @@ export type TechIconName =
   | "cache"
   | "cloudflare"
   | "css3"
+  | "design"
   | "eslint"
   | "forms"
   | "githubactions"
@@ -30,6 +31,7 @@ export type TechIconName =
   | "vitest";
 
 const TRACK_ICON_BY_SLUG: Record<TrackSlug, TechIconName> = {
+  comandos: "bash",
   docker: "docker",
   frontend: "nextjs",
   git: "git",
@@ -38,6 +40,7 @@ const TRACK_ICON_BY_SLUG: Record<TrackSlug, TechIconName> = {
   rails: "rails",
   sql: "postgresql",
   typescript: "typescript",
+  uiux: "design",
 };
 
 const ICON_SRC: Partial<Record<TechIconName, string>> = {
@@ -101,6 +104,15 @@ function GenericConceptIcon({ name, label }: { name: TechIconName; label: string
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <rect {...common} x="5" y="4" width="14" height="16" rx="2" />
           <path {...common} d="M9 8h6M9 12h6M9 16h3" />
+        </svg>
+      );
+    case "design":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path {...common} d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.6 1.7-1.6H16a4.5 4.5 0 0 0 4.5-4.5C20.5 6.1 16.7 3 12 3z" />
+          <circle cx="7.5" cy="10.5" r="1.1" fill="currentColor" stroke="none" />
+          <circle cx="11" cy="7.2" r="1.1" fill="currentColor" stroke="none" />
+          <circle cx="15.2" cy="8" r="1.1" fill="currentColor" stroke="none" />
         </svg>
       );
     case "rbac":

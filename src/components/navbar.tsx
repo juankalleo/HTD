@@ -169,6 +169,7 @@ function MobileDocsGroup({ activeHref, onNavigate }: { activeHref: string; onNav
 function MegaMenu({
   id,
   label,
+  href,
   active,
   open,
   onOpen,
@@ -176,6 +177,8 @@ function MegaMenu({
 }: {
   id: MegaId;
   label: string;
+  /** Quando informado, o gatilho vira um link de verdade (clique navega) — o hover/foco ainda abre o painel. */
+  href?: string;
   active?: boolean;
   open: boolean;
   onOpen: (id: MegaId) => void;
@@ -187,15 +190,21 @@ function MegaMenu({
       onMouseEnter={() => onOpen(id)}
       onFocusCapture={() => onOpen(id)}
     >
-      <button
-        type="button"
-        className="navbar__link nexttech-mega-trigger"
-        aria-haspopup="true"
-        aria-expanded={open}
-        onClick={() => onOpen(id)}
-      >
-        {label}
-      </button>
+      {href ? (
+        <a href={href} className="navbar__link nexttech-mega-trigger" aria-haspopup="true" aria-expanded={open}>
+          {label}
+        </a>
+      ) : (
+        <button
+          type="button"
+          className="navbar__link nexttech-mega-trigger"
+          aria-haspopup="true"
+          aria-expanded={open}
+          onClick={() => onOpen(id)}
+        >
+          {label}
+        </button>
+      )}
       <div className="dropdown__menu nexttech-mega-panel">
         <div className="nexttech-mega-panel__inner">
           {columns.map((column) => (
@@ -289,14 +298,16 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
     {
       title: "Aprender",
       links: [
-        { label: "Todas as trilhas", href: "/aprenda", description: "Aulas práticas: 66" },
+        { label: "Todas as trilhas", href: "/aprenda", description: "Aulas práticas: 164" },
         { label: "Trilha de frontend", href: "/aprenda/frontend" },
+        { label: "Trilha de UI/UX", href: "/aprenda/uiux" },
         { label: "Trilha de TypeScript", href: "/aprenda/typescript" },
       ],
     },
     {
       title: "Fundamentos",
       links: [
+        { label: "Terminal", href: "/aprenda/comandos" },
         { label: "Git", href: "/aprenda/git" },
         { label: "Redes", href: "/aprenda/networking" },
         { label: "SQL", href: "/aprenda/sql" },
@@ -354,7 +365,7 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
           <div className="nexttech-mega-nav navbar__items">
             <MegaMenu id="explorar" label="Explorar" active={hubActive || examplesActive} open={activeMega === "explorar"} onOpen={setActiveMega} columns={exploreColumns} />
             <MegaMenu id="padroes" label="Padrões" active={docsMenuActive} open={activeMega === "padroes"} onOpen={setActiveMega} columns={standardsColumns} />
-            <MegaMenu id="aprender" label="Aprender" active={aprendaActive} open={activeMega === "aprender"} onOpen={setActiveMega} columns={learnColumns} />
+            <MegaMenu id="aprender" label="Aprender" href="/aprenda" active={aprendaActive} open={activeMega === "aprender"} onOpen={setActiveMega} columns={learnColumns} />
             <MegaMenu id="sistema" label="Sistema" active={companyActive} open={activeMega === "sistema"} onOpen={setActiveMega} columns={companyColumns} />
           </div>
           <div className="theme-layout-navbar-right navbar__items navbar__items--right">

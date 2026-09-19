@@ -1,4 +1,14 @@
-export type TrackSlug = "git" | "javascript" | "typescript" | "networking" | "frontend" | "sql" | "rails" | "docker";
+export type TrackSlug =
+  | "comandos"
+  | "git"
+  | "javascript"
+  | "typescript"
+  | "networking"
+  | "uiux"
+  | "frontend"
+  | "sql"
+  | "rails"
+  | "docker";
 
 export type TrackMeta = {
   slug: TrackSlug;
@@ -15,6 +25,11 @@ export type TrackMeta = {
  * só o registro que a home, o hub e as rotas de trilha/lição consultam.
  */
 export const TRACKS: TrackMeta[] = [
+  {
+    slug: "comandos",
+    title: "Terminal e linha de comando",
+    summary: "Navegar, criar, ler, buscar e automatizar sem tirar a mão do teclado — a base de tudo antes de git ou Docker.",
+  },
   {
     slug: "git",
     title: "Git e controle de versão",
@@ -34,6 +49,11 @@ export const TRACKS: TrackMeta[] = [
     slug: "networking",
     title: "Redes e Internet",
     summary: "Como uma requisição realmente viaja — IP, DNS, HTTP, proxy, CDN e load balancer, com diagramas interativos.",
+  },
+  {
+    slug: "uiux",
+    title: "UI/UX para quem programa",
+    summary: "Gestalt, cor, tipografia e hierarquia visual — por que uma tela funciona, e como fugir do visual genérico de IA.",
   },
   {
     slug: "frontend",

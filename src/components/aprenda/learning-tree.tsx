@@ -21,10 +21,12 @@ type TreeNode = {
  * frontend/backend/rede, e Docker fecha como integração final.
  */
 const NODES: TreeNode[] = [
+  { slug: "comandos", code: "CLI", x: 31, y: 14 },
   { slug: "git", code: "Git", x: 9, y: 18 },
   { slug: "javascript", code: "JS", x: 9, y: 53 },
   { slug: "sql", code: "SQL", x: 9, y: 82 },
   { slug: "typescript", code: "TS", x: 31, y: 53 },
+  { slug: "uiux", code: "UI/UX", x: 31, y: 86 },
   { slug: "networking", code: "Web", x: 52, y: 18 },
   { slug: "frontend", code: "Next.js", x: 54, y: 52 },
   { slug: "rails", code: "Rails", x: 55, y: 82 },
@@ -32,8 +34,10 @@ const NODES: TreeNode[] = [
 ];
 
 const EDGES: [TrackSlug, TrackSlug][] = [
+  ["comandos", "git"],
   ["javascript", "typescript"],
   ["typescript", "frontend"],
+  ["uiux", "frontend"],
   ["sql", "rails"],
   ["git", "rails"],
   ["networking", "frontend"],
