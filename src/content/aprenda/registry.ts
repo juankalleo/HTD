@@ -10,6 +10,7 @@ import { FRONTEND_LESSONS } from "./frontend";
 import { SQL_LESSONS } from "./sql";
 import { RAILS_LESSONS } from "./rails";
 import { DOCKER_LESSONS } from "./docker";
+import { SEGURANCA_LESSONS } from "./seguranca";
 
 export const TRACK_LESSONS: Record<TrackSlug, LessonModule[]> = {
   comandos: COMANDOS_LESSONS,
@@ -22,6 +23,7 @@ export const TRACK_LESSONS: Record<TrackSlug, LessonModule[]> = {
   sql: SQL_LESSONS,
   rails: RAILS_LESSONS,
   docker: DOCKER_LESSONS,
+  seguranca: SEGURANCA_LESSONS,
 };
 
 export function getTrackLessons(track: string): LessonModule[] {

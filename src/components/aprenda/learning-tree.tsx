@@ -31,6 +31,7 @@ const NODES: TreeNode[] = [
   { slug: "frontend", code: "Next.js", x: 54, y: 52 },
   { slug: "rails", code: "Rails", x: 55, y: 82 },
   { slug: "docker", code: "Docker", x: 87, y: 53 },
+  { slug: "seguranca", code: "Sec", x: 87, y: 86 },
 ];
 
 const EDGES: [TrackSlug, TrackSlug][] = [
@@ -44,6 +45,8 @@ const EDGES: [TrackSlug, TrackSlug][] = [
   ["frontend", "docker"],
   ["rails", "docker"],
   ["networking", "docker"],
+  ["rails", "seguranca"],
+  ["networking", "seguranca"],
 ];
 
 function nodeById(slug: TrackSlug) {

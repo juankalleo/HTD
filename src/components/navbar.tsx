@@ -298,10 +298,10 @@ export function Navbar({ activeHref, searchEntries }: { activeHref: string; sear
     {
       title: "Aprender",
       links: [
-        { label: "Todas as trilhas", href: "/aprenda", description: "Aulas práticas: 164" },
+        { label: "Todas as trilhas", href: "/aprenda", description: "Aulas práticas: 180" },
         { label: "Trilha de frontend", href: "/aprenda/frontend" },
         { label: "Trilha de UI/UX", href: "/aprenda/uiux" },
-        { label: "Trilha de TypeScript", href: "/aprenda/typescript" },
+        { label: "Trilha de segurança", href: "/aprenda/seguranca" },
       ],
     },
     {

@@ -8,7 +8,8 @@ export type TrackSlug =
   | "frontend"
   | "sql"
   | "rails"
-  | "docker";
+  | "docker"
+  | "seguranca";
 
 export type TrackMeta = {
   slug: TrackSlug;
@@ -74,6 +75,11 @@ export const TRACKS: TrackMeta[] = [
     slug: "docker",
     title: "Infraestrutura — Docker",
     summary: "Do Dockerfile ao docker-compose orquestrando a app construída nas outras trilhas.",
+  },
+  {
+    slug: "seguranca",
+    title: "Segurança web",
+    summary: "Como autenticação (sessão, cookie, bearer, JWT) funciona de verdade — e os ataques mais comuns contra ela.",
   },
 ];
 

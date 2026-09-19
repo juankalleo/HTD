@@ -5,9 +5,9 @@ import type { LessonMeta } from "@/content/aprenda/types";
 
 export const meta: LessonMeta = {
   slug: "02-o-que-e-rails",
-  title: "O que é Rails, convenção sobre configuração",
-  summary: "Por que Rails decide tanta coisa por você — e por que isso é o ponto, não um problema.",
-  estimatedMinutes: 12,
+  title: "O que é Rails: gems, Gemfile e convenção sobre configuração",
+  summary: "Como um projeto Rails nasce (gem install, rails new, Gemfile) — e por que Rails decide tanta coisa por você.",
+  estimatedMinutes: 16,
   level: "fundamentos",
 };
 
@@ -20,6 +20,71 @@ export default function Licao02OQueERails() {
         qual método um controller deveria ter pra criar um recurso — Rails já decidiu, e segue essa decisão em todo
         projeto Rails do mundo. Isso tem um preço (menos flexibilidade) e um ganho enorme (qualquer pessoa que já viu
         um projeto Rails sabe onde procurar coisa em outro projeto Rails, sem ler configuração nenhuma).
+      </p>
+
+      <h2>Antes de tudo: o que é uma "gem" e como um projeto Rails nasce</h2>
+      <p>
+        Ruby chama uma biblioteca instalável de <strong>gem</strong> — o mesmo conceito de um pacote npm no mundo
+        JavaScript. O próprio Rails é distribuído como gem: instalar Rails na máquina é, literalmente, instalar mais
+        uma biblioteca Ruby.
+      </p>
+      <CodeExample
+        label="terminal — instalando Rails e criando um projeto"
+        language="bash"
+        result={`Successfully installed rails-7.1.3
+      create  config/application.rb
+      create  Gemfile
+      create  app/models
+      create  app/controllers
+      create  db/
+      ...`}
+        code={`gem install rails
+rails new minha_api --api`}
+      />
+      <p>
+        <code>rails new minha_api --api</code> não cria uma pasta vazia — ele gera a estrutura inteira de pastas da
+        seção seguinte, já com um <strong>Gemfile</strong> populado. <code>--api</code> pede a variante enxuta pra
+        API (sem as partes de gerar HTML no servidor, que uma API não usa).
+      </p>
+
+      <h2>Gemfile e bundler: como as dependências do projeto são geridas</h2>
+      <p>
+        Todo projeto Rails tem um arquivo <code>Gemfile</code> na raiz — é a lista de todas as gems (bibliotecas) que
+        o projeto depende, mais ou menos como um <code>package.json</code> lista as dependências de um projeto
+        Node/Next.js.
+      </p>
+      <CodeExample
+        label="Gemfile (trecho)"
+        language="ruby"
+        code={`gem "rails", "~> 7.1.3"
+gem "pg", "~> 1.5"          # driver do Postgres
+gem "puma"                  # servidor de aplicação
+
+group :development, :test do
+  gem "rspec-rails"          # só instalado em dev/test, nunca em produção
+end`}
+      />
+      <p>
+        Depois de editar o <code>Gemfile</code> — seja criando o projeto do zero, seja adicionando uma gem nova mais
+        pra frente (nas próximas lições você vai adicionar <code>devise</code> e <code>cancancan</code> assim) —
+        você roda <code>bundle install</code>. O <strong>Bundler</strong> lê o <code>Gemfile</code>, resolve qual
+        versão exata de cada gem (e de cada dependência delas) instalar sem conflitar entre si, baixa tudo, e escreve
+        o resultado em <code>Gemfile.lock</code>.
+      </p>
+      <CodeExample
+        label="terminal"
+        language="bash"
+        result={`Fetching gem metadata from https://rubygems.org/...
+Installing pg 1.5.4
+Installing puma 6.4.0
+Bundle complete! 15 Gemfile dependencies, 62 gems now installed.`}
+        code={`bundle install`}
+      />
+      <p>
+        O <code>Gemfile.lock</code> é o que faz o projeto instalar exatamente as <strong>mesmas versões</strong> na
+        sua máquina, na do seu colega e no servidor de produção — sem ele, cada instalação poderia puxar uma versão
+        diferente de cada gem e um bug "só acontecer" num lugar. Por isso ele é versionado no git, e o
+        <code>Gemfile</code> sozinho nunca é o suficiente pra reproduzir o ambiente.
       </p>
 
       <h2>A convenção que mais aparece: nome no plural/singular</h2>

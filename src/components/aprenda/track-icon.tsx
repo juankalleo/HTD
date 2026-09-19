@@ -41,6 +41,7 @@ const TRACK_ICON_BY_SLUG: Record<TrackSlug, TechIconName> = {
   sql: "postgresql",
   typescript: "typescript",
   uiux: "design",
+  seguranca: "security",
 };
 
 const ICON_SRC: Partial<Record<TechIconName, string>> = {
